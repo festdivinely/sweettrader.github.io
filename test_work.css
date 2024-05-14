@@ -1,0 +1,940 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.cont {
+    width: 100%;
+}
+
+.trade_page_header {
+    justify-content: center;
+    width: 100%;
+    padding: 1em 3em;
+    background-color: beige;
+    text-align: center;
+}
+
+.page_title_cont {
+    display: flex;
+    flex: 1;
+    padding-left: 2em;
+    white-space: nowrap;
+}
+
+.trade_page_right_cont {
+    display: flex;
+    flex: 2;
+    padding-right: 2em;
+    justify-content: flex-end;
+}
+
+.trade_page_header_up {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.proposal_info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.proposal_forward,
+.proposal_reverse {
+    display: flex;
+}
+
+.proposal_forward {
+    margin-right: 1em;
+}
+
+.proposal_forward_ball,
+.proposal_reverse_ball {
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    border: 1px solid rgb(185, 182, 182);
+    margin-right: .5em;
+}
+
+.proposal_forward_info,
+.proposal_reverse_info {
+    width: 10em;
+    /* Set the width of the box */
+
+    overflow-x: hidden;
+    /* Enable scrolling */
+    white-space: nowrap;
+}
+
+.proposal_forward_ball {
+    background-color: rgb(41, 179, 41);
+}
+
+.proposal_reverse_ball {
+    background-color: rgb(218, 67, 67);
+}
+
+.logi_id {
+    margin-left: auto;
+}
+
+
+.trade_buttons {
+    display: flex;
+    margin: 1em 0;
+}
+
+button {
+    padding: 1em;
+    border: 1px solid grey;
+    border-radius: .3em;
+}
+
+.purchase_match_button {
+    margin-right: 1em;
+    background-color: rgb(41, 179, 41);
+    cursor: pointer;
+}
+
+.purchase_match_button:hover {
+    border-color: darkgreen;
+}
+
+
+.purchase_differ_button {
+    margin-right: 1em;
+    background-color: rgb(218, 67, 67);
+    cursor: pointer;
+}
+
+.purchase_differ_button:hover {
+    border-color: darkred;
+}
+
+.fade-out {
+    animation: fadeOut .5s forwards;
+}
+
+.fade-in {
+    animation: fadeIn .5s forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0.5;
+        /* Adjust this value to control the amount of fade */
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0.5;
+        /* Adjust this value to match the final opacity of the fade-out animation */
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+
+.cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.trade_informations_container {
+    background-color: aliceblue;
+    height: fit-content;
+    width: fit-content;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.contract_result_container {
+    width: 100%;
+    display: flex;
+}
+
+.contract_result {
+    margin-right: auto;
+    padding: 1em;
+    font-size: 1.4em;
+    text-align: center;
+    width: 90%;
+}
+
+.close_contract_result_container {
+    padding: .2em 0;
+    font-size: 1.6em;
+    background-color: purple;
+    height: fit-content;
+    width: 10%;
+    border-bottom-left-radius: .2em;
+    text-align: center;
+}
+
+.proposal_information {
+    width: 20em;
+    background-color: white;
+    padding: 1em;
+    margin: 0 1.5em;
+    border: 1px solid grey;
+    border-radius: .3em;
+    margin-bottom: 1em;
+}
+
+.buy_price_loose_and_profit_container {
+    display: flex;
+    padding: 1em 0;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.buy_price_container,
+.price_after_trade_container,
+.profit_container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.buy_price_container {}
+
+.price_after_trade_container {
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+}
+
+.profit_container {}
+
+.buy_price_text,
+.price_after_trade_text,
+.profit_text {
+    margin-bottom: 1em;
+}
+
+.transaction_refrence {
+    padding: 1em;
+    text-align: center;
+}
+
+.time_and_end_tic_container {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.time_of_trade {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.end_tic_off_trade {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 3em;
+    color: rgb(184, 177, 177);
+}
+
+.last_digit {
+    color: black;
+    font-weight: bold;
+}
+
+.last_digit_responds {
+    display: flex;
+    margin: 2em 1em;
+    border: .1px solid rgb(185, 181, 181);
+    border-radius: .3em;
+}
+
+.last_digits {
+    flex: 1;
+    border: .1px solid rgb(185, 181, 181);
+    text-align: center;
+    padding: .5em;
+    font-size: 1.3em;
+}
+
+.logi_id {
+    margin: 0 1em;
+}
+
+
+.slide_trade_result {
+    display: none;
+    position: absolute;
+    top: auto;
+    left: auto;
+    right: auto;
+    height: 3.5em;
+    padding: .8em;
+    padding-top: .2em;
+    background-color: red;
+    margin-top: -1.6em;
+    margin-left: 20em;
+    border-radius: .3em;
+}
+
+.slideInFromLeftAnimation0 {
+    animation: slideInFromLeftZero 0.5s forwards;
+}
+
+.slideInFromLeftAnimation1 {
+    animation: slideInFromLeftOne 0.5s forwards;
+}
+
+.slideInFromLeftAnimation2 {
+    animation: slideInFromLeftTwo 0.5s forwards;
+}
+
+.slideInFromLeftAnimation3 {
+    animation: slideInFromLeftThree 0.5s forwards;
+}
+
+.slideInFromLeftAnimation4 {
+    animation: slideInFromLeftFour 0.5s forwards;
+}
+
+.slideInFromLeftAnimation5 {
+    animation: slideInFromLeftFive 0.5s forwards;
+}
+
+.slideInFromLeftAnimation6 {
+    animation: slideInFromLeftSix 0.5s forwards;
+}
+
+.slideInFromLeftAnimation7 {
+    animation: slideInFromLeftSeven 0.5s forwards;
+}
+
+.slideInFromLeftAnimation8 {
+    animation: slideInFromLeftEight 0.5s forwards;
+}
+
+.slideInFromLeftAnimation9 {
+    animation: slideInFromLeftNine 0.5s forwards;
+}
+
+
+@keyframes slideInFromLeftZero {
+    0% {
+        margin-left: -2em;
+        /* Start position */
+        display: block;
+    }
+
+    100% {
+        margin-left: 0em;
+        /* End position */
+        display: block;
+    }
+}
+
+@keyframes slideInFromLeftOne {
+    0% {
+        margin-left: 0em;
+        /* Start position */
+        display: block;
+    }
+
+    100% {
+        margin-left: 2em;
+        /* End position */
+        display: block;
+    }
+}
+
+@keyframes slideInFromLeftTwo {
+    0% {
+        margin-left: 0em;
+        /* Start position */
+        display: block;
+    }
+
+    100% {
+        margin-left: 4em;
+        /* End position */
+        display: block;
+    }
+}
+
+@keyframes slideInFromLeftThree {
+    0% {
+        margin-left: 0em;
+        /* Start position */
+        display: block;
+    }
+
+    100% {
+        margin-left: 6.2em;
+        /* End position */
+        display: block;
+    }
+}
+
+@keyframes slideInFromLeftFour {
+    0% {
+        margin-left: 0em;
+        /* Start position */
+        display: block;
+    }
+
+    100% {
+        margin-left: 8.55em;
+        /* End position */
+        display: block;
+    }
+}
+
+@keyframes slideInFromLeftFive {
+    0% {
+        margin-left: 0em;
+        /* Start position */
+        display: block;
+    }
+
+    100% {
+        margin-left: 11em;
+        /* End position */
+        display: block;
+    }
+}
+
+@keyframes slideInFromLeftSix {
+    0% {
+        margin-left: 0em;
+        /* Start position */
+        display: block;
+    }
+
+    100% {
+        margin-left: 13.3em;
+        /* End position */
+        display: block;
+    }
+}
+
+@keyframes slideInFromLeftSeven {
+    0% {
+        margin-left: 0em;
+        /* Start position */
+        display: block;
+    }
+
+    100% {
+        margin-left: 16em;
+        /* End position */
+        display: block;
+    }
+}
+
+@keyframes slideInFromLeftEight {
+    0% {
+        margin-left: 0em;
+        /* Start position */
+        display: block;
+    }
+
+    100% {
+        margin-left: 18em;
+        /* End position */
+        display: block;
+    }
+}
+
+@keyframes slideInFromLeftNine {
+    0% {
+        margin-left: 0em;
+        /* Start position */
+        display: block;
+    }
+
+    100% {
+        margin-left: 20em;
+        /* End position */
+        display: block;
+    }
+}
+
+
+
+.last_digit_mirror {
+    background-color: white;
+    text-align: center;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.3em;
+    width: 100%;
+    height: 50%;
+    margin-bottom: 1em;
+    margin-top: .9em;
+    border-radius: .3em;
+    z-index: 99;
+}
+
+.tick_stream_symbols_drop {
+    display: flex;
+}
+
+.tick_stream {
+    margin-right: .8em;
+    font-weight: bold;
+}
+
+.demo_and_real_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.demo_account {
+    margin-right: .5em;
+}
+
+.symbol_display,
+.logi_id,
+.account_balance {
+    padding: .5em;
+    border: 1px solid rgb(172, 168, 168);
+    border-radius: .3em;
+    height: fit-content;
+    background-color: aliceblue;
+    white-space: nowrap;
+}
+
+
+.dropdown_icon {
+    display: block;
+}
+
+.dropup_icon {
+    display: none;
+}
+
+.all_symbols_cont {
+    position: absolute;
+    top: auto;
+    margin-top: 1em;
+    background-color: rgba(1, 1, 1, .8);
+    padding: 1em;
+    display: none;
+}
+
+.vol {
+    margin-bottom: 1em;
+    padding: .5em;
+    border: 1px solid rgb(194, 188, 188);
+    cursor: pointer;
+    color: gold;
+}
+
+.vol:hover {
+    border-color: white;
+}
+
+.close_button {
+    position: absolute;
+    top: auto;
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    background-color: aqua;
+    margin-top: -1.3em;
+    margin-left: 9.5em;
+}
+
+.account_balance {
+    display: flex;
+}
+
+.account_balance_fig {
+    margin-right: .5em;
+}
+
+.page_title_cont {
+    flex: 1;
+    padding: .3em;
+    border: 1px solid grey;
+    border-radius:.3em;
+}
+
+.ticks_history {
+    margin-left: .5em;
+    margin-right: .5em;
+}
+
+.trade_page_right_cont {
+    width: 100%;
+    display: flex;
+    padding: .5em;
+    flex: 2;
+}
+
+.trade_page_header_up {
+    display: flex;
+}
+
+.trade_page_top_right {
+    display: flex;
+}
+
+.trade_types_select_cont {
+    display: none;
+    position: absolute;
+    padding: .5em;
+    background-color: #fff;
+    border: 1px solid rgb(175, 169, 169);
+    border-radius: .3em;
+    top: auto;
+    margin-left: .5em;
+    z-index: 99;
+}
+
+.trade_types {
+    margin-bottom: .5em;
+    padding: .5em;
+    border: 1px solid rgb(199, 190, 190);
+    color: #000;
+    background-color: aliceblue;
+    cursor: pointer;
+}
+
+.trade_types_cont {
+    margin-right: 1em;
+}
+
+.trade_types_display_cont {
+    display: flex;
+    width: fit-content;
+    margin-bottom: .5em;
+    padding: .5em;
+    border: 1px solid rgb(199, 190, 190);
+    color: #000;
+    background-color: aliceblue;
+    white-space: nowrap;
+    border-radius: .3em;
+    cursor: pointer;
+}
+
+.trade_types_display {
+    width: fit-content;
+    white-space: nowrap;
+}
+
+.drop_icon_trade_display_cont {
+    display: flex;
+}
+
+.times_select_cont {
+    display: none;
+    position: absolute;
+    padding: .5em;
+    background-color: #fff;
+    border: 1px solid rgb(175, 169, 169);
+    border-radius: .3em;
+    top: auto;
+    margin-left: -.7em;
+    z-index: 99;
+}
+
+.times {
+    margin-bottom: .5em;
+    padding: .5em;
+    border: 1px solid rgb(199, 190, 190);
+    color: #000;
+    background-color: aliceblue;
+    cursor: pointer;
+}
+
+.times_cont {
+    display: flex;
+}
+
+.times_display_cont {
+    display: flex;
+    width: fit-content;
+    margin-right: .5em;
+    padding: .5em;
+    border: 1px solid rgb(199, 190, 190);
+    color: #000;
+    background-color: aliceblue;
+    white-space: nowrap;
+    border-radius: .3em;
+    margin-bottom: .5em;
+    cursor: pointer;
+}
+
+.times_display_drop-cont {
+    display: flex;
+}
+
+.dropdown_icon_times_display {
+    display: block;
+}
+
+.dropup_icon_times_display {
+    display: none;
+}
+
+.dropdown_icon_trade_display {
+    display: block;
+}
+
+.dropup_icon_trade_display {
+    display: none;
+}
+
+
+.amount_duration_cont {
+    margin-right: 70vw;
+    z-index: 99999;
+}
+
+
+.amount_input,
+.duration_input,
+.barrier_input {
+    margin-right: 1em;
+    height: fit-content;
+    width: fit-content;
+    font-size: .7em;
+    padding: .3em;
+    border: 1px solid rgb(197, 185, 185);
+    border-radius: .3em;
+    background-color: aliceblue;
+}
+
+.amount_input>input,
+.duration_input>input {
+    width: 100%;
+    height: auto;
+    width: auto;
+}
+
+.amount_duration_ham_cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hamburger {
+    font-size: 2em;
+    border: 1px solid rgb(184, 177, 177);
+    width: 1.5em;
+    border-radius: .3em;
+    background-color: aliceblue;
+    cursor: pointer;
+    margin-right: .5em;
+    display: none;
+    z-index: 9999;
+}
+
+.hamburger:hover {
+    border: 1.5px solid grey;
+    background-color: rgb(192, 201, 209);
+}
+
+.amount_duration_cont {
+    display: flex;
+}
+
+
+@media screen and (max-width: 1450px) {
+    #hamburger1 {
+        display: block;
+    }
+
+    .amount_duration_cont {
+        display: none;
+        position: absolute;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: aliceblue;
+        top: auto;
+        margin-top: 30em;
+        padding: 1em;
+        width: fit-content;
+        height: fit-content;
+        border: 1px solid grey;
+        border-radius: .3em;
+    }
+
+    .amount_input,
+    .duration_input,
+    .barrier_input {
+        width: 100%;
+        margin: auto;
+        margin-bottom: .5em;
+    }
+
+}
+
+
+@media screen and (max-width: 1350px) {
+    #hamburger2 {
+        display: block;
+    }
+
+    .trade_page_top_right {
+        display: none;
+        top: auto;
+        position: absolute;
+        flex-direction: column;
+        padding: 1em;
+        background-color: aliceblue;
+        border: 1px solid grey;
+        border-radius: .3em;
+        margin-top: 10em;
+        margin-right: 35.4vw;
+        z-index: 99999;
+    }
+
+    .symbol_display,
+    .logi_id,
+    .account_balance {
+        margin-bottom: .5em;
+    }
+
+    .logi_id {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+}
+
+@media screen and (max-width: 500px) {
+    .amount_duration_cont {
+        margin-right: 50%;
+    }
+
+    .trade_page_top_right {
+        margin-right: 20vw;
+    }
+
+}
+
+
+
+.button_show {
+    display: flex;
+}
+
+.btn_show {
+    margin-right: .5em;
+    width: fit-content;
+    height: fit-content;
+    white-space: nowrap;
+}
+
+.btn_show_first,
+.btn_show_second {
+    display: flex;
+}
+
+
+@media screen and (max-width: 800px) {
+    .button_show {
+        position: absolute;
+        flex-direction: column;
+        top: auto;
+        padding: 1em;
+        background-color: aliceblue;
+        border: 1px solid grey;
+        border-radius: .3em;
+        margin-top: 6.5em;
+        margin-right: 2em;
+    }
+
+    .btn_show_first,
+    .btn_show_second {
+        flex-direction: column;
+    }
+
+    .btn_show {
+        margin: auto;
+        margin-top: .5em;
+    }
+
+}
+
+@media screen and (max-width: 750px) {
+
+    .button_show {
+        flex-direction: row;
+        margin-top: 42.5em;
+        padding: .2em;
+        justify-content: center;
+        align-items: center;
+        left: 5em;
+    }
+
+    .btn_show_first,
+    .btn_show_second {
+        flex-direction: row;
+        padding: .1em;
+    }
+
+    .btn_show {
+        margin-left: 0;
+        padding: .1em;
+    }
+}
+
+.bot {
+    cursor: pointer;
+    padding: .4em;
+    background-color: aliceblue;
+    border: 1px solid grey;
+    border-radius: .3em;
+    margin-right: .5em;
+}
+
+.bot.shift {
+    position: absolute;
+    background-color: #fff;
+    top: auto;
+    margin-left: 10em;
+    z-index: 999;
+}
+
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Semi-transparent black */
+    z-index: 9999;
+    /* Make sure it appears above other content */
+    justify-content: center;
+    align-items: center;
+}
+
