@@ -44,24 +44,13 @@ import DerivAPIBasic from 'https://cdn.skypack.dev/@deriv/deriv-api/dist/DerivAP
 
 
 
-// Function to get a cookie by name
-function getCookie(name) {
-    let nameEQ = name + "=";
-    let ca = document.cookie.split(';');
-    for (let i = 0; i < ca.length; i++) {
-        let c = ca[i];
-        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-    }
-    return null;
-}
+const app_id_demo = sessionStorage.getItem('app_id_demo');
+const token_demo = sessionStorage.getItem('token_demo');
+const app_id_real = sessionStorage.getItem('app_id_real');
+const token_real = sessionStorage.getItem('token_real');
 
-// Retrieve stored values from cookies
-var app_id_demo = getCookie("app_id_demo");
-var token_demo = getCookie("token_demo");
-var app_id_real = getCookie("app_id_real");
-var token_real = getCookie("token_real");
-
+// Use the retrieved values as needed
+console.log(app_id_demo, token_demo, app_id_real, token_real);
 
 
 
