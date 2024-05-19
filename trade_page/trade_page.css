@@ -1,0 +1,1336 @@
+.nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: aliceblue;
+}
+
+.brand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.brand:hover {
+    background-color: rgb(224, 230, 235);
+}
+
+.nav_first {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: auto;
+    padding-left: .7em;
+}
+
+.first_drop_cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: .3em;
+}
+
+.traders_hub_cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1em;
+    cursor: pointer;
+    padding: .3em;
+    white-space: nowrap;
+}
+
+.traders_hub_cont:hover {
+    background-color: rgb(224, 230, 235);
+}
+
+.reports_cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1em;
+    padding: .3em;
+    cursor: pointer;
+}
+
+.reports_cont:hover {
+    background-color: rgb(224, 230, 235);
+}
+
+.cashier_cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1em;
+    padding: .3em;
+    cursor: pointer;
+}
+
+.cashier_cont:hover {
+    background-color: rgb(224, 230, 235);
+}
+
+.notifications_cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .3em;
+    cursor: pointer;
+}
+
+
+.manage_account_cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .3em;
+    cursor: pointer;
+}
+
+.nav_second {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: .7em;
+}
+
+.account_balance_cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1em;
+    padding: .3em;
+    cursor: pointer;
+}
+
+.account_balance_cont:hover {
+    background-color: rgb(224, 230, 235);
+}
+
+
+.account_balance_drop_cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .3em;
+    cursor: pointer;
+}
+
+
+.account_balance_logo>img {
+    width: 1.8em;
+    height: 1.8em;
+}
+
+.brand_log {
+    padding: .3em;
+    background-color: red;
+    color: purple;
+    border-radius: .4em;
+    font-weight: bold;
+    margin-right: .3em;
+}
+
+.brand_name {
+    font-weight: bold;
+    color: purple;
+}
+
+.first_dropdown_icon {
+    display: block;
+    margin-right: 2em;
+}
+
+.notifications_cont {
+    margin-right: 1em;
+}
+
+.manage_account_cont {
+    margin-right: 3em;
+}
+
+.deposit_cont {
+    padding: .4em;
+    padding-left: 1em;
+    padding-right: 1em;
+    color: #fff;
+    background-color: red;
+    border-radius: .5em;
+    cursor: pointer;
+}
+
+.account_balance_fig_cont {
+    margin-right: .3em;
+    margin-left: .3em;
+}
+
+.hamburger_menu {
+    font-size: 1.5em;
+    display: none;
+}
+
+.account_balance_fig_cont {
+    white-space: nowrap;
+}
+
+
+@media screen and (max-width: 900px) {
+    .hamburger_menu {
+        display: block;
+        margin-right: auto;
+        padding-left: 1em;
+    }
+
+    .deposit_cont {
+        display: none;
+    }
+
+    .manage_account_cont {
+        display: none;
+    }
+
+    .nav_first {
+        display: none;
+    }
+}
+
+
+
+@media screen and (max-width: 900px) {
+    .hamburger_menu {
+        display: block;
+        margin-right: auto;
+        padding-left: 1em;
+    }
+}
+
+
+
+
+
+
+
+.account_symbol_change_cont{
+    width: fit-content;
+    border: .5px solid rgb(209, 201, 201);
+    border-radius: .3em;
+    position: absolute;
+    top: auto;
+    background-color: #fff;
+    margin: .5em;
+    margin-top: .7em;
+    display: none;
+    flex-direction: column;
+}
+
+
+.search_input_cont > input{
+    width: 10em;
+}
+
+
+.symbol_assets_cont{
+    display: flex;
+}
+
+
+@media screen and (max-width: 670px) {
+    .symbol_assets_cont{
+        flex-direction: column;
+    }
+
+    .symbol_assets_logo_cont{
+        display: flex;
+    }
+
+    .derived_indices_list_cont{
+        display: none;
+    }
+
+    .derived_indices_drop > svg {
+        display: none;
+    }
+}
+
+
+
+
+
+.search_input_and_icon_cont{
+    display: flex;
+    padding: .3em;
+    border: .5px solid rgb(209, 201, 201);
+    border-radius: .3em;
+}
+
+.search_input_and_icon_cont_cover{
+    padding: .6em;
+    padding-bottom: 1em;
+    border-bottom: 1px solid rgb(209, 201, 201);
+}
+
+.symbol_assets_logo_cont{
+    padding: 1em;
+    background-color: aliceblue;
+    margin-right: 1em;
+}
+
+.symbol_assets_type_cont{
+    overflow-y: auto;
+    height: 20em;
+    padding-right: 4em;
+    scroll-behavior: smooth;
+}
+
+.search_input_cont{
+    margin-right: auto;
+}
+
+.search_input_cont > input{
+    outline: none;
+    border: none;
+}
+
+.sym{
+    display: flex;
+    width: 20em;
+    align-items: flex-start;
+    margin-bottom: .5em;
+    font-size: 1.2em;
+}
+
+.smpt{
+    margin-right: auto;
+}
+
+.big{
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-top: 1em;
+}
+
+.pbig{
+    margin-bottom: 8em;
+    margin-left: 1em;
+}
+
+.sm{
+    font-size: 1em;
+    font-weight: 700;
+    margin: 1em 0;
+}
+
+.ass_cont{
+    display: flex;
+    margin-bottom: 1em;
+    cursor: pointer;
+
+}
+
+.svgg > svg{
+   margin-top: .2em;
+}
+
+.ass_cont.active {
+    color: red; /* Change this to your active link style */
+}
+
+
+
+.svgg_text{
+    margin: 0 1em;
+    margin-left: .3em;
+    font-size: 1.2em;
+    white-space: nowrap;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.account_type_change_cont {
+    display: none;
+    flex-direction: column;
+    letter-spacing: 0;
+    position: absolute;
+    background-color: white;
+    height: fit-content;
+    width: fit-content;
+    padding: 1em 1em;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
+
+.real_demo {
+    display: flex;
+    justify-content: space-between;
+    font-size: .9em;
+    font-weight: bold;
+    color: gray;
+}
+
+.real {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    padding-bottom: .5em;
+    cursor: pointer;
+}
+
+.real_bottom {
+    border-bottom: 2px solid rgb(209, 53, 35);
+}
+
+.demo {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    padding-bottom: .5em;
+    cursor: pointer;
+}
+
+.demo_bottom {
+    border-bottom: 2px solid rgb(209, 53, 35);
+}
+
+.account_type_cont {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5em .5em;
+    border: 1px solid rgb(212, 202, 202);
+    margin: .5em;
+}
+
+.account_type {
+    font-size: .9em;
+    font-weight: bold;
+    color: grey;
+}
+
+.current_balance_cont {
+    display: none;
+    justify-content: space-between;
+    padding: .5em .5em;
+    border: 1px solid rgb(212, 202, 202);
+    margin: .5em;
+}
+
+.current_balance_cont.actiive {
+    background-color: red;
+}
+
+.current_balance_logo>img {
+    width: 2em;
+    height: 1.7em;
+    margin: 0 .5em;
+}
+
+.current_balance {
+    display: flex;
+    justify-content: flex-start;
+    width: 50%;
+}
+
+.current_balance_fig_cont {
+    display: none;
+    justify-content: flex-end;
+    width: 50%;
+}
+
+.reset {
+    padding: .5em;
+    border: 1px solid grey;
+    border-radius: .3em;
+    white-space: nowrap;
+}
+
+.curr {
+    font-size: .9em;
+    font-weight: bold;
+    color: gray;
+}
+
+.curr2 {
+    font-size: .6em;
+    font-weight: bold;
+}
+
+.current_balance_fig {
+    margin-right: .4em;
+}
+
+.total_assets {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 1em .5em;
+    border: 1px solid rgb(212, 202, 202);
+    margin: .5em;
+}
+
+.ass1 {
+    font-size: .9em;
+    font-weight: bold;
+    margin-bottom: 1em;
+}
+
+.ass2 {
+    font-size: .7em;
+}
+
+.ass3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.strategies_link {
+    padding: 1.5em .5em;
+    margin: .5em;
+    border: 1px solid rgb(212, 202, 202);
+    font-size: .89em;
+    white-space: nowrap;
+}
+
+.logout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5em .5em;
+    margin: .5em;
+    border: 1px solid rgb(212, 202, 202);
+}
+
+.manage_account {
+    padding: .5em;
+    border: 1px solid grey;
+}
+
+.logout_left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(128, 128, 128);
+}
+
+.overlay {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Dark transparent color */
+    z-index: 8888;
+    /* Ensure it appears on top of other content */
+}
+
+.D_4 {
+    display: none;
+}
+
+.D_4_2 {
+    display: block;
+}
+
+.D_3 {
+    display: block;
+}
+
+.D_3_2 {
+    display: none;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+.top_set {
+    display: flex;
+    justify-content: flex-start;
+    padding: .3em;
+    border: 1px solid salmon;
+    margin: .3em;
+    padding-right: auto;
+}
+
+.first_set_cont {
+    display: flex;
+    align-items: center;
+}
+
+.first_set_cont_left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.trade_symbol {
+    display: flex;
+    height: fit-content;
+    padding: .3em;
+    border: 1px solid grey;
+    margin-right: .5em;
+    border-radius: .3em;
+}
+
+.trade_type_stream_cont {
+    display: flex;
+}
+
+.symbol_type_cont {
+    display: flex;
+}
+
+.trade_type {
+    display: flex;
+    padding: .3em;
+    border: 1px solid grey;
+    font-size: 1.2em;
+    margin-right: .5em;
+    height: fit-content;
+    border-radius: .3em;
+}
+
+.trade_symbol_first, .trade_type_first{
+    margin-bottom: .3em;
+}
+
+.trade_symbol_display {
+    margin-right: 3em;
+    font-size: 1.2em;
+}
+
+.trade_type_display {
+    margin-right: 3em;
+}
+
+.chart>svg {
+    width: 1.5em;
+}
+
+.tick_stream {
+    border-radius: .3em;
+    font-size: 1.2em;
+    margin-top: .4em;
+}
+
+
+@media screen and (max-width: 420px) {
+    .trade_type_stream_cont {
+        flex-direction: column;
+    }
+
+    .chart_and_tick_stream{
+        position: fixed;
+        margin-top: .1em;
+        top: auto;
+        margin-left: 11em;
+        font-size: 1.1em;
+        font-weight: bold;
+    }
+
+}
+
+@media screen and (max-width: 500px) {
+    .top_set{
+        width: fit-content;      
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .symbol_type_cont{
+       flex-direction: column;      
+    }
+
+    .trade_symbol_display, .third_drop_cont{
+        margin-bottom: .4em;
+        font-size: 1.5em;
+    }
+
+    .trade_type{
+        font-size: 1.5em;
+        margin-top: .5em;
+    }
+
+    .chart_and_tick_stream{
+        margin-left: 12em;
+        font-size: 1.2em;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.main_body_cont {
+    border: 1px solid red;
+    padding: 10px;
+    /* Optional: Adds padding inside the container */
+
+}
+
+.main_body_cont_flex {
+    display: flex;
+    flex-wrap: nowrap;
+    /* Ensure items stay on a single line */
+    gap: 10px;
+    /* Adds gap between the boxes */
+}
+
+.buy_sell {
+    flex: 1 1 30rem;
+    /* Allows boxes to grow/shrink uniformly */
+    border: 1px solid cyan;
+    display: flex;
+    /* Center the content horizontally */
+    padding: 10px;
+    /* Optional: Adds padding inside each box */
+    box-sizing: border-box;
+    /* Ensure padding/border are included in the box's size */
+}
+
+.buy_sell_one {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.buy_sell_two {
+    display: none;
+    flex-direction: column;
+}
+
+.buy_sell_three {
+    display: flex;
+    flex-direction: column;
+}
+
+.buy_sell_four {
+    display: none;
+    flex-direction: column;
+}
+
+.buy_sell_five {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.start_time_cont {
+    display: flex;
+    margin-bottom: 1em;
+}
+
+.start_time {
+    margin-right: 1.5em;
+    white-space: nowrap;
+}
+
+.start_stake_text_drop_cont {
+    display: flex;
+    padding: .4em;
+    border: .5px solid rgb(209, 201, 201);
+    border-radius: .3em;
+}
+
+.start_stake_text {
+    margin-right: 8em;
+}
+
+.duration_cont {
+    display: flex;
+}
+
+.duration_stake_text_drop_cont {
+    display: flex;
+    margin-right: 1em;
+    padding: .4em;
+    border: .5px solid rgb(209, 201, 201);
+    border-radius: .3em;
+    height: fit-content;
+}
+
+
+.stake_duration_text {
+    margin-right: .3em;
+    width: fit-content;
+}
+
+.minimum_input_cont {
+    display: flex;
+    margin-right: 1em;
+    white-space: nowrap;
+}
+
+.input_cover {
+    width: fit-content;
+    height: fit-content;
+    padding: .1em;
+    padding-top: .3em;
+    border: .5px solid rgb(209, 201, 201);
+    border-radius: .3em;
+}
+
+.input_cover>input {
+    width: 5em;
+    padding: .1em;
+    margin-bottom: .3em;
+    outline: none;
+    border: none;
+}
+
+.minimum_input_tex {
+    width: auto;
+
+}
+
+.stake_Minutes_cont {
+    display: flex;
+    border: .5px solid rgb(209, 201, 201);
+    padding: .4em;
+    height: fit-content;
+    border-radius: .3em;
+}
+
+.stake_Minutes_text {
+    margin-right: 1em;
+}
+
+.stake_display_cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.5em;
+    margin-bottom: 2em;
+}
+
+.stake_drop_cont {
+    display: flex;
+    margin-right: 1em;
+    border: .5px solid rgb(209, 201, 201);
+    border-radius: .3em;
+    padding: .4em;
+    height: fit-content;
+}
+
+.stake_drop_text {
+    margin-right: 1em;
+}
+
+.stake_display_cont_input {
+    margin-right: 1em;
+    border: .5px solid rgb(209, 201, 201);
+    border-radius: .3em;
+}
+
+.stake_display_cont_input>input {
+    outline: none;
+    border: none;
+    padding: .5em;
+    padding-top: .5em;
+    width: 6em;
+}
+
+.allows_equals_cont {
+    display: flex;
+}
+
+.check_allows_equals {
+    margin-right: .3em;
+}
+
+
+
+
+
+
+.up_order_cont {
+    border: .5px solid rgb(209, 201, 201);
+    border-radius: .3em;
+    margin-bottom: 1em;
+    flex: 1;
+}
+
+.up_trade_type_cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: .5em;
+}
+
+.up_trade_type_text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3em;
+}
+
+.up_order_btn_up {
+    display: flex;
+    padding: 1.5em;
+    margin-left: 2em;
+}
+
+.up_stake_payout_cont {
+    display: flex;
+    margin-top: .5em;
+    font-size: 1em;
+}
+
+.stake_payout_puchase_cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding-bottom: 1em;
+}
+
+.stake_fig_curr {
+    display: flex;
+    margin-right: 1em;
+}
+
+.stake_fig_curr_payout {
+    display: flex;
+}
+
+.up_purchase_btn {
+    padding: .4em 7em;
+    background-color: red;
+    border-radius: .3em;
+    text-align: center;
+    color: #fff;
+    font-size: 1em;
+    font-weight: 800;
+    margin-top: .5em;
+}
+
+
+.up_order_btn_down {
+    text-align: center;
+    padding: 1.3em;
+    background-color: aliceblue;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.down_order_cont {
+    border: .5px solid rgb(209, 201, 201);
+    border-radius: .3em;
+    flex: 1;
+}
+
+.down_trade_type_cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: .5em;
+}
+
+.down_trade_type_text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3em;
+}
+
+.down_order_btn_up {
+    display: flex;
+    padding: 1.5em;
+    margin-left: 2em;
+}
+
+.down_stake_payout_cont {
+    display: flex;
+    margin-top: .5em;
+    font-size: 1em;
+}
+
+.down_stake_payout_puchase_cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding-bottom: 1em;
+}
+
+.down_stake_fig_curr {
+    display: flex;
+    margin-right: 1em;
+}
+
+.down_stake_fig_curr_payout {
+    display: flex;
+}
+
+.down_purchase_btn {
+    padding: .4em 7em;
+    background-color: red;
+    border-radius: .3em;
+    text-align: center;
+    color: #fff;
+    font-size: 1em;
+    font-weight: 800;
+    margin-top: .5em;
+}
+
+
+.down_order_btn_down {
+    text-align: center;
+    padding: 1.3em;
+    background-color: aliceblue;
+}
+
+
+
+
+@media screen and (max-width: 960px) {
+    .main_body_cont_flex {
+        flex-direction: column;
+    }
+
+}
+
+
+
+@media screen and (max-width: 500px) {
+    .main_body_cont {
+        width: fit-content;
+    }
+
+    .nav {
+        width: fit-content;
+    }
+
+    .hamburger_menu {
+        margin-right: 10em;
+    }
+}
+
+
+
+
+
+
+.trade_informations_container {
+    background-color: rgb(238, 241, 241);
+}
+
+.contract_result_container {
+    width: 100%;
+    display: flex;
+}
+
+.contract_result {
+    margin-right: auto;
+    padding: 1em;
+    font-size: 1.4em;
+    text-align: center;
+    width: 90%;
+}
+
+.close_contract_result_container {
+    padding: 0 .3em;
+    font-size: 2.5em;
+    background-color: purple;
+    height: fit-content;
+    border-bottom-left-radius: .2em;
+    text-align: center;
+    color: #fff;
+}
+
+.proposal_information {
+    background-color: #fff;
+    padding: 1em;
+    font-size: 1.3em;
+    margin: 0 1em;
+    border: .5px solid rgb(209, 201, 201);
+    border-radius: .3em;
+    margin: 1em;
+    white-space: nowrap;
+}
+
+
+.buy_price_loose_and_profit_container {
+    display: flex;
+    font-size: 1.2em;
+    padding: .5em;
+    border-radius: .3em;
+    margin-bottom: .5em;
+}
+
+.buy_price_container,
+.price_after_trade_container,
+.profit_container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.buy_price_container,
+.price_after_trade_container {
+    border-right: .5px solid rgb(209, 201, 201);
+}
+
+.buy_price_text,
+.price_after_trade_text,
+.profit_text {
+    margin-bottom: 1em;
+}
+
+.transaction_refrence {
+    padding: 1em;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.time_and_end_tic_container {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.time_of_trade {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 1.2em;
+    margin-right: .3em;
+}
+
+.end_tic_off_trade {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 3em;
+    color: rgb(184, 177, 177);
+}
+
+.last_digit {
+    color: black;
+    font-weight: bold;
+}
+
+.last_digit_responds {
+    display: flex;
+    margin: 2em 1em;
+    margin-bottom: 0;
+    border: .1px solid rgb(185, 181, 181);
+    border-radius: .3em;
+}
+
+.last_digits {
+    flex: 1;
+    border: .1px solid rgb(185, 181, 181);
+    text-align: center;
+    padding: .5em;
+    font-size: 1.3em;
+}
+
+.slide_trade_result {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 99;
+    background-color: red;
+    top: auto;
+    right: auto;
+    left: auto;
+    width: auto;
+    padding: .89em .5em;
+    height: 3.5em;
+    margin-top: -2.4em;
+}
+
+.one_out_of_one {
+    font-size: 1.2em;
+}
+
+.last_digit_mirror {
+    padding: .2em .5em;
+    background-color: #fff;
+    font-size: 1.4em;
+    font-weight: bold;
+    text-align: center;
+    margin-top: .7em;
+    border-radius: .3em;
+}
+
+.account_balance_after_trade_result {
+    padding: .5em;
+    text-align: center;
+    font-size: 1.2em;
+    background-color: rgb(4, 230, 230);
+    margin-top: 1em;
+}
+
+.vol_cont {
+    display: flex;
+    width: auto;
+    margin-bottom: 1em;
+}
+
+.multi_trade_cont {
+    width: 100%;
+}
+
+.vol_stream {
+    font-size: 1.3em;
+    margin-bottom: .5em;
+}
+
+.tick_strem {
+    color: rgb(184, 177, 177);
+}
+
+.last_digit_tick {
+    font-weight: bold;
+}
+
+.info_about_tick_history {
+    width: 100%;
+    min-width: 39ch;
+    background-color: aliceblue;
+    padding: 1em;
+    font-size: 1.3em;
+    width: fit-content;
+}
+
+
+
+.buy_sell_one {
+    padding: 1.5em;
+    font-size: 1.3em;
+    white-space: nowrap;
+}
+
+
+.buy_sell_four {
+    padding: 1.5em;
+    font-size: 1.3em;
+    white-space: nowrap;
+}
+
+@media screen and (max-width: 500px) {
+    .info_about_tick_history{
+        padding-right: 1.3em;    
+    }
+}
