@@ -75,6 +75,19 @@ let trade_symbol = document.getElementById('trade_symbol');
 let account_symbol_change_cont = document.getElementById('account_symbol_change_cont');
 let third_drop_cont = document.getElementById('third_drop_cont');
 let third_dropdown_icon = document.getElementById('third_dropdown_icon');
+let trade_type = document.getElementById('trade_type')
+let fourth_drop_cont = document.getElementById('fourth_drop_cont')
+let account_contract_type_change_cont = document.getElementById('account_contract_type_change_cont')
+let fourth_dropdown_icon = document.getElementById('fourth_dropdown_icon')
+let derived_indices_drop_dropup = document.getElementById('derived_indices_drop_dropup')
+let derived_indices_drop_dropdown = document.getElementById('derived_indices_drop_dropdown')
+let derived_indices_drop = document.getElementById('derived_indices_drop')
+let derived_indices_list_cont = document.getElementById('derived_indices_list_cont')
+let volatilities = document.querySelectorAll('.each')
+let trade_symbol_secound = document.getElementById('trade_symbol_secound')
+let trade_type_secound = document.getElementById('trade_type_secound')
+let trade_symbol_first= document.getElementById('trade_symbol_first')
+let trade_type_first= document.getElementById('trade_type_first')
 
 
 import { animateButton } from '../helper_functions/animate_button.js';
@@ -257,7 +270,7 @@ if (account_balance_drop_cont && account_type_change_cont && overlay) {
 
 
 if (trade_symbol && account_symbol_change_cont) {
-    third_drop_cont.addEventListener('click', (event) => {
+    trade_symbol.addEventListener('click', (event) => {
         event.stopPropagation(); // Prevent the event from propagating to the document
         if (account_symbol_change_cont.style.display === 'flex') {
             account_symbol_change_cont.style.display = 'none';
@@ -465,6 +478,186 @@ if(buy_sell_five_display && buy_sell_five){
         }
     })
 }
+
+
+
+
+
+
+if (trade_type && account_contract_type_change_cont) {
+    trade_type.addEventListener('click', (event) => {
+        event.stopPropagation(); // Prevent the event from propagating to the document
+        if (account_contract_type_change_cont.style.display === 'flex') {
+            account_contract_type_change_cont.style.display = 'none';
+        } else {
+            account_contract_type_change_cont.style.display = 'flex';
+        }
+    });
+
+    document.addEventListener('click', (event) => {
+        if (!account_contract_type_change_cont.contains(event.target)) {
+            account_contract_type_change_cont.style.display = 'none';
+            fourth_dropdown_icon.innerHTML = dropup;
+        }
+    });
+
+} else {
+    console.error('One or more elements are not found');
+}
+
+
+fourth_drop_cont.addEventListener('click', () => {
+    // Compare innerHTML with Unicode code point values
+    if (fourth_dropdown_icon.innerHTML.charCodeAt(0) === dropdown.charCodeAt(0)) {
+        fourth_dropdown_icon.innerHTML = dropup;
+    } else {
+        fourth_dropdown_icon.innerHTML = dropdown;
+    }
+});
+
+
+
+
+if (derived_indices_drop && derived_indices_list_cont) {
+    derived_indices_drop.addEventListener('click', () => {
+
+        if(derived_indices_drop_dropdown.style.display === 'none'){
+            derived_indices_drop_dropdown.style.display = 'flex'
+            derived_indices_drop_dropup.style.display = 'none'
+        }else{
+            derived_indices_drop_dropdown.style.display = 'none'
+            derived_indices_drop_dropup.style.display = 'flex'
+        }
+
+        if (derived_indices_list_cont.style.display === 'none') {
+            derived_indices_list_cont.style.display = 'flex'
+        }else{
+            derived_indices_list_cont.style.display = 'none'
+        }
+    })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const handleVolatilityClick = function () {
+    unsubscribeTicks(); // Unsubscribe when volatility button is clicke
+    let type = "Synthetics"
+
+    // Logic for volatility buttons
+    if (this.textContent == "Volatility 10 index") {
+        symbol_vol = "R_10";
+        trade_symbol_secound.textContent = "Volatility 10 index"
+        trade_symbol_first.textContent = type
+    } else if (this.textContent == "Volatility 25 index") {
+        symbol_vol = "R_25";
+        trade_symbol_secound.textContent = "Volatility 25 index"
+        trade_symbol_first.textContent = type
+    } else if (this.textContent == "Volatility 50 index") {
+        symbol_vol = "R_50";
+        trade_symbol_secound.textContent = "Volatility 50 index"
+        trade_symbol_first.textContent = type
+    } else if (this.textContent == "Volatility 75 index") {
+        symbol_vol = "R_75";
+        trade_symbol_secound.textContent = "Volatility 75 index"
+        trade_symbol_first.textContent = type
+    } else if (this.textContent == "Volatility 100 index") {
+        symbol_vol = "R_100";
+        trade_symbol_secound.textContent = "Volatility 100 index"
+        trade_symbol_first.textContent = type
+    } else {
+        symbol_vol = "R_10";
+        trade_symbol_secound.textContent = "Volatility 10 index"
+        trade_symbol_first.textContent = type
+    }
+
+    api.forget(subscriptionId)
+
+
+    setTimeout(() => {
+        subscribeTicks()
+        console.log("subscribed again")
+    }, 1000)
+
+
+};
+
+volatilities.forEach(function (volatility) {
+    // Attach handleVolatilityClick function to click event listener of each volatility button
+    volatility.addEventListener("click", handleVolatilityClick);
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -316,6 +316,8 @@
     box-sizing: border-box;
 }
 
+
+
 body {
     font-family: 'Roboto', sans-serif;
 }
@@ -570,34 +572,40 @@ body {
     border: .5px solid orange;
     display: flex;
     justify-content: space-around;
+    cursor: pointer;
 }
 
 .buy_sell_one_display{
     padding: var(--spacing-s);
     background-color: #e98024;
+    cursor: pointer;
 }
 
 
 .buy_sell_two_display{
     padding: var(--spacing-s);
     background-color: #d33636;
+    cursor: pointer;
 }
 
 .buy_sell_three_display{
     padding: var(--spacing-s);
     background-color: darkorchid;
+    cursor: pointer;
 }
 
 
 .buy_sell_four_display{
     padding: var(--spacing-s);
     background-color: khaki;
+    cursor: pointer;
 }
 
 
 .buy_sell_five_display{
     padding: var(--spacing-s);
     background-color: cornflowerblue;
+    cursor: pointer;
 }
 
 
@@ -702,6 +710,8 @@ body {
     margin-right: var(--spacing-xl);
 }
 
+
+
 .symbol_assets_type_cont {
     overflow-y: auto;
     height: 20rem;
@@ -722,7 +732,7 @@ body {
     display: flex;
     width: 20rem;
     align-items: flex-start;
-    margin-bottom: var(--spacing-m);
+    margin-bottom: var(--spacing-xxl);
     font-size: var(--text-size-s);
 }
 
@@ -731,7 +741,7 @@ body {
 }
 
 .big {
-    font-size: var(--text-size-m);
+    font-size: var(--text-size-xl);
     font-weight: bold;
     margin-top: var(--spacing-xl);
 }
@@ -742,9 +752,9 @@ body {
 }
 
 .sm {
-    font-size: var(--text-size-s);
+    font-size: var(--text-size-l);
     font-weight: 700;
-    margin: var(--spacing-m) 0;
+    margin: var(--spacing-xl) 0 var(--spacing-l) 0;
 }
 
 .ass_cont {
@@ -768,14 +778,50 @@ body {
     white-space: nowrap;
 }
 
+.indices_and_pairs_cont{
+    margin-bottom: var(--spacing-xl);
+}
+
+.each{
+    cursor: pointer;
+    padding: var(--spacing-s);
+    border: .3px solid lightgrey;
+    border-radius: .3em;
+}
 
 
+.derive_logo_text_drop{
+    margin-bottom: 0;
+}
+
+.derived_indices_list_cont{
+    padding: var(--spacing-m);
+    display: none;
+    flex-direction: column;
+}
 
 
+.bascket{
+    margin-bottom: var(--spacing-m);
+    padding: var(--spacing-xs);
+    border: .3ps solid lightgrey;
+    border-radius: .3em;
+    background-color: #f0f6f7;
+    cursor: pointer;
+}
+
+.synthetics{
+    padding: var(--spacing-xs);
+    border: .3ps solid lightgrey;
+    border-radius: .3em;
+    background-color: #f0f6f7;
+    cursor: pointer;
+}
 
 
-
-
+.derived_indices_drop_dropup{
+    display: none;
+}
 
 
 
@@ -1019,7 +1065,40 @@ body {
 
 
 
+.account_contract_type_change_cont{
+    display: none;
+    position: absolute;
+    top: auto;
+    padding: var(--spacing-l);
+    border: .5px solid lightgrey;
+    border-radius: .3em;
+    background-color: #fff;
+    margin-top: var(--spacing-xl);
+    margin-left: calc(var(--spacing-xxl) + 8rem);
+    height: var(--element-height-xxl);
+    width: 50%;
+    overflow-x: auto;
+    overflow-y: auto;
+    z-index: 99999;
+}
 
+
+.type_category{
+    margin-bottom: var(--spacing-xl);
+    font-weight: bold;
+    font-size: var(--text-size-xl);
+}
+
+
+.types{
+    margin-bottom: var(--spacing-xxl);
+    cursor: pointer;
+    padding: .3em;
+    border-radius: .3em;
+    border: .5px solid lightgrey;
+    background-color: #f0f5f5;
+    width: fit-content;
+}
 
 
 
@@ -1085,11 +1164,13 @@ body {
     margin-bottom: .5em;
     display: flex;
     width: var(--element-width-xl);
+    cursor: pointer;
 }
 
 .symbol_type_cont {
     display: flex;
     gap: 1em;
+    cursor: pointer;
 }
 
 

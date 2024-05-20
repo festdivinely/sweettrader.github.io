@@ -101,13 +101,13 @@
         </div>
     </div>
 
-    <div class="display_sections">
-        <div class="buy_sell_one_display" id="buy_sell_one_display">&#128250;</div>
-        <div class="buy_sell_two_display" id="buy_sell_two_display">&#128250;</div>
-        <div class="buy_sell_three_display" id="buy_sell_three_display">&#128250;</div>
-        <div class="buy_sell_four_display" id="buy_sell_four_display">&#128250;</div>
-        <div class="buy_sell_five_display" id="buy_sell_five_display">&#128250;</div>
-    </div>
+<div class="display_sections">
+    <div class="buy_sell_one_display" id="buy_sell_one_display">&#128250;</div>
+    <div class="buy_sell_two_display" id="buy_sell_two_display">&#128250;</div>
+    <div class="buy_sell_three_display" id="buy_sell_three_display">&#128250;</div>
+    <div class="buy_sell_four_display" id="buy_sell_four_display">&#128250;</div>
+    <div class="buy_sell_five_display" id="buy_sell_five_display">&#128250;</div>
+</div>
 
 
     <div class="wraps_everything_inside_body">
@@ -168,15 +168,15 @@
                                 </svg>
                             </div>
                             <div class="synthetics_indices_text svgg_text">Derived</div>
-                            <div class="derived_indices_drop">
-                                <svg role="img" xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em"
+                            <div class="derived_indices_drop" id="derived_indices_drop">
+                                <svg class="derived_indices_drop_dropdown" id="derived_indices_drop_dropdown"  role="img" xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em"
                                     viewBox="0 0 24 24" aria-labelledby="chevronDownIconTitle" stroke="#000"
                                     stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" fill="none"
                                     color="#000">
                                     <title id="chevronDownIconTitle">Chevron Down</title>
                                     <polyline points="6 10 12 16 18 10" />
                                 </svg>
-                                <svg role="img" xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em"
+                                <svg  class="derived_indices_drop_dropup" id="derived_indices_drop_dropup" role="img" xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em"
                                     viewBox="0 0 24 24" aria-labelledby="chevronUpIconTitle" stroke="#000"
                                     stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" fill="none"
                                     color="#000">
@@ -185,7 +185,7 @@
                                 </svg>
                             </div>
                         </div>
-                        <div class="derived_indices_list_cont">
+                        <div class="derived_indices_list_cont" id="derived_indices_list_cont">
                             <div class="bascket">Baskets</div>
                             <div class="synthetics">Synthetics</div>
                         </div>
@@ -199,32 +199,32 @@
                         </div>
                         <div class="all_forex_pairs_cont">
                             <div class="aud_jpy_aud_usd_cont sym">
-                                <div class="aud_jpy smpt">AUD/JPY</div>
-                                <div class="aud_usd">AUD/USD</div>
+                                <div class="aud_jpy smpt each">AUD/JPY</div>
+                                <div class="aud_usd each">AUD/USD</div>
                             </div>
                             <div class="eur_aud_and_eur_cad_cont sym">
-                                <div class="eur_aud smpt">EUR/AUD</div>
-                                <div class="eur_cad">EUR/CAD</div>
+                                <div class="eur_aud smpt each">EUR/AUD</div>
+                                <div class="eur_cad each">EUR/CAD</div>
                             </div>
                             <div class="eur_chf_and_eur_gbp_cont sym">
-                                <div class="eur_chf smpt">EUR/CHF</div>
-                                <div class="eur_gbp">EUR/GBP</div>
+                                <div class="eur_chf smpt each">EUR/CHF</div>
+                                <div class="eur_gbp each">EUR/GBP</div>
                             </div>
                             <div class="eur_jpy_and_eur_usd_cont sym">
-                                <div class="eur_jpy smpt">EUR/JPY</div>
-                                <div class="eur_usd">EUR/USD</div>
+                                <div class="eur_jpy smpt each">EUR/JPY</div>
+                                <div class="eur_usd each">EUR/USD</div>
                             </div>
                             <div class="gbp_aud_and_gbp_jpy_cont sym">
-                                <div class="gbp_aud smpt">GBP/AUD</div>
-                                <div class="gbp_jpy">GBP/JPY</div>
+                                <div class="gbp_aud smpt each">GBP/AUD</div>
+                                <div class="gbp_jpy each">GBP/JPY</div>
                             </div>
                             <div class="gbp_usd_and_usd_cad_cont sym">
-                                <div class="gbp_usd smpt">GBP/USD</div>
-                                <div class="usd_cad">USD/CAD</div>
+                                <div class="gbp_usd smpt each">GBP/USD</div>
+                                <div class="usd_cad each">USD/CAD</div>
                             </div>
                             <div class="usd_chf_and_usd_jpy_cont sym">
-                                <div class="usd_chf smpt">USD/CHF</div>
-                                <div class="usd_jpy">USD/JPY</div>
+                                <div class="usd_chf smpt each">USD/CHF</div>
+                                <div class="usd_jpy each">USD/JPY</div>
                             </div>
                         </div>
                         <div class="forex_and_pairs_cont">
@@ -232,32 +232,32 @@
                         </div>
                         <div class="all_forex_pairs_cont">
                             <div class="aud_cad_and_aud_chf_cont sym">
-                                <div class="aud_cad smpt">AUD/CAD</div>
-                                <div class="aud_chf">AUD/CHF</div>
+                                <div class="aud_cad smpt each">AUD/CAD</div>
+                                <div class="aud_chf each">AUD/CHF</div>
                             </div>
                             <div class="aud_nzd_and_eur_nzd_cont sym">
-                                <div class="aud_nzd smpt">AUD/NZD</div>
-                                <div class="eur_nzd">EUR/NZD</div>
+                                <div class="aud_nzd smpt each">AUD/NZD</div>
+                                <div class="eur_nzd each">EUR/NZD</div>
                             </div>
                             <div class="gbp_cad_and_gbp_chf_cont sym">
-                                <div class="gbp_cad smpt">GBP/CAD</div>
-                                <div class="gbp_chf">GBP/CHF</div>
+                                <div class="gbp_cad smpt each">GBP/CAD</div>
+                                <div class="gbp_chf each">GBP/CHF</div>
                             </div>
                             <div class="gbp_nok_and_gbp_nzd_cont sym">
-                                <div class="gbp_nok smpt">GBP/NOK</div>
-                                <div class="gbp_nzd">GBP/NZD</div>
+                                <div class="gbp_nok smpt each">GBP/NOK</div>
+                                <div class="gbp_nzd each">GBP/NZD</div>
                             </div>
                             <div class="nzd_jpy_and_nzd_usd_cont sym">
-                                <div class="nzd_jpy smpt">NZD/JPY</div>
-                                <div class="nzd_usd">NZD/USD</div>
+                                <div class="nzd_jpy smpt each">NZD/JPY</div>
+                                <div class="nzd_usd each">NZD/USD</div>
                             </div>
                             <div class="usd_mxn_and_usd_nok_cont sym">
-                                <div class="usd_mxn smpt">USD/MXN</div>
-                                <div class="usd_nok">USD/NOK</div>
+                                <div class="usd_mxn smpt each">USD/MXN</div>
+                                <div class="usd_nok each">USD/NOK</div>
                             </div>
                             <div class="usd_pln_and_usd_sek_cont sym">
-                                <div class="usd_pln smpt">USD/PLN</div>
-                                <div class="usd_sek">USD/SEK</div>
+                                <div class="usd_pln smpt each">USD/PLN</div>
+                                <div class="usd_sek each">USD/SEK</div>
                             </div>
                         </div>
                     </div>
@@ -268,11 +268,11 @@
                         </div>
                         <div class="all_indices_pairs_cont">
                             <div class="aus_honk_kong_indices_cont sym">
-                                <div class="australia_200 smpt">Australia 200</div>
-                                <div class="hong_kong_50">Hong Kong 50</div>
+                                <div class="australia_200 smpt each">Australia 200</div>
+                                <div class="hong_kong_50 each">Hong Kong 50</div>
                             </div>
                             <div class="Japan_225 sym">
-                                <div class="japan_225">Japan 225</div>
+                                <div class="japan_225 each">Japan 225</div>
                             </div>
                         </div>
                         <div class="indices_and_pairs_cont">
@@ -280,16 +280,16 @@
                         </div>
                         <div class="all_indices_pairs_cont">
                             <div class="eur_france_indices_cont sym">
-                                <div class="euro_50 smpt">Euro 50</div>
-                                <div class="france_40">France 40</div>
+                                <div class="euro_50 smpt each">Euro 50</div>
+                                <div class="france_40 each">France 40</div>
                             </div>
                             <div class="gem_neth_indices_cont sym">
-                                <div class="germany_40 smpt">Germany 40</div>
-                                <div class="netherlands_25">Netherlands 25</div>
+                                <div class="germany_40 smpt each">Germany 40</div>
+                                <div class="netherlands_25 each">Netherlands 25</div>
                             </div>
                             <div class="swiss_uk_indices_cont sym">
-                                <div class="swiss_20 smpt">Swiss 20</div>
-                                <div class="uk_100">UK 100</div>
+                                <div class="swiss_20 smpt each">Swiss 20</div>
+                                <div class="uk_100 each">UK 100</div>
                             </div>
                         </div>
                         <div class="indices_and_pairs_cont">
@@ -297,11 +297,11 @@
                         </div>
                         <div class="all_indices_pairs_cont">
                             <div class="us_500_us_tech_indices_cont sym">
-                                <div class="us_500 smpt">US 500</div>
-                                <div class="us_tech_100">US Tech 100</div>
+                                <div class="us_500 smpt each">US 500</div>
+                                <div class="us_tech_100 each">US Tech 100</div>
                             </div>
                             <div class="wall_street_30_cont sym">
-                                <div class="wall_street_30">Wall Street 30</div>
+                                <div class="wall_street_30 each">Wall Street 30</div>
                             </div>
                         </div>
                     </div>
@@ -312,12 +312,12 @@
                         </div>
                         <div class="all_commodities_types_cont">
                             <div class="gold_pallad_cont sym">
-                                <div class="gold_usd smpt">Gold/USD</div>
-                                <div class="palladium_usd">Palladium/USD</div>
+                                <div class="gold_usd smpt each">Gold/USD</div>
+                                <div class="palladium_usd each">Palladium/USD</div>
                             </div>
                             <div class="plat_silver_cont sym">
-                                <div class="platinum_usd smpt">Platinum/USD</div>
-                                <div class="silver_usd">Silver/USD</div>
+                                <div class="platinum_usd smpt each">Platinum/USD</div>
+                                <div class="silver_usd each">Silver/USD</div>
                             </div>
                         </div>
                         <div class="commodities_and_types_cont">
@@ -326,18 +326,18 @@
                         </div>
                         <div class="all_commodities_types_cont">
                             <div class="forex_basket_aud_basket_cont sym">
-                                <div class="aud_basket smpt">AUD Basket</div>
-                                <div class="eur_basket">EUR Basket</div>
+                                <div class="aud_basket smpt each">AUD Basket</div>
+                                <div class="eur_basket each">EUR Basket</div>
                             </div>
                             <div class="eur_basket_gbp_basket_cont sym">
-                                <div class="gbp_basket smpt">GBP Basket</div>
-                                <div class="usd_basket">USD Basket</div>
+                                <div class="gbp_basket smpt each">GBP Basket</div>
+                                <div class="usd_basket each">USD Basket</div>
                             </div>
                             <div class="usd_basket_commodity_basket_cont">
                                 <div class="commodities_basket sm">Commodities Basket</div>
                             </div>
                             <div class="gold_basket_cont sym">
-                                <div class="gold_basket">Gold Basket</div>
+                                <div class="gold_basket each">Gold Basket</div>
                             </div>
                         </div>
                     </div>
@@ -348,8 +348,8 @@
                         </div>
                         <div class="all_synthetics_indices_cont">
                             <div class="daily_reset_indices_cont sym">
-                                <div class="bear_market_index smpt">Bear Market Index</div>
-                                <div class="bull_market_index">Bull Market Index</div>
+                                <div class="bear_market_index smpt each">Bear Market Index</div>
+                                <div class="bull_market_index each">Bull Market Index</div>
                             </div>
                         </div>
                         <div class="indices_and_pairs_cont">
@@ -357,15 +357,15 @@
                         </div>
                         <div class="all_jump_indices_cont">
                             <div class="jump_10_20_indices_cont sym">
-                                <div class="jump_10_index smpt">Jump 10 Index</div>
-                                <div class="jump_25_index">Jump 25 Index</div>
+                                <div class="jump_10_index smpt each">Jump 10 Index</div>
+                                <div class="jump_25_index each">Jump 25 Index</div>
                             </div>
                             <div class="jump_50_75_indices_cont sym">
-                                <div class="jump_50_index smpt">Jump 50 Index</div>
-                                <div class="jump_75_index">Jump 75 Index</div>
+                                <div class="jump_50_index smpt each">Jump 50 Index</div>
+                                <div class="jump_75_index each">Jump 75 Index</div>
                             </div>
                             <div class="jump_100_index_cont sym">
-                                <div class="jump_100_index">Jump 100 Index</div>
+                                <div class="jump_100_index each">Jump 100 Index</div>
                             </div>
                         </div>
                         <div class="indices_and_pairs_cont">
@@ -373,24 +373,24 @@
                         </div>
                         <div class="all_continuous_indices_cont">
                             <div class="continuous_vol_10_1s_indices_cont sym">
-                                <div class="volatility_10_1s_index smpt">Volatility 10 (1s) Index</div>
-                                <div class="volatility_10_index">Volatility 10 Index</div>
+                                <div class="volatility_10_1s_index smpt each">Volatility 10 (1s) Index</div>
+                                <div class="volatility_10_index each">Volatility 10 Index</div>
                             </div>
                             <div class="continuous_vol_25_1s_indices_cont sym">
-                                <div class="volatility_25_1s_index smpt">Volatility 25 (1s) Index</div>
-                                <div class="volatility_25_index">Volatility 25 Index</div>
+                                <div class="volatility_25_1s_index smpt each">Volatility 25 (1s) Index</div>
+                                <div class="volatility_25_index each">Volatility 25 Index</div>
                             </div>
                             <div class="continuous_vol_50_1s_indices_cont sym">
-                                <div class="volatility_50_1s_index smpt">Volatility 50 (1s) Index</div>
-                                <div class="volatility_50_index">Volatility 50 Index</div>
+                                <div class="volatility_50_1s_index smpt each">Volatility 50 (1s) Index</div>
+                                <div class="volatility_50_index each">Volatility 50 Index</div>
                             </div>
                             <div class="continuous_vol_75_1s_indices_cont sym">
-                                <div class="volatility_75_1s_index smpt">Volatility 75 (1s) Index</div>
-                                <div class="volatility_75_index">Volatility 75 Index</div>
+                                <div class="volatility_75_1s_index smpt each">Volatility 75 (1s) Index</div>
+                                <div class="volatility_75_index each">Volatility 75 Index</div>
                             </div>
                             <div class="continuous_vol_100_1s_indices_cont sym">
-                                <div class="volatility_100_1s_index smpt">Volatility 100 (1s) Index</div>
-                                <div class="volatility_100_index">Volatility 100 Index</div>
+                                <div class="volatility_100_1s_index smpt each">Volatility 100 (1s) Index</div>
+                                <div class="volatility_100_index each">Volatility 100 Index</div>
                             </div>
                         </div>
                     </div>
@@ -398,6 +398,19 @@
             </div>
         </div>
 
+
+
+        <div class="account_contract_type_change_cont" id="account_contract_type_change_cont">
+            <div class="category_group_cont" id="category_group_cont">
+                <div class="type_category" id="type_category">Digits</div>
+                <div class="digits_cont" id="digits_cont">
+                    <div class="matches_differ types" id="matches_differ">Matches/Differs</div>
+                    <div class="over_under types" id="over_under">Over/Under</div>
+                    <div class="odd_even types" id="odd_even">Odd/Even</div>
+                </div>
+            </div>
+ 
+        </div>
 
 
 
@@ -495,8 +508,8 @@
                 <div class="symbol_type_cont" id="symbol_type_cont">
                     <div class="trade_symbol" id="trade_symbol">
                         <div class="trade_symbol_display" id="trade_symbol_display">
-                            <div class="trade_symbol_first">Forex</div>
-                            <div class="trade_symbol_secound">AUD/JPY</div>
+                            <div class="trade_symbol_first" id="trade_symbol_first">Forex</div>
+                            <div class="trade_symbol_secound" id="trade_symbol_secound">AUD/JPY</div>
                         </div>
                         <div class="third_drop_cont" id="third_drop_cont">
                             <span class="third_dropdown_icon" id="third_dropdown_icon">&#9660;</span>
@@ -505,8 +518,8 @@
 
                     <div class="trade_type" id="trade_type">
                         <div class="trade_type_display" id="trade_type_display">
-                            <div class="trade_type_first">Up/Down</div>
-                            <div class="trade_type_secound">Rise/Fall</div>
+                            <div class="trade_type_first" id="trade_type_first">Up/Down</div>
+                            <div class="trade_type_secound" id="trade_type_secound">Rise/Fall</div>
                         </div>
                         <div class="fourth_drop_cont" id="fourth_drop_cont">
                             <span class="fourth_dropdown_icon" id="fourth_dropdown_icon">&#9660;</span>
@@ -547,7 +560,7 @@
 
 
         <div class="main_body_cont_flex" id="main_body_cont_flex">
-
+            
             <div class="buy_sell buy_sell_one" id="buy_sell_one">
                 <div class="start_time_cont" id="start_time_cont">
                     <div class="start_time">Start Time</div>
@@ -903,6 +916,7 @@
 
 
     </div>
+
     <script defer type="module" src="./trade_page.js"></script>
 </body>
 
