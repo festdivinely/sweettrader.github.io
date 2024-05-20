@@ -1,8 +1,327 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,700&subset=latin,vietnamese,cyrillic-ext,latin-ext,cyrillic);
+@import url(https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,400,500,700&display=swap&subset=cyrillic,cyrillic-ext,latin-ext,vietnamese);
+
+:host,
+:root {
+    --brand-dark-grey: #0e0e0e;
+    --brand-red-coral: #ff444f;
+    --brand-orange: #ff6444;
+    --brand-orange-1: #e98024;
+    --brand-secondary: #85acb0;
+    --general-main-1: #ffffff;
+    --general-main-2: #ffffff;
+    --general-section-1: #f2f3f4;
+    --general-section-2: #f2f3f4;
+    --general-disabled: #eaeced;
+    --general-hover: #e6e9e9;
+    --general-active: #d6dadb;
+    --text-prominent: #333333;
+    --text-general: #333333;
+    --text-less-prominent: #999999;
+    --text-disabled: #d6d6d6;
+    --text-profit-success: #4bb4b3;
+    --text-loss-danger: #ec3f3f;
+    --text-colored-background: #ffffff;
+    --text-colored-barrier: #008000;
+    --purchase-main-1: #4bb4b3;
+    --purchase-section-1: #3d9494;
+    --purchase-main-2: #ec3f3f;
+    --purchase-section-2: #d33636;
+    --purchase-disabled-main: #eaeced;
+    --purchase-disabled-section: #e6e9e9;
+    --button-primary-default: var(--brand-red-coral);
+    --button-secondary-default: #999999;
+    --button-tertiary-default: transparent;
+    --button-primary-hover: #eb3e48;
+    --button-secondary-hover: rgba(0, 0, 0, 0.08);
+    --button-tertiary-hover: rgba(255, 68, 79, 0.08);
+    --overlay-outside-dialog: rgba(0, 0, 0, 0.72);
+    --overlay-inside-dialog: rgba(255, 255, 255, 0.96);
+    --shadow-menu: rgba(0, 0, 0, 0.16);
+    --state-normal: #ffffff;
+    --state-hover: #e6e9e9;
+    --state-active: #d6dadb;
+    --state-disabled: #eaeced;
+    --border-normal: #d6dadb;
+    --border-hover: #999999;
+}
 
 
+
+:root {
+    /* Spacing variables */
+    --spacing-xxsm: 0.125rem;
+    /* 2px */
+    --spacing-xsm: 0.25rem;
+    /* 4px */
+    --spacing-s: 0.5rem;
+    /* 8px */
+    --spacing-m: 1rem;
+    /* 16px */
+    --spacing-l: 1.5rem;
+    /* 24px */
+    --spacing-xl: 2rem;
+    /* 32px */
+    --spacing-xxl: 3rem;
+    /* 48px */
+
+    /* Width variables */
+    --element-width-xxsm: 3.75rem;
+    /* 60px */
+    --element-width-xsm: 6.25rem;
+    /* 100px */
+    --element-width-s: 9.375rem;
+    /* 150px */
+    --element-width-m: 12.5rem;
+    /* 200px */
+    --element-width-l: 18.75rem;
+    /* 300px */
+    --element-width-xl: 25rem;
+    /* 400px */
+    --element-width-xxl: 31.25rem;
+    /* 500px */
+
+    /* Height variables */
+    --element-height-xxsm: 3.75rem;
+    /* 60px */
+    --element-height-xsm: 6.25rem;
+    /* 100px */
+    --element-height-s: 9.375rem;
+    /* 150px */
+    --element-height-m: 12.5rem;
+    /* 200px */
+    --element-height-l: 18.75rem;
+    /* 300px */
+    --element-height-xl: 25rem;
+    /* 400px */
+    --element-height-xxl: 31.25rem;
+    /* 500px */
+
+    /* Text size variables */
+    --text-size-xxsm: 0.5rem;
+    /* 8px */
+    --text-size-xsm: 0.75rem;
+    /* 12px */
+    --text-size-s: 0.875rem;
+    /* 14px */
+    --text-size-m: 1rem;
+    /* 16px */
+    --text-size-l: 1.25rem;
+    /* 20px */
+    --text-size-xl: 1.5rem;
+    /* 24px */
+    --text-size-xxl: 2rem;
+    /* 32px */
+}
+
+/* Media query for devices with width less than 1200px */
+@media (max-width: 1200px) {
+    :root {
+        --spacing-xxsm: 0.1rem;
+        /* 1.6px */
+        --spacing-xsm: 0.2rem;
+        /* 3.2px */
+        --spacing-s: 0.4rem;
+        /* 6.4px */
+        --spacing-m: 0.8rem;
+        /* 12.8px */
+        --spacing-l: 1.2rem;
+        /* 19.2px */
+        --spacing-xl: 1.6rem;
+        /* 25.6px */
+        --spacing-xxl: 2.4rem;
+        /* 38.4px */
+
+        --element-width-xxsm: 3rem;
+        /* 48px */
+        --element-width-xsm: 5rem;
+        /* 80px */
+        --element-width-s: 7.5rem;
+        /* 120px */
+        --element-width-m: 10rem;
+        /* 160px */
+        --element-width-l: 15rem;
+        /* 240px */
+        --element-width-xl: 20rem;
+        /* 320px */
+        --element-width-xxl: 25rem;
+        /* 400px */
+
+        --element-height-xxsm: 3rem;
+        /* 48px */
+        --element-height-xsm: 5rem;
+        /* 80px */
+        --element-height-s: 7.5rem;
+        /* 120px */
+        --element-height-m: 10rem;
+        /* 160px */
+        --element-height-l: 15rem;
+        /* 240px */
+        --element-height-xl: 20rem;
+        /* 320px */
+        --element-height-xxl: 25rem;
+        /* 400px */
+
+        --text-size-xxsm: 0.4rem;
+        /* 6.4px */
+        --text-size-xsm: 0.6rem;
+        /* 9.6px */
+        --text-size-s: 0.8rem;
+        /* 12.8px */
+        --text-size-m: 0.9rem;
+        /* 14.4px */
+        --text-size-l: 1.1rem;
+        /* 17.6px */
+        --text-size-xl: 1.3rem;
+        /* 20.8px */
+        --text-size-xxl: 1.8rem;
+        /* 28.8px */
+    }
+}
+
+/* Media query for devices with width less than 768px */
+@media (max-width: 768px) {
+    :root {
+        --spacing-xxsm: 0.0625rem;
+        /* 1px */
+        --spacing-xsm: 0.125rem;
+        /* 2px */
+        --spacing-s: 0.25rem;
+        /* 4px */
+        --spacing-m: 0.5rem;
+        /* 8px */
+        --spacing-l: 0.75rem;
+        /* 12px */
+        --spacing-xl: 1rem;
+        /* 16px */
+        --spacing-xxl: 1.5rem;
+        /* 24px */
+
+        --element-width-xxsm: 2.5rem;
+        /* 40px */
+        --element-width-xsm: 5rem;
+        /* 80px */
+        --element-width-s: 7.5rem;
+        /* 120px */
+        --element-width-m: 10rem;
+        /* 160px */
+        --element-width-l: 15rem;
+        /* 240px */
+        --element-width-xl: 20rem;
+        /* 320px */
+        --element-width-xxl: 25rem;
+        /* 400px */
+
+        --element-height-xxsm: 2.5rem;
+        /* 40px */
+        --element-height-xsm: 5rem;
+        /* 80px */
+        --element-height-s: 7.5rem;
+        /* 120px */
+        --element-height-m: 10rem;
+        /* 160px */
+        --element-height-l: 15rem;
+        /* 240px */
+        --element-height-xl: 20rem;
+        /* 320px */
+        --element-height-xxl: 25rem;
+        /* 400px */
+
+        --text-size-xxsm: 0.3rem;
+        /* 4.8px */
+        --text-size-xsm: 0.5rem;
+        /* 8px */
+        --text-size-s: 0.6rem;
+        /* 9.6px */
+        --text-size-m: 0.75rem;
+        /* 12px */
+        --text-size-l: 0.875rem;
+        /* 14px */
+        --text-size-xl: 1rem;
+        /* 16px */
+        --text-size-xxl: 1.5rem;
+        /* 24px */
+    }
+}
+
+/* Media query for devices with width less than 480px */
+@media (max-width: 480px) {
+    :root {
+        --spacing-xxsm: 0.03125rem;
+        /* 0.5px */
+        --spacing-xsm: 0.0625rem;
+        /* 1px */
+        --spacing-s: 0.125rem;
+        /* 2px */
+        --spacing-m: 0.25rem;
+        /* 4px */
+        --spacing-l: 0.5rem;
+        /* 8px */
+        --spacing-xl: 0.75rem;
+        /* 12px */
+        --spacing-xxl: 1rem;
+        /* 16px */
+
+        --element-width-xxsm: 1.25rem;
+        /* 20px */
+        --element-width-xsm: 2.5rem;
+        /* 40px */
+        --element-width-s: 5rem;
+        /* 80px */
+        --element-width-m: 7.5rem;
+        /* 120px */
+        --element-width-l: 10rem;
+        /* 160px */
+        --element-width-xl: 12.5rem;
+        /* 200px */
+        --element-width-xxl: 15rem;
+        /* 240px */
+
+        --element-height-xxsm: 1.25rem;
+        /* 20px */
+        --element-height-xsm: 2.5rem;
+        /* 40px */
+        --element-height-s: 5rem;
+        /* 80px */
+        --element-height-m: 7.5rem;
+        /* 120px */
+        --element-height-l: 10rem;
+        /* 160px */
+        --element-height-xl: 12.5rem;
+        /* 200px */
+        --element-height-xxl: 15rem;
+        /* 240px */
+
+        --text-size-xxsm: 0.25rem;
+        /* 4px */
+        --text-size-xsm: 0.375rem;
+        /* 6px */
+        --text-size-s: 0.5rem;
+        /* 8px */
+        --text-size-m: 0.625rem;
+        /* 10px */
+        --text-size-l: 0.75rem;
+        /* 12px */
+        --text-size-xl: 1rem;
+        /* 16px */
+        --text-size-xxl: 1.25rem;
+        /* 20px */
+    }
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
 
 .nav {
-    width: 100%;
+    max-width: 100%;
     display: flex;
     align-items: center;
     background-color: aliceblue;
@@ -24,7 +343,7 @@
     justify-content: center;
     align-items: center;
     margin-right: auto;
-    padding-left: .7rem;
+    padding-left: 1em;
 }
 
 .first_drop_cont {
@@ -32,16 +351,16 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    padding: .3rem;
+    padding: .3em;
 }
 
 .traders_hub_cont {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 1rem;
+    margin-right: 1em;
     cursor: pointer;
-    padding: .3rem;
+    padding: .3em;
     white-space: nowrap;
 }
 
@@ -53,8 +372,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 1rem;
-    padding: .3rem;
+    margin-right: 1em;
+    padding: .3em;
     cursor: pointer;
 }
 
@@ -66,8 +385,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 1rem;
-    padding: .3rem;
+    margin-right: 1em;
+    padding: .3em;
     cursor: pointer;
 }
 
@@ -79,7 +398,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: .3rem;
+    padding: .3em;
     cursor: pointer;
 }
 
@@ -88,7 +407,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: .3rem;
+    padding: .3em;
     cursor: pointer;
 }
 
@@ -96,15 +415,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-right: .7rem;
+    padding-right: 1em;
 }
 
 .account_balance_cont {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 1rem;
-    padding: .3rem;
+    margin-right: 1em;
+    padding: .3em;
     cursor: pointer;
 }
 
@@ -117,23 +436,23 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: .3rem;
+    padding: .3em;
     cursor: pointer;
 }
 
 
 .account_balance_logo>img {
-    width: 1.8rem;
-    height: 1.8rem;
+    width: 1.8em;
+    height: 1.8em;
 }
 
 .brand_log {
-    padding: .3rem;
+    padding: .3em;
     background-color: red;
     color: purple;
-    border-radius: .4rem;
+    border-radius: .4em;
     font-weight: bold;
-    margin-right: .3rem;
+    margin-right: .3em;
 }
 
 .brand_name {
@@ -143,34 +462,34 @@
 
 .first_dropdown_icon {
     display: block;
-    margin-right: 2rem;
+    margin-right: 2em;
 }
 
 .notifications_cont {
-    margin-right: 1rem;
+    margin-right: 1em;
 }
 
 .manage_account_cont {
-    margin-right: 3rem;
+    margin-right: 3em;
 }
 
 .deposit_cont {
-    padding: .4rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding: .4em;
+    padding-left: 1em;
+    padding-right: 1em;
     color: #fff;
     background-color: red;
-    border-radius: .5rem;
+    border-radius: .5em;
     cursor: pointer;
 }
 
 .account_balance_fig_cont {
-    margin-right: .3rem;
-    margin-left: .3rem;
+    margin-right: .3em;
+    margin-left: .3em;
 }
 
 .hamburger_menu {
-    font-size: 1.5rem;
+    font-size: 1.5em;
     display: none;
 }
 
@@ -183,7 +502,7 @@
     .hamburger_menu {
         display: block;
         margin-right: auto;
-        padding-left: 1rem;
+        padding-left: 1em;
     }
 
     .deposit_cont {
@@ -205,7 +524,15 @@
     .hamburger_menu {
         display: block;
         margin-right: auto;
-        padding-left: 1rem;
+        padding-left: 1em;
+    }
+
+    .nav_first {
+        padding-left: .7em;
+    }
+
+    .nav_second {
+        padding-right: .5em;
     }
 }
 
@@ -232,137 +559,212 @@
 
 
 
-.account_symbol_change_cont{
+
+
+
+
+
+
+.display_sections{
+    padding: var(--spacing-xl);
+    border: .5px solid orange;
+    display: flex;
+    justify-content: space-around;
+}
+
+.buy_sell_one_display{
+    padding: var(--spacing-s);
+    background-color: #e98024;
+}
+
+
+.buy_sell_two_display{
+    padding: var(--spacing-s);
+    background-color: #d33636;
+}
+
+.buy_sell_three_display{
+    padding: var(--spacing-s);
+    background-color: darkorchid;
+}
+
+
+.buy_sell_four_display{
+    padding: var(--spacing-s);
+    background-color: khaki;
+}
+
+
+.buy_sell_five_display{
+    padding: var(--spacing-s);
+    background-color: cornflowerblue;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.account_symbol_change_cont {
     width: fit-content;
-    border: .5px solid rgb(209, 201, 201);
+    border: .5px solid var(--border-normal);
     border-radius: .3rem;
     position: absolute;
     top: auto;
-    background-color: #fff;
-    margin: .5rem;
-    margin-top: .7rem;
+    background-color: var(--general-main-1);
+    margin: var(--spacing-m);
+    margin-top: var(--spacing-l);
     display: none;
     flex-direction: column;
+    z-index: 999999;
 }
 
-
-.search_input_cont > input{
+.search_input_cont>input {
     width: 10rem;
 }
 
-
-.symbol_assets_cont{
+.symbol_assets_cont {
     display: flex;
 }
 
-
 @media screen and (max-width: 670px) {
-    .symbol_assets_cont{
+    .symbol_assets_cont {
         flex-direction: column;
     }
 
-    .symbol_assets_logo_cont{
+    .symbol_assets_logo_cont {
         display: flex;
     }
 
-    .derived_indices_list_cont{
+    .derived_indices_list_cont {
         display: none;
     }
 
-    .derived_indices_drop > svg {
+    .derived_indices_drop>svg {
+        display: none;
+    }
+
+    .derived_indices_drop,
+    .derived_indices_list_cont {
+        display: none;
+    }
+
+    .symbol_assets_logo_cont {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .svgg_text {
         display: none;
     }
 }
 
-
-
-
-
-.search_input_and_icon_cont{
+.search_input_and_icon_cont {
     display: flex;
-    padding: .3rem;
-    border: .5px solid rgb(209, 201, 201);
+    padding: var(--spacing-s);
+    border: .5px solid var(--border-normal);
     border-radius: .3rem;
 }
 
-.search_input_and_icon_cont_cover{
-    padding: .6rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid rgb(209, 201, 201);
+.search_input_and_icon_cont_cover {
+    padding: var(--spacing-m);
+    padding-bottom: var(--spacing-xl);
+    border-bottom: 1px solid var(--border-normal);
 }
 
-.symbol_assets_logo_cont{
-    padding: 1rem;
-    background-color: aliceblue;
-    margin-right: 1rem;
+.symbol_assets_logo_cont {
+    padding: var(--spacing-xl);
+    background-color: var(--general-main-1);
+    margin-right: var(--spacing-xl);
 }
 
-.symbol_assets_type_cont{
+.symbol_assets_type_cont {
     overflow-y: auto;
     height: 20rem;
-    padding-right: 4rem;
+    padding-right: var(--spacing-xxl);
     scroll-behavior: smooth;
 }
 
-.search_input_cont{
+.search_input_cont {
     margin-right: auto;
 }
 
-.search_input_cont > input{
+.search_input_cont>input {
     outline: none;
     border: none;
 }
 
-.sym{
+.sym {
     display: flex;
     width: 20rem;
     align-items: flex-start;
-    margin-bottom: .5rem;
-    font-size: 1.2rem;
+    margin-bottom: var(--spacing-m);
+    font-size: var(--text-size-s);
 }
 
-.smpt{
+.smpt {
     margin-right: auto;
 }
 
-.big{
-    font-size: 1.3rem;
+.big {
+    font-size: var(--text-size-m);
     font-weight: bold;
-    margin-top: 1rem;
+    margin-top: var(--spacing-xl);
 }
 
-.pbig{
+.pbig {
     margin-bottom: 8rem;
-    margin-left: 1rem;
+    margin-left: var(--spacing-m);
 }
 
-.sm{
-    font-size: 1rem;
+.sm {
+    font-size: var(--text-size-s);
     font-weight: 700;
-    margin: 1rem 0;
+    margin: var(--spacing-m) 0;
 }
 
-.ass_cont{
+.ass_cont {
     display: flex;
-    margin-bottom: 1rem;
+    margin-bottom: var(--spacing-m);
     cursor: pointer;
-
 }
 
-.svgg > svg{
-   margin-top: .2rem;
+.svgg>svg {
+    margin-top: var(--spacing-xxs);
 }
 
 .ass_cont.active {
-    color: red; /* Change this to your active link style */
+    color: var(--brand-red-coral);
 }
 
-
-
-.svgg_text{
-    margin: 0 1rem;
-    margin-left: .3rem;
-    font-size: 1.2rem;
+.svgg_text {
+    margin: 0 var(--spacing-m);
+    margin-left: var(--spacing-xs);
+    font-size: var(--text-size-m);
     white-space: nowrap;
 }
 
@@ -396,7 +798,10 @@
 
 
 
-
+.wraps_everything_inside_body{
+    padding: var(--spacing-l);
+    border: .5px solid salmon;
+}
 
 
 
@@ -418,32 +823,31 @@
     z-index: 9999;
 }
 
-.real_dremo {
+.real_demo {
     display: flex;
-    justify-content: space-between;
     font-size: .9rem;
     font-weight: bold;
     color: gray;
 }
 
 .real {
-    width: 50%;
     display: flex;
     justify-content: center;
     padding-bottom: .5rem;
     cursor: pointer;
+    flex: 1;
 }
 
 .real_bottom {
     border-bottom: 2px solid rgb(209, 53, 35);
 }
 
-.dremo {
-    width: 50%;
+.demo {
     display: flex;
     justify-content: center;
     padding-bottom: .5rem;
     cursor: pointer;
+    flex: 1;
 }
 
 .dremo_bottom {
@@ -574,7 +978,7 @@
 .overlay {
     display: none;
     width: 100%;
-    height: 100%;
+    height: 400vh;
     position: absolute;
     background-color: rgba(0, 0, 0, 0.5);
     /* Dark transparent color */
@@ -603,6 +1007,12 @@
 }
 
 
+@media (max-width: 420px) {
+    .account_type_change_cont {
+        padding: .3rem .3rem;
+    }
+
+}
 
 
 
@@ -610,120 +1020,126 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.chart>svg {
+    width: var(--element-width-xxsm);
+}
 
 .top_set {
-    display: flex;
-    justify-content: flex-start;
-    padding: .3rem;
-    border: 1px solid salmon;
-    margin: .3rem;
-    padding-right: auto;
-}
-
-.first_set_cont {
-    display: flex;
-    align-items: center;
-}
-
-.first_set_cont_left {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: 1em;
 }
 
 .trade_symbol {
+    border: .5px solid lightgrey;
+    margin-bottom: .5em;
     display: flex;
-    height: fit-content;
-    padding: .3rem;
-    border: 1px solid grey;
-    margin-right: .5rem;
-    border-radius: .3rem;
+    width: var(--element-width-xl);
 }
 
-.trade_type_stream_cont {
+.trade_type {
+    border: .5px solid lightgrey;
+    margin-bottom: .5em;
     display: flex;
+    width: var(--element-width-xl);
 }
 
 .symbol_type_cont {
     display: flex;
+    gap: 1em;
 }
 
-.trade_type {
-    display: flex;
-    padding: .3rem;
-    border: 1px solid grey;
-    font-size: 1.2rem;
-    margin-right: .5rem;
-    height: fit-content;
-    border-radius: .3rem;
+
+.trade_symbol_first,
+.trade_type_first {
+    margin-bottom: var(--spacing-m);
+    font-size: var(--text-size-l);
+    color: var(--border-hover);
 }
 
-.trade_symbol_first, .trade_type_first{
-    margin-bottom: .3rem;
+.trade_symbol_secound,
+.trade_type_secound {
+    font-size: var(--text-size-xl);
 }
 
-.trade_symbol_display {
-    margin-right: 3rem;
-    font-size: 1.2rem;
-}
-
+.trade_symbol_display,
 .trade_type_display {
-    margin-right: 3rem;
+    margin-right: auto;
 }
 
-.chart>svg {
-    width: 1.5rem;
+.first_set_cont_left {
+    display: flex;
 }
 
-.tick_stream {
-    border-radius: .3rem;
-    font-size: 1.2rem;
-    margin-top: .4rem;
+.chart_and_tick_stream {
+    margin-left: var(--spacing-l);
 }
 
 
-@media screen and (max-width: 420px) {
-    .trade_type_stream_cont {
+
+
+@media (max-width: 768px) {
+
+    .trade_symbol,
+    .trade_type {
+        width: 0;
+        flex: 1;
+    }
+
+    .first_set_cont_left {
         flex-direction: column;
     }
 
-    .chart_and_tick_stream{
-        position: fixed;
-        margin-top: .1rem;
-        top: auto;
-        margin-left: 11rem;
-        font-size: 1.1rem;
-        font-weight: bold;
+    .chart_and_tick_stream {
+        margin-left: 0;
+        margin-left: auto;
     }
 
 }
 
-@media screen and (max-width: 500px) {
-    .top_set{
-        width: fit-content;      
-    }
-}
-
-@media screen and (max-width: 360px) {
-    .symbol_type_cont{
-       flex-direction: column;      
-    }
-
-    .trade_symbol_display, .third_drop_cont{
-        margin-bottom: .4rem;
-        font-size: 1.5rem;
-    }
-
-    .trade_type{
-        font-size: 1.5rem;
-        margin-top: .5rem;
-    }
-
-    .chart_and_tick_stream{
-        margin-left: 12rem;
-        font-size: 1.2rem;
-    }
-}
 
 
 
@@ -753,195 +1169,294 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.main_body_cont {
-    border: 1px solid red;
-    padding: 10px;
-    /* Optional: Adds padding inside the container */
-
-}
 
 .main_body_cont_flex {
     display: flex;
-    flex-wrap: nowrap;
-    /* Ensure items stay on a single line */
-    gap: 10px;
-    /* Adds gap between the boxes */
+    gap: var(--spacing-xl);
+    padding: var(--spacing-xl);
+    flex-wrap: wrap; 
 }
 
-.buy_sell {
-    flex: 1 1 30rrem;
-    /* Allows boxes to grow/shrink uniformly */
-    border: 1px solid cyan;
-    display: flex;
-    /* Center the content horizontally */
-    padding: 10px;
-    /* Optional: Adds padding inside each box */
-    box-sizing: border-box;
-    /* Ensure padding/border are included in the box's size */
+
+@media (max-width: 853px) {
+    .main_body_cont_flex {
+        flex-direction: column;
+    }
 }
+
 
 .buy_sell_one {
+    padding: var(--spacing-xxl) var(--spacing-l);
+    border: .5px solid lightgrey;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex: 1 1 50%; /* Each item takes up 50% of the width */
+    box-sizing: border-box;
+    border-radius: .3em;
+    display: none;
 }
 
 .buy_sell_two {
-    display: none;
-    flex-direction: column;
+    border: .5px solid lightgrey;
+    flex: 1 1 50%; /* Each item takes up 50% of the width */
+    box-sizing: border-box;
+    border-radius: .3em;
 }
+
 
 .buy_sell_three {
-    display: none;
-    flex-direction: column;
-}
-
-.buy_sell_four {
+    border: .5px solid rgb(39, 30, 30);
+    border-radius: .3em;
+    flex: 1 1 50%; /* Each item takes up 50% of the width */
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    gap: .5rem;
+    padding: var(--spacing-xl);
+}
+
+
+.buy_sell_four{
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 50%; /* Each item takes up 50% of the width */
+    box-sizing: border-box;
+    border: .5px solid rgb(39, 30, 30);
 }
 
 .buy_sell_five {
+    border: .5px solid lightgrey;
+    align-items: stretch;
+    flex: 1 1 50%; /* Each item takes up 50% of the width */
+    box-sizing: border-box;
+    border-radius: .3em;
     display: none;
     flex-direction: column;
 }
+
+
+
+
+@media (max-width: 800px) {
+    .buy_sell_one, .buy_sell_two, .buy_sell_three, .buy_sell_four, .buy_sell_four, .buy_sell_five {
+      flex: 1 1 100%; /* Each item takes up 100% of the width */
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 .start_time_cont {
     display: flex;
-    margin-bottom: 1rem;
-}
-
-.start_time {
-    margin-right: 1.5rem;
-    white-space: nowrap;
 }
 
 .start_stake_text_drop_cont {
     display: flex;
-    padding: .4rem;
-    border: .5px solid rgb(209, 201, 201);
-    border-radius: .3rem;
+    padding: var(--spacing-s);
+    border: .5px solid lightgrey;
+    border-radius: .3em;
+}
+
+.start_time {
+    margin-right: var(--spacing-l);
 }
 
 .start_stake_text {
-    margin-right: 8rem;
+    margin-right: calc(var(--spacing-xxl) + 7rem);
+}
+
+.start_time_cont {
+    margin-bottom: var(--spacing-l);
 }
 
 .duration_cont {
     display: flex;
+    gap: var(--spacing-l);
+    margin-bottom: var(--spacing-l);
 }
+
+.input_and_minute {
+    display: flex;
+    gap: var(--spacing-l);
+}
+
+
 
 .duration_stake_text_drop_cont {
     display: flex;
-    margin-right: 1rem;
-    padding: .4rem;
-    border: .5px solid rgb(209, 201, 201);
-    border-radius: .3rem;
+    padding: var(--spacing-m);
+    border: .5px solid lightgrey;
+    border-radius: .3em;
     height: fit-content;
+    flex: 1;
+    width: var(--element-width-m);
+}
+
+
+.stake_Minutes_cont {
+    display: flex;
+    padding: var(--spacing-m);
+    border: .5px solid lightgrey;
+    border-radius: .3em;
+    height: fit-content;
+    flex: 1;
+
+}
+
+.input_cover>input {
+    outline: none;
+    border: .5px solid lightgrey;
+    padding: var(--spacing-m);
+    border-radius: .3em;
+    flex: 1;
 }
 
 
 .stake_duration_text {
-    margin-right: .3rem;
-    width: fit-content;
+    margin-right: auto;
 }
 
-.minimum_input_cont {
-    display: flex;
-    margin-right: 1rem;
-    white-space: nowrap;
-}
-
-.input_cover {
-    width: fit-content;
-    height: fit-content;
-    padding: .1rem;
-    padding-top: .3rem;
-    border: .5px solid rgb(209, 201, 201);
-    border-radius: .3rem;
-}
-
-.input_cover>input {
-    width: 5rem;
-    padding: .1rem;
-    margin-bottom: .3rem;
-    outline: none;
-    border: none;
-}
-
-.minimum_input_tex {
-    width: auto;
-
-}
-
-.stake_Minutes_cont {
-    display: flex;
-    border: .5px solid rgb(209, 201, 201);
-    padding: .4rem;
-    height: fit-content;
-    border-radius: .3rem;
-}
 
 .stake_Minutes_text {
-    margin-right: 1rem;
+    margin-right: auto;
 }
+
+
+.minimum_input_text {
+    margin-bottom: var(--spacing-xl);
+}
+
 
 .stake_display_cont {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 1.5rem;
-    margin-bottom: 2rem;
+    margin-bottom: var(--spacing-xxl);
+    gap: var(--spacing-l);
 }
 
 .stake_drop_cont {
     display: flex;
-    margin-right: 1rem;
-    border: .5px solid rgb(209, 201, 201);
-    border-radius: .3rem;
-    padding: .4rem;
-    height: fit-content;
+    padding: var(--spacing-m);
+    border: .5px solid lightgrey;
+    width: var(--element-width-l);
+    border-radius: .3em;
+    flex: 1;
 }
 
 .stake_drop_text {
-    margin-right: 1rem;
-}
-
-.stake_display_cont_input {
-    margin-right: 1rem;
-    border: .5px solid rgb(209, 201, 201);
-    border-radius: .3rem;
+    margin-right: auto;
 }
 
 .stake_display_cont_input>input {
     outline: none;
-    border: none;
-    padding: .5rem;
-    padding-top: .5rem;
-    width: 6rem;
+    border: .5px solid lightgrey;
+    padding: var(--spacing-m);
+    width: var(--element-width-s);
+    border-radius: .3em;
+    flex: 1;
+}
+
+.usd_text {
+    flex: 1;
 }
 
 .allows_equals_cont {
@@ -949,8 +1464,75 @@
 }
 
 .check_allows_equals {
-    margin-right: .3rem;
+    margin-right: var(--spacing-m);
 }
+
+
+@media (max-width: 768px) {
+    .input_and_minute {
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 768px) {
+    .input_cover>input {
+        width: var(--element-width-xsm);
+    }
+}
+
+
+@media (max-width: 768px) {
+    .stake_duration_text {
+        margin-right: var(--spacing-xxl);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -958,10 +1540,25 @@
 
 
 .up_order_cont {
-    border: .5px solid rgb(209, 201, 201);
-    border-radius: .3rem;
-    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
     flex: 1;
+}
+
+.up_order_btn_up {
+    display: flex;
+    padding: var(--spacing-l) var(--spacing-l) 0 var(--spacing-l);
+    margin-bottom: var(--spacing-l);
+}
+
+.up_stake_payout_cont {
+    display: flex;
+}
+
+.stake_fig_curr,
+.stake_fig_curr_payout {
+    display: flex;
 }
 
 .up_trade_type_cont {
@@ -969,7 +1566,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-right: .5rem;
+    margin-right: auto;
+    flex: 1;
 }
 
 .up_trade_type_text {
@@ -977,55 +1575,32 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 1.3rem;
-}
-
-.up_order_btn_up {
-    display: flex;
-    padding: 1.5rem;
-    margin-left: 2rem;
-}
-
-.up_stake_payout_cont {
-    display: flex;
-    margin-top: .5rem;
-    font-size: 1rem;
 }
 
 .stake_payout_puchase_cont {
     display: flex;
     flex-direction: column;
+    flex: 2;
+}
+
+.up_stake_payout_cont {
+    margin-bottom: auto;
     justify-content: center;
-    align-items: center;
-    margin: auto;
-    padding-bottom: 1rem;
-}
-
-.stake_fig_curr {
-    display: flex;
-    margin-right: 1rem;
-}
-
-.stake_fig_curr_payout {
-    display: flex;
+    gap: var(--spacing-l);
 }
 
 .up_purchase_btn {
-    padding: .4rem 7rem;
-    background-color: red;
-    border-radius: .3rem;
     text-align: center;
-    color: #fff;
-    font-size: 1rem;
-    font-weight: 800;
-    margin-top: .5rem;
+    padding: var(--spacing-m) var(--spacing-xl);
+    background-color: green;
+    border-radius: .3em;
 }
 
 
-.up_order_btn_down {
+.up_order_btn_down{
     text-align: center;
-    padding: 1.3rem;
-    background-color: aliceblue;
+    padding: var(--spacing-xxl);
+    background-color: rgb(243, 245, 247)
 }
 
 
@@ -1033,23 +1608,26 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+.down_order_btn_up {
+    display: flex;
+    padding: var(--spacing-l) var(--spacing-l) 0 var(--spacing-l);
+    margin-bottom: var(--spacing-l);
+}
 
 .down_order_cont {
-    border: .5px solid rgb(209, 201, 201);
-    border-radius: .3rem;
+    display: flex;
+    flex-direction: column;
     flex: 1;
+    box-sizing: border-box;
+}
+
+.down_stake_payout_cont {
+    display: flex;
+}
+
+.down_stake_fig_curr,
+.down_stake_fig_curr_payout {
+    display: flex;
 }
 
 .down_trade_type_cont {
@@ -1057,7 +1635,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-right: .5rem;
+    margin-right: auto;
+    flex: 1;
 }
 
 .down_trade_type_text {
@@ -1065,82 +1644,67 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 1.3rem;
-}
-
-.down_order_btn_up {
-    display: flex;
-    padding: 1.5rem;
-    margin-left: 2rem;
-}
-
-.down_stake_payout_cont {
-    display: flex;
-    margin-top: .5rem;
-    font-size: 1rem;
 }
 
 .down_stake_payout_puchase_cont {
     display: flex;
     flex-direction: column;
+    flex: 2;
+}
+
+
+.down_stake_payout_cont {
+    margin-bottom: auto;
     justify-content: center;
-    align-items: center;
-    margin: auto;
-    padding-bottom: 1rem;
-}
-
-.down_stake_fig_curr {
-    display: flex;
-    margin-right: 1rem;
-}
-
-.down_stake_fig_curr_payout {
-    display: flex;
+    gap: var(--spacing-l);
 }
 
 .down_purchase_btn {
-    padding: .4rem 7rem;
+    text-align: center;
+    padding: var(--spacing-m) var(--spacing-xl);
     background-color: red;
-    border-radius: .3rem;
-    text-align: center;
-    color: #fff;
-    font-size: 1rem;
-    font-weight: 800;
-    margin-top: .5rem;
+    border-radius: .3em;
 }
 
-
-.down_order_btn_down {
+.down_order_btn_down{
     text-align: center;
-    padding: 1.3rem;
-    background-color: aliceblue;
+    padding: var(--spacing-xxl);
+    background-color: rgb(243, 245, 247);
 }
 
 
 
 
-@media screen and (max-width: 960px) {
-    .main_body_cont_flex {
+
+
+@media (max-width: 768px) {
+
+    .stake_fig_curr,
+    .stake_fig_curr_payout {
         flex-direction: column;
     }
 
-}
-
-
-
-@media screen and (max-width: 500px) {
-    .main_body_cont {
-        width: fit-content;
-    }
-
-    .nav {
-        width: fit-content;
-    }
-
-    .hamburger_menu {
-        margin-right: 10rem;
+    .down_stake_fig_curr,
+    .down_stake_fig_curr_payout {
+        flex-direction: column;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1149,6 +1713,7 @@
 
 .trade_informations_container {
     background-color: rgb(238, 241, 241);
+    width: 100%;
 }
 
 .contract_result_container {
@@ -1158,41 +1723,44 @@
 
 .contract_result {
     margin-right: auto;
-    padding: 1rem;
-    font-size: 1.4rem;
+    padding: var(--spacing-m);
     text-align: center;
     width: 90%;
 }
 
 .close_contract_result_container {
-    padding: 0 .3rem;
-    font-size: 2.5rem;
+    padding: 0 var(--spacing-l);
     background-color: purple;
     height: fit-content;
     border-bottom-left-radius: .2rem;
     text-align: center;
     color: #fff;
+    font-size: calc(var(--text-size-xl) + 1rem);
+    
 }
 
 .proposal_information {
     background-color: #fff;
-    padding: 1rem;
-    font-size: 1.3rem;
-    margin: 0 1rem;
+    padding: var(--spacing-m);
+    margin: 0 var(--spacing-l);
     border: .5px solid rgb(209, 201, 201);
     border-radius: .3rem;
-    margin: 1rem;
+    margin: var(--spacing-l);
     white-space: nowrap;
+    overflow: hidden;
+  
 }
+
 
 
 .buy_price_loose_and_profit_container {
     display: flex;
-    font-size: 1.2rem;
-    padding: .5rem;
+    padding: var(--spacing-s);
     border-radius: .3rem;
-    margin-bottom: .5rem;
+    margin-bottom: var(--spacing-m);
+   
 }
+
 
 .buy_price_container,
 .price_after_trade_container,
@@ -1212,13 +1780,12 @@
 .buy_price_text,
 .price_after_trade_text,
 .profit_text {
-    margin-bottom: 1rem;
+    margin-bottom: var(--spacing-l);
 }
 
 .transaction_refrence {
-    padding: 1rem;
+    padding: var(--spacing-l);
     text-align: center;
-    font-size: 1.2rem;
 }
 
 .time_and_end_tic_container {
@@ -1232,15 +1799,15 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    font-size: 1.2rem;
-    margin-right: .3rem;
+    margin-right: var(--spacing-m);
+   
 }
 
 .end_tic_off_trade {
     display: flex;
     justify-content: flex-end;
-    font-size: 3rem;
     color: rgb(184, 177, 177);
+   
 }
 
 .last_digit {
@@ -1250,7 +1817,7 @@
 
 .last_digit_responds {
     display: flex;
-    margin: 2rem 1rem;
+    margin: var(--spacing-l) var(--spacing-m);
     margin-bottom: 0;
     border: .1px solid rgb(185, 181, 181);
     border-radius: .3rem;
@@ -1260,8 +1827,10 @@
     flex: 1;
     border: .1px solid rgb(185, 181, 181);
     text-align: center;
-    padding: .5rem;
-    font-size: 1.3rem;
+    padding: var(--spacing-s);
+    height: calc(var(--element-height-s) - 2.4rem);
+    padding-top: var(--spacing-xl);
+    
 }
 
 .slide_trade_result {
@@ -1275,46 +1844,41 @@
     right: auto;
     left: auto;
     width: auto;
-    padding: .89rem .5rem;
-    height: 3.5rem;
+    padding: var(--spacing-l) var(--spacing-m);
+    height: var(--element-height-s);
     margin-top: -2.4rem;
-}
-
-.one_out_of_one {
-    font-size: 1.2rem;
+   
 }
 
 .last_digit_mirror {
-    padding: .2rem .5rem;
+    padding: var(--spacing-m) var(--spacing-l);
     background-color: #fff;
-    font-size: 1.4rem;
     font-weight: bold;
     text-align: center;
-    margin-top: .7rem;
+    margin-top: var(--spacing-l);
     border-radius: .3rem;
 }
 
 .account_balance_after_trade_result {
-    padding: .5rem;
+    padding: var(--spacing-m);
     text-align: center;
-    font-size: 1.2rem;
     background-color: rgb(4, 230, 230);
-    margin-top: 1rem;
+    margin-top: var(--spacing-l);
 }
 
 .vol_cont {
     display: flex;
     width: auto;
-    margin-bottom: 1rem;
+    margin-bottom: var(--spacing-l);
 }
 
 .multi_trade_cont {
     width: 100%;
+    padding: var(--spacing-l);
 }
 
 .vol_stream {
-    font-size: 1.3rem;
-    margin-bottom: .5rem;
+    margin-bottom: var(--spacing-m);
 }
 
 .tick_strrem {
@@ -1325,37 +1889,134 @@
     font-weight: bold;
 }
 
-.info_about_tick_history {
-    width: 100%;
-    min-width: 39ch;
-    background-color: aliceblue;
-    padding: 1rem;
-    font-size: 1.3rem;
-    width: fit-content;
-}
-
-
-
-.buy_sell_one {
-    padding: 1.5rem;
-    font-size: 1.3rem;
-    white-space: nowrap;
-}
-
-
-.buy_sell_four {
-    padding: 1.5rem;
-    font-size: 1.3rem;
-    white-space: nowrap;
-}
-
-@media screen and (max-width: 500px) {
-    .info_about_tick_history{
-        padding-right: 1.3rem;    
-    }
-}
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 1536px) {}
+
+@media (max-width: 1280px) {}
+
+@media (max-width: 1024px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 640px) {}
+
+@media (max-width: 475px) {}

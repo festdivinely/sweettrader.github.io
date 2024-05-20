@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <script defer type="module" src="./trade_page.js"></script>
     <title>Sweet Trader TM</title>
 </head>
+
 <body>
 
     <div>
@@ -99,381 +101,408 @@
         </div>
     </div>
 
-
-    <div class="account_symbol_change_cont" id="account_symbol_change_cont">
-        <div class="search_input_and_icon_cont_cover">
-            <div class="search_input_and_icon_cont">
-                <div class="search_input_cont">
-                    <input type="text" placeholder="searh...">
-                </div>
-                <div class="search_icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-                        <path fill="#D6D6D6" fill-rule="evenodd"
-                            d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 100 11zm0-12a6.5 6.5 0 014.936 10.729l4.418 4.417a.502.502 0 01-.708.708l-4.417-4.418A6.5 6.5 0 116.5 0z" />
-                    </svg>
-                </div>
-            </div>
-        </div>
-        <div class="symbol_assets_cont" id="symbol_assets_cont">
-            <div class="symbol_assets_logo_cont">
-                <div class="forex_cont ass_cont" id="ass_cont_forex">
-                    <div class="forex_logo svgg">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-                            <path fill="#333"
-                                d="M8 0a8 8 0 110 16A8 8 0 018 0zm1 7H7l2 2.5L7 12h2l1-1.25L11 12h2l-2-2.5L13 7h-2l-1 1.25L9 7zM8 4H3v8h2V9h2V7H5V6h3V4z" />
-                        </svg>
-                    </div>
-                    <div class="forex_text svgg_text">Forex</div>
-                </div>
-                <div class="stock_indices_cont ass_cont" id="ass_cont_stock_indices">
-                    <div class="stock_indices_logo svgg">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-                            <path fill="#333"
-                                d="M8 0a8 8 0 110 16A8 8 0 018 0zM4.028 8.752c-.518.073-.753.256-.712.814a.703.703 0 01-.227.635.43.43 0 00-.113.227c-.122.63.431.997.577 1.522.009.033.055.055.083.082.116.107.223.225.356.322a.55.55 0 01.214.46c0 .272-.01.76-.003 1.072.36.228.741.429 1.142.593l.158-.227a.22.22 0 01.059-.066c.453-.44.905-.88 1.362-1.316.045-.044.128-.04.178-.078.203-.15.417-.28.413-.593a.662.662 0 01.15-.364c.147-.196.254-.787.113-.976-.106-.142-.28-.325-.421-.324a.8.8 0 01-.603-.294 29.824 29.824 0 00-.712-.666.386.386 0 00-.247-.121.511.511 0 01-.507-.23c-.33-.423-.742-.545-1.26-.472zm7.577 5.25l.12-.075A6.993 6.993 0 0015 8c0-1.27-.338-2.46-.929-3.487-.111.001-.249-.01-.26-.008-.503.049-.754-.446-1.206-.446-.032 0-.064-.06-.096-.093-.12-.123-.233-.258-.356-.363-.26-.233-.603-.27-.918-.347a.238.238 0 00-.169.06c-.338.261-.356.68-.457 1.049-.016.056.046.156.1.209.099.083.204.159.314.225-.069.051-.128.1-.177.144a1.656 1.656 0 00-.584 1.043.799.799 0 01-.057.226l-.052.104a.303.303 0 00.033.374l.017.056a.288.288 0 00.19.192.28.28 0 00.26-.052.808.808 0 01.588-.321c.223-.013.44.07.597.23.23.226.395.571.803.517.026 0 .06.034.087.06l.67.63c-.111.066-.23.116-.355.15-.207.016-.415 0-.621 0a3.665 3.665 0 00-.452.083l-.055.086c-.157-.182-.308-.364-.47-.531-.233-.245-.44-.253-.662 0a.528.528 0 01-.452.182c-.149 0-.355-.038-.439.045-.262.288-.712.448-.685.957 0 .061-.077.143-.137.181a.534.534 0 00-.201.513c.014.147.014.295 0 .442a.592.592 0 00.205.545.763.763 0 01.133.308c.023.067.01.15.044.207.23.387.858.475 1.157.138a.56.56 0 01.665-.14c.243.08.393.328.356.586a1.99 1.99 0 000 .545c.02.147.076.286.164.404.188.232.187.714.082.994-.009.02-.048.21-.07.306zM4.9 1.723A6.999 6.999 0 001 8c0 .703.104 1.381.296 2.021.147.022.341.024.41.036.153 0 .251-.029.231-.223-.02-.195-.008-.402-.033-.6a.485.485 0 01.178-.48c.177-.135.341-.273.523-.393a.926.926 0 01.382-.182c.406-.042.585-.216.62-.633a.533.533 0 01.102-.238c.205-.283.426-.556.627-.842.357-.5.8-.93 1.31-1.272.458-.308.71-.762 1.092-1.091a2.11 2.11 0 01-.596-.217.666.666 0 00-.534-.181c-.166.021-.34 0-.502.032a2.056 2.056 0 00-.406.182c-.136.082-.28.15-.43.202-.16.038-.338 0-.502.033-.32.062-.5-.118-.681-.364l1.106-1.229c.356-.39.666-.41 1.041-.045.086.1.162.21.226.325l.075-.105.31-.184a.651.651 0 00-.305-.57.53.53 0 00-.196-.07.957.957 0 01-.434-.182zM8 1c-.6 0-1.18.075-1.736.217a.89.89 0 01.37.304c.025.035.105.035.162.04.534.038.769.285.797.833.021.225.03.45.027.676-.02.355.231.511.463.644a.271.271 0 00.439-.162c.062-.182.26-.464.393-.462.498 0 .86-.23 1.212-.529.016-.013.051 0 .067-.013.22-.198.484-.352.472-.727a.601.601 0 01.075-.263A6.946 6.946 0 008 1z" />
-                        </svg>
-                    </div>
-                    <div class="stock_indices_text svgg_text">Stock Indices</div>
-                </div>
-                <div class="commodities_indices_cont ass_cont" id="ass_cont_commodities">
-                    <div class="commodities_indices_logo svgg">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-                            <path fill="#333"
-                                d="M8 0a8 8 0 110 16A8 8 0 018 0zm3.728 8h-1.465a.501.501 0 00-.416.223l-1.333 2A.5.5 0 008.93 11h4.131a.5.5 0 00.417-.777l-1.334-2A.499.499 0 0011.728 8zm-6 0H4.263a.501.501 0 00-.416.223l-1.333 2A.5.5 0 002.93 11h4.13a.5.5 0 00.418-.777l-1.334-2A.499.499 0 005.728 8zm3-4H7.263a.501.501 0 00-.416.223l-1.333 2A.5.5 0 005.93 7h4.13a.5.5 0 00.418-.777l-1.334-2A.499.499 0 008.728 4z" />
-                        </svg>
-                    </div>
-                    <div class="commodities_indices_text svgg_text">Commodities</div>
-                </div>
-                <div class="derived_indices_cont">
-                    <div class="derive_logo_text_drop ass_cont" id="ass_cont_derived">
-                        <div class="derived_indices_logo svgg">
-                            <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
-                                <g fill="none">
-                                    <circle fill="#333" cx="8" cy="8" r="8" />
-                                    <path
-                                        d="M10.5 12.207l-.646.647-.708-.708L11 10.293l1.854 1.853-.708.708-.646-.647V14h-1v-1.793zm-7-7.414V3h1v1.793l.646-.647.708.708L4 6.707 2.146 4.854l.708-.708.646.647zM4 8.707l-1.646 1.646-.708-.707L4 7.293l2 2 3-3 2 2 2.646-2.647.708.708L11 9.707l-2-2-3 3-2-2z"
-                                        fill="#FFF" />
-                                </g>
-                            </svg>
-                        </div>
-                        <div class="synthetics_indices_text svgg_text">Derived</div>
-                        <div class="derived_indices_drop">
-                            <svg role="img" xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em"
-                                viewBox="0 0 24 24" aria-labelledby="chevronDownIconTitle" stroke="#000"
-                                stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" fill="none"
-                                color="#000">
-                                <title id="chevronDownIconTitle">Chevron Down</title>
-                                <polyline points="6 10 12 16 18 10" />
-                            </svg>
-                            <svg role="img" xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em"
-                                viewBox="0 0 24 24" aria-labelledby="chevronUpIconTitle" stroke="#000"
-                                stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" fill="none"
-                                color="#000">
-                                <title id="chevronUpIconTitle">Chevron Up</title>
-                                <polyline points="6 14 12 8 18 14 18 14" />
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="derived_indices_list_cont">
-                        <div class="bascket">Baskets</div>
-                        <div class="synthetics">Synthetics</div>
-                    </div>
-                </div>
-            </div>
-            <div class="symbol_assets_type_cont" id="symbol_assets_type_cont">
-                <div class="symbol_assets_forex_cont pbig" id="pbig_forex">
-                    <div class="forex_and_pairs_cont psm">
-                        <div class="forex big csm">Forex</div>
-                        <div class="pairs sm">Major Pairs</div>
-                    </div>
-                    <div class="all_forex_pairs_cont">
-                        <div class="aud_jpy_aud_usd_cont sym">
-                            <div class="aud_jpy smpt">AUD/JPY</div>
-                            <div class="aud_usd">AUD/USD</div>
-                        </div>
-                        <div class="eur_aud_and_eur_cad_cont sym">
-                            <div class="eur_aud smpt">EUR/AUD</div>
-                            <div class="eur_cad">EUR/CAD</div>
-                        </div>
-                        <div class="eur_chf_and_eur_gbp_cont sym">
-                            <div class="eur_chf smpt">EUR/CHF</div>
-                            <div class="eur_gbp">EUR/GBP</div>
-                        </div>
-                        <div class="eur_jpy_and_eur_usd_cont sym">
-                            <div class="eur_jpy smpt">EUR/JPY</div>
-                            <div class="eur_usd">EUR/USD</div>
-                        </div>
-                        <div class="gbp_aud_and_gbp_jpy_cont sym">
-                            <div class="gbp_aud smpt">GBP/AUD</div>
-                            <div class="gbp_jpy">GBP/JPY</div>
-                        </div>
-                        <div class="gbp_usd_and_usd_cad_cont sym">
-                            <div class="gbp_usd smpt">GBP/USD</div>
-                            <div class="usd_cad">USD/CAD</div>
-                        </div>
-                        <div class="usd_chf_and_usd_jpy_cont sym">
-                            <div class="usd_chf smpt">USD/CHF</div>
-                            <div class="usd_jpy">USD/JPY</div>
-                        </div>
-                    </div>
-                    <div class="forex_and_pairs_cont">
-                        <div class="pairs sm">Minor Pairs</div>
-                    </div>
-                    <div class="all_forex_pairs_cont">
-                        <div class="aud_cad_and_aud_chf_cont sym">
-                            <div class="aud_cad smpt">AUD/CAD</div>
-                            <div class="aud_chf">AUD/CHF</div>
-                        </div>
-                        <div class="aud_nzd_and_eur_nzd_cont sym">
-                            <div class="aud_nzd smpt">AUD/NZD</div>
-                            <div class="eur_nzd">EUR/NZD</div>
-                        </div>
-                        <div class="gbp_cad_and_gbp_chf_cont sym">
-                            <div class="gbp_cad smpt">GBP/CAD</div>
-                            <div class="gbp_chf">GBP/CHF</div>
-                        </div>
-                        <div class="gbp_nok_and_gbp_nzd_cont sym">
-                            <div class="gbp_nok smpt">GBP/NOK</div>
-                            <div class="gbp_nzd">GBP/NZD</div>
-                        </div>
-                        <div class="nzd_jpy_and_nzd_usd_cont sym">
-                            <div class="nzd_jpy smpt">NZD/JPY</div>
-                            <div class="nzd_usd">NZD/USD</div>
-                        </div>
-                        <div class="usd_mxn_and_usd_nok_cont sym">
-                            <div class="usd_mxn smpt">USD/MXN</div>
-                            <div class="usd_nok">USD/NOK</div>
-                        </div>
-                        <div class="usd_pln_and_usd_sek_cont sym">
-                            <div class="usd_pln smpt">USD/PLN</div>
-                            <div class="usd_sek">USD/SEK</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="symbol_assets_indices_cont pbig" id="pbig_stocks_indices">
-                    <div class="indices_and_pairs_cont">
-                        <div class="indices big">Stock Indices</div>
-                        <div class="pairs sm">Asian indices</div>
-                    </div>
-                    <div class="all_indices_pairs_cont">
-                        <div class="aus_honk_kong_indices_cont sym">
-                            <div class="australia_200 smpt">Australia 200</div>
-                            <div class="hong_kong_50">Hong Kong 50</div>
-                        </div>
-                        <div class="Japan_225 sym">
-                            <div class="japan_225">Japan 225</div>
-                        </div>
-                    </div>
-                    <div class="indices_and_pairs_cont">
-                        <div class="pairs sm">European indices</div>
-                    </div>
-                    <div class="all_indices_pairs_cont">
-                        <div class="eur_france_indices_cont sym">
-                            <div class="euro_50 smpt">Euro 50</div>
-                            <div class="france_40">France 40</div>
-                        </div>
-                        <div class="gem_neth_indices_cont sym">
-                            <div class="germany_40 smpt">Germany 40</div>
-                            <div class="netherlands_25">Netherlands 25</div>
-                        </div>
-                        <div class="swiss_uk_indices_cont sym">
-                            <div class="swiss_20 smpt">Swiss 20</div>
-                            <div class="uk_100">UK 100</div>
-                        </div>
-                    </div>
-                    <div class="indices_and_pairs_cont">
-                        <div class="pairs sm">American indices</div>
-                    </div>
-                    <div class="all_indices_pairs_cont">
-                        <div class="us_500_us_tech_indices_cont sym">
-                            <div class="us_500 smpt">US 500</div>
-                            <div class="us_tech_100">US Tech 100</div>
-                        </div>
-                        <div class="wall_street_30_cont sym">
-                            <div class="wall_street_30">Wall Street 30</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="symbol_assets_commodities_cont pbig" id="pbig_commodities">
-                    <div class="commodities_and_types_cont">
-                        <div class="commodities big">Commodities</div>
-                        <div class="types sm">Metals</div>
-                    </div>
-                    <div class="all_commodities_types_cont">
-                        <div class="gold_pallad_cont sym">
-                            <div class="gold_usd smpt">Gold/USD</div>
-                            <div class="palladium_usd">Palladium/USD</div>
-                        </div>
-                        <div class="plat_silver_cont sym">
-                            <div class="platinum_usd smpt">Platinum/USD</div>
-                            <div class="silver_usd">Silver/USD</div>
-                        </div>
-                    </div>
-                    <div class="commodities_and_types_cont">
-                        <div class="types big">Baskets</div>
-                        <div class="forex_basket sm">Forex Basket</div>
-                    </div>
-                    <div class="all_commodities_types_cont">
-                        <div class="forex_basket_aud_basket_cont sym">
-                            <div class="aud_basket smpt">AUD Basket</div>
-                            <div class="eur_basket">EUR Basket</div>
-                        </div>
-                        <div class="eur_basket_gbp_basket_cont sym">
-                            <div class="gbp_basket smpt">GBP Basket</div>
-                            <div class="usd_basket">USD Basket</div>
-                        </div>
-                        <div class="usd_basket_commodity_basket_cont">
-                            <div class="commodities_basket sm">Commodities Basket</div>
-                        </div>
-                        <div class="gold_basket_cont sym">
-                            <div class="gold_basket">Gold Basket</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="symbol_assets_synthetics_cont pbig" id="pbig_synthetics">
-                    <div class="synthetics_and_indices_cont">
-                        <div class="synthetics big">Synthetics</div>
-                        <div class="indices sm">Daily Reset Indices</div>
-                    </div>
-                    <div class="all_synthetics_indices_cont">
-                        <div class="daily_reset_indices_cont sym">
-                            <div class="bear_market_index smpt">Bear Market Index</div>
-                            <div class="bull_market_index">Bull Market Index</div>
-                        </div>
-                    </div>
-                    <div class="indices_and_pairs_cont">
-                        <div class="indices sm">Jump Indices</div>
-                    </div>
-                    <div class="all_jump_indices_cont">
-                        <div class="jump_10_20_indices_cont sym">
-                            <div class="jump_10_index smpt">Jump 10 Index</div>
-                            <div class="jump_25_index">Jump 25 Index</div>
-                        </div>
-                        <div class="jump_50_75_indices_cont sym">
-                            <div class="jump_50_index smpt">Jump 50 Index</div>
-                            <div class="jump_75_index">Jump 75 Index</div>
-                        </div>
-                        <div class="jump_100_index_cont sym">
-                            <div class="jump_100_index">Jump 100 Index</div>
-                        </div>
-                    </div>
-                    <div class="indices_and_pairs_cont">
-                        <div class="indices sm">Continuous Indices</div>
-                    </div>
-                    <div class="all_continuous_indices_cont">
-                        <div class="continuous_vol_10_1s_indices_cont sym">
-                            <div class="volatility_10_1s_index smpt">Volatility 10 (1s) Index</div>
-                            <div class="volatility_10_index">Volatility 10 Index</div>
-                        </div>
-                        <div class="continuous_vol_25_1s_indices_cont sym">
-                            <div class="volatility_25_1s_index smpt">Volatility 25 (1s) Index</div>
-                            <div class="volatility_25_index">Volatility 25 Index</div>
-                        </div>
-                        <div class="continuous_vol_50_1s_indices_cont sym">
-                            <div class="volatility_50_1s_index smpt">Volatility 50 (1s) Index</div>
-                            <div class="volatility_50_index">Volatility 50 Index</div>
-                        </div>
-                        <div class="continuous_vol_75_1s_indices_cont sym">
-                            <div class="volatility_75_1s_index smpt">Volatility 75 (1s) Index</div>
-                            <div class="volatility_75_index">Volatility 75 Index</div>
-                        </div>
-                        <div class="continuous_vol_100_1s_indices_cont sym">
-                            <div class="volatility_100_1s_index smpt">Volatility 100 (1s) Index</div>
-                            <div class="volatility_100_index">Volatility 100 Index</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="display_sections">
+        <div class="buy_sell_one_display" id="buy_sell_one_display">&#128250;</div>
+        <div class="buy_sell_two_display" id="buy_sell_two_display">&#128250;</div>
+        <div class="buy_sell_three_display" id="buy_sell_three_display">&#128250;</div>
+        <div class="buy_sell_four_display" id="buy_sell_four_display">&#128250;</div>
+        <div class="buy_sell_five_display" id="buy_sell_five_display">&#128250;</div>
     </div>
 
 
+    <div class="wraps_everything_inside_body">
 
-
-
-    <div class="account_type_change_cont" id="curr_acc">
-        <div class="real_demo" id="real_demo">
-            <div class="real" id="real">Real</div>
-            <div class="demo" id="demo">Demo</div>
-        </div>
-        <div class="account_type_cont">
-            <div class="account_type" id="account_type">Demo Account</div>
-            <div class="drop_down pointer" id="drop_down_light_cont">
-                <svg class="D_3" id="DD_3" role="img" xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em"
-                    viewBox="0 0 24 24" aria-labelledby="chevronDownIconTitle" stroke="#000" stroke-width="1.5"
-                    stroke-linecap="square" stroke-linejoin="miter" fill="none" color="#000">
-                    <title id="chevronDownIconTitle">Chevron Down</title>
-                    <polyline points="6 10 12 16 18 10" />
-                </svg>
-                <svg class="D_4" id="DD_4" role="img" xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em"
-                    viewBox="0 0 24 24" aria-labelledby="chevronUpIconTitle" stroke="#000" stroke-width="1.5"
-                    stroke-linecap="square" stroke-linejoin="miter" fill="none" color="#000">
-                    <title id="chevronUpIconTitle">Chevron Up</title>
-                    <polyline points="6 14 12 8 18 14 18 14" />
-                </svg>
-            </div>
-        </div>
-        <div class="current_balance_cont" id="current_balance_cont">
-            <div class="current_balance" id="current_balance">
-                <div class="current_balance_logo">
-                    <img src="../images/icons8-usa-48.png" alt="img">
-                </div>
-                <div>
-                    <div class="curr curr_second" id="curr">Demo</div>
-                    <div class="curr2 curr2_second" id="curr2">$VRTC273948</div>
+        <div class="account_symbol_change_cont" id="account_symbol_change_cont">
+            <div class="search_input_and_icon_cont_cover">
+                <div class="search_input_and_icon_cont">
+                    <div class="search_input_cont">
+                        <input type="text" placeholder="searh...">
+                    </div>
+                    <div class="search_icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+                            <path fill="#D6D6D6" fill-rule="evenodd"
+                                d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 100 11zm0-12a6.5 6.5 0 014.936 10.729l4.418 4.417a.502.502 0 01-.708.708l-4.417-4.418A6.5 6.5 0 116.5 0z" />
+                        </svg>
+                    </div>
                 </div>
             </div>
-            <div class="current_balance_fig_cont" id="current_balance_fig_cont">
-                <div class="current_balance_fig" id="current_balance_fig">10.0</div>
-                <div class="current_balance_currency" id="current_balance_currency">USD</div>
-            </div>
-            <div class="reset" id="reset">
-                Reset Accounts
+            <div class="symbol_assets_cont" id="symbol_assets_cont">
+                <div class="symbol_assets_logo_cont">
+                    <div class="forex_cont ass_cont" id="ass_cont_forex">
+                        <div class="forex_logo svgg">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+                                <path fill="#333"
+                                    d="M8 0a8 8 0 110 16A8 8 0 018 0zm1 7H7l2 2.5L7 12h2l1-1.25L11 12h2l-2-2.5L13 7h-2l-1 1.25L9 7zM8 4H3v8h2V9h2V7H5V6h3V4z" />
+                            </svg>
+                        </div>
+                        <div class="forex_text svgg_text">Forex</div>
+                    </div>
+                    <div class="stock_indices_cont ass_cont" id="ass_cont_stock_indices">
+                        <div class="stock_indices_logo svgg">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+                                <path fill="#333"
+                                    d="M8 0a8 8 0 110 16A8 8 0 018 0zM4.028 8.752c-.518.073-.753.256-.712.814a.703.703 0 01-.227.635.43.43 0 00-.113.227c-.122.63.431.997.577 1.522.009.033.055.055.083.082.116.107.223.225.356.322a.55.55 0 01.214.46c0 .272-.01.76-.003 1.072.36.228.741.429 1.142.593l.158-.227a.22.22 0 01.059-.066c.453-.44.905-.88 1.362-1.316.045-.044.128-.04.178-.078.203-.15.417-.28.413-.593a.662.662 0 01.15-.364c.147-.196.254-.787.113-.976-.106-.142-.28-.325-.421-.324a.8.8 0 01-.603-.294 29.824 29.824 0 00-.712-.666.386.386 0 00-.247-.121.511.511 0 01-.507-.23c-.33-.423-.742-.545-1.26-.472zm7.577 5.25l.12-.075A6.993 6.993 0 0015 8c0-1.27-.338-2.46-.929-3.487-.111.001-.249-.01-.26-.008-.503.049-.754-.446-1.206-.446-.032 0-.064-.06-.096-.093-.12-.123-.233-.258-.356-.363-.26-.233-.603-.27-.918-.347a.238.238 0 00-.169.06c-.338.261-.356.68-.457 1.049-.016.056.046.156.1.209.099.083.204.159.314.225-.069.051-.128.1-.177.144a1.656 1.656 0 00-.584 1.043.799.799 0 01-.057.226l-.052.104a.303.303 0 00.033.374l.017.056a.288.288 0 00.19.192.28.28 0 00.26-.052.808.808 0 01.588-.321c.223-.013.44.07.597.23.23.226.395.571.803.517.026 0 .06.034.087.06l.67.63c-.111.066-.23.116-.355.15-.207.016-.415 0-.621 0a3.665 3.665 0 00-.452.083l-.055.086c-.157-.182-.308-.364-.47-.531-.233-.245-.44-.253-.662 0a.528.528 0 01-.452.182c-.149 0-.355-.038-.439.045-.262.288-.712.448-.685.957 0 .061-.077.143-.137.181a.534.534 0 00-.201.513c.014.147.014.295 0 .442a.592.592 0 00.205.545.763.763 0 01.133.308c.023.067.01.15.044.207.23.387.858.475 1.157.138a.56.56 0 01.665-.14c.243.08.393.328.356.586a1.99 1.99 0 000 .545c.02.147.076.286.164.404.188.232.187.714.082.994-.009.02-.048.21-.07.306zM4.9 1.723A6.999 6.999 0 001 8c0 .703.104 1.381.296 2.021.147.022.341.024.41.036.153 0 .251-.029.231-.223-.02-.195-.008-.402-.033-.6a.485.485 0 01.178-.48c.177-.135.341-.273.523-.393a.926.926 0 01.382-.182c.406-.042.585-.216.62-.633a.533.533 0 01.102-.238c.205-.283.426-.556.627-.842.357-.5.8-.93 1.31-1.272.458-.308.71-.762 1.092-1.091a2.11 2.11 0 01-.596-.217.666.666 0 00-.534-.181c-.166.021-.34 0-.502.032a2.056 2.056 0 00-.406.182c-.136.082-.28.15-.43.202-.16.038-.338 0-.502.033-.32.062-.5-.118-.681-.364l1.106-1.229c.356-.39.666-.41 1.041-.045.086.1.162.21.226.325l.075-.105.31-.184a.651.651 0 00-.305-.57.53.53 0 00-.196-.07.957.957 0 01-.434-.182zM8 1c-.6 0-1.18.075-1.736.217a.89.89 0 01.37.304c.025.035.105.035.162.04.534.038.769.285.797.833.021.225.03.45.027.676-.02.355.231.511.463.644a.271.271 0 00.439-.162c.062-.182.26-.464.393-.462.498 0 .86-.23 1.212-.529.016-.013.051 0 .067-.013.22-.198.484-.352.472-.727a.601.601 0 01.075-.263A6.946 6.946 0 008 1z" />
+                            </svg>
+                        </div>
+                        <div class="stock_indices_text svgg_text">Stock Indices</div>
+                    </div>
+                    <div class="commodities_indices_cont ass_cont" id="ass_cont_commodities">
+                        <div class="commodities_indices_logo svgg">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+                                <path fill="#333"
+                                    d="M8 0a8 8 0 110 16A8 8 0 018 0zm3.728 8h-1.465a.501.501 0 00-.416.223l-1.333 2A.5.5 0 008.93 11h4.131a.5.5 0 00.417-.777l-1.334-2A.499.499 0 0011.728 8zm-6 0H4.263a.501.501 0 00-.416.223l-1.333 2A.5.5 0 002.93 11h4.13a.5.5 0 00.418-.777l-1.334-2A.499.499 0 005.728 8zm3-4H7.263a.501.501 0 00-.416.223l-1.333 2A.5.5 0 005.93 7h4.13a.5.5 0 00.418-.777l-1.334-2A.499.499 0 008.728 4z" />
+                            </svg>
+                        </div>
+                        <div class="commodities_indices_text svgg_text">Commodities</div>
+                    </div>
+                    <div class="derived_indices_cont">
+                        <div class="derive_logo_text_drop ass_cont" id="ass_cont_derived">
+                            <div class="derived_indices_logo svgg">
+                                <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+                                    <g fill="none">
+                                        <circle fill="#333" cx="8" cy="8" r="8" />
+                                        <path
+                                            d="M10.5 12.207l-.646.647-.708-.708L11 10.293l1.854 1.853-.708.708-.646-.647V14h-1v-1.793zm-7-7.414V3h1v1.793l.646-.647.708.708L4 6.707 2.146 4.854l.708-.708.646.647zM4 8.707l-1.646 1.646-.708-.707L4 7.293l2 2 3-3 2 2 2.646-2.647.708.708L11 9.707l-2-2-3 3-2-2z"
+                                            fill="#FFF" />
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="synthetics_indices_text svgg_text">Derived</div>
+                            <div class="derived_indices_drop">
+                                <svg role="img" xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em"
+                                    viewBox="0 0 24 24" aria-labelledby="chevronDownIconTitle" stroke="#000"
+                                    stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" fill="none"
+                                    color="#000">
+                                    <title id="chevronDownIconTitle">Chevron Down</title>
+                                    <polyline points="6 10 12 16 18 10" />
+                                </svg>
+                                <svg role="img" xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em"
+                                    viewBox="0 0 24 24" aria-labelledby="chevronUpIconTitle" stroke="#000"
+                                    stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" fill="none"
+                                    color="#000">
+                                    <title id="chevronUpIconTitle">Chevron Up</title>
+                                    <polyline points="6 14 12 8 18 14 18 14" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="derived_indices_list_cont">
+                            <div class="bascket">Baskets</div>
+                            <div class="synthetics">Synthetics</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="symbol_assets_type_cont" id="symbol_assets_type_cont">
+                    <div class="symbol_assets_forex_cont pbig" id="pbig_forex">
+                        <div class="forex_and_pairs_cont psm">
+                            <div class="forex big csm">Forex</div>
+                            <div class="pairs sm">Major Pairs</div>
+                        </div>
+                        <div class="all_forex_pairs_cont">
+                            <div class="aud_jpy_aud_usd_cont sym">
+                                <div class="aud_jpy smpt">AUD/JPY</div>
+                                <div class="aud_usd">AUD/USD</div>
+                            </div>
+                            <div class="eur_aud_and_eur_cad_cont sym">
+                                <div class="eur_aud smpt">EUR/AUD</div>
+                                <div class="eur_cad">EUR/CAD</div>
+                            </div>
+                            <div class="eur_chf_and_eur_gbp_cont sym">
+                                <div class="eur_chf smpt">EUR/CHF</div>
+                                <div class="eur_gbp">EUR/GBP</div>
+                            </div>
+                            <div class="eur_jpy_and_eur_usd_cont sym">
+                                <div class="eur_jpy smpt">EUR/JPY</div>
+                                <div class="eur_usd">EUR/USD</div>
+                            </div>
+                            <div class="gbp_aud_and_gbp_jpy_cont sym">
+                                <div class="gbp_aud smpt">GBP/AUD</div>
+                                <div class="gbp_jpy">GBP/JPY</div>
+                            </div>
+                            <div class="gbp_usd_and_usd_cad_cont sym">
+                                <div class="gbp_usd smpt">GBP/USD</div>
+                                <div class="usd_cad">USD/CAD</div>
+                            </div>
+                            <div class="usd_chf_and_usd_jpy_cont sym">
+                                <div class="usd_chf smpt">USD/CHF</div>
+                                <div class="usd_jpy">USD/JPY</div>
+                            </div>
+                        </div>
+                        <div class="forex_and_pairs_cont">
+                            <div class="pairs sm">Minor Pairs</div>
+                        </div>
+                        <div class="all_forex_pairs_cont">
+                            <div class="aud_cad_and_aud_chf_cont sym">
+                                <div class="aud_cad smpt">AUD/CAD</div>
+                                <div class="aud_chf">AUD/CHF</div>
+                            </div>
+                            <div class="aud_nzd_and_eur_nzd_cont sym">
+                                <div class="aud_nzd smpt">AUD/NZD</div>
+                                <div class="eur_nzd">EUR/NZD</div>
+                            </div>
+                            <div class="gbp_cad_and_gbp_chf_cont sym">
+                                <div class="gbp_cad smpt">GBP/CAD</div>
+                                <div class="gbp_chf">GBP/CHF</div>
+                            </div>
+                            <div class="gbp_nok_and_gbp_nzd_cont sym">
+                                <div class="gbp_nok smpt">GBP/NOK</div>
+                                <div class="gbp_nzd">GBP/NZD</div>
+                            </div>
+                            <div class="nzd_jpy_and_nzd_usd_cont sym">
+                                <div class="nzd_jpy smpt">NZD/JPY</div>
+                                <div class="nzd_usd">NZD/USD</div>
+                            </div>
+                            <div class="usd_mxn_and_usd_nok_cont sym">
+                                <div class="usd_mxn smpt">USD/MXN</div>
+                                <div class="usd_nok">USD/NOK</div>
+                            </div>
+                            <div class="usd_pln_and_usd_sek_cont sym">
+                                <div class="usd_pln smpt">USD/PLN</div>
+                                <div class="usd_sek">USD/SEK</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="symbol_assets_indices_cont pbig" id="pbig_stocks_indices">
+                        <div class="indices_and_pairs_cont">
+                            <div class="indices big">Stock Indices</div>
+                            <div class="pairs sm">Asian indices</div>
+                        </div>
+                        <div class="all_indices_pairs_cont">
+                            <div class="aus_honk_kong_indices_cont sym">
+                                <div class="australia_200 smpt">Australia 200</div>
+                                <div class="hong_kong_50">Hong Kong 50</div>
+                            </div>
+                            <div class="Japan_225 sym">
+                                <div class="japan_225">Japan 225</div>
+                            </div>
+                        </div>
+                        <div class="indices_and_pairs_cont">
+                            <div class="pairs sm">European indices</div>
+                        </div>
+                        <div class="all_indices_pairs_cont">
+                            <div class="eur_france_indices_cont sym">
+                                <div class="euro_50 smpt">Euro 50</div>
+                                <div class="france_40">France 40</div>
+                            </div>
+                            <div class="gem_neth_indices_cont sym">
+                                <div class="germany_40 smpt">Germany 40</div>
+                                <div class="netherlands_25">Netherlands 25</div>
+                            </div>
+                            <div class="swiss_uk_indices_cont sym">
+                                <div class="swiss_20 smpt">Swiss 20</div>
+                                <div class="uk_100">UK 100</div>
+                            </div>
+                        </div>
+                        <div class="indices_and_pairs_cont">
+                            <div class="pairs sm">American indices</div>
+                        </div>
+                        <div class="all_indices_pairs_cont">
+                            <div class="us_500_us_tech_indices_cont sym">
+                                <div class="us_500 smpt">US 500</div>
+                                <div class="us_tech_100">US Tech 100</div>
+                            </div>
+                            <div class="wall_street_30_cont sym">
+                                <div class="wall_street_30">Wall Street 30</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="symbol_assets_commodities_cont pbig" id="pbig_commodities">
+                        <div class="commodities_and_types_cont">
+                            <div class="commodities big">Commodities</div>
+                            <div class="types sm">Metals</div>
+                        </div>
+                        <div class="all_commodities_types_cont">
+                            <div class="gold_pallad_cont sym">
+                                <div class="gold_usd smpt">Gold/USD</div>
+                                <div class="palladium_usd">Palladium/USD</div>
+                            </div>
+                            <div class="plat_silver_cont sym">
+                                <div class="platinum_usd smpt">Platinum/USD</div>
+                                <div class="silver_usd">Silver/USD</div>
+                            </div>
+                        </div>
+                        <div class="commodities_and_types_cont">
+                            <div class="types big">Baskets</div>
+                            <div class="forex_basket sm">Forex Basket</div>
+                        </div>
+                        <div class="all_commodities_types_cont">
+                            <div class="forex_basket_aud_basket_cont sym">
+                                <div class="aud_basket smpt">AUD Basket</div>
+                                <div class="eur_basket">EUR Basket</div>
+                            </div>
+                            <div class="eur_basket_gbp_basket_cont sym">
+                                <div class="gbp_basket smpt">GBP Basket</div>
+                                <div class="usd_basket">USD Basket</div>
+                            </div>
+                            <div class="usd_basket_commodity_basket_cont">
+                                <div class="commodities_basket sm">Commodities Basket</div>
+                            </div>
+                            <div class="gold_basket_cont sym">
+                                <div class="gold_basket">Gold Basket</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="symbol_assets_synthetics_cont pbig" id="pbig_synthetics">
+                        <div class="synthetics_and_indices_cont">
+                            <div class="synthetics big">Synthetics</div>
+                            <div class="indices sm">Daily Reset Indices</div>
+                        </div>
+                        <div class="all_synthetics_indices_cont">
+                            <div class="daily_reset_indices_cont sym">
+                                <div class="bear_market_index smpt">Bear Market Index</div>
+                                <div class="bull_market_index">Bull Market Index</div>
+                            </div>
+                        </div>
+                        <div class="indices_and_pairs_cont">
+                            <div class="indices sm">Jump Indices</div>
+                        </div>
+                        <div class="all_jump_indices_cont">
+                            <div class="jump_10_20_indices_cont sym">
+                                <div class="jump_10_index smpt">Jump 10 Index</div>
+                                <div class="jump_25_index">Jump 25 Index</div>
+                            </div>
+                            <div class="jump_50_75_indices_cont sym">
+                                <div class="jump_50_index smpt">Jump 50 Index</div>
+                                <div class="jump_75_index">Jump 75 Index</div>
+                            </div>
+                            <div class="jump_100_index_cont sym">
+                                <div class="jump_100_index">Jump 100 Index</div>
+                            </div>
+                        </div>
+                        <div class="indices_and_pairs_cont">
+                            <div class="indices sm">Continuous Indices</div>
+                        </div>
+                        <div class="all_continuous_indices_cont">
+                            <div class="continuous_vol_10_1s_indices_cont sym">
+                                <div class="volatility_10_1s_index smpt">Volatility 10 (1s) Index</div>
+                                <div class="volatility_10_index">Volatility 10 Index</div>
+                            </div>
+                            <div class="continuous_vol_25_1s_indices_cont sym">
+                                <div class="volatility_25_1s_index smpt">Volatility 25 (1s) Index</div>
+                                <div class="volatility_25_index">Volatility 25 Index</div>
+                            </div>
+                            <div class="continuous_vol_50_1s_indices_cont sym">
+                                <div class="volatility_50_1s_index smpt">Volatility 50 (1s) Index</div>
+                                <div class="volatility_50_index">Volatility 50 Index</div>
+                            </div>
+                            <div class="continuous_vol_75_1s_indices_cont sym">
+                                <div class="volatility_75_1s_index smpt">Volatility 75 (1s) Index</div>
+                                <div class="volatility_75_index">Volatility 75 Index</div>
+                            </div>
+                            <div class="continuous_vol_100_1s_indices_cont sym">
+                                <div class="volatility_100_1s_index smpt">Volatility 100 (1s) Index</div>
+                                <div class="volatility_100_index">Volatility 100 Index</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="total_assets">
-            <div class="asset_fig">
-                <div class="ass1">Total Assetes</div>
-                <div class="ass2">Total Assets In Your Deriv Acoount</div>
+
+
+
+
+
+
+
+
+        <div class="account_type_change_cont" id="curr_acc">
+            <div class="real_demo" id="real_demo">
+                <div class="real" id="real">Real</div>
+                <div class="demo" id="demo">Demo</div>
             </div>
-            <div class="ass3">
-                <div id="ass_fig">10.00</div>
-                <div id="ass_curr">USD</div>
-            </div>
-        </div>
-        <div class="strategies_link">Looking For Trading Strategy? Go To Strategy Hub</div>
-        <div class="logout">
-            <div class="manage_account">Manage Account</div>
-            <div class="logout_left">
-                <div class="logout_logo">
-                    <svg role="img" xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"
-                        aria-labelledby="exitIconTitle" stroke="rgb(128, 128, 128)" stroke-width="1.5"
-                        stroke-linecap="square" stroke-linejoin="miter" fill="none" color="rgb(128, 128, 128)">
-                        <title id="exitIconTitle">Exit</title>
-                        <path d="M18 15l3-3-3-3" />
-                        <path d="M11.5 12H20" />
-                        <path stroke-linecap="round" d="M21 12h-1" />
-                        <path d="M15 4v16H4V4z" />
+            <div class="account_type_cont">
+                <div class="account_type" id="account_type">Demo Account</div>
+                <div class="drop_down pointer" id="drop_down_light_cont">
+                    <svg class="D_3" id="DD_3" role="img" xmlns="http://www.w3.org/2000/svg" width="1.5em"
+                        height="1.5em" viewBox="0 0 24 24" aria-labelledby="chevronDownIconTitle" stroke="#000"
+                        stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" fill="none" color="#000">
+                        <title id="chevronDownIconTitle">Chevron Down</title>
+                        <polyline points="6 10 12 16 18 10" />
+                    </svg>
+                    <svg class="D_4" id="DD_4" role="img" xmlns="http://www.w3.org/2000/svg" width="1.5em"
+                        height="1.5em" viewBox="0 0 24 24" aria-labelledby="chevronUpIconTitle" stroke="#000"
+                        stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" fill="none" color="#000">
+                        <title id="chevronUpIconTitle">Chevron Up</title>
+                        <polyline points="6 14 12 8 18 14 18 14" />
                     </svg>
                 </div>
-                <div class="logout_text">Logout</div>
             </div>
-        </div>
-    </div>
-
-
-    <div class="top_set">
-        <div class="first_set_cont_left" id="first_set_cont_left">
-            <div class="symbol_type_cont" id="symbol_type_cont">
-                <div class="trade_symbol" id="trade_symbol">
-                    <div class="trade_symbol_display" id="trade_symbol_display">
-                        <div class="trade_symbol_first">Forex</div>
-                        <div class="trade_symbol_secound">AUD/JPY</div>
+            <div class="current_balance_cont" id="current_balance_cont">
+                <div class="current_balance" id="current_balance">
+                    <div class="current_balance_logo">
+                        <img src="../images/icons8-usa-48.png" alt="img">
                     </div>
-                    <div class="third_drop_cont" id="third_drop_cont">
-                        <span class="third_dropdown_icon" id="third_dropdown_icon">&#9660;</span>
+                    <div>
+                        <div class="curr curr_second" id="curr">Demo</div>
+                        <div class="curr2 curr2_second" id="curr2">$VRTC273948</div>
                     </div>
                 </div>
-                <div class="trade_type_stream_cont">
+                <div class="current_balance_fig_cont" id="current_balance_fig_cont">
+                    <div class="current_balance_fig" id="current_balance_fig">10.0</div>
+                    <div class="current_balance_currency" id="current_balance_currency">USD</div>
+                </div>
+                <div class="reset" id="reset">
+                    Reset Accounts
+                </div>
+            </div>
+            <div class="total_assets">
+                <div class="asset_fig">
+                    <div class="ass1">Total Assetes</div>
+                    <div class="ass2">Total Assets In Your Deriv Acoount</div>
+                </div>
+                <div class="ass3">
+                    <div id="ass_fig">10.00</div>
+                    <div id="ass_curr">USD</div>
+                </div>
+            </div>
+            <div class="strategies_link">Looking For Trading Strategy? Go To Strategy Hub</div>
+            <div class="logout">
+                <div class="manage_account">Manage Account</div>
+                <div class="logout_left">
+                    <div class="logout_logo">
+                        <svg role="img" xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em"
+                            viewBox="0 0 24 24" aria-labelledby="exitIconTitle" stroke="rgb(128, 128, 128)"
+                            stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" fill="none"
+                            color="rgb(128, 128, 128)">
+                            <title id="exitIconTitle">Exit</title>
+                            <path d="M18 15l3-3-3-3" />
+                            <path d="M11.5 12H20" />
+                            <path stroke-linecap="round" d="M21 12h-1" />
+                            <path d="M15 4v16H4V4z" />
+                        </svg>
+                    </div>
+                    <div class="logout_text">Logout</div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="top_set">
+            <div class="first_set_cont_left" id="first_set_cont_left">
+                <div class="symbol_type_cont" id="symbol_type_cont">
+                    <div class="trade_symbol" id="trade_symbol">
+                        <div class="trade_symbol_display" id="trade_symbol_display">
+                            <div class="trade_symbol_first">Forex</div>
+                            <div class="trade_symbol_secound">AUD/JPY</div>
+                        </div>
+                        <div class="third_drop_cont" id="third_drop_cont">
+                            <span class="third_dropdown_icon" id="third_dropdown_icon">&#9660;</span>
+                        </div>
+                    </div>
+
                     <div class="trade_type" id="trade_type">
                         <div class="trade_type_display" id="trade_type_display">
                             <div class="trade_type_first">Up/Down</div>
@@ -483,37 +512,43 @@
                             <span class="fourth_dropdown_icon" id="fourth_dropdown_icon">&#9660;</span>
                         </div>
                     </div>
-                    <div class="chart_and_tick_stream" id="chart_and_tick_stream">
-                        <div class="chart" id="chart">
-                            <svg class="chart-icon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                aria-labelledby="tradingChartIconTitle" stroke="blue" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round" fill="none" color="blue">
-                                <title id="tradingChartIconTitle">Trading Chart</title>
-                                <!-- Define the path of the trading chart -->
-                                <path d="M2 20 L6 14 L10 18 L14 10 L18 14 L22 6" />
-                                <!-- Define the points on the trading chart -->
-                                <circle cx="2" cy="20" r="1.5" />
-                                <circle cx="6" cy="14" r="1.5" />
-                                <circle cx="10" cy="18" r="1.5" />
-                                <circle cx="14" cy="10" r="1.5" />
-                                <circle cx="18" cy="14" r="1.5" />
-                                <circle cx="22" cy="6" r="1.5" />
-                            </svg>
-                        </div>
-                        <div class="tick_stream" id="tick_stream">2,345.546</div>
+
+                </div>
+                <div class="chart_and_tick_stream" id="chart_and_tick_stream">
+                    <div class="chart" id="chart">
+                        <svg class="chart-icon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            aria-labelledby="tradingChartIconTitle" stroke="blue" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round" fill="none" color="blue">
+                            <title id="tradingChartIconTitle">Trading Chart</title>
+
+                            <path d="M2 20 L6 14 L10 18 L14 10 L18 14 L22 6" />
+
+                            <circle cx="2" cy="20" r="1.5" />
+                            <circle cx="6" cy="14" r="1.5" />
+                            <circle cx="10" cy="18" r="1.5" />
+                            <circle cx="14" cy="10" r="1.5" />
+                            <circle cx="18" cy="14" r="1.5" />
+                            <circle cx="22" cy="6" r="1.5" />
+                        </svg>
                     </div>
+                    <div class="tick_stream" id="tick_stream">2,345.546</div>
                 </div>
             </div>
         </div>
-    </div>
 
 
 
-    <div class="main_body_cont" id="main_body_cont">
+
+
+
+
+
+
+
+
         <div class="main_body_cont_flex" id="main_body_cont_flex">
 
-            <div class="buy_sell buy_sell_one" id="setting_for_buy">
-
+            <div class="buy_sell buy_sell_one" id="buy_sell_one">
                 <div class="start_time_cont" id="start_time_cont">
                     <div class="start_time">Start Time</div>
                     <div class="start_stake_text_drop_cont" id="start_stake_text_drop_cont">
@@ -530,22 +565,23 @@
                             <span class="sixth_dropdown_icon" id="sixth_dropdown_icon">&#9660;</span>
                         </div>
                     </div>
-                    <div class="minimum_input_cont">
-                        <div class="minimum_input" id="minimum_input">
-                            <div class="input_cover">
-                                <input type="text" placeholder="15">
+                    <div class="input_and_minute">
+                        <div class="minimum_input_cont">
+                            <div class="minimum_input" id="minimum_input">
+                                <div class="input_cover">
+                                    <input type="text" placeholder="15">
+                                </div>
                             </div>
-
-                            <div class="minimum_input_text">Minimum: 15</div>
                         </div>
-                    </div>
-                    <div class="stake_Minutes_cont">
-                        <div class="stake_Minutes_text" id="stake_Minutes_text">Munites</div>
-                        <div class="seventh_stake_drop" id="seventh_stake_drop">
-                            <span class="seventh_dropdown_icon" id="seventh_dropdown_icon">&#9660;</span>
+                        <div class="stake_Minutes_cont">
+                            <div class="stake_Minutes_text" id="stake_Minutes_text">Munites</div>
+                            <div class="seventh_stake_drop" id="seventh_stake_drop">
+                                <span class="seventh_dropdown_icon" id="seventh_dropdown_icon">&#9660;</span>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <div class="minimum_input_text">Minimum: 15</div>
                 <div class="stake_display_cont" id="stake_display_cont">
                     <div class="stake_drop_cont" id="stake_drop_cont">
                         <div class="stake_drop_text" id="stake_drop_text">Stake</div>
@@ -556,7 +592,7 @@
                     <div class="stake_display_cont_input" id="stake_display_cont_input">
                         <input type="text" placeholder="10">
                     </div>
-                    <div>USD</div>
+                    <div class="usd_text">USD</div>
                 </div>
                 <div class="allows_equals_cont" id="allows_equals_cont">
                     <div class="check_allows_equals" id="check_allows_equals"><input type="checkbox"></div>
@@ -566,7 +602,15 @@
 
 
 
-            <div class="buy_sell buy_sell_two" id="buy_sell_settings">
+
+
+
+
+
+
+
+
+            <div class="buy_sell buy_sell_two" id="buy_sell_two">
                 <div class="trade_informations_container">
                     <div class="contract_result_container">
                         <div class="contract_result">
@@ -598,7 +642,7 @@
                         <div class="end_tic_off_trade">6,272.46<span class="last_digit">3</span></div>
                     </div>
                     <div class="last_digit_responds">
-                        <div class="slide_trade_result" id="slide_trade_result">
+                        <div class="slide_trade_result last_digits" id="slide_trade_result">
                             <div class="one_out_of_one">1\1</div>
                             <div class="last_digit_mirror" id="last_digit_mirror">S</div>
                         </div>
@@ -620,7 +664,14 @@
 
 
 
-            <div class="buy_sell buy_sell_three" id="setting_for_buy">
+
+
+
+
+
+
+
+            <div class="buy_sell buy_sell_three" id="buy_sell_three">
                 <div class="info_about_tick_history">
                     <p class="info_one">There's an occurance of 3 repeating 4X 4hrs ago
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi quis tempora odit ipsam
@@ -632,7 +683,16 @@
 
 
 
-            <div class="buy_sell buy_sell_four" id="buy_sell_place_order">
+
+
+
+
+
+
+
+
+
+            <div class="buy_sell buy_sell_four" id="buy_sell_four">
                 <div class="multi_trade_cont">
                     <div class="vol_10_cont">
                         <div class="vol_10 vol_stream"><span class="tick_strem">2,345.87</span><span
@@ -719,7 +779,31 @@
 
 
 
-            <div class="buy_sell buy_sell_five" id="buy_sell_place_order">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="buy_sell buy_sell_five" id="buy_sell_five">
                 <div class="up_order_cont" id="up_order_cont">
                     <div class="up_order_btn_up" id="up_order_btn_up">
                         <div class="up_trade_type_cont" id="up_trade_type_cont">
@@ -816,6 +900,8 @@
                 </div>
             </div>
         </div>
+
+
     </div>
     <script defer type="module" src="./trade_page.js"></script>
 </body>

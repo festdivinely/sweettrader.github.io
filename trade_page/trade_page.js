@@ -399,6 +399,84 @@ third_drop_cont.addEventListener('click', () => {
 
 
 
+let buy_sell_one_display = document.getElementById('buy_sell_one_display')
+let buy_sell_two_display = document.getElementById('buy_sell_two_display')
+let buy_sell_three_display = document.getElementById('buy_sell_three_display')
+let buy_sell_four_display = document.getElementById('buy_sell_four_display')
+let buy_sell_five_display = document.getElementById('buy_sell_five_display')
+let buy_sell_one = document.getElementById('buy_sell_one')
+let buy_sell_two = document.getElementById('buy_sell_two')
+let buy_sell_three = document.getElementById('buy_sell_three')
+let buy_sell_four = document.getElementById('buy_sell_four')
+let buy_sell_five = document.getElementById('buy_sell_five')
+
+if(buy_sell_one_display && buy_sell_one){
+    buy_sell_one_display.addEventListener('click', () => {
+        if(buy_sell_one.style.display === 'none'){
+            buy_sell_one.style.display = 'flex'
+        }else{
+            buy_sell_one.style.display = 'none'
+        }
+    })
+}
+
+
+
+if(buy_sell_two_display && buy_sell_two){
+    buy_sell_two_display.addEventListener('click', () => {
+        if(buy_sell_two.style.display === 'none'){
+            buy_sell_two.style.display = 'flex'
+        }else{
+            buy_sell_two.style.display = 'none'
+        }
+    })
+}
+
+
+
+if(buy_sell_three_display && buy_sell_three){
+    buy_sell_three_display.addEventListener('click', () => {
+        if(buy_sell_three.style.display === 'none'){
+            buy_sell_three.style.display = 'flex'
+        }else{
+            buy_sell_three.style.display = 'none'
+        }
+    })
+}
+
+
+if(buy_sell_four_display && buy_sell_four){
+    buy_sell_four_display.addEventListener('click', () => {
+        if(buy_sell_four.style.display === 'none'){
+            buy_sell_four.style.display = 'flex'
+        }else{
+            buy_sell_four.style.display = 'none'
+        }
+    })
+}
+
+
+if(buy_sell_five_display && buy_sell_five){
+    buy_sell_five_display.addEventListener('click', () => {
+        if(buy_sell_five.style.display === 'none'){
+            buy_sell_five.style.display = 'flex'
+        }else{
+            buy_sell_five.style.display = 'none'
+        }
+    })
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
