@@ -20,12 +20,22 @@ var connection = null
 
 var apiAndAuthData = null
 
-var symbol_vol = null
+let duration_amount_cookie = null
+
+let stake_amount_cookie = null
+
+let symbol_vol_cookie = null
+
+let contract_text_cookie = null
+
+
 
 var message1 = null
 
 
 var randomNumber = null;
+
+
 var strNumber = null;
 
 
@@ -84,10 +94,156 @@ let derived_indices_drop_dropdown = document.getElementById('derived_indices_dro
 let derived_indices_drop = document.getElementById('derived_indices_drop')
 let derived_indices_list_cont = document.getElementById('derived_indices_list_cont')
 let volatilities = document.querySelectorAll('.each')
+let tradeTypes = document.querySelectorAll('.types')
 let trade_symbol_secound = document.getElementById('trade_symbol_secound')
 let trade_type_secound = document.getElementById('trade_type_secound')
 let trade_symbol_first= document.getElementById('trade_symbol_first')
 let trade_type_first= document.getElementById('trade_type_first')
+let down_purchase_btn= document.getElementById('down_purchase_btn')
+let up_purchase_btn= document.getElementById('up_purchase_btn')
+
+let buy_sell_one_display = document.getElementById('buy_sell_one_display')
+let buy_sell_two_display = document.getElementById('buy_sell_two_display')
+let buy_sell_three_display = document.getElementById('buy_sell_three_display')
+let buy_sell_four_display = document.getElementById('buy_sell_four_display')
+let buy_sell_five_display = document.getElementById('buy_sell_five_display')
+let buy_sell_one = document.getElementById('buy_sell_one')
+let buy_sell_two = document.getElementById('buy_sell_two')
+let buy_sell_three = document.getElementById('buy_sell_three')
+let buy_sell_four = document.getElementById('buy_sell_four')
+let buy_sell_five = document.getElementById('buy_sell_five')
+
+let fiftth_dropdown_icon= document.getElementById('fiftth_dropdown_icon')
+let sixth_dropdown_icon= document.getElementById('sixth_dropdown_icon')
+let seventh_dropdown_icon= document.getElementById('seventh_dropdown_icon')
+let eight_dropdown_icon = document.getElementById('eight_dropdown_icon')
+
+let start_time_drop_list = document.getElementById('start_time_drop_list')
+let duration_drop_list = document.getElementById('duration_drop_list')
+let duration_unit_list = document.getElementById('duration_unit_list')
+let stake_list = document.getElementById('stake_list')
+
+let start_time_cont = document.getElementById('start_time_cont')
+let duration_stake_text_drop_cont = document.getElementById('duration_stake_text_drop_cont')
+let stake_Minutes_cont = document.getElementById('stake_Minutes_cont')
+let stake_drop_cont = document.getElementById('stake_drop_cont')
+
+let duration_amount_input = document.getElementById('duration_amount_input')
+let stake_amount_input = document.getElementById('stake_amount_input')
+
+let last_digit_prediction_display_cont = document.getElementById('last_digit_prediction_display_cont')
+let not_support = document.getElementById('not_support')
+
+
+
+
+
+
+
+
+
+// Function to set a cookie
+function setCookie(name, value, days) {
+    const date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    const expires = "expires=" + date.toUTCString();
+    document.cookie = name + "=" + value + ";" + expires + ";path=/";
+}
+
+// Function to get a cookie
+function getCookie(name) {
+    const nameEQ = name + "=";
+    const ca = document.cookie.split(';');
+    for(let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+
+// Function to check and set input values from cookies
+function loadValuesFromCookies() {
+    duration_amount_cookie = getCookie('duration_amount_cookie');
+    stake_amount_cookie = getCookie('stake_amount_cookie');
+    symbol_vol_cookie = getCookie('symbol_vol_cookie');
+    contract_text_cookie = getCookie('contract_text_cookie');
+    let contract_type_text_cookie = getCookie('contract_type_text_cookie');
+    let symbol_vol_text_cookie = getCookie('symbol_vol_text_cookie');
+    let type_vol_text_cookie = getCookie('type_vol_text_cookie');
+
+
+
+    shownSvg(contract_text_cookie)
+
+    if (duration_amount_cookie) {
+        document.getElementById('duration_amount_input').value = duration_amount_cookie;
+    }
+
+    if (stake_amount_cookie) {
+        document.getElementById('stake_amount_input').value = stake_amount_cookie;
+    }
+
+    if(contract_text_cookie){
+        trade_type_secound.textContent = contract_text_cookie
+    }else{
+        trade_type_secound.textContent = 'Matches/Differs'
+    }
+
+    if(contract_type_text_cookie){
+       trade_type_first.textContent = contract_type_text_cookie
+    }else{
+        trade_type_first.textContent = 'Digits'
+    }
+
+    if(symbol_vol_text_cookie){
+        trade_symbol_secound.textContent = symbol_vol_text_cookie
+    }else{
+        trade_symbol_secound.textContent = 'Volatility 10 Index'
+    }
+
+    if(type_vol_text_cookie){
+        trade_symbol_first.textContent = type_vol_text_cookie
+    }else{
+        trade_symbol_first.textContent = 'Synthetics'
+    }
+}
+
+
+
+
+
+
+// Set up event listeners to store values in cookies
+document.addEventListener('DOMContentLoaded', (event) => {
+    const durationInput = document.getElementById('duration_amount_input');
+    const stakeInput = document.getElementById('stake_amount_input');
+
+    loadValuesFromCookies();
+    showHide();
+    
+
+    durationInput.addEventListener('input', (event) => {
+        const currentValue = event.target.value;
+        setCookie('duration_amount_cookie', currentValue, 7); // Store for 7 days
+    });
+
+    stakeInput.addEventListener('input', (event) => {
+        const currentValue = event.target.value;
+        setCookie('stake_amount_cookie', currentValue, 7); // Store for 7 days
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
 
 
 import { animateButton } from '../helper_functions/animate_button.js';
@@ -97,8 +253,7 @@ import { displayDrops } from '../helper_functions/drop_drown_up_display.js';
 
 
 
-
-const tickStream = () => api.subscribe({ "ticks": symbol_vol == null ? 'R_10' : symbol_vol });
+const tickStream = () => api.subscribe({ "ticks": symbol_vol_cookie == null ? 'R_10' : symbol_vol_cookie });
 
 function getRandom(strNumber) {
     return randomNumber = strNumber.charAt(strNumber.length - 1);
@@ -110,6 +265,7 @@ const tickResponse = async (res) => {
         console.log('Error : ', data.error.message);
         connection.removeEventListener('message', tickResponse, false);
         await api.disconnect();
+        tick_stream.textContent = 'Not supported'
     }
     if (data.msg_type === 'tick') {
         subscriptionId = data.subscription.id
@@ -220,6 +376,44 @@ const unsubscribeTicks = () => {
 };
 
 
+
+
+
+window.addEventListener('load', function () {
+
+    initializeApi(message1)
+
+    let getAwaitingResponses = setInterval(() => {
+
+        if (authorize_response) {
+            if (authorize_response.authorize.loginid) {
+                logi_id.textContent = authorize_response.authorize.loginid
+                clearInterval(getAwaitingResponses)
+            } else {
+                logi_id.textContent = "VRTC2324567"
+            }
+
+            if (authorize_response.authorize.balance) {
+                var account_balance_fig = this.document.getElementById("balance_amount")
+                if (account_balance_fig) {
+                    account_balance_fig = authorize_response.authorize.balance
+                } else {
+                    console.log("not available")
+                }
+            } else {
+                account_balance_fig.textContent = "10"
+            }
+        } else {
+            console.log("no authorize response yet")
+        }
+    }, 2000);
+
+});
+
+
+
+
+
 if (drop_down_light_cont && dropDownLight && dropUpLight && current_balance) {
     drop_down_light_cont.addEventListener('click', () => {
         if (dropDownLight.style.display === 'block') {
@@ -269,6 +463,7 @@ if (account_balance_drop_cont && account_type_change_cont && overlay) {
 
 
 
+
 if (trade_symbol && account_symbol_change_cont) {
     trade_symbol.addEventListener('click', (event) => {
         event.stopPropagation(); // Prevent the event from propagating to the document
@@ -282,6 +477,33 @@ if (trade_symbol && account_symbol_change_cont) {
     document.addEventListener('click', (event) => {
         if (!account_symbol_change_cont.contains(event.target)) {
             account_symbol_change_cont.style.display = 'none';
+            third_dropdown_icon.innerHTML = dropup
+        }
+    });
+
+} else {
+    console.error('One or more elements are not found');
+}
+
+
+
+
+
+
+if (trade_type && account_contract_type_change_cont) {
+    trade_type.addEventListener('click', (event) => {
+        event.stopPropagation(); // Prevent the event from propagating to the document
+        if (account_contract_type_change_cont.style.display === 'flex') {
+            account_contract_type_change_cont.style.display = 'none';
+        } else {
+            account_contract_type_change_cont.style.display = 'flex';
+        }
+    });
+
+    document.addEventListener('click', (event) => {
+        if (!account_contract_type_change_cont.contains(event.target)) {
+            account_contract_type_change_cont.style.display = 'none';
+            fourth_dropdown_icon.innerHTML = dropup;
         }
     });
 
@@ -337,43 +559,6 @@ if (account_type_change_cont && current_balance) {
 }
 
 
-// dropdown_icon_container.addEventListener("click", () => {
-//     displayDrops()
-// })
-
-
-
-window.addEventListener('load', function () {
-
-    initializeApi(message1)
-
-    let getAwaitingResponses = setInterval(() => {
-
-        if (authorize_response) {
-            if (authorize_response.authorize.loginid) {
-                logi_id.textContent = authorize_response.authorize.loginid
-                clearInterval(getAwaitingResponses)
-            } else {
-                logi_id.textContent = "VRTC2324567"
-            }
-
-            if (authorize_response.authorize.balance) {
-                var account_balance_fig = this.document.getElementById("balance_amount")
-                if (account_balance_fig) {
-                    account_balance_fig = authorize_response.authorize.balance
-                } else {
-                    console.log("not available")
-                }
-            } else {
-                account_balance_fig.textContent = "10"
-            }
-        } else {
-            console.log("no authorize response yet")
-        }
-    }, 2000);
-
-});
-
 
 
 let dropdown = '\u25BC'; // Unicode code point for black down-pointing triangle
@@ -399,6 +584,7 @@ account_balance_drop_cont.addEventListener('click', () => {
     }
 });
 
+
 third_drop_cont.addEventListener('click', () => {
     // Compare innerHTML with Unicode code point values
     if(third_dropdown_icon.innerHTML.charCodeAt(0) === dropdown.charCodeAt(0)){
@@ -409,19 +595,17 @@ third_drop_cont.addEventListener('click', () => {
 });
 
 
+fourth_drop_cont.addEventListener('click', () => {
+    // Compare innerHTML with Unicode code point values
+    if (fourth_dropdown_icon.innerHTML.charCodeAt(0) === dropdown.charCodeAt(0)) {
+        fourth_dropdown_icon.innerHTML = dropup;
+    } else {
+        fourth_dropdown_icon.innerHTML = dropdown;
+    }
+});
 
 
 
-let buy_sell_one_display = document.getElementById('buy_sell_one_display')
-let buy_sell_two_display = document.getElementById('buy_sell_two_display')
-let buy_sell_three_display = document.getElementById('buy_sell_three_display')
-let buy_sell_four_display = document.getElementById('buy_sell_four_display')
-let buy_sell_five_display = document.getElementById('buy_sell_five_display')
-let buy_sell_one = document.getElementById('buy_sell_one')
-let buy_sell_two = document.getElementById('buy_sell_two')
-let buy_sell_three = document.getElementById('buy_sell_three')
-let buy_sell_four = document.getElementById('buy_sell_four')
-let buy_sell_five = document.getElementById('buy_sell_five')
 
 if(buy_sell_one_display && buy_sell_one){
     buy_sell_one_display.addEventListener('click', () => {
@@ -482,42 +666,6 @@ if(buy_sell_five_display && buy_sell_five){
 
 
 
-
-
-if (trade_type && account_contract_type_change_cont) {
-    trade_type.addEventListener('click', (event) => {
-        event.stopPropagation(); // Prevent the event from propagating to the document
-        if (account_contract_type_change_cont.style.display === 'flex') {
-            account_contract_type_change_cont.style.display = 'none';
-        } else {
-            account_contract_type_change_cont.style.display = 'flex';
-        }
-    });
-
-    document.addEventListener('click', (event) => {
-        if (!account_contract_type_change_cont.contains(event.target)) {
-            account_contract_type_change_cont.style.display = 'none';
-            fourth_dropdown_icon.innerHTML = dropup;
-        }
-    });
-
-} else {
-    console.error('One or more elements are not found');
-}
-
-
-fourth_drop_cont.addEventListener('click', () => {
-    // Compare innerHTML with Unicode code point values
-    if (fourth_dropdown_icon.innerHTML.charCodeAt(0) === dropdown.charCodeAt(0)) {
-        fourth_dropdown_icon.innerHTML = dropup;
-    } else {
-        fourth_dropdown_icon.innerHTML = dropdown;
-    }
-});
-
-
-
-
 if (derived_indices_drop && derived_indices_list_cont) {
     derived_indices_drop.addEventListener('click', () => {
 
@@ -546,16 +694,70 @@ if (derived_indices_drop && derived_indices_list_cont) {
 
 
 
+if(stake_drop_cont && stake_list){
+    stake_drop_cont.addEventListener('click', () => {
+        if(stake_list.style.display === 'none'){
+            stake_list.style.display = 'block'
+        }else{
+            stake_list.style.display = 'none'
+        }
+    })
+}
+
+
+if(stake_Minutes_cont && duration_unit_list){
+    stake_Minutes_cont.addEventListener('click', () => {
+        if(duration_unit_list.style.display === 'none'){
+            duration_unit_list.style.display = 'block'
+        }else{
+            duration_unit_list.style.display = 'none'
+        }
+    })
+}
+
+if(duration_stake_text_drop_cont && duration_drop_list){
+    duration_stake_text_drop_cont.addEventListener('click', () => {
+        if(duration_drop_list.style.display === 'none'){
+            duration_drop_list.style.display = 'block'
+        }else{
+            duration_drop_list.style.display = 'none'
+        }
+    })
+}
+
+if(start_time_cont && start_time_drop_list){
+    start_time_cont.addEventListener('click', () => {
+        if(start_time_drop_list.style.display === 'none'){
+            start_time_drop_list.style.display = 'block'
+        }else{
+            start_time_drop_list.style.display = 'none'
+        }
+    })
+}
 
 
 
 
 
 
-
-
-
-
+function showHide(){
+    let show_start_time1_cookie = getCookie('show_start_time1_cookie')
+    let show_start_time2_cookie = getCookie('show_start_time2_cookie')
+    let show_last_digit_prediction_cookie = getCookie('last_digit_prediction_cookie')
+    
+    if(show_start_time1_cookie === 'true' && show_start_time2_cookie === 'true'){
+        start_time_cont.style.display = 'flex'
+    }else{
+        start_time_cont.style.display = 'none'
+    }
+    
+    
+    if(show_last_digit_prediction_cookie === 'true' && (show_start_time2_cookie === 'false' || show_start_time2_cookie === 'false')){
+        last_digit_prediction_display_cont.style.display = 'flex'
+    }else{
+        last_digit_prediction_display_cont.style.display = 'none'
+    }
+}
 
 
 
@@ -575,34 +777,84 @@ if (derived_indices_drop && derived_indices_list_cont) {
 
 
 const handleVolatilityClick = function () {
+    
     unsubscribeTicks(); // Unsubscribe when volatility button is clicke
     let type = "Synthetics"
+     
 
     // Logic for volatility buttons
-    if (this.textContent == "Volatility 10 index") {
-        symbol_vol = "R_10";
-        trade_symbol_secound.textContent = "Volatility 10 index"
+    if (this.textContent == "Volatility 10 Index") {
+        initializeApi(message1)
+        let symbol_vol_set = "R_10";
+        symbol_vol_cookie = "R_10";
+        setCookie('symbol_vol_cookie', symbol_vol_set, 7)
+        setCookie('symbol_vol_text_cookie', this.textContent, 7)
+        setCookie('type_vol_text_cookie', type, 7);
+        trade_symbol_secound.textContent = this.textContent
         trade_symbol_first.textContent = type
-    } else if (this.textContent == "Volatility 25 index") {
-        symbol_vol = "R_25";
-        trade_symbol_secound.textContent = "Volatility 25 index"
+        setCookie('show_start_time1_cookie', false)
+        setCookie('last_digit_prediction_cookie', true)
+        showHide()
+    } else if (this.textContent == "Volatility 25 Index") {
+        initializeApi(message1)
+        let symbol_vol_set = "R_25";
+        symbol_vol_cookie = "R_25";
+        setCookie('symbol_vol_cookie', symbol_vol_set, 7)
+        setCookie('symbol_vol_text_cookie', this.textContent, 7)
+        setCookie('type_vol_text_cookie', type, 7);
+        trade_symbol_secound.textContent = this.textContent
         trade_symbol_first.textContent = type
-    } else if (this.textContent == "Volatility 50 index") {
-        symbol_vol = "R_50";
-        trade_symbol_secound.textContent = "Volatility 50 index"
+        setCookie('show_start_time1_cookie', false)
+        setCookie('last_digit_prediction_cookie', true)
+        showHide()
+    } else if (this.textContent == "Volatility 50 Index") {
+        initializeApi(message1)
+        let symbol_vol_set = "R_50";
+        symbol_vol_cookie = "R_50";
+        setCookie('symbol_vol_cookie', symbol_vol_set, 7)
+        setCookie('symbol_vol_text_cookie', this.textContent, 7)
+        setCookie('type_vol_text_cookie', type, 7);
+        trade_symbol_secound.textContent = this.textContent
         trade_symbol_first.textContent = type
-    } else if (this.textContent == "Volatility 75 index") {
-        symbol_vol = "R_75";
-        trade_symbol_secound.textContent = "Volatility 75 index"
+        setCookie('show_start_time1_cookie', false)
+        setCookie('last_digit_prediction_cookie', true)
+        showHide()
+    } else if (this.textContent == "Volatility 75 Index") {
+        initializeApi(message1)
+        let symbol_vol_set = "R_75";
+        symbol_vol_cookie = "R_75";
+        setCookie('symbol_vol_cookie', symbol_vol_set, 7)
+        setCookie('symbol_vol_text_cookie', this.textContent, 7)
+        setCookie('type_vol_text_cookie', type, 7);
+        trade_symbol_secound.textContent = this.textContent
         trade_symbol_first.textContent = type
-    } else if (this.textContent == "Volatility 100 index") {
-        symbol_vol = "R_100";
-        trade_symbol_secound.textContent = "Volatility 100 index"
+        setCookie('show_start_time1_cookie', false)
+        setCookie('last_digit_prediction_cookie', true)
+        showHide()
+    } else if (this.textContent == "Volatility 100 Index") {
+        initializeApi(message1)
+        let symbol_vol_set = "R_100";
+        symbol_vol_cookie = "R_100";
+        setCookie('symbol_vol_cookie', symbol_vol_set, 7)
+        setCookie('symbol_vol_text_cookie', this.textContent, 7)
+        setCookie('type_vol_text_cookie', type, 7);
+        trade_symbol_secound.textContent = this.textContent
         trade_symbol_first.textContent = type
-    } else {
-        symbol_vol = "R_10";
-        trade_symbol_secound.textContent = "Volatility 10 index"
-        trade_symbol_first.textContent = type
+        setCookie('show_start_time1_cookie', false)
+        setCookie('last_digit_prediction_cookie', true)
+        showHide()
+    } else { 
+        initializeApi(message1) 
+        let symbol_vol_set = ''
+        symbol_vol_cookie = 'not supported'
+        setCookie('symbol_vol_cookie', symbol_vol_set, 7)
+        setCookie('symbol_vol_text_cookie', this.textContent, 7)
+        setCookie('type_vol_text_cookie', 'not provided', 7);
+        trade_symbol_secound.textContent = this.textContent
+        trade_symbol_first.textContent = 'not provided'
+        setCookie('show_start_time1_cookie', true)
+        setCookie('last_digit_prediction_cookie', false)
+        showHide()
     }
 
     api.forget(subscriptionId)
@@ -614,6 +866,11 @@ const handleVolatilityClick = function () {
     }, 1000)
 
 
+    if(account_symbol_change_cont.style.display = 'flex'){
+        account_symbol_change_cont.style.display = 'none'
+    }else{
+        account_symbol_change_cont.style.display = 'flex'
+    }
 };
 
 volatilities.forEach(function (volatility) {
@@ -621,6 +878,211 @@ volatilities.forEach(function (volatility) {
     volatility.addEventListener("click", handleVolatilityClick);
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    let contract_text_cookie = getCookie('contract_text_cookie');
+    shownSvg(contract_text_cookie || "Matches/Differs"); // Default to "Matches/Differs" if no cookie is set
+    setCookie('contract_text_cookie', contract_text_cookie || "Matches/Differs", 7); // Ensure cookie is set for the first time
+});
+
+
+
+
+function shownSvg(contract_text) {
+    let all_svg_up = document.querySelectorAll('.trade_svg_up');
+    let all_svg_down = document.querySelectorAll('.trade_svg_down');
+
+    all_svg_up.forEach(each => {
+        each.style.display = 'none';
+    });
+
+    all_svg_down.forEach(each => {
+        each.style.display = 'none';
+    });
+
+    let match_svg = document.getElementById('match_svg');
+    let differ_svg = document.getElementById('differ_svg');
+    let even_svg = document.getElementById('even_svg');
+    let odd_svg = document.getElementById('odd_svg');
+    let over_svg = document.getElementById('over_svg');
+    let under_svg = document.getElementById('under_svg');
+    let rise_svg = document.getElementById('rise_svg');
+    let fall_svg = document.getElementById('fall_svg');
+    let trade_type_text_digit1 = document.getElementById('trade_type_text_digit1');
+    let trade_type_text_digit2 = document.getElementById('trade_type_text_digit2');
+    let trade_type_text_name_up = document.getElementById('trade_type_text_name_up');
+    let trade_type_text_name_down = document.getElementById('trade_type_text_name_down');
+
+    if (contract_text == "Matches/Differs") {
+        match_svg.style.display = 'block';
+        differ_svg.style.display = 'block';
+        trade_type_text_digit1.style.display = 'block';
+        trade_type_text_digit2.style.display = 'block';
+        trade_type_text_name_up.textContent = 'Matches';
+        trade_type_text_name_down.textContent = 'Differs';
+    } else if (contract_text == "Over/Under") {
+        over_svg.style.display = 'block';
+        under_svg.style.display = 'block';
+        trade_type_text_digit1.style.display = 'block';
+        trade_type_text_digit2.style.display = 'block';
+        trade_type_text_name_up.textContent = 'Over';
+        trade_type_text_name_down.textContent = 'Under';
+    } else if (contract_text == "Odd/Even") {
+        even_svg.style.display = 'block';
+        odd_svg.style.display = 'block';
+        trade_type_text_digit1.style.display = 'block';
+        trade_type_text_digit2.style.display = 'block';
+        trade_type_text_name_up.textContent = 'Even';
+        trade_type_text_name_down.textContent = 'Odd';
+    } else if (contract_text == "Rise/Fall") {
+        rise_svg.style.display = 'block';
+        fall_svg.style.display = 'block';
+        trade_type_text_digit1.style.display = 'none';
+        trade_type_text_digit2.style.display = 'none';
+        trade_type_text_name_up.textContent = 'Rise';
+        trade_type_text_name_down.textContent = 'Fall';
+    } else if (contract_text == "Higher/Lower") {
+        rise_svg.style.display = 'block';
+        fall_svg.style.display = 'block';
+        trade_type_text_digit1.style.display = 'none';
+        trade_type_text_digit2.style.display = 'none';
+        trade_type_text_name_up.textContent = 'Higher';
+        trade_type_text_name_down.textContent = 'Lower';
+    }
+}
+
+const handleTradeTypeClick = function () {
+    // Update cookies before calling shownSvg
+    setCookie('contract_text_cookie', this.textContent, 7);
+
+    shownSvg(this.textContent);
+
+    let type = "Digits";
+    let type2 = "Up/Down";
+
+    // Logic for volatility buttons
+    if (this.textContent == "Matches/Differs") {
+        setCookie('contract_type_text_cookie', type, 7);
+        trade_type_secound.textContent = this.textContent;
+        trade_symbol_first.textContent = type;
+        setCookie('last_digit_prediction_cookie', true);
+        setCookie('show_start_time2_cookie', false);
+        showHide();
+    } else if (this.textContent == "Over/Under") {
+        setCookie('contract_type_text_cookie', type, 7);
+        trade_type_secound.textContent = this.textContent;
+        trade_type_first.textContent = type;
+        setCookie('last_digit_prediction_cookie', false);
+        setCookie('show_start_time2_cookie', false);
+        showHide();
+    } else if (this.textContent == "Odd/Even") {
+        setCookie('contract_type_text_cookie', type, 7);
+        trade_type_secound.textContent = this.textContent;
+        trade_type_first.textContent = type;
+        setCookie('last_digit_prediction_cookie', true);
+        setCookie('show_start_time2_cookie', false);
+        showHide();
+    } else if (this.textContent == "Rise/Fall") {
+        setCookie('contract_type_text_cookie', type2, 7);
+        trade_type_secound.textContent = this.textContent;
+        trade_type_first.textContent = type2;
+        setCookie('last_digit_prediction_cookie', false);
+        setCookie('show_start_time2_cookie', true);
+        showHide();
+    } else if (this.textContent == "Higher/Lower") {
+        setCookie('contract_type_text_cookie', type2, 7);
+        trade_type_secound.textContent = this.textContent;
+        trade_type_first.textContent = type2;
+        setCookie('last_digit_prediction_cookie', false);
+        setCookie('show_start_time2_cookie', true);
+        showHide();
+    } else {
+        setCookie('contract_type_text_cookie', type, 7);
+        trade_type_secound.textContent = this.textContent;
+        trade_type_first.textContent = 'not provided';
+        setCookie('last_digit_prediction_cookie', false);
+        setCookie('show_start_time2_cookie', true);
+        showHide();
+    }
+
+    if (account_contract_type_change_cont.style.display === 'flex') {
+        account_contract_type_change_cont.style.display = 'none';
+    } else {
+        account_contract_type_change_cont.style.display = 'flex';
+    }
+};
+
+
+tradeTypes.forEach(function (types) {
+    types.addEventListener("click", handleTradeTypeClick);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+up_purchase_btn.addEventListener('click', function (){
+    let proposeButton = up_purchase_btn.textContent
+
+})
+down_purchase_btn.addEventListener('click', function (){
+    let proposeButton = down_purchase_btn.textContent 
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

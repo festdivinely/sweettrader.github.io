@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="../bot/bot.css">
     <script defer src="https://unpkg.com/rxjs/bundles/rxjs.umd.min.js"></script>
     <script defer type="module" src="./trade_page.js"></script>
+    <script defer type="module" src="../helper_functions/active_defaul.js"></script>
     <title>Sweet Trader TM</title>
 </head>
 
@@ -101,13 +102,13 @@
         </div>
     </div>
 
-<div class="display_sections">
-    <div class="buy_sell_one_display" id="buy_sell_one_display">&#128250;</div>
-    <div class="buy_sell_two_display" id="buy_sell_two_display">&#128250;</div>
-    <div class="buy_sell_three_display" id="buy_sell_three_display">&#128250;</div>
-    <div class="buy_sell_four_display" id="buy_sell_four_display">&#128250;</div>
-    <div class="buy_sell_five_display" id="buy_sell_five_display">&#128250;</div>
-</div>
+    <div class="display_sections">
+        <div class="buy_sell_one_display" id="buy_sell_one_display">&#128250;</div>
+        <div class="buy_sell_two_display" id="buy_sell_two_display">&#128250;</div>
+        <div class="buy_sell_three_display" id="buy_sell_three_display">&#128250;</div>
+        <div class="buy_sell_four_display" id="buy_sell_four_display">&#128250;</div>
+        <div class="buy_sell_five_display" id="buy_sell_five_display">&#128250;</div>
+    </div>
 
 
     <div class="wraps_everything_inside_body">
@@ -169,17 +170,17 @@
                             </div>
                             <div class="synthetics_indices_text svgg_text">Derived</div>
                             <div class="derived_indices_drop" id="derived_indices_drop">
-                                <svg class="derived_indices_drop_dropdown" id="derived_indices_drop_dropdown"  role="img" xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em"
-                                    viewBox="0 0 24 24" aria-labelledby="chevronDownIconTitle" stroke="#000"
-                                    stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" fill="none"
-                                    color="#000">
+                                <svg class="derived_indices_drop_dropdown" id="derived_indices_drop_dropdown" role="img"
+                                    xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"
+                                    aria-labelledby="chevronDownIconTitle" stroke="#000" stroke-width="1.5"
+                                    stroke-linecap="square" stroke-linejoin="miter" fill="none" color="#000">
                                     <title id="chevronDownIconTitle">Chevron Down</title>
                                     <polyline points="6 10 12 16 18 10" />
                                 </svg>
-                                <svg  class="derived_indices_drop_dropup" id="derived_indices_drop_dropup" role="img" xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em"
-                                    viewBox="0 0 24 24" aria-labelledby="chevronUpIconTitle" stroke="#000"
-                                    stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" fill="none"
-                                    color="#000">
+                                <svg class="derived_indices_drop_dropup" id="derived_indices_drop_dropup" role="img"
+                                    xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"
+                                    aria-labelledby="chevronUpIconTitle" stroke="#000" stroke-width="1.5"
+                                    stroke-linecap="square" stroke-linejoin="miter" fill="none" color="#000">
                                     <title id="chevronUpIconTitle">Chevron Up</title>
                                     <polyline points="6 14 12 8 18 14 18 14" />
                                 </svg>
@@ -401,15 +402,26 @@
 
 
         <div class="account_contract_type_change_cont" id="account_contract_type_change_cont">
-            <div class="category_group_cont" id="category_group_cont">
-                <div class="type_category" id="type_category">Digits</div>
+
+
+
+            <div class="category_group_cont up_down" id="category_group_cont_up_down">
+                <div class="type_category up_down_cate" id="type_category_up_down">Up/Down</div>
+                <div class="up-down_cont" id="up-down_cont">
+                    <div class="rise_fall types" id="matches_differ">Rise/Fall</div>
+                    <div class="higher_lower types" id="over_under">Higher/Lower</div>
+                </div>
+            </div>
+
+            <div class="category_group_cont digits" id="category_group_cont_digits">
+                <div class="type_category digits_cat" id="type_category">Digits</div>
                 <div class="digits_cont" id="digits_cont">
                     <div class="matches_differ types" id="matches_differ">Matches/Differs</div>
                     <div class="over_under types" id="over_under">Over/Under</div>
                     <div class="odd_even types" id="odd_even">Odd/Even</div>
                 </div>
             </div>
- 
+
         </div>
 
 
@@ -560,7 +572,7 @@
 
 
         <div class="main_body_cont_flex" id="main_body_cont_flex">
-            
+
             <div class="buy_sell buy_sell_one" id="buy_sell_one">
                 <div class="start_time_cont" id="start_time_cont">
                     <div class="start_time">Start Time</div>
@@ -568,6 +580,9 @@
                         <div class="start_stake_text" id="start_stake_text">Now</div>
                         <div class="fiftth_stake_drop" id="fiftth_stake_drop">
                             <span class="fiftth_dropdown_icon" id="fiftth_dropdown_icon">&#9660;</span>
+                        </div>
+                        <div class="start_time_drop_list" id="start_time_drop_list">
+                            <div class="now" id="now">Now</div>
                         </div>
                     </div>
                 </div>
@@ -577,36 +592,65 @@
                         <div class="sixth_stake_drop" id="sixth_stake_drop">
                             <span class="sixth_dropdown_icon" id="sixth_dropdown_icon">&#9660;</span>
                         </div>
+                        <div class="duration_drop_list" id="duration_drop_list">
+                            <div class="duration durra" id="duration">Duration</div>
+                            <div class="end_time durra" id="end_time">End Time</div>
+                        </div>
                     </div>
                     <div class="input_and_minute">
                         <div class="minimum_input_cont">
                             <div class="minimum_input" id="minimum_input">
                                 <div class="input_cover">
-                                    <input type="text" placeholder="15">
+                                    <input type="text" id="duration_amount_input" placeholder="15">
                                 </div>
                             </div>
                         </div>
-                        <div class="stake_Minutes_cont">
+                        <div class="stake_Minutes_cont" id="stake_Minutes_cont">
                             <div class="stake_Minutes_text" id="stake_Minutes_text">Munites</div>
                             <div class="seventh_stake_drop" id="seventh_stake_drop">
                                 <span class="seventh_dropdown_icon" id="seventh_dropdown_icon">&#9660;</span>
+                            </div>
+                            <div class="duration_unit_list" id="duration_unit_list">
+                                <div class="ticks duru" id="ticks">ticks</div>
+                                <div class="secounds duru" id="secounds">secounds</div>
+                                <div class="minutes duru" id="minutes">minutes</div>
+                                <div class="hours duru" id="hours">hours</div>
+                                <div class="days duru" id="hours">hours</div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="minimum_input_text">Minimum: 15</div>
+
+                <div class="last_digit_prediction_display_cont" id="last_digit_prediction_display_cont">
+                    <div class="last_digit_prediction_text">Last digit prediction</div>
+                    <div class="last_digit_prediction_input_drop">
+                        <div class="last_digit_input_cover" id="last_digit_input_cover">
+                            <input type="text" id="last_digit_input" placeholder="0">
+                        </div>
+                        <div class="last_digit_drop">
+                            <span class="last_digit_dropdown_icon" id="sast_digit_dropdown_icon">&#9660;</span>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="stake_display_cont" id="stake_display_cont">
                     <div class="stake_drop_cont" id="stake_drop_cont">
                         <div class="stake_drop_text" id="stake_drop_text">Stake</div>
                         <div class="eight_stake_drop" id="eight_stake_drop">
                             <span class="eight_dropdown_icon" id="eight_dropdown_icon">&#9660;</span>
                         </div>
+                        <div class="stake_list" id="stake_list">
+                            <div class="stake stkp" id="stake">stake</div>
+                            <div class="payout stkp" id="payout">payout</div>
+                        </div>
                     </div>
                     <div class="stake_display_cont_input" id="stake_display_cont_input">
-                        <input type="text" placeholder="10">
+                        <input type="text" id="stake_amount_input" placeholder="10">
                     </div>
                     <div class="usd_text">USD</div>
                 </div>
+
                 <div class="allows_equals_cont" id="allows_equals_cont">
                     <div class="check_allows_equals" id="check_allows_equals"><input type="checkbox"></div>
                     <div class="allow_equal-text">Allows equals</div>
@@ -821,17 +865,46 @@
                     <div class="up_order_btn_up" id="up_order_btn_up">
                         <div class="up_trade_type_cont" id="up_trade_type_cont">
                             <div class="up_trade_type_logo" id="up_trade_type_logo">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16">
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" class="match_svg trade_svg_up" id="match_svg" width="32"
+                                    height="32" viewBox="0 0 16 16">
                                     <g fill="none">
                                         <path fill="#FF444F"
                                             d="M3.507 2.343l4.241 4.243c.78.781.78 2.047 0 2.828l-4.242 4.243-.006-.007a1.988 1.988 0 0 1 0-2.814L5.334 9 0 9.012V7h5.334L3.5 5.165a1.988 1.988 0 0 1 0-2.815l.007-.007zm8.986 0l.007.007a1.988 1.988 0 0 1 0 2.814L10.666 7 16 6.988V9h-5.334l1.835 1.835a1.989 1.989 0 0 1 0 2.815l-.007.007L9 10.163l.748-.749c.78-.781.78-2.047 0-2.828L9 5.837l3.493-3.494z" />
                                         <path fill="#85ACB0" d="M9 12v4H7v-4h2zM9 0v4H7V0h2z" />
                                     </g>
                                 </svg>
+
+                                <svg xmlns="http://www.w3.org/2000/svg" class="rise_svg trade_svg_up" id="rise_svg" width="16"
+                                    height="16">
+                                    <g fill="none">
+                                        <path fill="#FF444F"
+                                            d="M14 0H9v.01A1.99 1.99 0 0 0 10.99 2h1.6L4 10.586v2.828l10-10v1.6A1.99 1.99 0 0 0 15.99 7H16V2a2 2 0 0 0-2-2z" />
+                                        <path fill="#85ACB0" d="M1.414 16H0v-2H3.414L2 15.414z" />
+                                    </g>
+                                </svg>
+
+                                <svg xmlns="http://www.w3.org/2000/svg" class="over_svg trade_svg_up" id="over_svg" width="16"
+                                    height="16">
+                                    <g fill="none">
+                                        <path fill="#FF444F"
+                                            d="M5.439 13l-1.99 2H.586l2-2h2.853zM14 1a2 2 0 0 1 2 2v6h-.01A1.99 1.99 0 0 1 14 7.01v-2.6l-6 6.02V7.586L12.586 3H9.99A1.99 1.99 0 0 1 8 1.01V1h6z" />
+                                        <path fill="#85ACB0" d="M0 11h16v2H0z" />
+                                    </g>
+                                </svg>
+
+                                <svg xmlns="http://www.w3.org/2000/svg" class="even_svg trade_svg_up" id="even_svg" width="16" height="16">
+                                    <g fill="none">
+                                        <path fill="#85ACB0" d="M6 10v6H0v-6h6zM16 0v6h-6V0h6z" />
+                                        <path fill="#FF444F" d="M16 10v6h-6v-6h6zM6 0v6H0V0h6z" />
+                                    </g>
+                                </svg>
+                                
                             </div>
                             <div class="up_trade_type_text" id="up_trade_type_text">
-                                <div>Digit</div>
-                                <div>Matches</div>
+                                <div class="trade_type_text_digit1" id="trade_type_text_digit1">Digit</div>
+                                <div class="trade_type_text_name_up" id="trade_type_text_name_up">Matches</div>
                             </div>
                         </div>
                         <div class="stake_payout_puchase_cont" id="stake_payout_puchase_cont">
@@ -868,17 +941,48 @@
                     <div class="down_order_btn_up" id="down_order_btn_down">
                         <div class="down_trade_type_cont" id="down_trade_type_cont">
                             <div class="down_trade_type_logo" id="down_trade_type_logo">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16">
+
+
+                                <svg xmlns="http://www.w3.org/2000/svg" class="differ_svg trade_svg_down" id="differ_svg" width="32"
+                                    height="32" viewBox="0 0 16 16">
                                     <g fill="none">
                                         <path fill="#FF444F"
                                             d="M15.5 7.988V10h-5.334L12 11.835a1.989 1.989 0 0 1 0 2.815l-.006.007L8 10.663l2.248-2.248c.121-.124.225-.264.31-.415l4.942-.012zM4.006.343l4.242 4.243c.78.781.78 2.047 0 2.828l-4.242 4.243L4 11.65a1.988 1.988 0 0 1 0-2.814L5.834 7 .5 7.012V5h5.334L4 3.165A1.988 1.988 0 0 1 4 .35l.006-.007zm7.987 3a1.992 1.992 0 0 1 .126 2.695L12 6.167l-1.2 1.2a2.003 2.003 0 0 0-.44-1.66l-.112-.121L10 5.337l1.993-1.994z" />
                                         <path fill="#85ACB0" d="M9.5 13v3h-2v-3h2zm0-13v3h-2V0h2z" />
                                     </g>
                                 </svg>
+
+                                <svg xmlns="http://www.w3.org/2000/svg" class="fall_svg trade_svg_down" id="fall_svg" width="16"
+                                    height="16">
+                                    <g fill="none">
+                                        <path fill="#FF444F"
+                                            d="M15.99 9A1.99 1.99 0 0 0 14 10.99v1.6l-10-10v2.824L12.586 14h-1.6A1.99 1.99 0 0 0 9 15.99V16h5a2 2 0 0 0 2-2V9h-.01z" />
+                                        <path fill="#85ACB0" d="M0 2V0h1.414L2 .586 3.414 2H2z" />
+                                    </g>
+                                </svg>
+
+                                <svg xmlns="http://www.w3.org/2000/svg" class="under_svg trade_svg_down" id="under_svg" width="16"
+                                    height="16">
+                                    <g fill="none">
+                                        <path fill="#FF444F"
+                                            d="M8 5.57l6 6.02v-2.6A1.99 1.99 0 0 1 15.99 7H16v6a2 2 0 0 1-2 2H8v-.01A1.99 1.99 0 0 1 9.99 13h2.596L8 8.414V5.57zM3.449 1l1.99 2H2.586l-2-2h2.863z" />
+                                        <path fill="#85ACB0" d="M0 3h16v2H0z" />
+                                    </g>
+                                </svg>
+
+                                <svg xmlns="http://www.w3.org/2000/svg" class="odd_svg trade_svg_down" id="odd_svg" width="16"
+                                    height="16">
+                                    <g fill="none">
+                                        <path fill="#85ACB0"
+                                            d="M3.5 8.875l3.5 5.25H0l3.5-5.25zm9 0l3.5 5.25H9l3.5-5.25z" />
+                                        <path fill="#FF444F" d="M4.5 7.125L8 1.875l3.5 5.25z" />
+                                    </g>
+                                </svg>
+
                             </div>
                             <div class="down_trade_type_text" id="down_trade_type_text">
-                                <div>Digit</div>
-                                <div>Differs</div>
+                                <div class="trade_type_text_digit2" id="trade_type_text_digit2">Digit</div>
+                                <div class="trade_type_text_name_down" id="trade_type_text_name_down">Differs</div>
                             </div>
                         </div>
                         <div class="down_stake_payout_puchase_cont" id="down_stake_payout_puchase_cont">

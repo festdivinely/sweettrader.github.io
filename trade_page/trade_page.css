@@ -567,7 +567,7 @@ body {
 
 
 
-.display_sections{
+.display_sections {
     padding: var(--spacing-xl);
     border: .5px solid orange;
     display: flex;
@@ -575,34 +575,34 @@ body {
     cursor: pointer;
 }
 
-.buy_sell_one_display{
+.buy_sell_one_display {
     padding: var(--spacing-s);
     background-color: #e98024;
     cursor: pointer;
 }
 
 
-.buy_sell_two_display{
+.buy_sell_two_display {
     padding: var(--spacing-s);
     background-color: #d33636;
     cursor: pointer;
 }
 
-.buy_sell_three_display{
+.buy_sell_three_display {
     padding: var(--spacing-s);
     background-color: darkorchid;
     cursor: pointer;
 }
 
 
-.buy_sell_four_display{
+.buy_sell_four_display {
     padding: var(--spacing-s);
     background-color: khaki;
     cursor: pointer;
 }
 
 
-.buy_sell_five_display{
+.buy_sell_five_display {
     padding: var(--spacing-s);
     background-color: cornflowerblue;
     cursor: pointer;
@@ -778,11 +778,11 @@ body {
     white-space: nowrap;
 }
 
-.indices_and_pairs_cont{
+.indices_and_pairs_cont {
     margin-bottom: var(--spacing-xl);
 }
 
-.each{
+.each {
     cursor: pointer;
     padding: var(--spacing-s);
     border: .3px solid lightgrey;
@@ -790,18 +790,18 @@ body {
 }
 
 
-.derive_logo_text_drop{
+.derive_logo_text_drop {
     margin-bottom: 0;
 }
 
-.derived_indices_list_cont{
+.derived_indices_list_cont {
     padding: var(--spacing-m);
     display: none;
     flex-direction: column;
 }
 
 
-.bascket{
+.bascket {
     margin-bottom: var(--spacing-m);
     padding: var(--spacing-xs);
     border: .3ps solid lightgrey;
@@ -810,7 +810,7 @@ body {
     cursor: pointer;
 }
 
-.synthetics{
+.synthetics {
     padding: var(--spacing-xs);
     border: .3ps solid lightgrey;
     border-radius: .3em;
@@ -819,7 +819,7 @@ body {
 }
 
 
-.derived_indices_drop_dropup{
+.derived_indices_drop_dropup {
     display: none;
 }
 
@@ -844,7 +844,7 @@ body {
 
 
 
-.wraps_everything_inside_body{
+.wraps_everything_inside_body {
     padding: var(--spacing-l);
     border: .5px solid salmon;
 }
@@ -1065,7 +1065,7 @@ body {
 
 
 
-.account_contract_type_change_cont{
+.account_contract_type_change_cont {
     display: none;
     position: absolute;
     top: auto;
@@ -1083,14 +1083,14 @@ body {
 }
 
 
-.type_category{
+.type_category {
     margin-bottom: var(--spacing-xl);
     font-weight: bold;
     font-size: var(--text-size-xl);
 }
 
 
-.types{
+.types {
     margin-bottom: var(--spacing-xxl);
     cursor: pointer;
     padding: .3em;
@@ -1101,11 +1101,20 @@ body {
 }
 
 
+.up_down{
+    margin: 0 var(--spacing-xl) var(--spacing-xl) 0;
+}
 
 
 
 
+@media (max-width: 768px) {
 
+.account_contract_type_change_cont{
+    flex-direction: column;
+}
+
+}
 
 
 
@@ -1255,7 +1264,7 @@ body {
     display: flex;
     gap: var(--spacing-xl);
     padding: var(--spacing-xl);
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
 }
 
 
@@ -1273,7 +1282,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex: 1 1 50%; /* Each item takes up 50% of the width */
+    flex: 1 1 50%;
+    /* Each item takes up 50% of the width */
     box-sizing: border-box;
     border-radius: .3em;
     display: none;
@@ -1281,7 +1291,8 @@ body {
 
 .buy_sell_two {
     border: .5px solid lightgrey;
-    flex: 1 1 50%; /* Each item takes up 50% of the width */
+    flex: 1 1 50%;
+    /* Each item takes up 50% of the width */
     box-sizing: border-box;
     border-radius: .3em;
 }
@@ -1290,7 +1301,8 @@ body {
 .buy_sell_three {
     border: .5px solid rgb(39, 30, 30);
     border-radius: .3em;
-    flex: 1 1 50%; /* Each item takes up 50% of the width */
+    flex: 1 1 50%;
+    /* Each item takes up 50% of the width */
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -1299,10 +1311,11 @@ body {
 }
 
 
-.buy_sell_four{
+.buy_sell_four {
     display: flex;
     flex-direction: column;
-    flex: 1 1 50%; /* Each item takes up 50% of the width */
+    flex: 1 1 50%;
+    /* Each item takes up 50% of the width */
     box-sizing: border-box;
     border: .5px solid rgb(39, 30, 30);
 }
@@ -1310,7 +1323,8 @@ body {
 .buy_sell_five {
     border: .5px solid lightgrey;
     align-items: stretch;
-    flex: 1 1 50%; /* Each item takes up 50% of the width */
+    flex: 1 1 50%;
+    /* Each item takes up 50% of the width */
     box-sizing: border-box;
     border-radius: .3em;
     display: none;
@@ -1321,10 +1335,17 @@ body {
 
 
 @media (max-width: 800px) {
-    .buy_sell_one, .buy_sell_two, .buy_sell_three, .buy_sell_four, .buy_sell_four, .buy_sell_five {
-      flex: 1 1 100%; /* Each item takes up 100% of the width */
+
+    .buy_sell_one,
+    .buy_sell_two,
+    .buy_sell_three,
+    .buy_sell_four,
+    .buy_sell_four,
+    .buy_sell_five {
+        flex: 1 1 100%;
+        /* Each item takes up 100% of the width */
     }
-  }
+}
 
 
 
@@ -1598,6 +1619,97 @@ body {
 
 
 
+.last_digit_prediction_display_cont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: var(--spacing-l);
+}
+
+.last_digit_prediction_input_drop{
+    display: flex;
+}
+
+.last_digit_input_cover > input {
+    outline: none;
+    border: none;
+}
+
+.last_digit_prediction_input_drop{
+    padding: var(--spacing-s);
+    border: .5px solid lightgrey;
+    border-radius: .3em;
+    margin-left: var(--spacing-s);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1678,7 +1790,7 @@ body {
 }
 
 
-.up_order_btn_down{
+.up_order_btn_down {
     text-align: center;
     padding: var(--spacing-xxl);
     background-color: rgb(243, 245, 247)
@@ -1747,7 +1859,7 @@ body {
     border-radius: .3em;
 }
 
-.down_order_btn_down{
+.down_order_btn_down {
     text-align: center;
     padding: var(--spacing-xxl);
     background-color: rgb(243, 245, 247);
@@ -1817,7 +1929,7 @@ body {
     text-align: center;
     color: #fff;
     font-size: calc(var(--text-size-xl) + 1rem);
-    
+
 }
 
 .proposal_information {
@@ -1829,7 +1941,7 @@ body {
     margin: var(--spacing-l);
     white-space: nowrap;
     overflow: hidden;
-  
+
 }
 
 
@@ -1839,7 +1951,7 @@ body {
     padding: var(--spacing-s);
     border-radius: .3rem;
     margin-bottom: var(--spacing-m);
-   
+
 }
 
 
@@ -1881,14 +1993,14 @@ body {
     justify-content: flex-end;
     align-items: center;
     margin-right: var(--spacing-m);
-   
+
 }
 
 .end_tic_off_trade {
     display: flex;
     justify-content: flex-end;
     color: rgb(184, 177, 177);
-   
+
 }
 
 .last_digit {
@@ -1911,7 +2023,7 @@ body {
     padding: var(--spacing-s);
     height: calc(var(--element-height-s) - 2.4rem);
     padding-top: var(--spacing-xl);
-    
+
 }
 
 .slide_trade_result {
@@ -1928,7 +2040,7 @@ body {
     padding: var(--spacing-l) var(--spacing-m);
     height: var(--element-height-s);
     margin-top: -2.4rem;
-   
+
 }
 
 .last_digit_mirror {
@@ -1962,9 +2074,6 @@ body {
     margin-bottom: var(--spacing-m);
 }
 
-.tick_strrem {
-    color: rgb(184, 177, 177);
-}
 
 .last_digit_tick {
     font-weight: bold;
@@ -1994,6 +2103,142 @@ body {
 
 
 
+.start_time_drop_list {
+    display: none;
+    position: absolute;
+    border: .3px solid lightgrey;
+    background-color: #fff;
+    width: calc(var(--element-width-l) + 1.7rem);
+    color: #000;
+    font-weight: bold;
+    margin-top: calc(var(--spacing-xxl) + .5rem);
+    margin-left: calc(var(--spacing-l) - 1rem);
+    border-radius: .1em;
+}
+
+
+.now{
+    padding: var(--spacing-l);
+    cursor: pointer;
+}
+
+
+
+.duration_drop_list{
+    display: none;
+    position: absolute;
+    border: .3px solid lightgrey;
+    background-color: #fff;
+    width: var(--element-width-m);
+    color: #000;
+    font-weight: bold;
+    margin-top: calc(var(--spacing-xxl) + .8rem);
+    margin-left: calc(var(--spacing-s) - .3rem);
+    border-radius: var(--spacing-xs);
+}
+
+
+.durra{
+    padding: var(--spacing-l);
+    cursor: pointer;
+}
+
+
+
+.duration_unit_list{
+    display: none;
+    position: absolute;
+    border: .3px solid lightgrey;
+    background-color: #fff;
+    width: var(--element-width-m);
+    color: #000;
+    font-weight: bold;
+    margin-top: calc(var(--spacing-xxl) + .8rem);
+    margin-left: calc(var(--spacing-s) - .3rem);
+    border-radius: var(--spacing-xs);
+}
+
+.duru{
+    padding: var(--spacing-l);
+    cursor: pointer;
+}
+
+
+
+
+.stake_list{
+    display: none;
+    position: absolute;
+    border: .3px solid lightgrey;
+    background-color: #fff;
+    width: calc(var(--element-width-m) - 1rem);
+    color: #000;
+    font-weight: bold;
+    margin-top: calc(var(--spacing-xxl) + .8rem);
+    margin-left: calc(var(--spacing-s) - .3rem);
+    border-radius: var(--spacing-xs);
+}
+
+
+
+.stkp{
+    padding: var(--spacing-l);
+    cursor: pointer;
+}
+
+
+
+
+
+.start_time_cont, .duration_stake_text_drop_cont, .stake_Minutes_cont, .stake_drop_cont{
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+.active_default {
+    background-color: lightblue;
+}
+
+/* Custom class for the active div */
+.active {
+    background-color: lightblue;
+}
+
+
+@media (min-width: 770px){
+    .duration_drop_list{
+        margin-top: calc(var(--spacing-xxl));
+        margin-left: calc(var(--spacing-s) - 1.4rem);
+        border-radius: var(--spacing-xs);
+        width: calc(var(--element-width-l));
+    }
+
+    .start_time_drop_list {
+        margin-top: calc(var(--spacing-xxl) + -.4rem);
+        margin-left: calc(var(--spacing-s) - .8rem);
+        width: var(--element-width-l);
+    }
+    
+
+    .duration_unit_list{
+        margin-top: calc(var(--spacing-xxl));
+        margin-left: calc(var(--spacing-s) - 1.2rem);
+        border-radius: var(--spacing-xs);
+        width: var(--element-width-s);
+    }
+
+    .stake_list_cont{
+        font-weight: bold;
+        margin-top: calc(var(--spacing-xxl));
+        margin-left: calc(var(--spacing-s) - 1.2rem);
+    }
+    
+}
 
 
 
@@ -2006,6 +2251,22 @@ body {
 
 
 
+
+
+
+
+
+
+
+
+
+.trade_svg_down, .trade_svg_up {
+    display: none;
+}
+
+.match_svg, .differ_svg{
+    display: block;
+}
 
 
 
