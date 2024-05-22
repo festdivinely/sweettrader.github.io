@@ -1101,7 +1101,7 @@ body {
 }
 
 
-.up_down{
+.up_down {
     margin: 0 var(--spacing-xl) var(--spacing-xl) 0;
 }
 
@@ -1110,9 +1110,9 @@ body {
 
 @media (max-width: 768px) {
 
-.account_contract_type_change_cont{
-    flex-direction: column;
-}
+    .account_contract_type_change_cont {
+        flex-direction: column;
+    }
 
 }
 
@@ -1273,6 +1273,32 @@ body {
         flex-direction: column;
     }
 }
+
+
+
+@media (max-width: 500px) {
+    .info_one {
+        font-size: var(--text-size-m);
+    }
+
+    .buy_price_loose_and_profit_container {
+        font-size: var(--text-size-m);
+    }
+
+    .transaction_refrence{
+        font-size: var(--text-size-s);
+    }
+
+    .proposal_information{
+        font-size: var(--text-size-m);
+    }
+
+    .end_tic_off_trade{
+        font-size: calc(var(--text-size-xxl) + .5rem);
+    }
+}
+
+
 
 
 .buy_sell_one {
@@ -1619,23 +1645,23 @@ body {
 
 
 
-.last_digit_prediction_display_cont{
+.last_digit_prediction_display_cont {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: var(--spacing-l);
 }
 
-.last_digit_prediction_input_drop{
+.last_digit_prediction_input_drop {
     display: flex;
 }
 
-.last_digit_input_cover > input {
+.last_digit_input_cover>input {
     outline: none;
     border: none;
 }
 
-.last_digit_prediction_input_drop{
+.last_digit_prediction_input_drop {
     padding: var(--spacing-s);
     border: .5px solid lightgrey;
     border-radius: .3em;
@@ -2117,14 +2143,14 @@ body {
 }
 
 
-.now{
+.now {
     padding: var(--spacing-l);
     cursor: pointer;
 }
 
 
 
-.duration_drop_list{
+.duration_drop_list {
     display: none;
     position: absolute;
     border: .3px solid lightgrey;
@@ -2138,14 +2164,14 @@ body {
 }
 
 
-.durra{
+.durra {
     padding: var(--spacing-l);
     cursor: pointer;
 }
 
 
 
-.duration_unit_list{
+.duration_unit_list {
     display: none;
     position: absolute;
     border: .3px solid lightgrey;
@@ -2158,7 +2184,7 @@ body {
     border-radius: var(--spacing-xs);
 }
 
-.duru{
+.duru {
     padding: var(--spacing-l);
     cursor: pointer;
 }
@@ -2166,7 +2192,7 @@ body {
 
 
 
-.stake_list{
+.stake_list {
     display: none;
     position: absolute;
     border: .3px solid lightgrey;
@@ -2181,7 +2207,7 @@ body {
 
 
 
-.stkp{
+.stkp {
     padding: var(--spacing-l);
     cursor: pointer;
 }
@@ -2190,7 +2216,10 @@ body {
 
 
 
-.start_time_cont, .duration_stake_text_drop_cont, .stake_Minutes_cont, .stake_drop_cont{
+.start_time_cont,
+.duration_stake_text_drop_cont,
+.stake_Minutes_cont,
+.stake_drop_cont {
     cursor: pointer;
 }
 
@@ -2210,8 +2239,8 @@ body {
 }
 
 
-@media (min-width: 770px){
-    .duration_drop_list{
+@media (min-width: 770px) {
+    .duration_drop_list {
         margin-top: calc(var(--spacing-xxl));
         margin-left: calc(var(--spacing-s) - 1.4rem);
         border-radius: var(--spacing-xs);
@@ -2223,21 +2252,21 @@ body {
         margin-left: calc(var(--spacing-s) - .8rem);
         width: var(--element-width-l);
     }
-    
 
-    .duration_unit_list{
+
+    .duration_unit_list {
         margin-top: calc(var(--spacing-xxl));
         margin-left: calc(var(--spacing-s) - 1.2rem);
         border-radius: var(--spacing-xs);
         width: var(--element-width-s);
     }
 
-    .stake_list_cont{
+    .stake_list_cont {
         font-weight: bold;
         margin-top: calc(var(--spacing-xxl));
         margin-left: calc(var(--spacing-s) - 1.2rem);
     }
-    
+
 }
 
 
@@ -2260,11 +2289,13 @@ body {
 
 
 
-.trade_svg_down, .trade_svg_up {
+.trade_svg_down,
+.trade_svg_up {
     display: none;
 }
 
-.match_svg, .differ_svg{
+.match_svg,
+.differ_svg {
     display: block;
 }
 

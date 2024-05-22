@@ -240,6 +240,48 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 
 
+window.addEventListener('load', function () {
+    let buy_sell_one_display_cookie = getCookie('buy_sell_one_display_cookie');
+    let buy_sell_two_display_cookie = getCookie('buy_sell_two_display_cookie');
+    let buy_sell_three_display_cookie = getCookie('buy_sell_three_display_cookie');
+    let buy_sell_four_display_cookie = getCookie('buy_sell_four_display_cookie');
+    let buy_sell_five_display_cookie = getCookie('buy_sell_five_display_cookie');
+
+    let allBuySell = document.querySelectorAll('.buy_sell');
+
+    allBuySell.forEach(each => {
+        each.style.display = 'none';
+    });
+
+    // Default display when cookies are not availlable
+    if (!buy_sell_one_display_cookie && !buy_sell_five_display_cookie && 
+        !buy_sell_two_display_cookie && !buy_sell_three_display_cookie && !buy_sell_four_display_cookie) {
+        document.getElementById('buy_sell_one').style.display = 'flex';
+        document.getElementById('buy_sell_five').style.display = 'flex';
+
+        setCookie("buy_sell_one_display_cookie", true)
+        setCookie("buy_sell_five_display_cookie", true)
+    } else {
+        if (buy_sell_one_display_cookie == 'true') {
+            document.getElementById('buy_sell_one').style.display = 'flex';
+        }
+        if (buy_sell_two_display_cookie == 'true') {
+            document.getElementById('buy_sell_two').style.display = 'flex';
+        }
+        if (buy_sell_three_display_cookie == 'true') {
+            document.getElementById('buy_sell_three').style.display = 'flex';
+        }
+        if (buy_sell_four_display_cookie == 'true') {
+            document.getElementById('buy_sell_four').style.display = 'flex';
+        }
+        if (buy_sell_five_display_cookie == 'true') {
+            document.getElementById('buy_sell_five').style.display = 'flex';
+        }
+    }
+});
+
+
+
 
 
 
@@ -616,11 +658,15 @@ fourth_drop_cont.addEventListener('click', () => {
 
 
 if(buy_sell_one_display && buy_sell_one){
-    buy_sell_one_display.addEventListener('click', () => {
-        if(buy_sell_one.style.display === 'none'){
+    buy_sell_one_display.addEventListener('click', (event) => {
+        event.stopPropagation();
+        let buy_sell_one_display_cookie = getCookie('buy_sell_one_display_cookie')
+        if(buy_sell_one.style.display === 'none' && (buy_sell_one_display_cookie == 'false' || !buy_sell_one_display_cookie)){
             buy_sell_one.style.display = 'flex'
+            setCookie('buy_sell_one_display_cookie', true)
         }else{
             buy_sell_one.style.display = 'none'
+            setCookie('buy_sell_one_display_cookie', false)
         }
     })
 }
@@ -628,11 +674,15 @@ if(buy_sell_one_display && buy_sell_one){
 
 
 if(buy_sell_two_display && buy_sell_two){
-    buy_sell_two_display.addEventListener('click', () => {
-        if(buy_sell_two.style.display === 'none'){
+    buy_sell_two_display.addEventListener('click', (event) => {
+        event.stopPropagation();
+        let buy_sell_two_display_cookie = getCookie('buy_sell_two_display_cookie')
+        if(buy_sell_two.style.display === 'none' && (buy_sell_two_display_cookie == 'false' || !buy_sell_two_display_cookie)){
             buy_sell_two.style.display = 'flex'
+            setCookie('buy_sell_two_display_cookie', true)
         }else{
             buy_sell_two.style.display = 'none'
+            setCookie('buy_sell_two_display_cookie', false)
         }
     })
 }
@@ -640,33 +690,45 @@ if(buy_sell_two_display && buy_sell_two){
 
 
 if(buy_sell_three_display && buy_sell_three){
-    buy_sell_three_display.addEventListener('click', () => {
-        if(buy_sell_three.style.display === 'none'){
+    buy_sell_three_display.addEventListener('click', (event) => {
+        event.stopPropagation();
+        let buy_sell_three_display_cookie = getCookie('buy_sell_three_display_cookie')
+        if(buy_sell_three.style.display === 'none' && (buy_sell_three_display_cookie == 'false' || !buy_sell_three_display_cookie)){
             buy_sell_three.style.display = 'flex'
+            setCookie('buy_sell_three_display_cookie', true)
         }else{
             buy_sell_three.style.display = 'none'
+            setCookie('buy_sell_three_display_cookie', false)
         }
     })
 }
 
 
 if(buy_sell_four_display && buy_sell_four){
-    buy_sell_four_display.addEventListener('click', () => {
-        if(buy_sell_four.style.display === 'none'){
+    buy_sell_four_display.addEventListener('click', (event) => {
+        event.stopPropagation();
+        let buy_sell_four_display_cookie = getCookie('buy_sell_four_display_cookie')
+        if(buy_sell_four.style.display === 'none' && (buy_sell_four_display_cookie == 'false' || !buy_sell_four_display_cookie)){
             buy_sell_four.style.display = 'flex'
+            setCookie('buy_sell_four_display_cookie', true)
         }else{
             buy_sell_four.style.display = 'none'
+            setCookie('buy_sell_four_display_cookie', false)
         }
     })
 }
 
 
 if(buy_sell_five_display && buy_sell_five){
-    buy_sell_five_display.addEventListener('click', () => {
-        if(buy_sell_five.style.display === 'none'){
+    buy_sell_five_display.addEventListener('click', (event) => {
+        event.stopPropagation();
+        let buy_sell_five_display_cookie = getCookie('buy_sell_five_display_cookie')
+        if(buy_sell_five.style.display === 'none' && (buy_sell_five_display_cookie == 'false' || !buy_sell_five_display_cookie)){
             buy_sell_five.style.display = 'flex'
+            setCookie("buy_sell_five_display_cookie", true)
         }else{
             buy_sell_five.style.display = 'none'
+            setCookie("buy_sell_five_display_cookie", false)
         }
     })
 }
@@ -1121,6 +1183,114 @@ down_purchase_btn.addEventListener('click', function (){
 
 
 
+// this is where you leftOff
+
+
+
+
+
+// document.getElementById('csvFile').addEventListener('change', handleFileSelect, false);
+
+// function handleFileSelect(event) {
+//     const file = event.target.files[0];
+//     const reader = new FileReader();
+
+//     reader.onload = function(event) {
+//         const csvData = event.target.result;
+//         const rows = csvData.split('\n');
+//         const consecutiveOccurrences = 6; // Change this value to specify the desired number of consecutive occurrences
+//         const result = findConsecutiveOccurrences(rows, consecutiveOccurrences);
+
+//         displayResult(result);
+//     };
+
+//     reader.readAsText(file);
+// }
+
+// function findConsecutiveOccurrences(rows, consecutiveOccurrences) {
+//     const result = {};
+//     for (let i = 1; i < rows.length; i++) { // start from index 1 to skip header
+//         const columns = rows[i].split(',');
+//         if (columns.length > 1) {
+//             const lastDigit = columns[1].trim().charAt(columns[1].length - 1);
+//             const number = parseInt(lastDigit);
+//             if (checkConsecutiveOccurrences(rows, i, number, consecutiveOccurrences)) {
+//                 result[number] = i;
+//             }
+//         }
+//     }
+//     return result;
+// }
+
+// function checkConsecutiveOccurrences(rows, startIndex, targetNumber, consecutiveOccurrences) {
+//     let count = 1;
+//     for (let i = startIndex + 1; i < rows.length; i++) {
+//         const columns = rows[i].split(',');
+//         if (columns.length > 1) {
+//             const lastDigit = columns[1].trim().charAt(columns[1].length - 1);
+//             const number = parseInt(lastDigit);
+//             if (number === targetNumber) {
+//                 count++;
+//                 if (count === consecutiveOccurrences) {
+//                     return true;
+//                 }
+//             } else {
+//                 return false;
+//             }
+//         }
+//     }
+//     return false;
+// }
+
+// function displayResult(result) {
+//     const outputDiv = document.getElementById('output');
+//     outputDiv.innerHTML = `<h3>Numbers under the last digit appearing ${Object.keys(result).length} times in a row:</h3>`;
+//     for (const number in result) {
+//         if (result.hasOwnProperty(number)) {
+//             outputDiv.innerHTML += `<p>Number: ${number}, Starting from Line: ${result[number]}</p>`;
+//         }
+//     }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+// document.addEventListener('DOMContentLoaded', function () {
+//     const parentContainer = document.getElementById('info_about_tick_history');
+//     let uniqueIdCounter = 0;
+
+//     function createAndTypeText(text) {
+//         uniqueIdCounter += 1;
+//         const uniqueId = `typed-text-${uniqueIdCounter}`;
+//         const className = `typed-text`;
+
+//         const newPTag = document.createElement('p');
+//         newPTag.id = uniqueId;
+//         newPTag.className = className;
+//         parentContainer.appendChild(newPTag);
+
+//         new Typed(`#${uniqueId}`, {
+//             strings: [text],
+//             typeSpeed: 50,
+//             showCursor: false, // Hide the cursor after typing
+//             onComplete: function (self) {
+//                 // Remove the Typed instance to prevent further modifications
+//                 self.cursor.remove();
+//             }
+//         });
+//     }
+
+//     // Fetch data and typewrite every 5 seconds as an example
+//     setInterval(fetchDataAndTypeWrite, 5000);
+// });
 
 
 
@@ -1143,52 +1313,57 @@ down_purchase_btn.addEventListener('click', function (){
 
 
 
-let allSections = document.querySelectorAll(".pbig");
-let allSectionLinks = document.querySelectorAll(".ass_cont");
-let scrollableContainer = document.querySelector('.symbol_assets_type_cont');
 
-// Click event for links
-allSectionLinks.forEach(link => {
-    link.addEventListener('click', (event) => {
-        // Extract the target section id from the link id
-        let targetId = link.id.replace('ass_cont_', '');
-        let targetElement = document.getElementById(targetId);
+
+
+
+
+// let allSections = document.querySelectorAll(".pbig");
+// let allSectionLinks = document.querySelectorAll(".ass_cont");
+// let scrollableContainer = document.querySelector('.symbol_assets_type_cont');
+
+// // Click event for links
+// allSectionLinks.forEach(link => {
+//     link.addEventListener('click', (event) => {
+//         // Extract the target section id from the link id
+//         let targetId = link.id.replace('ass_cont_', '');
+//         let targetElement = document.getElementById(targetId);
         
-        // Scroll to the target section
-        scrollableContainer.scrollTo({
-            top: targetElement.offsetTop - scrollableContainer.offsetTop,
-            behavior: 'smooth'
-        });
+//         // Scroll to the target section
+//         scrollableContainer.scrollTo({
+//             top: targetElement.offsetTop - scrollableContainer.offsetTop,
+//             behavior: 'smooth'
+//         });
 
-        // Remove active class from all links
-        allSectionLinks.forEach(link => link.classList.remove('active'));
-        // Add active class to the clicked link
-        link.classList.add('active');
-    });
-});
+//         // Remove active class from all links
+//         allSectionLinks.forEach(link => link.classList.remove('active'));
+//         // Add active class to the clicked link
+//         link.classList.add('active');
+//     });
+// });
 
-// Scroll event for the scrollable container
-scrollableContainer.addEventListener('scroll', () => {
-    let containerTop = scrollableContainer.scrollTop;
-    allSections.forEach(section => {
-        let sectionTop = section.offsetTop - scrollableContainer.offsetTop;
-        let sectionHeight = section.offsetHeight;
-        let sectionId = section.getAttribute('id');
+// // Scroll event for the scrollable container
+// scrollableContainer.addEventListener('scroll', () => {
+//     let containerTop = scrollableContainer.scrollTop;
+//     allSections.forEach(section => {
+//         let sectionTop = section.offsetTop - scrollableContainer.offsetTop;
+//         let sectionHeight = section.offsetHeight;
+//         let sectionId = section.getAttribute('id');
 
-        if (containerTop >= sectionTop && containerTop < sectionTop + sectionHeight) {
-            allSectionLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.id.replace('ass_cont_', '') === sectionId) {
-                    link.classList.add('active');
-                }
-            });
-        }
-    });
-});
-
-
+//         if (containerTop >= sectionTop && containerTop < sectionTop + sectionHeight) {
+//             allSectionLinks.forEach(link => {
+//                 link.classList.remove('active');
+//                 if (link.id.replace('ass_cont_', '') === sectionId) {
+//                     link.classList.add('active');
+//                 }
+//             });
+//         }
+//     });
+// });
 
 
+
+// stpo
 
 
 
