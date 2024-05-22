@@ -28,6 +28,8 @@ let symbol_vol_cookie = null
 
 let contract_text_cookie = null
 
+let symbol_vol;
+
 
 
 var message1 = null
@@ -253,7 +255,13 @@ import { displayDrops } from '../helper_functions/drop_drown_up_display.js';
 
 
 
-const tickStream = () => api.subscribe({ "ticks": symbol_vol_cookie == null ? 'R_10' : symbol_vol_cookie });
+
+window.addEventListener('load', function () {
+    symbol_vol = symbol_vol_cookie
+});
+
+
+const tickStream = () => api.subscribe({ "ticks": symbol_vol == null ? 'R_10' : symbol_vol });
 
 function getRandom(strNumber) {
     return randomNumber = strNumber.charAt(strNumber.length - 1);
@@ -786,7 +794,7 @@ const handleVolatilityClick = function () {
     if (this.textContent == "Volatility 10 Index") {
         initializeApi(message1)
         let symbol_vol_set = "R_10";
-        symbol_vol_cookie = "R_10";
+        symbol_vol = symbol_vol_set
         setCookie('symbol_vol_cookie', symbol_vol_set, 7)
         setCookie('symbol_vol_text_cookie', this.textContent, 7)
         setCookie('type_vol_text_cookie', type, 7);
@@ -798,7 +806,7 @@ const handleVolatilityClick = function () {
     } else if (this.textContent == "Volatility 25 Index") {
         initializeApi(message1)
         let symbol_vol_set = "R_25";
-        symbol_vol_cookie = "R_25";
+        symbol_vol = symbol_vol_set
         setCookie('symbol_vol_cookie', symbol_vol_set, 7)
         setCookie('symbol_vol_text_cookie', this.textContent, 7)
         setCookie('type_vol_text_cookie', type, 7);
@@ -810,7 +818,7 @@ const handleVolatilityClick = function () {
     } else if (this.textContent == "Volatility 50 Index") {
         initializeApi(message1)
         let symbol_vol_set = "R_50";
-        symbol_vol_cookie = "R_50";
+        symbol_vol = symbol_vol_set
         setCookie('symbol_vol_cookie', symbol_vol_set, 7)
         setCookie('symbol_vol_text_cookie', this.textContent, 7)
         setCookie('type_vol_text_cookie', type, 7);
@@ -822,7 +830,7 @@ const handleVolatilityClick = function () {
     } else if (this.textContent == "Volatility 75 Index") {
         initializeApi(message1)
         let symbol_vol_set = "R_75";
-        symbol_vol_cookie = "R_75";
+        symbol_vol = symbol_vol_set
         setCookie('symbol_vol_cookie', symbol_vol_set, 7)
         setCookie('symbol_vol_text_cookie', this.textContent, 7)
         setCookie('type_vol_text_cookie', type, 7);
@@ -834,7 +842,7 @@ const handleVolatilityClick = function () {
     } else if (this.textContent == "Volatility 100 Index") {
         initializeApi(message1)
         let symbol_vol_set = "R_100";
-        symbol_vol_cookie = "R_100";
+        symbol_vol = symbol_vol_set
         setCookie('symbol_vol_cookie', symbol_vol_set, 7)
         setCookie('symbol_vol_text_cookie', this.textContent, 7)
         setCookie('type_vol_text_cookie', type, 7);
@@ -846,7 +854,7 @@ const handleVolatilityClick = function () {
     } else { 
         initializeApi(message1) 
         let symbol_vol_set = ''
-        symbol_vol_cookie = 'not supported'
+        symbol_vol = symbol_vol_set
         setCookie('symbol_vol_cookie', symbol_vol_set, 7)
         setCookie('symbol_vol_text_cookie', this.textContent, 7)
         setCookie('type_vol_text_cookie', 'not provided', 7);
