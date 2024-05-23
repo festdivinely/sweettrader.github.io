@@ -849,6 +849,18 @@ body {
     border: .5px solid salmon;
 }
 
+@media (max-width: 360px) {
+    .wraps_everything_inside_body {
+        padding-left: var(--spacing-m);
+
+    }
+
+    .nav_second {
+        padding-right: .5em;
+    }
+}
+
+
 
 
 
@@ -876,7 +888,9 @@ body {
     color: gray;
 }
 
-.real {
+
+
+.real, .demo {
     display: flex;
     justify-content: center;
     padding-bottom: .5rem;
@@ -884,21 +898,12 @@ body {
     flex: 1;
 }
 
-.real_bottom {
-    border-bottom: 2px solid rgb(209, 53, 35);
+
+.border_active {
+    border-bottom: 2px solid red; /* Example border width and style */
 }
 
-.demo {
-    display: flex;
-    justify-content: center;
-    padding-bottom: .5rem;
-    cursor: pointer;
-    flex: 1;
-}
 
-.dremo_bottom {
-    border-bottom: 2px solid rgb(209, 53, 35);
-}
 
 .account_type_cont {
     display: flex;
@@ -1285,15 +1290,15 @@ body {
         font-size: var(--text-size-m);
     }
 
-    .transaction_refrence{
+    .transaction_refrence {
         font-size: var(--text-size-s);
     }
 
-    .proposal_information{
+    .proposal_information {
         font-size: var(--text-size-m);
     }
 
-    .end_tic_off_trade{
+    .end_tic_off_trade {
         font-size: calc(var(--text-size-xxl) + .5rem);
     }
 }

@@ -28,27 +28,31 @@ let symbol_vol_cookie = null
 
 let contract_text_cookie = null
 
+
+
+
+
 let symbol_vol;
 
 
 
-var message1 = null
+let message1 = null
 
 
-var randomNumber = null;
+let randomNumber = null;
 
 
-var strNumber = null;
+let strNumber = null;
 
 
-var authorize_response = null
+let authorize_response = null
 
 
-var subscriptionId = null
+let subscriptionId = null
 
 
 
-var randomNumber2 = null
+let randomNumber2 = null
 
 let balance_default = null
 
@@ -70,6 +74,7 @@ let dropDownLight = document.getElementById('DD_3');
 let dropUpLight = document.getElementById('DD_4');
 let current_balance = document.getElementById('current_balance_cont');
 let current_balance_fig_cont = document.getElementById('current_balance_fig_cont');
+let current_balance_fig = document.getElementById('current_balance_fig');
 let balance_amount  = document.getElementById('balance_amount')
 let account_balance_fig_cont  = document.getElementById('account_balance_fig_cont')
 let tick_stream = document.getElementById('tick_stream')
@@ -135,9 +140,6 @@ let stake_amount_input = document.getElementById('stake_amount_input')
 
 let last_digit_prediction_display_cont = document.getElementById('last_digit_prediction_display_cont')
 let not_support = document.getElementById('not_support')
-
-
-
 
 
 
@@ -210,6 +212,18 @@ function loadValuesFromCookies() {
         trade_symbol_first.textContent = 'Synthetics'
     }
 }
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    let contract_text_cookie = getCookie('contract_text_cookie');
+    let symbol_vol_text_cookie = getCookie('symbol_vol_text_cookie');
+    shownSvg(contract_text_cookie || "Matches/Differs"); // Default to "Matches/Differs" if no cookie is set
+    setCookie('contract_text_cookie', contract_text_cookie || "Matches/Differs", 7); // Ensure cookie is set for the first time
+    setCookie('symbol_vol_text_cookie', symbol_vol_text_cookie || "Volatility 10 Index", 7); // Ensure cookie is set for the first time
+});
+
+
 
 
 
@@ -293,6 +307,7 @@ window.addEventListener('load', function () {
 import { animateButton } from '../helper_functions/animate_button.js';
 
 import { displayDrops } from '../helper_functions/drop_drown_up_display.js';
+
 
 
 
@@ -397,15 +412,57 @@ async function initializeApi(message1) {
             console.log("Authorization failed. Please check your API token.");
             return null;
         } else {
-            logi_id.textContent = authorize_response.authorize.loginid
-            balance_amount.textContent = authorize_response.authorize.balance;
-            balance_default = api.balance({ "balance": 1, "subscribe": 1 });
+
+            console.log("authirzed at init js")
+            console.log(authorize_response.authorize.loginid)
+            console.log(authorize_response.authorize.balance)
+        
+            if(authorize_response.authorize.loginid.startsWith("CR")){
+
+
+                setCookie('real_balance', authorize_response.authorize.balance)
+                setCookie("real_id", authorize_response.authorize.loginid)
+                setCookie("real_icon_usd", true)
+                setCookie("demo_icon_usd", false)
+
+
+                localStorage.setItem('real_balance', authorize_response.authorize.balance)
+                localStorage.setItem("real_id", authorize_response.authorize.loginid)
+                localStorage.setItem("real_icon_usd", true)
+                localStorage.setItem("demo_icon_usd", false)
+
+                let real_balance = localStorage.getItem('real_balance')
+                current_balance_fig.textContent = real_balance
+
+                let login_id = localStorage.getItem('real_id')
+                logi_id.textContent = login_id
+
+
+
+            }else{
+                setCookie('demo_balance', authorize_response.authorize.balance)
+                setCookie('demo_id', authorize_response.authorize.loginid)
+                setCookie("real_icon_usd", false)
+                setCookie("demo_icon_usd", true)
+
+
+
+                localStorage.setItem('demo_balance', authorize_response.authorize.balance)
+                localStorage.setItem('demo_id', authorize_response.authorize.loginid)
+                localStorage.setItem("real_icon_usd", false)
+                localStorage.setItem("demo_icon_usd", true)
+            }
+
+
+            balance_amount.textContent = authorize_response.authorize.balance
+        
+           
+            let balance_default = api.balance({ "balance": 1, "subscribe": 1 });
+            console.log(balance_default)
+            
         }
 
-
-        subscribeTicks();
-
-
+        subscribeTicks()
 
         return { api, authorize_response };
 
@@ -414,6 +471,9 @@ async function initializeApi(message1) {
         return null;
     }
 }
+
+
+
 
 const subscribeTicks = async () => {
     await tickStream();
@@ -430,35 +490,17 @@ const unsubscribeTicks = () => {
 
 
 window.addEventListener('load', function () {
-
     initializeApi(message1)
-
-    let getAwaitingResponses = setInterval(() => {
-
-        if (authorize_response) {
-            if (authorize_response.authorize.loginid) {
-                logi_id.textContent = authorize_response.authorize.loginid
-                clearInterval(getAwaitingResponses)
-            } else {
-                logi_id.textContent = "VRTC2324567"
-            }
-
-            if (authorize_response.authorize.balance) {
-                var account_balance_fig = this.document.getElementById("balance_amount")
-                if (account_balance_fig) {
-                    account_balance_fig = authorize_response.authorize.balance
-                } else {
-                    console.log("not available")
-                }
-            } else {
-                account_balance_fig.textContent = "10"
-            }
-        } else {
-            console.log("no authorize response yet")
-        }
-    }, 2000);
-
-});
+     let getAwaitingResponses = setInterval(() => {
+ 
+         if (authorize_response) {
+                 clearInterval(getAwaitingResponses)
+         } else {
+             console.log("no authorize response yet")
+         }
+     }, 2000);
+ 
+ });
 
 
 
@@ -569,44 +611,130 @@ if (trade_type && account_contract_type_change_cont) {
 
 
 
+// Set up event listeners to store values in cookies
+document.addEventListener('DOMContentLoaded', (event) => {
+    let real_account_selected_for_trade = getCookie('real_account_selected_for_trade');
+    let demo_account_selected_for_trade = getCookie('demo_account_selected_for_trade');
+
+
+    if (real_account_selected_for_trade === "true") {
+        realClickHandler.call(real); // Ensure 'this' inside realClickHandler refers to 'real'
+    } else if (demo_account_selected_for_trade === "true") {
+        demoClickHandler.call(demo); // Ensure 'this' inside demoClickHandler refers to 'demo'
+    }
+});
+
+function activeChoice(element) {
+    real.classList.remove('border_active');
+    demo.classList.remove('border_active');
+
+    element.classList.add("border_active");
+}
+
+function realClickHandler() {
+    account_type.textContent = 'US Dollar';
+    account_type_top.textContent = 'Real Account';
+    reset.style.display = 'none';
+    current_balance_fig_cont.style.display = 'flex';
+
+   
+    setCookie("real_choice_click", true);
+    setCookie("demo_choice_click", false);
+
+    localStorage.setItem("real_choice_click", true);
+    localStorage.setItem("demo_choice_click", false);
+
+    let real_balance = localStorage.getItem('real_balance')
+    current_balance_fig.textContent = real_balance == null ? "click" : real_balance
+
+    let login_id_stored = localStorage.getItem("real_id")
+    logi_id.textContent = login_id_stored == null ? ' $CR5273948' : login_id_stored
+
+   
+
+    activeChoice(this);
+}
+
+function demoClickHandler() {
+    account_type.textContent = 'Demo';
+    account_type_top.textContent = "Demo Account";
+    reset.style.display = 'block';
+    current_balance_fig_cont.style.display = 'none';
+
+
+    setCookie("demo_choice_click", true);
+    setCookie("real_choice_click", false);
+
+    localStorage.setItem("demo_choice_click", true);
+    localStorage.setItem("real_choice_click", false);
+
+    let login_id_stored = localStorage.getItem("demo_id")
+    logi_id.textContent = login_id_stored == null ? ' $VTCTC273948' : login_id_stored
+
+    activeChoice(this);
+}
 
 if (real_demo && real && demo) {
-    real.addEventListener('click', () => {
-        account_type.textContent = 'Real'
-        account_type_top.textContent = 'Real Account'
-        reset.style.display = 'none'
-        current_balance_fig_cont.style.display = 'flex'
-    });
+    real.addEventListener('click', realClickHandler);
+    demo.addEventListener('click', demoClickHandler);
 } else {
     console.error('One or more elements are not found');
 }
 
 
-if (real_demo && real && demo) {
-    demo.addEventListener('click', () => {
-        account_type.textContent = 'Demo'
-        account_type_top.textContent = "Demo Account"
-        reset.style.display = 'block'
-        current_balance_fig_cont.style.display = 'none'
-    });
-} else {
-    console.error('One or more elements are not found');
-}
 
 
 if (account_type_change_cont && current_balance) {
-    current_balance.addEventListener('click', () => {        
+    current_balance.addEventListener('click', (event) => {        
+        event.stopPropagation();
         if (account_type.textContent == 'Demo') {
-            message1 = 'Demo Account'
+            let message1_set = 'Demo Account'
+
+            message1 = message1_set
+
+            setCookie("message1", message1_set)
+            localStorage.setItem("message1", message1_set)
+
             apiAndAuthData = initializeApi(message1)
-        } else if(account_type.textContent == 'Real'){
-            message1 = 'Real Account'
+            
+            setCookie("demo_account_selected_for_trade", true)
+            setCookie("real_account_selected_for_trade", false)
+
+
+        } else if(account_type.textContent == 'US Dollar'){
+            let message1_set = 'Real Account'
+
+            message1 = message1_set
+
+            setCookie("message1", message1_set)
+            localStorage.setItem("message1", message1_set)
+         
             apiAndAuthData = initializeApi(message1)
+
+
+            setCookie("real_account_selected_for_trade", true)
+            setCookie("demo_account_selected_for_trade", false)
+
+            
+        }
+
+         // Prevent the event from propagating to the document
+        if (account_type_change_cont.style.display === 'block' && overlay.style.display === 'block') {
+            account_type_change_cont.style.display = 'none';
+            overlay.style.display = 'none';
         }
     });
 } else {
     console.error('One or more elements are not found');
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -813,24 +941,22 @@ if(start_time_cont && start_time_drop_list){
 function showHide(){
     let show_start_time1_cookie = getCookie('show_start_time1_cookie')
     let show_start_time2_cookie = getCookie('show_start_time2_cookie')
-    let show_last_digit_prediction_cookie = getCookie('last_digit_prediction_cookie')
+    let show_last_digit_prediction_cookie1 = getCookie('last_digit_prediction_cookie1')
+    let show_last_digit_prediction_cookie2 = getCookie('last_digit_prediction_cookie2')
     
-    if(show_start_time1_cookie === 'true' && show_start_time2_cookie === 'true'){
+    if((show_last_digit_prediction_cookie1 === 'false' && show_last_digit_prediction_cookie2 === 'false') ||(show_last_digit_prediction_cookie1 === 'false' && show_last_digit_prediction_cookie2 === 'true')  || (show_last_digit_prediction_cookie1 === 'true' && show_last_digit_prediction_cookie2 === 'false')){
         start_time_cont.style.display = 'flex'
     }else{
         start_time_cont.style.display = 'none'
     }
     
     
-    if(show_last_digit_prediction_cookie === 'true' && (show_start_time2_cookie === 'false' || show_start_time2_cookie === 'false')){
+    if( show_last_digit_prediction_cookie1 === 'true' && show_last_digit_prediction_cookie2 === 'true'){
         last_digit_prediction_display_cont.style.display = 'flex'
     }else{
         last_digit_prediction_display_cont.style.display = 'none'
     }
 }
-
-
-
 
 
 
@@ -863,7 +989,7 @@ const handleVolatilityClick = function () {
         trade_symbol_secound.textContent = this.textContent
         trade_symbol_first.textContent = type
         setCookie('show_start_time1_cookie', false)
-        setCookie('last_digit_prediction_cookie', true)
+        setCookie('last_digit_prediction_cookie1', true)
         showHide()
     } else if (this.textContent == "Volatility 25 Index") {
         initializeApi(message1)
@@ -875,7 +1001,7 @@ const handleVolatilityClick = function () {
         trade_symbol_secound.textContent = this.textContent
         trade_symbol_first.textContent = type
         setCookie('show_start_time1_cookie', false)
-        setCookie('last_digit_prediction_cookie', true)
+        setCookie('last_digit_prediction_cookie1', true)
         showHide()
     } else if (this.textContent == "Volatility 50 Index") {
         initializeApi(message1)
@@ -887,7 +1013,7 @@ const handleVolatilityClick = function () {
         trade_symbol_secound.textContent = this.textContent
         trade_symbol_first.textContent = type
         setCookie('show_start_time1_cookie', false)
-        setCookie('last_digit_prediction_cookie', true)
+        setCookie('last_digit_prediction_cookie1', true)
         showHide()
     } else if (this.textContent == "Volatility 75 Index") {
         initializeApi(message1)
@@ -899,7 +1025,7 @@ const handleVolatilityClick = function () {
         trade_symbol_secound.textContent = this.textContent
         trade_symbol_first.textContent = type
         setCookie('show_start_time1_cookie', false)
-        setCookie('last_digit_prediction_cookie', true)
+        setCookie('last_digit_prediction_cookie1', true)
         showHide()
     } else if (this.textContent == "Volatility 100 Index") {
         initializeApi(message1)
@@ -911,7 +1037,7 @@ const handleVolatilityClick = function () {
         trade_symbol_secound.textContent = this.textContent
         trade_symbol_first.textContent = type
         setCookie('show_start_time1_cookie', false)
-        setCookie('last_digit_prediction_cookie', true)
+        setCookie('last_digit_prediction_cookie1', true)
         showHide()
     } else { 
         initializeApi(message1) 
@@ -923,7 +1049,7 @@ const handleVolatilityClick = function () {
         trade_symbol_secound.textContent = this.textContent
         trade_symbol_first.textContent = 'not provided'
         setCookie('show_start_time1_cookie', true)
-        setCookie('last_digit_prediction_cookie', false)
+        setCookie('last_digit_prediction_cookie1', false)
         showHide()
     }
 
@@ -949,31 +1075,6 @@ volatilities.forEach(function (volatility) {
 
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-document.addEventListener("DOMContentLoaded", function() {
-    let contract_text_cookie = getCookie('contract_text_cookie');
-    shownSvg(contract_text_cookie || "Matches/Differs"); // Default to "Matches/Differs" if no cookie is set
-    setCookie('contract_text_cookie', contract_text_cookie || "Matches/Differs", 7); // Ensure cookie is set for the first time
-});
 
 
 
@@ -1045,6 +1146,8 @@ const handleTradeTypeClick = function () {
     // Update cookies before calling shownSvg
     setCookie('contract_text_cookie', this.textContent, 7);
 
+    localStorage.setItem('contract_type_change_click', true)
+
     shownSvg(this.textContent);
 
     let type = "Digits";
@@ -1055,42 +1158,42 @@ const handleTradeTypeClick = function () {
         setCookie('contract_type_text_cookie', type, 7);
         trade_type_secound.textContent = this.textContent;
         trade_symbol_first.textContent = type;
-        setCookie('last_digit_prediction_cookie', true);
+        setCookie('last_digit_prediction_cookie2', true);
         setCookie('show_start_time2_cookie', false);
         showHide();
     } else if (this.textContent == "Over/Under") {
         setCookie('contract_type_text_cookie', type, 7);
         trade_type_secound.textContent = this.textContent;
         trade_type_first.textContent = type;
-        setCookie('last_digit_prediction_cookie', false);
-        setCookie('show_start_time2_cookie', false);
+        setCookie('last_digit_prediction_cookie2', false);
+        setCookie('show_start_time2_cookie', true);
         showHide();
     } else if (this.textContent == "Odd/Even") {
         setCookie('contract_type_text_cookie', type, 7);
         trade_type_secound.textContent = this.textContent;
         trade_type_first.textContent = type;
-        setCookie('last_digit_prediction_cookie', true);
+        setCookie('last_digit_prediction_cookie2', true);
         setCookie('show_start_time2_cookie', false);
         showHide();
     } else if (this.textContent == "Rise/Fall") {
         setCookie('contract_type_text_cookie', type2, 7);
         trade_type_secound.textContent = this.textContent;
         trade_type_first.textContent = type2;
-        setCookie('last_digit_prediction_cookie', false);
+        setCookie('last_digit_prediction_cookie2', false);
         setCookie('show_start_time2_cookie', true);
         showHide();
     } else if (this.textContent == "Higher/Lower") {
         setCookie('contract_type_text_cookie', type2, 7);
         trade_type_secound.textContent = this.textContent;
         trade_type_first.textContent = type2;
-        setCookie('last_digit_prediction_cookie', false);
+        setCookie('last_digit_prediction_cookie2', false);
         setCookie('show_start_time2_cookie', true);
         showHide();
     } else {
         setCookie('contract_type_text_cookie', type, 7);
         trade_type_secound.textContent = this.textContent;
         trade_type_first.textContent = 'not provided';
-        setCookie('last_digit_prediction_cookie', false);
+        setCookie('last_digit_prediction_cookie2', false);
         setCookie('show_start_time2_cookie', true);
         showHide();
     }
@@ -1183,74 +1286,70 @@ down_purchase_btn.addEventListener('click', function (){
 
 
 
-// this is where you leftOff
 
 
+document.getElementById('csvFile').addEventListener('change', handleFileSelect, false);
 
+function handleFileSelect(event) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
 
+    reader.onload = function(event) {
+        const csvData = event.target.result;
+        const rows = csvData.split('\n');
+        const consecutiveOccurrences = 6; // Change this value to specify the desired number of consecutive occurrences
+        const result = findConsecutiveOccurrences(rows, consecutiveOccurrences);
 
-// document.getElementById('csvFile').addEventListener('change', handleFileSelect, false);
+        displayResult(result);
+    };
 
-// function handleFileSelect(event) {
-//     const file = event.target.files[0];
-//     const reader = new FileReader();
+    reader.readAsText(file);
+}
 
-//     reader.onload = function(event) {
-//         const csvData = event.target.result;
-//         const rows = csvData.split('\n');
-//         const consecutiveOccurrences = 6; // Change this value to specify the desired number of consecutive occurrences
-//         const result = findConsecutiveOccurrences(rows, consecutiveOccurrences);
+function findConsecutiveOccurrences(rows, consecutiveOccurrences) {
+    const result = {};
+    for (let i = 1; i < rows.length; i++) { // start from index 1 to skip header
+        const columns = rows[i].split(',');
+        if (columns.length > 1) {
+            const lastDigit = columns[1].trim().charAt(columns[1].length - 1);
+            const number = parseInt(lastDigit);
+            if (checkConsecutiveOccurrences(rows, i, number, consecutiveOccurrences)) {
+                result[number] = i;
+            }
+        }
+    }
+    return result;
+}
 
-//         displayResult(result);
-//     };
+function checkConsecutiveOccurrences(rows, startIndex, targetNumber, consecutiveOccurrences) {
+    let count = 1;
+    for (let i = startIndex + 1; i < rows.length; i++) {
+        const columns = rows[i].split(',');
+        if (columns.length > 1) {
+            const lastDigit = columns[1].trim().charAt(columns[1].length - 1);
+            const number = parseInt(lastDigit);
+            if (number === targetNumber) {
+                count++;
+                if (count === consecutiveOccurrences) {
+                    return true;
+                }
+            } else {
+                return false;
+            }
+        }
+    }
+    return false;
+}
 
-//     reader.readAsText(file);
-// }
-
-// function findConsecutiveOccurrences(rows, consecutiveOccurrences) {
-//     const result = {};
-//     for (let i = 1; i < rows.length; i++) { // start from index 1 to skip header
-//         const columns = rows[i].split(',');
-//         if (columns.length > 1) {
-//             const lastDigit = columns[1].trim().charAt(columns[1].length - 1);
-//             const number = parseInt(lastDigit);
-//             if (checkConsecutiveOccurrences(rows, i, number, consecutiveOccurrences)) {
-//                 result[number] = i;
-//             }
-//         }
-//     }
-//     return result;
-// }
-
-// function checkConsecutiveOccurrences(rows, startIndex, targetNumber, consecutiveOccurrences) {
-//     let count = 1;
-//     for (let i = startIndex + 1; i < rows.length; i++) {
-//         const columns = rows[i].split(',');
-//         if (columns.length > 1) {
-//             const lastDigit = columns[1].trim().charAt(columns[1].length - 1);
-//             const number = parseInt(lastDigit);
-//             if (number === targetNumber) {
-//                 count++;
-//                 if (count === consecutiveOccurrences) {
-//                     return true;
-//                 }
-//             } else {
-//                 return false;
-//             }
-//         }
-//     }
-//     return false;
-// }
-
-// function displayResult(result) {
-//     const outputDiv = document.getElementById('output');
-//     outputDiv.innerHTML = `<h3>Numbers under the last digit appearing ${Object.keys(result).length} times in a row:</h3>`;
-//     for (const number in result) {
-//         if (result.hasOwnProperty(number)) {
-//             outputDiv.innerHTML += `<p>Number: ${number}, Starting from Line: ${result[number]}</p>`;
-//         }
-//     }
-// }
+function displayResult(result) {
+    const outputDiv = document.getElementById('output');
+    outputDiv.innerHTML = `<h3>Numbers under the last digit appearing ${Object.keys(result).length} times in a row:</h3>`;
+    for (const number in result) {
+        if (result.hasOwnProperty(number)) {
+            outputDiv.innerHTML += `<p>Number: ${number}, Starting from Line: ${result[number]}</p>`;
+        }
+    }
+}
 
 
 
@@ -1263,34 +1362,34 @@ down_purchase_btn.addEventListener('click', function (){
 
 
 
-// document.addEventListener('DOMContentLoaded', function () {
-//     const parentContainer = document.getElementById('info_about_tick_history');
-//     let uniqueIdCounter = 0;
+document.addEventListener('DOMContentLoaded', function () {
+    const parentContainer = document.getElementById('info_about_tick_history');
+    let uniqueIdCounter = 0;
 
-//     function createAndTypeText(text) {
-//         uniqueIdCounter += 1;
-//         const uniqueId = `typed-text-${uniqueIdCounter}`;
-//         const className = `typed-text`;
+    function createAndTypeText(text) {
+        uniqueIdCounter += 1;
+        const uniqueId = `typed-text-${uniqueIdCounter}`;
+        const className = `typed-text`;
 
-//         const newPTag = document.createElement('p');
-//         newPTag.id = uniqueId;
-//         newPTag.className = className;
-//         parentContainer.appendChild(newPTag);
+        const newPTag = document.createElement('p');
+        newPTag.id = uniqueId;
+        newPTag.className = className;
+        parentContainer.appendChild(newPTag);
 
-//         new Typed(`#${uniqueId}`, {
-//             strings: [text],
-//             typeSpeed: 50,
-//             showCursor: false, // Hide the cursor after typing
-//             onComplete: function (self) {
-//                 // Remove the Typed instance to prevent further modifications
-//                 self.cursor.remove();
-//             }
-//         });
-//     }
+        new Typed(`#${uniqueId}`, {
+            strings: [text],
+            typeSpeed: 50,
+            showCursor: false, // Hide the cursor after typing
+            onComplete: function (self) {
+                // Remove the Typed instance to prevent further modifications
+                self.cursor.remove();
+            }
+        });
+    }
 
-//     // Fetch data and typewrite every 5 seconds as an example
-//     setInterval(fetchDataAndTypeWrite, 5000);
-// });
+    // Fetch data and typewrite every 5 seconds as an example
+    setInterval(fetchDataAndTypeWrite, 5000);
+});
 
 
 
@@ -1318,52 +1417,51 @@ down_purchase_btn.addEventListener('click', function (){
 
 
 
-// let allSections = document.querySelectorAll(".pbig");
-// let allSectionLinks = document.querySelectorAll(".ass_cont");
-// let scrollableContainer = document.querySelector('.symbol_assets_type_cont');
+let allSections = document.querySelectorAll(".pbig");
+let allSectionLinks = document.querySelectorAll(".ass_cont");
+let scrollableContainer = document.querySelector('.symbol_assets_type_cont');
 
-// // Click event for links
-// allSectionLinks.forEach(link => {
-//     link.addEventListener('click', (event) => {
-//         // Extract the target section id from the link id
-//         let targetId = link.id.replace('ass_cont_', '');
-//         let targetElement = document.getElementById(targetId);
+// Click event for links
+allSectionLinks.forEach(link => {
+    link.addEventListener('click', (event) => {
+        // Extract the target section id from the link id
+        let targetId = link.id.replace('ass_cont_', '');
+        let targetElement = document.getElementById(targetId);
         
-//         // Scroll to the target section
-//         scrollableContainer.scrollTo({
-//             top: targetElement.offsetTop - scrollableContainer.offsetTop,
-//             behavior: 'smooth'
-//         });
+        // Scroll to the target section
+        scrollableContainer.scrollTo({
+            top: targetElement.offsetTop - scrollableContainer.offsetTop,
+            behavior: 'smooth'
+        });
 
-//         // Remove active class from all links
-//         allSectionLinks.forEach(link => link.classList.remove('active'));
-//         // Add active class to the clicked link
-//         link.classList.add('active');
-//     });
-// });
+        // Remove active class from all links
+        allSectionLinks.forEach(link => link.classList.remove('active'));
+        // Add active class to the clicked link
+        link.classList.add('active');
+    });
+});
 
-// // Scroll event for the scrollable container
-// scrollableContainer.addEventListener('scroll', () => {
-//     let containerTop = scrollableContainer.scrollTop;
-//     allSections.forEach(section => {
-//         let sectionTop = section.offsetTop - scrollableContainer.offsetTop;
-//         let sectionHeight = section.offsetHeight;
-//         let sectionId = section.getAttribute('id');
+// Scroll event for the scrollable container
+scrollableContainer.addEventListener('scroll', () => {
+    let containerTop = scrollableContainer.scrollTop;
+    allSections.forEach(section => {
+        let sectionTop = section.offsetTop - scrollableContainer.offsetTop;
+        let sectionHeight = section.offsetHeight;
+        let sectionId = section.getAttribute('id');
 
-//         if (containerTop >= sectionTop && containerTop < sectionTop + sectionHeight) {
-//             allSectionLinks.forEach(link => {
-//                 link.classList.remove('active');
-//                 if (link.id.replace('ass_cont_', '') === sectionId) {
-//                     link.classList.add('active');
-//                 }
-//             });
-//         }
-//     });
-// });
+        if (containerTop >= sectionTop && containerTop < sectionTop + sectionHeight) {
+            allSectionLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.id.replace('ass_cont_', '') === sectionId) {
+                    link.classList.add('active');
+                }
+            });
+        }
+    });
+});
 
 
 
-// stpo
 
 
 
