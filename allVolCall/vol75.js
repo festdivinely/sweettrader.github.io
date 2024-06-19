@@ -144,6 +144,10 @@ let website_status_info = 'initial'
 
 
 
+let symbol75  = null
+
+
+
 
 
 // Function to set a cookie
@@ -174,6 +178,13 @@ function deleteCookie(name) {
 
 
 
+
+document.addEventListener('DOMContentLoaded', function() {
+    setCookie('symbol75', 'R_75')
+    localStorage.setItem('symbol75', 'R_75')
+
+    symbol75 = localStorage.getItem('symbol75')
+  });
 
 
 
@@ -257,7 +268,7 @@ const websitePingResponse = async (res) => {
     }
 
     if (data.msg_type === 'ping') {
-       let data = data
+       let data = data.msg_type
     }
 
 };
@@ -968,7 +979,7 @@ elements.forEach(element => {
 
             try {
                 // Await the completion of order_propose
-                await order_propose(api, stake_amount, last_digit_prediction_or_barrier, stake_or_payout, contract, currency, duration_amount, duration_unit, symbol_vol);
+                await order_propose(api, stake_amount, last_digit_prediction_or_barrier, stake_or_payout, contract, currency, duration_amount, duration_unit, symbol75);
 
                 let buy = await api.buy({
                     "buy": String(proposal_id),

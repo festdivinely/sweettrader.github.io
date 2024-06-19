@@ -143,6 +143,9 @@ let def_profit_up = null
 let website_status_info = 'initial'
 
 
+let symbol50  = null
+
+
 
 
 
@@ -173,6 +176,12 @@ function deleteCookie(name) {
 }
 
 
+document.addEventListener('DOMContentLoaded', function() {
+    setCookie('symbol50', 'R_50')
+    localStorage.setItem('symbol50', 'R_50')
+
+    symbol50 = localStorage.getItem('symbol50')
+  });
 
 
 
@@ -257,7 +266,7 @@ const websitePingResponse = async (res) => {
     }
 
     if (data.msg_type === 'ping') {
-       let data = data
+       let data = data.msg_type
     }
 
 };
@@ -968,7 +977,7 @@ elements.forEach(element => {
 
             try {
                 // Await the completion of order_propose
-                await order_propose(api, stake_amount, last_digit_prediction_or_barrier, stake_or_payout, contract, currency, duration_amount, duration_unit, symbol_vol);
+                await order_propose(api, stake_amount, last_digit_prediction_or_barrier, stake_or_payout, contract, currency, duration_amount, duration_unit, symbol50);
 
                 let buy = await api.buy({
                     "buy": String(proposal_id),

@@ -637,7 +637,7 @@ const websitePingResponse = async (res) => {
     }
 
     if (data.msg_type === 'ping') {
-        let data = data
+        let data = data.msg_type
      }
 };
 
