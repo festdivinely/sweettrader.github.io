@@ -7,9 +7,15 @@
     <link rel="stylesheet" type="text/css" href="./trade_page.css">
     <link rel="stylesheet" type="text/css" href="../bot/bot.css">
     <script defer src="https://unpkg.com/rxjs/bundles/rxjs.umd.min.js"></script>
-    <script defer type="module" src="./trade_page.js"></script>
     <script defer type="module" src="../helper_functions/active_defaul.js"></script>
+    <script defer type="module" src="./correct.js"></script>
     <script defer type="module" src="../init_api/init_api.js"></script>
+    <script defer type="module" src="../allVolCall/vol10.js"></script>
+    <script defer type="module" src="../allVolCall/vol25.js"></script>
+    <script defer type="module" src="../allVolCall/vol50.js"></script>
+    <script defer type="module" src="../allVolCall/vol75.js"></script>
+    <script defer type="module" src="../allVolCall/vol100.js"></script>
+
     <title>Sweet Trader TM</title>
 </head>
 
@@ -404,13 +410,11 @@
 
         <div class="account_contract_type_change_cont" id="account_contract_type_change_cont">
 
-
-
             <div class="category_group_cont up_down" id="category_group_cont_up_down">
                 <div class="type_category up_down_cate" id="type_category_up_down">Up/Down</div>
                 <div class="up-down_cont" id="up-down_cont">
-                    <div class="rise_fall types" id="matches_differ">Rise/Fall</div>
-                    <div class="higher_lower types" id="over_under">Higher/Lower</div>
+                    <div class="rise_fall types" id="rise_fall">Rise/Fall</div>
+                    <div class="higher_lower types" id="higher_lower">Higher/Lower</div>
                 </div>
             </div>
 
@@ -505,7 +509,8 @@
 
 
 
-
+        <div class="up_proposal_info_cont" id="up_proposal_info_cont">this is for info</div>
+        <div class="down_proposal_info_cont" id="down_proposal_info_cont">this is for info</div>
 
 
 
@@ -563,7 +568,10 @@
         </div>
 
 
-
+        <div class="get_proposal_info_cont" id="get_proposal_info_cont">
+            <div class="up_proposal" id="up_proposal"></div>
+            <div class="down_proposal" id="down_proposal"></div>
+        </div>
 
 
 
@@ -602,12 +610,13 @@
                         <div class="minimum_input_cont">
                             <div class="minimum_input" id="minimum_input">
                                 <div class="input_cover">
-                                    <input type="text" id="duration_amount_input" placeholder="15">
+                                    <input type="text" id="duration_amount_input" placeholder="15" name="duration_amt">
                                 </div>
                             </div>
                         </div>
                         <div class="stake_Minutes_cont" id="stake_Minutes_cont">
-                            <div class="stake_Minutes_text" id="stake_Minutes_text">Munites</div>
+
+                            <div class="stake_Minutes_text" id="stake_Minutes_text">ticks</div>
                             <div class="seventh_stake_drop" id="seventh_stake_drop">
                                 <span class="seventh_dropdown_icon" id="seventh_dropdown_icon">&#9660;</span>
                             </div>
@@ -616,7 +625,7 @@
                                 <div class="secounds duru" id="secounds">secounds</div>
                                 <div class="minutes duru" id="minutes">minutes</div>
                                 <div class="hours duru" id="hours">hours</div>
-                                <div class="days duru" id="hours">hours</div>
+                                <div class="days duru" id="days">days</div>
                             </div>
                         </div>
                     </div>
@@ -627,12 +636,21 @@
                     <div class="last_digit_prediction_text">Last digit prediction</div>
                     <div class="last_digit_prediction_input_drop">
                         <div class="last_digit_input_cover" id="last_digit_input_cover">
-                            <input type="text" id="last_digit_input" placeholder="0">
+                            <input type="text" id="last_digit_input" placeholder="0" name="last_digit_pred">
                         </div>
                         <div class="last_digit_drop">
                             <span class="last_digit_dropdown_icon" id="sast_digit_dropdown_icon">&#9660;</span>
                         </div>
                     </div>
+                </div>
+
+
+                <div class="barrier_offset_display_cont" id="barrier_offset_display_cont">
+                    <div class="barrier_offset_text">Barrier offset</div>
+                    <div class="barrier_offset_input_container">
+                        <input type="text" placeholder="+0.363" id="barrier_input" name="barrier">
+                    </div>
+                    <div class="barrier_result" id="barrier_result">2,457.363</div>
                 </div>
 
                 <div class="stake_display_cont" id="stake_display_cont">
@@ -646,10 +664,50 @@
                             <div class="payout stkp" id="payout">payout</div>
                         </div>
                     </div>
+
                     <div class="stake_display_cont_input" id="stake_display_cont_input">
-                        <input type="text" id="stake_amount_input" placeholder="10">
+                        <input type="text" id="stake_amount_input" placeholder="10" name="stake_amt">
                     </div>
-                    <div class="usd_text">USD</div>
+                    <div class="usd_text_input_cont" id="usd_text_input_cont">
+                        <div class="usd_text" id="usd_text">USD</div>
+                        <span class="ninth_dropdown_icon" id="ninth_dropdown_icon">&#9660;</span>
+                    </div>
+                    <div class="currency_for_order" id="currency_for_order">
+                        <div class="for_fiat" id="for_fiat">
+                            <div class="fiat cur_group_title" id="fait">Fiat</div>
+                            <div class="aud currency" id="aud">AUD</div>
+                            <div class="eur currency" id="eur">EUR</div>
+                            <div class="gbp currency" id="gbp">GBP</div>
+                            <div class="usd currency" id="usd">USD</div>
+                        </div>
+                        <div class="for_crypto" id="for_crypto">
+                            <div class="crypto cur_group_title">Crypto</div>
+                            <div class="bitcoin_cont currency" id="bitcoin_cont">
+                                <div class="bitcoin" id="bitcoin">Bitcoin</div>
+                                <div class="btc" id="bit">(BTC)</div>
+                            </div>
+                            <div class="ethereum_cont currency" id="ethereum_cont">
+                                <div class="ethereum" id="ethereum">Ethereum</div>
+                                <div class="eth" id="eth">(ETH)</div>
+                            </div>
+                            <div class="litecoin_cont currency" id="litecoin_cont">
+                                <div class="litecoin">Litecoin</div>
+                                <div class="ltc" id="ltc">(LTC)</div>
+                            </div>
+                            <div class="usdcoin_cont currency" id="usdcoin_cont">
+                                <div class="usdcoin">USD Coin</div>
+                                <div class="usdc" id="usdc">(USDC)</div>
+                            </div>
+                            <div class="tether_erc_cont currency" id="tether_erc_cont">
+                                <div class="tether_erc" id="tether_erc">Tether ERC20</div>
+                                <div class="e_usdt" id="e_usdt">(eUSDT)</div>
+                            </div>
+                            <div class="tether_trc_cont currency" id="tether_trc_cont">
+                                <div class="tether_trc" id="tether_trc">Tether TRC20</div>
+                                <div class="t_usdt" id="t_usdt">(tUSDT)</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="allows_equals_cont" id="allows_equals_cont">
@@ -672,51 +730,52 @@
                 <div class="trade_informations_container">
                     <div class="contract_result_container">
                         <div class="contract_result">
-                            This contract:
+                            <span>This contract:</span>
+                            <span class="contract_status" id="contract_status"></span>
                         </div>
-                        <div class="close_contract_result_container">&times;</div>
+                        <div class="close_contract_result_container" id="close_contract_result_container">&times;</div>
                     </div>
-                    <div class="proposal_information">Win Payout if volatility is not 9 after 1 tic</div>
+                    <div class="proposal_information" id="proposal_information">Win or loose Payout if ................ </div>
                     <div class="buy_price_loose_and_profit_container">
                         <div class="buy_price_container">
-                            <div class="buy_price_text">Buy Price</div>
-                            <div class="buy_price_figure">10.00 USD</div>
+                            <div class="buy_price_text" id="buy_price_text">Buy Price</div>
+                            <div class="buy_price_figure" id="buy_price_figure"><span class="buy_price_figure_amount" id="buy_price_figure_amount">00.00 </span><span class="result_currency">USD</span></div>
                         </div>
                         <div class="price_after_trade_container">
-                            <div class="price_after_trade_text">Final Price</div>
-                            <div class="price_after_trade_figure">10.99 USD</div>
+                            <div class="price_after_trade_text" id="price_after_trade_text">Final Price</div>
+                            <div class="price_after_trade_figure" id="price_after_trade_figure"><span class="price_after_trade_figure_amount" id="price_after_trade_figure_amount">00.00 </span><span class="result_currency">USD</span></div>
                         </div>
                         <div class="profit_container">
-                            <div class="profit_text">Profit</div>
-                            <div class="profit_figure">0.99 USD</div>
+                            <div class="profit_text" id="profit_text">Profit</div>
+                            <div class="profit_figure"><span class="profit_figure_amount" id="profit_figure_amount">0.00 </span><span class="result_currency">USD</span></div>
                         </div>
                     </div>
-                    <div class="transaction_refrence">Your Transaction Reference Is: <span>435678393547</span></div>
+                    <div class="transaction_refrence">Your Transaction Reference Is: <span class="transaction_refrence_figure" id="transaction_refrence_figure">000000000000</span></div>
                     <div class="time_and_end_tic_container">
                         <div class="time_of_trade">
                             <div class="clock_icon">&#x23F0;</div>
-                            <div class="trade_start_time">09:02:02</div>
+                            <div class="trade_start_time" id="trade_start_time">00:00:00</div>
                         </div>
-                        <div class="end_tic_off_trade">6,272.46<span class="last_digit">3</span></div>
+                        <div class="end_tic_off_trade" id="end_tic_off_trade">0,000.000<span class="last_digit">3</span></div>
                     </div>
-                    <div class="last_digit_responds">
+                    <div class="last_digit_responds" id="last_digit_responds">
                         <div class="slide_trade_result last_digits" id="slide_trade_result">
-                            <div class="one_out_of_one">1\1</div>
-                            <div class="last_digit_mirror" id="last_digit_mirror">S</div>
+                            <div class="one_out_of_one"><span class="durr_amount_prop_count" id="durr_amount_prop_count">1</span><span>\</span><span class="durr_amount_prop" id="durr_amount_prop">1</span></div>
                         </div>
-                        <div class="last_digits zero">0</div>
-                        <div class="last_digits one">1</div>
-                        <div class="last_digits two">2</div>
-                        <div class="last_digits three">3</div>
-                        <div class="last_digits four">4</div>
-                        <div class="last_digits five">5</div>
-                        <div class="last_digits six">6</div>
-                        <div class="last_digits seven">7</div>
-                        <div class="last_digits eight">8</div>
-                        <div class="last_digits nine">9</div>
+                        <div class="last_digits ldgs zero">0</div>
+                        <div class="last_digits ldgs one">1</div>
+                        <div class="last_digits ldgs two">2</div>
+                        <div class="last_digits ldgs three">3</div>
+                        <div class="last_digits ldgs four">4</div>
+                        <div class="last_digits ldgs five">5</div>
+                        <div class="last_digits ldgs six">6</div>
+                        <div class="last_digits ldgs seven">7</div>
+                        <div class="last_digits ldgs eight">8</div>
+                        <div class="last_digits ldgs nine">9</div>
                     </div>
+                    
                     <div class="account_balance_after_trade_result"><span>Account Balance:
-                        </span><span>569.05</span><span>USD</span></div>
+                        </span><span class="balance_after_trade_end" id="balance_after_trade_end">569.05</span><span>USD</span></div>
                 </div>
             </div>
 
@@ -753,103 +812,247 @@
             <div class="buy_sell buy_sell_four" id="buy_sell_four">
                 <div class="multi_trade_cont">
                     <div class="vol_10_cont">
-                        <div class="vol_10 vol_stream"><span class="tick_strem">2,345.87</span><span
-                                class="last_digit_tick">9</span></div>
+                        <div class="vol_10 vol_stream" id="vol_10">
+                            <span class="tick_strem" id="tick_stream10">2,345.87</span>
+                            <span class="last_digit_tick">9</span>
+                        </div>
                         <div class="vol_10_trade_btn_cont vol_cont">
-                            <div class="last_digits zero">0</div>
-                            <div class="last_digits one">1</div>
-                            <div class="last_digits two">2</div>
-                            <div class="last_digits three">3</div>
-                            <div class="last_digits four">4</div>
-                            <div class="last_digits five">5</div>
-                            <div class="last_digits six">6</div>
-                            <div class="last_digits seven">7</div>
-                            <div class="last_digits eight">8</div>
-                            <div class="last_digits nine">9</div>
+                            <div class="last_digits_cont zero_cont lgt1" id="zero_cont">
+                                <div class="zero_alert alert first_alert_zero" id="zero_alert">1x</div>
+                                <div class="zero_d" id="zero_d">0</div>
+                            </div>
+                            <div class="last_digits_cont one_cont lgt1" id="one_cont">
+                                <div class="one_alert alert first_alert_one" id="one_alert">1x</div>
+                                <div class="one_d" id="one_d">1</div>
+                            </div>
+                            <div class="last_digits_cont two_cont lgt1" id="two_cont">
+                                <div class="two_alert alert first_alert_two" id="two_alert">1x</div>
+                                <div class="two_d" id="two_d">2</div>
+                            </div>
+                            <div class="last_digits_cont three_cont lgt1" id="three_cont">
+                                <div class="three_alert alert first_alert_three" id="three_alert">1x</div>
+                                <div class="three_d" id="three_d">3</div>
+                            </div>
+                            <div class="last_digits_cont four_cont lgt1" id="four_cont">
+                                <div class="four_alert alert first_alert_four" id="four_alert">1x</div>
+                                <div class="four_d" id="four_d">4</div>
+                            </div>
+                            <div class="last_digits_cont five_cont lgt1" id="five_cont">
+                                <div class="five_alert alert first_alert_five" id="five_alert">1x</div>
+                                <div class="five_d" id="five_d">5</div>
+                            </div>
+                            <div class="last_digits_cont six_cont lgt1" id="six_cont">
+                                <div class="six_alert alert first_alert_six" id="six_alert">1x</div>
+                                <div class="six_d" id="six_d">6</div>
+                            </div>
+                            <div class="last_digits_cont seven_cont lgt1" id="seven_cont">
+                                <div class="seven_alert alert first_alert_seven" id="seven_alert">1x</div>
+                                <div class="seven_d" id="seven_d">7</div>
+                            </div>
+                            <div class="last_digits_cont eight_cont lgt1" id="eight_cont">
+                                <div class="eight_alert alert first_alert_eight" id="eight_alert">1x</div>
+                                <div class="eight_d" id="eight_d">8</div>
+                            </div>
+                            <div class="last_digits_cont nine_cont lgt1" id="nine_cont">
+                                <div class="nine_alert alert first_alert_nine" id="nine_alert">1x</div>
+                                <div class="nine_d" id="nine_d">9</div>
+                            </div>
                         </div>
                     </div>
                     <div class="vol_25_cont">
-                        <div class="vol_25 vol_stream"><span class="tick_strem">2,345.87</span><span
-                                class="last_digit_tick">9</span></div>
+                        <div class="vol_25 vol_stream" id="vol_25">
+                            <span class="tick_strem" id="tick_stream25">2,345.87</span>
+                            <span class="last_digit_tick">9</span>
+                        </div>
                         <div class="vol_25_trade_btn_cont vol_cont">
-                            <div class="last_digits zero">0</div>
-                            <div class="last_digits one">1</div>
-                            <div class="last_digits two">2</div>
-                            <div class="last_digits three">3</div>
-                            <div class="last_digits four">4</div>
-                            <div class="last_digits five">5</div>
-                            <div class="last_digits six">6</div>
-                            <div class="last_digits seven">7</div>
-                            <div class="last_digits eight">8</div>
-                            <div class="last_digits nine">9</div>
+                            <div class="last_digits_cont zero_cont lgt2" id="zero_cont">
+                                <div class="zero_alert alert first_alert2_zero" id="zero_alert">1x</div>
+                                <div class="zero_d" id="zero_d">0</div>
+                            </div>
+                            <div class="last_digits_cont one_cont lgt2" id="one_cont">
+                                <div class="one_alert alert first_alert2_one" id="one_alert">1x</div>
+                                <div class="one_d" id="one_d">1</div>
+                            </div>
+                            <div class="last_digits_cont two_cont lgt2" id="two_cont">
+                                <div class="two_alert alert first_alert2_two" id="two_alert">1x</div>
+                                <div class="two_d" id="two_d">2</div>
+                            </div>
+                            <div class="last_digits_cont three_cont lgt2" id="three_cont">
+                                <div class="three_alert alert first_alert2_three" id="three_alert">1x</div>
+                                <div class="three_d" id="three_d">3</div>
+                            </div>
+                            <div class="last_digits_cont four_cont lgt2" id="four_cont">
+                                <div class="four_alert alert first_alert2_four" id="four_alert">1x</div>
+                                <div class="four_d" id="four_d">4</div>
+                            </div>
+                            <div class="last_digits_cont five_cont lgt2" id="five_cont">
+                                <div class="five_alert alert first_alert2_five" id="five_alert">1x</div>
+                                <div class="five_d" id="five_d">5</div>
+                            </div>
+                            <div class="last_digits_cont six_cont lgt2" id="six_cont">
+                                <div class="six_alert alert first_alert2_six" id="six_alert">1x</div>
+                                <div class="six_d" id="six_d">6</div>
+                            </div>
+                            <div class="last_digits_cont seven_cont lgt2" id="seven_cont">
+                                <div class="seven_alert alert first_alert2_seven" id="seven_alert">1x</div>
+                                <div class="seven_d" id="seven_d">7</div>
+                            </div>
+                            <div class="last_digits_cont eight_cont lgt2" id="eight_cont">
+                                <div class="eight_alert alert first_alert2_eight" id="eight_alert">1x</div>
+                                <div class="eight_d" id="eight_d">8</div>
+                            </div>
+                            <div class="last_digits_cont nine_cont lgt2" id="nine_cont">
+                                <div class="nine_alert alert first_alert2_nine" id="nine_alert">1x</div>
+                                <div class="nine_d" id="nine_d">9</div>
+                            </div>
                         </div>
                     </div>
                     <div class="vol_50_cont">
-                        <div class="vol_50 vol_stream"><span class="tick_strem">2,345.87</span><span
-                                class="last_digit_tick">9</span></div>
+                        <div class="vol_50 vol_stream" id="vol_50">
+                            <span class="tick_strem" id="tick_stream50">2,345.87</span>
+                            <span class="last_digit_tick">9</span>
+                        </div>
                         <div class="vol_50_trade_btn_cont vol_cont">
-                            <div class="last_digits zero">0</div>
-                            <div class="last_digits one">1</div>
-                            <div class="last_digits two">2</div>
-                            <div class="last_digits three">3</div>
-                            <div class="last_digits four">4</div>
-                            <div class="last_digits five">5</div>
-                            <div class="last_digits six">6</div>
-                            <div class="last_digits seven">7</div>
-                            <div class="last_digits eight">8</div>
-                            <div class="last_digits nine">9</div>
+                            <div class="last_digits_cont zero_cont lgt3" id="zero_cont">
+                                <div class="zero_alert alert first_alert3_zero" id="zero_alert">1x</div>
+                                <div class="zero_d" id="zero_d">0</div>
+                            </div>
+                            <div class="last_digits_cont one_cont lgt3" id="one_cont">
+                                <div class="one_alert alert first_alert3_one" id="one_alert">1x</div>
+                                <div class="one_d" id="one_d">1</div>
+                            </div>
+                            <div class="last_digits_cont two_cont lgt3" id="two_cont">
+                                <div class="two_alert alert first_alert3_two" id="two_alert">1x</div>
+                                <div class="two_d" id="two_d">2</div>
+                            </div>
+                            <div class="last_digits_cont three_cont lgt3" id="three_cont">
+                                <div class="three_alert alert first_alert3_three" id="three_alert">1x</div>
+                                <div class="three_d" id="three_d">3</div>
+                            </div>
+                            <div class="last_digits_cont four_cont lgt3" id="four_cont">
+                                <div class="four_alert alert first_alert3_four" id="four_alert">1x</div>
+                                <div class="four_d" id="four_d">4</div>
+                            </div>
+                            <div class="last_digits_cont five_cont lgt3" id="five_cont">
+                                <div class="five_alert alert first_alert3_five" id="five_alert">1x</div>
+                                <div class="five_d" id="five_d">5</div>
+                            </div>
+                            <div class="last_digits_cont six_cont lgt3" id="six_cont">
+                                <div class="six_alert alert first_alert3_six" id="six_alert">1x</div>
+                                <div class="six_d" id="six_d">6</div>
+                            </div>
+                            <div class="last_digits_cont seven_cont lgt3" id="seven_cont">
+                                <div class="seven_alert alert first_alert3_seven" id="seven_alert">1x</div>
+                                <div class="seven_d" id="seven_d">7</div>
+                            </div>
+                            <div class="last_digits_cont eight_cont lgt3" id="eight_cont">
+                                <div class="eight_alert alert first_alert3_eight" id="eight_alert">1x</div>
+                                <div class="eight_d" id="eight_d">8</div>
+                            </div>
+                            <div class="last_digits_cont nine_cont lgt3" id="nine_cont">
+                                <div class="nine_alert alert first_alert3_nine" id="nine_alert">1x</div>
+                                <div class="nine_d" id="nine_d">9</div>
+                            </div>
                         </div>
                     </div>
                     <div class="vol_75_cont">
-                        <div class="vol_75 vol_stream"><span class="tick_strem">2,345.87</span><span
-                                class="last_digit_tick">9</span></div>
+                        <div class="vol_75 vol_stream" id="vol_75">
+                            <span class="tick_strem" id="tick_stream75">2,345.87</span>
+                            <span class="last_digit_tick">9</span>
+                        </div>
                         <div class="vol_75_trade_btn_cont vol_cont">
-                            <div class="last_digits zero">0</div>
-                            <div class="last_digits one">1</div>
-                            <div class="last_digits two">2</div>
-                            <div class="last_digits three">3</div>
-                            <div class="last_digits four">4</div>
-                            <div class="last_digits five">5</div>
-                            <div class="last_digits six">6</div>
-                            <div class="last_digits seven">7</div>
-                            <div class="last_digits eight">8</div>
-                            <div class="last_digits nine">9</div>
+                            <div class="last_digits_cont zero_cont lgt4" id="zero_cont">
+                                <div class="zero_alert alert first_alert4_zero" id="zero_alert">1x</div>
+                                <div class="zero_d" id="zero_d">0</div>
+                            </div>
+                            <div class="last_digits_cont one_cont lgt4" id="one_cont">
+                                <div class="one_alert alert first_alert4_one" id="one_alert">1x</div>
+                                <div class="one_d" id="one_d">1</div>
+                            </div>
+                            <div class="last_digits_cont two_cont lgt4" id="two_cont">
+                                <div class="two_alert alert first_alert4_two" id="two_alert">1x</div>
+                                <div class="two_d" id="two_d">2</div>
+                            </div>
+                            <div class="last_digits_cont three_cont lgt4" id="three_cont">
+                                <div class="three_alert alert first_alert4_three" id="three_alert">1x</div>
+                                <div class="three_d" id="three_d">3</div>
+                            </div>
+                            <div class="last_digits_cont four_cont lgt4" id="four_cont">
+                                <div class="four_alert alert first_alert4_four" id="four_alert">1x</div>
+                                <div class="four_d" id="four_d">4</div>
+                            </div>
+                            <div class="last_digits_cont five_cont lgt4" id="five_cont">
+                                <div class="five_alert alert first_alert4_five" id="five_alert">1x</div>
+                                <div class="five_d" id="five_d">5</div>
+                            </div>
+                            <div class="last_digits_cont six_cont lgt4" id="six_cont">
+                                <div class="six_alert alert first_alert4_six" id="six_alert">1x</div>
+                                <div class="six_d" id="six_d">6</div>
+                            </div>
+                            <div class="last_digits_cont seven_cont lgt4" id="seven_cont">
+                                <div class="seven_alert alert first_alert4_seven" id="seven_alert">1x</div>
+                                <div class="seven_d" id="seven_d">7</div>
+                            </div>
+                            <div class="last_digits_cont eight_cont lgt4" id="eight_cont">
+                                <div class="eight_alert alert first_alert4_eight" id="eight_alert">1x</div>
+                                <div class="eight_d" id="eight_d">8</div>
+                            </div>
+                            <div class="last_digits_cont nine_cont lgt4" id="nine_cont">
+                                <div class="nine_alert alert first_alert4_nine" id="nine_alert">1x</div>
+                                <div class="nine_d" id="nine_d">9</div>
+                            </div>
                         </div>
                     </div>
                     <div class="vol_100_cont">
-                        <div class="vol_100 vol_stream"><span class="tick_strem">2,345.87</span><span
-                                class="last_digit_tick">9</span></div>
+                        <div class="vol_100 vol_stream" id="vol_100">
+                            <span class="tick_strem" id="tick_stream100">2,345.87</span>
+                            <span class="last_digit_tick">9</span>
+                        </div>
                         <div class="vol_100_trade_btn_cont vol_cont">
-                            <div class="last_digits zero">0</div>
-                            <div class="last_digits one">1</div>
-                            <div class="last_digits two">2</div>
-                            <div class="last_digits three">3</div>
-                            <div class="last_digits four">4</div>
-                            <div class="last_digits five">5</div>
-                            <div class="last_digits six">6</div>
-                            <div class="last_digits seven">7</div>
-                            <div class="last_digits eight">8</div>
-                            <div class="last_digits nine">9</div>
+                            <div class="last_digits_cont zero_cont lgt5" id="zero_cont">
+                                <div class="zero_alert alert first_alert5_zero" id="zero_alert">1x</div>
+                                <div class="zero_d" id="zero_d">0</div>
+                            </div>
+                            <div class="last_digits_cont one_cont lgt5" id="one_cont">
+                                <div class="one_alert alert first_alert5_one" id="one_alert">1x</div>
+                                <div class="one_d" id="one_d">1</div>
+                            </div>
+                            <div class="last_digits_cont two_cont lgt5" id="two_cont">
+                                <div class="two_alert alert first_alert5_two" id="two_alert">1x</div>
+                                <div class="two_d" id="two_d">2</div>
+                            </div>
+                            <div class="last_digits_cont three_cont lgt5" id="three_cont">
+                                <div class="three_alert alert first_alert5_three" id="three_alert">1x</div>
+                                <div class="three_d" id="three_d">3</div>
+                            </div>
+                            <div class="last_digits_cont four_cont lgt5" id="four_cont">
+                                <div class="four_alert alert first_alert5_four" id="four_alert">1x</div>
+                                <div class="four_d" id="four_d">4</div>
+                            </div>
+                            <div class="last_digits_cont five_cont lgt5" id="five_cont">
+                                <div class="five_alert alert first_alert5_five" id="five_alert">1x</div>
+                                <div class="five_d" id="five_d">5</div>
+                            </div>
+                            <div class="last_digits_cont six_cont lgt5" id="six_cont">
+                                <div class="six_alert alert first_alert5_six" id="six_alert">1x</div>
+                                <div class="six_d" id="six_d">6</div>
+                            </div>
+                            <div class="last_digits_cont seven_cont lgt5" id="seven_cont">
+                                <div class="seven_alert alert first_alert5_seven" id="seven_alert">1x</div>
+                                <div class="seven_d" id="seven_d">7</div>
+                            </div>
+                            <div class="last_digits_cont eight_cont lgt5" id="eight_cont">
+                                <div class="eight_alert alert first_alert5_eight" id="eight_alert">1x</div>
+                                <div class="eight_d" id="eight_d">8</div>
+                            </div>
+                            <div class="last_digits_cont nine_cont lgt5" id="nine_cont">
+                                <div class="nine_alert alert first_alert5_nine" id="nine_alert">1x</div>
+                                <div class="nine_d" id="nine_d">9</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -868,8 +1071,8 @@
                             <div class="up_trade_type_logo" id="up_trade_type_logo">
 
 
-                                <svg xmlns="http://www.w3.org/2000/svg" class="match_svg trade_svg_up" id="match_svg" width="32"
-                                    height="32" viewBox="0 0 16 16">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="match_svg trade_svg_up" id="match_svg"
+                                    width="32" height="32" viewBox="0 0 16 16">
                                     <g fill="none">
                                         <path fill="#FF444F"
                                             d="M3.507 2.343l4.241 4.243c.78.781.78 2.047 0 2.828l-4.242 4.243-.006-.007a1.988 1.988 0 0 1 0-2.814L5.334 9 0 9.012V7h5.334L3.5 5.165a1.988 1.988 0 0 1 0-2.815l.007-.007zm8.986 0l.007.007a1.988 1.988 0 0 1 0 2.814L10.666 7 16 6.988V9h-5.334l1.835 1.835a1.989 1.989 0 0 1 0 2.815l-.007.007L9 10.163l.748-.749c.78-.781.78-2.047 0-2.828L9 5.837l3.493-3.494z" />
@@ -877,8 +1080,8 @@
                                     </g>
                                 </svg>
 
-                                <svg xmlns="http://www.w3.org/2000/svg" class="rise_svg trade_svg_up" id="rise_svg" width="16"
-                                    height="16">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="rise_svg trade_svg_up" id="rise_svg"
+                                    width="16" height="16">
                                     <g fill="none">
                                         <path fill="#FF444F"
                                             d="M14 0H9v.01A1.99 1.99 0 0 0 10.99 2h1.6L4 10.586v2.828l10-10v1.6A1.99 1.99 0 0 0 15.99 7H16V2a2 2 0 0 0-2-2z" />
@@ -886,8 +1089,8 @@
                                     </g>
                                 </svg>
 
-                                <svg xmlns="http://www.w3.org/2000/svg" class="over_svg trade_svg_up" id="over_svg" width="16"
-                                    height="16">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="over_svg trade_svg_up" id="over_svg"
+                                    width="16" height="16">
                                     <g fill="none">
                                         <path fill="#FF444F"
                                             d="M5.439 13l-1.99 2H.586l2-2h2.853zM14 1a2 2 0 0 1 2 2v6h-.01A1.99 1.99 0 0 1 14 7.01v-2.6l-6 6.02V7.586L12.586 3H9.99A1.99 1.99 0 0 1 8 1.01V1h6z" />
@@ -895,17 +1098,19 @@
                                     </g>
                                 </svg>
 
-                                <svg xmlns="http://www.w3.org/2000/svg" class="even_svg trade_svg_up" id="even_svg" width="16" height="16">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="even_svg trade_svg_up" id="even_svg"
+                                    width="16" height="16">
                                     <g fill="none">
                                         <path fill="#85ACB0" d="M6 10v6H0v-6h6zM16 0v6h-6V0h6z" />
                                         <path fill="#FF444F" d="M16 10v6h-6v-6h6zM6 0v6H0V0h6z" />
                                     </g>
                                 </svg>
-                                
+
                             </div>
                             <div class="up_trade_type_text" id="up_trade_type_text">
                                 <div class="trade_type_text_digit1" id="trade_type_text_digit1">Digit</div>
-                                <div class="trade_type_text_name_up" id="trade_type_text_name_up">Matches</div>
+                                <div class="trade_type_text_name_up" id="trade_type_text_name_up">Matches
+                                </div>
                             </div>
                         </div>
                         <div class="stake_payout_puchase_cont" id="stake_payout_puchase_cont">
@@ -913,14 +1118,14 @@
                                 <div class="stake_fig_curr">
                                     <span>Stake: </span>
                                     <div>
-                                        <span>10.00</span>
+                                        <span class="stake_info1" id="stake_info1">10.00</span>
                                         <span>USD</span>
                                     </div>
                                 </div>
                                 <div class="stake_fig_curr_payout">
                                     <div>Payout: </div>
                                     <div>
-                                        <span>90.91</span>
+                                        <span class="payout_info1" id="payout_info1">90.91</span>
                                         <span>USD</span>
                                     </div>
                                 </div>
@@ -930,22 +1135,22 @@
                     </div>
                     <div class="up_order_btn_down" id="up_order_btn_down">
                         <span>Net Profit: </span>
-                        <span>80.91</span>
-                        <span>USD</span>
+                        <span class="net_profit_up" id="net_profit_up">80.91</span>
+                        <span class="net_profit_currency_up">USD</span>
                         <span>|</span>
                         <span>Return</span>
-                        <span>809.1</span>
+                        <span class="net_profit_percentage_up" id="net_profit_percentage_up">809.1</span>
                         <span>%</span>
                     </div>
                 </div>
                 <div class="down_order_cont" id="down_order_cont">
-                    <div class="down_order_btn_up" id="down_order_btn_down">
+                    <div class="down_order_btn_up" id="down_order_btn_up">
                         <div class="down_trade_type_cont" id="down_trade_type_cont">
                             <div class="down_trade_type_logo" id="down_trade_type_logo">
 
 
-                                <svg xmlns="http://www.w3.org/2000/svg" class="differ_svg trade_svg_down" id="differ_svg" width="32"
-                                    height="32" viewBox="0 0 16 16">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="differ_svg trade_svg_down"
+                                    id="differ_svg" width="32" height="32" viewBox="0 0 16 16">
                                     <g fill="none">
                                         <path fill="#FF444F"
                                             d="M15.5 7.988V10h-5.334L12 11.835a1.989 1.989 0 0 1 0 2.815l-.006.007L8 10.663l2.248-2.248c.121-.124.225-.264.31-.415l4.942-.012zM4.006.343l4.242 4.243c.78.781.78 2.047 0 2.828l-4.242 4.243L4 11.65a1.988 1.988 0 0 1 0-2.814L5.834 7 .5 7.012V5h5.334L4 3.165A1.988 1.988 0 0 1 4 .35l.006-.007zm7.987 3a1.992 1.992 0 0 1 .126 2.695L12 6.167l-1.2 1.2a2.003 2.003 0 0 0-.44-1.66l-.112-.121L10 5.337l1.993-1.994z" />
@@ -953,8 +1158,8 @@
                                     </g>
                                 </svg>
 
-                                <svg xmlns="http://www.w3.org/2000/svg" class="fall_svg trade_svg_down" id="fall_svg" width="16"
-                                    height="16">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="fall_svg trade_svg_down" id="fall_svg"
+                                    width="16" height="16">
                                     <g fill="none">
                                         <path fill="#FF444F"
                                             d="M15.99 9A1.99 1.99 0 0 0 14 10.99v1.6l-10-10v2.824L12.586 14h-1.6A1.99 1.99 0 0 0 9 15.99V16h5a2 2 0 0 0 2-2V9h-.01z" />
@@ -962,8 +1167,8 @@
                                     </g>
                                 </svg>
 
-                                <svg xmlns="http://www.w3.org/2000/svg" class="under_svg trade_svg_down" id="under_svg" width="16"
-                                    height="16">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="under_svg trade_svg_down" id="under_svg"
+                                    width="16" height="16">
                                     <g fill="none">
                                         <path fill="#FF444F"
                                             d="M8 5.57l6 6.02v-2.6A1.99 1.99 0 0 1 15.99 7H16v6a2 2 0 0 1-2 2H8v-.01A1.99 1.99 0 0 1 9.99 13h2.596L8 8.414V5.57zM3.449 1l1.99 2H2.586l-2-2h2.863z" />
@@ -971,8 +1176,8 @@
                                     </g>
                                 </svg>
 
-                                <svg xmlns="http://www.w3.org/2000/svg" class="odd_svg trade_svg_down" id="odd_svg" width="16"
-                                    height="16">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="odd_svg trade_svg_down" id="odd_svg"
+                                    width="16" height="16">
                                     <g fill="none">
                                         <path fill="#85ACB0"
                                             d="M3.5 8.875l3.5 5.25H0l3.5-5.25zm9 0l3.5 5.25H9l3.5-5.25z" />
@@ -983,7 +1188,9 @@
                             </div>
                             <div class="down_trade_type_text" id="down_trade_type_text">
                                 <div class="trade_type_text_digit2" id="trade_type_text_digit2">Digit</div>
-                                <div class="trade_type_text_name_down" id="trade_type_text_name_down">Differs</div>
+                                <div class="trade_type_text_name_down" id="trade_type_text_name_down">
+                                    Differs
+                                </div>
                             </div>
                         </div>
                         <div class="down_stake_payout_puchase_cont" id="down_stake_payout_puchase_cont">
@@ -991,14 +1198,14 @@
                                 <div class="down_stake_fig_curr">
                                     <span>Stake: </span>
                                     <div>
-                                        <span>10.00</span>
+                                        <span class="stake_info2" id="stake_info2">10.00</span>
                                         <span>USD</span>
                                     </div>
                                 </div>
                                 <div class="down_stake_fig_curr_payout">
                                     <span>Payout: </span>
                                     <div>
-                                        <span>10.99</span>
+                                        <span class="payout_info2" id="payout_info2">10.99</span>
                                         <span>USD</span>
                                     </div>
                                 </div>
@@ -1008,22 +1215,29 @@
                     </div>
                     <div class="down_order_btn_down" id="down_order_btn_down">
                         <span>Net Profit: </span>
-                        <span>0.99</span>
-                        <span>USD</span>
+                        <span class="net_profit_down" id="net_profit_down">0.99</span>
+                        <span class="net_profit_currency_down">USD</span>
                         <span>|</span>
                         <span>Return</span>
-                        <span>9.9</span>
+                        <span class="net_profit_percentage_down" id="net_profit_percentage_down">9.9</span>
                         <span>%</span>
                     </div>
                 </div>
             </div>
         </div>
-
-
     </div>
+
+
+
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <script defer type="module" src="./trade_page.js"></script>
+    <script defer type="module" src="../helper_functions/adjustelement.js"></script>
+    <script defer type="module" src="./correct.js"></script>
     <script defer type="module" src="../init_api/init_api.js"></script>
+    <script defer type="module" src="../allVolCall/vol10.js"></script>
+    <script defer type="module" src="../allVolCall/vol25.js"></script>
+    <script defer type="module" src="../allVolCall/vol50.js"></script>
+    <script defer type="module" src="../allVolCall/vol75.js"></script>
+    <script defer type="module" src="../allVolCall/vol100.js"></script>
 </body>
 
 </html>

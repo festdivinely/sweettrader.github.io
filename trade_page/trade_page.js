@@ -14,17 +14,14 @@ const token_real = "Jv4SnlKSnzwkymM";
 
 
 
+
+
+
 var api = null
 
 var connection = null
 
 var apiAndAuthData = null
-
-let duration_amount_cookie = null
-
-let stake_amount_cookie = null
-
-let symbol_vol_cookie = null
 
 let contract_text_cookie = null
 
@@ -32,7 +29,35 @@ let contract_text_cookie = null
 
 
 
-let symbol_vol;
+let duration_amount_cookie = null
+
+let stake_amount_cookie = null
+
+let symbol_vol_cookie = null
+
+let duration_unit_set = null
+ 
+let last_digit_prediction_cookie = null
+
+
+
+
+
+
+
+let duration_unit = null
+
+let symbol_vol = null
+
+let duration_amount = null
+
+let stake_amount = null
+
+let last_digit_prediction = null
+
+let basis = null
+
+
 
 
 
@@ -141,6 +166,8 @@ let stake_amount_input = document.getElementById('stake_amount_input')
 let last_digit_prediction_display_cont = document.getElementById('last_digit_prediction_display_cont')
 let not_support = document.getElementById('not_support')
 
+let allDurationUnit = document.querySelectorAll('.duru')
+
 
 
 
@@ -166,15 +193,30 @@ function getCookie(name) {
     return null;
 }
 
+
+
+function deleteCookie(name) {
+    document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+}
+
+
+
+
+
 // Function to check and set input values from cookies
 function loadValuesFromCookies() {
     duration_amount_cookie = getCookie('duration_amount_cookie');
     stake_amount_cookie = getCookie('stake_amount_cookie');
+    duration_unit_set = getCookie('duration_unit_set');
+    last_digit_prediction_cookie = getCookie('last_digit_prediction_cookie')
     symbol_vol_cookie = getCookie('symbol_vol_cookie');
+
+
+    contract_text_cookie = getCookie('contract_text_cookie');
     contract_text_cookie = getCookie('contract_text_cookie');
     let contract_type_text_cookie = getCookie('contract_type_text_cookie');
     let symbol_vol_text_cookie = getCookie('symbol_vol_text_cookie');
-    let type_vol_text_cookie = getCookie('type_vol_text_cookie');
+    
 
 
 
@@ -186,6 +228,10 @@ function loadValuesFromCookies() {
 
     if (stake_amount_cookie) {
         document.getElementById('stake_amount_input').value = stake_amount_cookie;
+    }
+
+    if (last_digit_prediction_cookie) {
+        document.getElementById('last_digit_input').value = last_digit_prediction_cookie;
     }
 
     if(contract_text_cookie){
@@ -234,6 +280,7 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener('DOMContentLoaded', (event) => {
     const durationInput = document.getElementById('duration_amount_input');
     const stakeInput = document.getElementById('stake_amount_input');
+    const lastDigitInput = document.getElementById('last_digit_input');
 
     loadValuesFromCookies();
     showHide();
@@ -242,11 +289,19 @@ document.addEventListener('DOMContentLoaded', (event) => {
     durationInput.addEventListener('input', (event) => {
         const currentValue = event.target.value;
         setCookie('duration_amount_cookie', currentValue, 7); // Store for 7 days
+        localStorage.setItem('duration_amount_local_st', currentValue); // Store for 7 days
     });
 
     stakeInput.addEventListener('input', (event) => {
         const currentValue = event.target.value;
         setCookie('stake_amount_cookie', currentValue, 7); // Store for 7 days
+        localStorage.setItem('stake_amount_local_st', currentValue); // Store for 7 days
+    });
+
+    lastDigitInput.addEventListener('input', (event) => {
+        const currentValue = event.target.value;
+        setCookie('last_digit_prediction_cookie', currentValue, 7); // Store for 7 days
+        localStorage.setItem('last_digit_prediction_local_st', currentValue); // Store for 7 days
     });
 });
 
@@ -315,6 +370,10 @@ import { displayDrops } from '../helper_functions/drop_drown_up_display.js';
 
 window.addEventListener('load', function () {
     symbol_vol = symbol_vol_cookie
+    duration_unit = duration_unit_set
+    duration_amount = duration_amount_cookie
+    stake_amount = stake_amount_cookie
+
 });
 
 
@@ -521,6 +580,9 @@ if (drop_down_light_cont && dropDownLight && dropUpLight && current_balance) {
 } else {
     console.error('One or more elements are not found');
 }
+
+
+
 
 
 if (account_balance_drop_cont && account_type_change_cont && overlay) {
@@ -939,8 +1001,7 @@ if(start_time_cont && start_time_drop_list){
 
 
 function showHide(){
-    let show_start_time1_cookie = getCookie('show_start_time1_cookie')
-    let show_start_time2_cookie = getCookie('show_start_time2_cookie')
+
     let show_last_digit_prediction_cookie1 = getCookie('last_digit_prediction_cookie1')
     let show_last_digit_prediction_cookie2 = getCookie('last_digit_prediction_cookie2')
     
@@ -964,8 +1025,19 @@ function showHide(){
 
 
 
+window.addEventListener('load', function () {
+    let clicked1 = getCookie('clicked1')
+    let clicked2 = getCookie('clicked2')
 
 
+    if(clicked1 == null && clicked2 == null){
+        last_digit_prediction_display_cont.style.display = 'flex'
+        setCookie('show_last_digit_prediction_cookie1', true)
+        setCookie('show_last_digit_prediction_cookie2', true)
+    }
+
+
+});
 
 
 
@@ -1067,6 +1139,8 @@ const handleVolatilityClick = function () {
     }else{
         account_symbol_change_cont.style.display = 'flex'
     }
+
+    setCookie('clicked1', true)
 };
 
 volatilities.forEach(function (volatility) {
@@ -1145,7 +1219,7 @@ function shownSvg(contract_text) {
 const handleTradeTypeClick = function () {
     // Update cookies before calling shownSvg
     setCookie('contract_text_cookie', this.textContent, 7);
-
+    localStorage.setItem('contract_text_local_st', this.textContent);
     localStorage.setItem('contract_type_change_click', true)
 
     shownSvg(this.textContent);
@@ -1156,45 +1230,63 @@ const handleTradeTypeClick = function () {
     // Logic for volatility buttons
     if (this.textContent == "Matches/Differs") {
         setCookie('contract_type_text_cookie', type, 7);
+        localStorage.setItem('contract_type_text_local_st', type);
         trade_type_secound.textContent = this.textContent;
         trade_symbol_first.textContent = type;
-        setCookie('last_digit_prediction_cookie2', true);
-        setCookie('show_start_time2_cookie', false);
+        setCookie('last_digit_prediction_cookie2', true, 7);
+        setCookie('show_start_time2_cookie', false, 7);
+        localStorage.setItem('last_digit_prediction_local_st2', true);
+        localStorage.setItem('show_start_time2_local_st', false);
         showHide();
     } else if (this.textContent == "Over/Under") {
         setCookie('contract_type_text_cookie', type, 7);
+        localStorage.setItem('contract_type_text_local_st', type);
         trade_type_secound.textContent = this.textContent;
         trade_type_first.textContent = type;
-        setCookie('last_digit_prediction_cookie2', false);
-        setCookie('show_start_time2_cookie', true);
+        setCookie('last_digit_prediction_cookie2', false, 7);
+        setCookie('show_start_time2_cookie', true, 7);
+        localStorage.setItem('last_digit_prediction_local_st2', false);
+        localStorage.setItem('show_start_time2_local_st', true);
         showHide();
     } else if (this.textContent == "Odd/Even") {
         setCookie('contract_type_text_cookie', type, 7);
+        localStorage.setItem('contract_type_text_local_st', type);
         trade_type_secound.textContent = this.textContent;
         trade_type_first.textContent = type;
-        setCookie('last_digit_prediction_cookie2', true);
-        setCookie('show_start_time2_cookie', false);
+        setCookie('last_digit_prediction_cookie2', true, 7);
+        setCookie('show_start_time2_cookie', false, 7);
+        localStorage.setItem('last_digit_prediction_local_st2', true);
+        localStorage.setItem('show_start_time2_local_st', false);
         showHide();
     } else if (this.textContent == "Rise/Fall") {
         setCookie('contract_type_text_cookie', type2, 7);
+        localStorage.setItem('contract_type_text_local_st', type2);
         trade_type_secound.textContent = this.textContent;
         trade_type_first.textContent = type2;
-        setCookie('last_digit_prediction_cookie2', false);
-        setCookie('show_start_time2_cookie', true);
+        setCookie('last_digit_prediction_cookie2', false, 7);
+        setCookie('show_start_time2_cookie', true, 7);
+        localStorage.setItem('last_digit_prediction_local_st2', false);
+        localStorage.setItem('show_start_time2_local_st', true);
         showHide();
     } else if (this.textContent == "Higher/Lower") {
         setCookie('contract_type_text_cookie', type2, 7);
+        localStorage.setItem('contract_type_text_local_st', type2);
         trade_type_secound.textContent = this.textContent;
         trade_type_first.textContent = type2;
-        setCookie('last_digit_prediction_cookie2', false);
-        setCookie('show_start_time2_cookie', true);
+        setCookie('last_digit_prediction_cookie2', false, 7);
+        setCookie('show_start_time2_cookie', true, 7);
+        localStorage.setItem('last_digit_prediction_local_st2', false);
+        localStorage.setItem('show_start_time2_local_st', true);
         showHide();
     } else {
         setCookie('contract_type_text_cookie', type, 7);
+        localStorage.setItem('contract_type_text_local_st', type);
         trade_type_secound.textContent = this.textContent;
         trade_type_first.textContent = 'not provided';
-        setCookie('last_digit_prediction_cookie2', false);
-        setCookie('show_start_time2_cookie', true);
+        setCookie('last_digit_prediction_cookie2', false, 7);
+        setCookie('show_start_time2_cookie', true, 7);
+        localStorage.setItem('last_digit_prediction_local_st2', false);
+        localStorage.setItem('show_start_time2_local_st', true);
         showHide();
     }
 
@@ -1203,12 +1295,80 @@ const handleTradeTypeClick = function () {
     } else {
         account_contract_type_change_cont.style.display = 'flex';
     }
+
+    setCookie('clicked2', true, 7)
+    localStorage.setItem('clicked2', true)
 };
 
 
 tradeTypes.forEach(function (types) {
     types.addEventListener("click", handleTradeTypeClick);
 });
+
+
+
+
+
+
+
+function handleUnitTypeClick(){
+    if(this.textContent == 'ticks'){
+        duration_unit = 't'
+        setCookie('duration_unit_set', duration_unit)
+        localStorage.setItem('duration_unit_set', duration_unit)
+    }else if(this.textContent == 'secounds'){
+        duration_unit = 's'
+        setCookie('duration_unit_set', duration_unit)
+        localStorage.setItem('duration_unit_set', duration_unit)
+    }else if(this.textContent == 'minutes'){
+        duration_unit = 'm'
+        setCookie('duration_unit_set', duration_unit)
+        localStorage.setItem('duration_unit_set', duration_unit)
+    }else if(this.textContent == 'hours'){
+        duration_unit = 'h'
+        setCookie('duration_unit_set', duration_unit)
+        localStorage.setItem('duration_unit_set', duration_unit)
+    }else if(this.textContent == 'days'){
+        duration_unit = 'd'
+        setCookie('duration_unit_set', duration_unit)
+        localStorage.setItem('duration_unit_set', duration_unit)
+    }
+
+    if(duration_unit_list.style.display == 'block'){
+        duration_unit_list.style.display == 'none'
+    }else{
+        duration_unit_list.style.display == 'block'
+    }
+}
+
+
+
+
+allDurationUnit.forEach(function (unit) {
+    unit.addEventListener('click', handleUnitTypeClick)
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1288,70 +1448,68 @@ down_purchase_btn.addEventListener('click', function (){
 
 
 
-document.getElementById('csvFile').addEventListener('change', handleFileSelect, false);
+// document.getElementById('csvFile').addEventListener('change', handleFileSelect, false);
 
-function handleFileSelect(event) {
-    const file = event.target.files[0];
-    const reader = new FileReader();
+// function handleFileSelect(event) {
+//     const file = event.target.files[0];
+//     const reader = new FileReader();
 
-    reader.onload = function(event) {
-        const csvData = event.target.result;
-        const rows = csvData.split('\n');
-        const consecutiveOccurrences = 6; // Change this value to specify the desired number of consecutive occurrences
-        const result = findConsecutiveOccurrences(rows, consecutiveOccurrences);
+//     reader.onload = function(event) {
+//         const csvData = event.target.result;
+//         const rows = csvData.split('\n');
+//         const consecutiveOccurrences = 6; // Change this value to specify the desired number of consecutive occurrences
+//         const result = findConsecutiveOccurrences(rows, consecutiveOccurrences);
 
-        displayResult(result);
-    };
+//         displayResult(result);
+//     };
 
-    reader.readAsText(file);
-}
+//     reader.readAsText(file);
+// }
 
-function findConsecutiveOccurrences(rows, consecutiveOccurrences) {
-    const result = {};
-    for (let i = 1; i < rows.length; i++) { // start from index 1 to skip header
-        const columns = rows[i].split(',');
-        if (columns.length > 1) {
-            const lastDigit = columns[1].trim().charAt(columns[1].length - 1);
-            const number = parseInt(lastDigit);
-            if (checkConsecutiveOccurrences(rows, i, number, consecutiveOccurrences)) {
-                result[number] = i;
-            }
-        }
-    }
-    return result;
-}
+// function findConsecutiveOccurrences(rows, consecutiveOccurrences) {
+//     const result = {};
+//     for (let i = 1; i < rows.length; i++) { // start from index 1 to skip header
+//         const columns = rows[i].split(',');
+//         if (columns.length > 1) {
+//             const lastDigit = columns[1].trim().charAt(columns[1].length - 1);
+//             const number = parseInt(lastDigit);
+//             if (checkConsecutiveOccurrences(rows, i, number, consecutiveOccurrences)) {
+//                 result[number] = i;
+//             }
+//         }
+//     }
+//     return result;
+// }
 
-function checkConsecutiveOccurrences(rows, startIndex, targetNumber, consecutiveOccurrences) {
-    let count = 1;
-    for (let i = startIndex + 1; i < rows.length; i++) {
-        const columns = rows[i].split(',');
-        if (columns.length > 1) {
-            const lastDigit = columns[1].trim().charAt(columns[1].length - 1);
-            const number = parseInt(lastDigit);
-            if (number === targetNumber) {
-                count++;
-                if (count === consecutiveOccurrences) {
-                    return true;
-                }
-            } else {
-                return false;
-            }
-        }
-    }
-    return false;
-}
+// function checkConsecutiveOccurrences(rows, startIndex, targetNumber, consecutiveOccurrences) {
+//     let count = 1;
+//     for (let i = startIndex + 1; i < rows.length; i++) {
+//         const columns = rows[i].split(',');
+//         if (columns.length > 1) {
+//             const lastDigit = columns[1].trim().charAt(columns[1].length - 1);
+//             const number = parseInt(lastDigit);
+//             if (number === targetNumber) {
+//                 count++;
+//                 if (count === consecutiveOccurrences) {
+//                     return true;
+//                 }
+//             } else {
+//                 return false;
+//             }
+//         }
+//     }
+//     return false;
+// }
 
-function displayResult(result) {
-    const outputDiv = document.getElementById('output');
-    outputDiv.innerHTML = `<h3>Numbers under the last digit appearing ${Object.keys(result).length} times in a row:</h3>`;
-    for (const number in result) {
-        if (result.hasOwnProperty(number)) {
-            outputDiv.innerHTML += `<p>Number: ${number}, Starting from Line: ${result[number]}</p>`;
-        }
-    }
-}
-
-
+// function displayResult(result) {
+//     const outputDiv = document.getElementById('output');
+//     outputDiv.innerHTML = `<h3>Numbers under the last digit appearing ${Object.keys(result).length} times in a row:</h3>`;
+//     for (const number in result) {
+//         if (result.hasOwnProperty(number)) {
+//             outputDiv.innerHTML += `<p>Number: ${number}, Starting from Line: ${result[number]}</p>`;
+//         }
+//     }
+// }
 
 
 
@@ -1362,36 +1520,36 @@ function displayResult(result) {
 
 
 
-document.addEventListener('DOMContentLoaded', function () {
-    const parentContainer = document.getElementById('info_about_tick_history');
-    let uniqueIdCounter = 0;
-
-    function createAndTypeText(text) {
-        uniqueIdCounter += 1;
-        const uniqueId = `typed-text-${uniqueIdCounter}`;
-        const className = `typed-text`;
-
-        const newPTag = document.createElement('p');
-        newPTag.id = uniqueId;
-        newPTag.className = className;
-        parentContainer.appendChild(newPTag);
-
-        new Typed(`#${uniqueId}`, {
-            strings: [text],
-            typeSpeed: 50,
-            showCursor: false, // Hide the cursor after typing
-            onComplete: function (self) {
-                // Remove the Typed instance to prevent further modifications
-                self.cursor.remove();
-            }
-        });
-    }
-
-    // Fetch data and typewrite every 5 seconds as an example
-    setInterval(fetchDataAndTypeWrite, 5000);
-});
 
 
+// document.addEventListener('DOMContentLoaded', function () {
+//     const parentContainer = document.getElementById('info_about_tick_history');
+//     let uniqueIdCounter = 0;
+
+//     function createAndTypeText(text) {
+//         uniqueIdCounter += 1;
+//         const uniqueId = `typed-text-${uniqueIdCounter}`;
+//         const className = `typed-text`;
+
+//         const newPTag = document.createElement('p');
+//         newPTag.id = uniqueId;
+//         newPTag.className = className;
+//         parentContainer.appendChild(newPTag);
+
+//         new Typed(`#${uniqueId}`, {
+//             strings: [text],
+//             typeSpeed: 50,
+//             showCursor: false, // Hide the cursor after typing
+//             onComplete: function (self) {
+//                 // Remove the Typed instance to prevent further modifications
+//                 self.cursor.remove();
+//             }
+//         });
+//     }
+
+//     // Fetch data and typewrite every 5 seconds as an example
+//     setInterval(fetchDataAndTypeWrite, 5000);
+// });
 
 
 
@@ -1417,48 +1575,50 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-let allSections = document.querySelectorAll(".pbig");
-let allSectionLinks = document.querySelectorAll(".ass_cont");
-let scrollableContainer = document.querySelector('.symbol_assets_type_cont');
 
-// Click event for links
-allSectionLinks.forEach(link => {
-    link.addEventListener('click', (event) => {
-        // Extract the target section id from the link id
-        let targetId = link.id.replace('ass_cont_', '');
-        let targetElement = document.getElementById(targetId);
+
+// let allSections = document.querySelectorAll(".pbig");
+// let allSectionLinks = document.querySelectorAll(".ass_cont");
+// let scrollableContainer = document.querySelector('.symbol_assets_type_cont');
+
+// // Click event for links
+// allSectionLinks.forEach(link => {
+//     link.addEventListener('click', (event) => {
+//         // Extract the target section id from the link id
+//         let targetId = link.id.replace('ass_cont_', '');
+//         let targetElement = document.getElementById(targetId);
         
-        // Scroll to the target section
-        scrollableContainer.scrollTo({
-            top: targetElement.offsetTop - scrollableContainer.offsetTop,
-            behavior: 'smooth'
-        });
+//         // Scroll to the target section
+//         scrollableContainer.scrollTo({
+//             top: targetElement.offsetTop - scrollableContainer.offsetTop,
+//             behavior: 'smooth'
+//         });
 
-        // Remove active class from all links
-        allSectionLinks.forEach(link => link.classList.remove('active'));
-        // Add active class to the clicked link
-        link.classList.add('active');
-    });
-});
+//         // Remove active class from all links
+//         allSectionLinks.forEach(link => link.classList.remove('active'));
+//         // Add active class to the clicked link
+//         link.classList.add('active');
+//     });
+// });
 
-// Scroll event for the scrollable container
-scrollableContainer.addEventListener('scroll', () => {
-    let containerTop = scrollableContainer.scrollTop;
-    allSections.forEach(section => {
-        let sectionTop = section.offsetTop - scrollableContainer.offsetTop;
-        let sectionHeight = section.offsetHeight;
-        let sectionId = section.getAttribute('id');
+// // Scroll event for the scrollable container
+// scrollableContainer.addEventListener('scroll', () => {
+//     let containerTop = scrollableContainer.scrollTop;
+//     allSections.forEach(section => {
+//         let sectionTop = section.offsetTop - scrollableContainer.offsetTop;
+//         let sectionHeight = section.offsetHeight;
+//         let sectionId = section.getAttribute('id');
 
-        if (containerTop >= sectionTop && containerTop < sectionTop + sectionHeight) {
-            allSectionLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.id.replace('ass_cont_', '') === sectionId) {
-                    link.classList.add('active');
-                }
-            });
-        }
-    });
-});
+//         if (containerTop >= sectionTop && containerTop < sectionTop + sectionHeight) {
+//             allSectionLinks.forEach(link => {
+//                 link.classList.remove('active');
+//                 if (link.id.replace('ass_cont_', '') === sectionId) {
+//                     link.classList.add('active');
+//                 }
+//             });
+//         }
+//     });
+// });
 
 
 
