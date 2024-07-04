@@ -12,6 +12,7 @@ let last_digit_input = document.getElementById('last_digit_input')
 
 let trade_type_secound = document.getElementById("trade_type_secound")
 
+let stream25 = document.getElementById('stream25')
 
 
 
@@ -255,7 +256,6 @@ const ping = () => {
     }, 30000);
 };
 
-
 const websitePingResponse = async (res) => {
     const data = JSON.parse(res.data);
 
@@ -266,15 +266,13 @@ const websitePingResponse = async (res) => {
     }
 
     if (data.msg_type === 'ping') {
-       let data = data.msg_type
+        
     }
-
 };
-
 
 const getWebsitePing = async () => {
     connection.addEventListener('message', websitePingResponse);
-    ping()
+    ping();
 };
 
 
@@ -428,6 +426,7 @@ const tickResponse = async (res) => {
         }
 
         tick_stream.textContent = strNumber;
+        stream25.textContent = strNumber;
 
         if (currentRandom !== null && lastNumber1 !== null && lastNumber2 !== null) {
             if (lastNumber1 == currentRandom) {
@@ -543,7 +542,7 @@ window.addEventListener('load', function () {
     if (symbol_vol_cookie) {
         symbol_vol = symbol_vol_cookie;
     } else {
-        symbol_vol = "R_10";
+        symbol_vol = "R_25";
     }
 
     if (duration_unit_cookie) {
@@ -776,8 +775,9 @@ function before_trade() {
     price_after_trade_figure_amount.textContent = def_payout_up
     profit_figure_amount.textContent = def_profit_up
 
+    let trade_type_secound = getCookie('contract_text_cookie')
 
-    if (trade_type_secound.textContent === 'Matches/Differs' || trade_type_secound.textContent === 'Over/Under' || trade_type_secound.textContent === 'Odd/Even') {
+    if (trade_type_secound == 'Matches/Differs' || trade_type_secound == 'Over/Under') {
         allDigits.forEach(function (digit) {
             if (digit.classList.contains('win_loose_color')) {
                 digit.classList.remove('win_loose_color'); // Removed the dot (.)
@@ -799,9 +799,9 @@ function before_trade() {
 
 
 
-    if (trade_type_secound.textContent === 'Matches/Differs') {
+    if (trade_type_secound == 'Matches/Differs') {
         allDigits.forEach(function (digit) {
-            if (digit.textContent === last_digit_prediction_or_barrier) {
+            if (digit.textContent != last_digit_prediction_or_barrier) {
                 digit.classList.add('win_loose_color'); // Removed the dot (.)
             } else {
                 digit.classList.remove('win_loose_color');
@@ -809,19 +809,9 @@ function before_trade() {
         });
     }
 
-    if (trade_type_secound.textContent === 'Over/Under') {
+    if (trade_type_secound == 'Over/Under') {
         allDigits.forEach(function (digit) {
             if (parseInt(digit.textContent) < last_digit_prediction_or_barrier) {
-                digit.classList.add('win_loose_color'); // Removed the dot (.)
-            } else {
-                digit.classList.remove('win_loose_color');
-            }
-        });
-    }
-
-    if (trade_type_secound.textContent === 'Odd/Even') {
-        allDigits.forEach(function (digit) {
-            if (parseInt(digit.textContent) % 2 !== 0) {
                 digit.classList.add('win_loose_color'); // Removed the dot (.)
             } else {
                 digit.classList.remove('win_loose_color');
@@ -834,7 +824,8 @@ function before_trade() {
 function after_trade(status, endDigit) {
     let slide_trade_result = document.getElementById('slide_trade_result')
     let allDigits = document.querySelectorAll('.ldgs')
-    if (trade_type_secound.textContent === 'Matches/Differs' || trade_type_secound.textContent === 'Over/Under' || trade_type_secound.textContent === 'Odd/Even') {
+    let trade_type_secound = getCookie('contract_text_cookie')
+    if (trade_type_secound == 'Matches/Differs' || trade_type_secound == 'Over/Under') {
         if (status === 'won') {
             slide_trade_result.classList.add('win_color')
         } else if (status === 'lost') {
@@ -849,6 +840,7 @@ function after_trade(status, endDigit) {
         }
     }
 }
+
 
 
 
@@ -969,11 +961,11 @@ elements.forEach(element => {
         element.addEventListener('click', async function () {
             const slider = document.getElementById('slide_trade_result').style.display = 'flex';
 
+            last_digit_prediction_or_barrier = parseInt(element.lastElementChild.textContent);
+
             before_trade();
             allProposalOpenContract.length = 0;
             unsubscribeProposalOpenContract();
-
-            last_digit_prediction_or_barrier = parseInt(element.lastElementChild.textContent);
 
             try {
                 // Await the completion of order_propose

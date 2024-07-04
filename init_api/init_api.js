@@ -28,7 +28,7 @@ let down_proposal = document.getElementById("down_proposal")
 let stake_info2 = document.getElementById("stake_info2")
 let payout_info2 = document.getElementById("payout_info2")
 
-
+let overlay3 = document.getElementById('overlay3')
 
 let authorize_response = null
 
@@ -50,7 +50,8 @@ let api_token = null
 
 let api = null
 
-let message1 = null
+
+let message1 = localStorage.getItem('message1')
 
 
 let connection = null
@@ -106,6 +107,7 @@ let stake_or_payout = null
 
 let proposal_id = null
 
+let stake_amount_default = null
 
 
 
@@ -117,6 +119,12 @@ let def_profit_up = null
 
 let website_status_info = 'initial'
 
+
+let subscription_to_open_contract = true
+
+
+
+console.log('message1',message1)
 
 
 // Function to set a cookie
@@ -188,6 +196,80 @@ function displayProposalResult2(data, stake1, payout1) {
 
 
 
+async function proposal_actions(data, proposalResponse) {
+    // Check if there is an error object
+    if (data.error) {
+
+
+        setCookie('proposal_error2', data.error.message, 7)
+        localStorage.setItem('proposal_error2', data.error.message)
+
+        let proposal_id = getCookie('proposal_id2')
+        if (proposal_id) {
+            deleteCookie('proposal_id2')
+        }
+
+        let proposal_id_lc = localStorage.getItem('proposal_id2')
+        if (proposal_id_lc) {
+            localStorage.removeItem('proposal_id2')
+        }
+
+        proposal_id = null
+
+        // Safely access the error message
+        const errorMessage = data.error.message;
+        console.log('Error: %s ', errorMessage);
+        document.getElementById('down_order_btn_down').textContent = errorMessage;
+        document.getElementById('down_proposal_info_cont').textContent = errorMessage;
+        connection.removeEventListener('message', proposalResponse, false);
+        await api.disconnect();
+    } else if (data.msg_type === 'proposal') {
+        // Check if there's no error or the error message is null or empty
+        if (!data.error || !data.error.message) {
+
+            let proposal_error = getCookie('proposal_error2')
+            if (proposal_error) {
+                deleteCookie('proposal_error2')
+            }
+
+            let proposal_error_lc = localStorage.getItem('proposal_error2')
+            if (proposal_error_lc) {
+                localStorage.removeItem('proposal_error2')
+            }
+
+            setCookie('proposal_id2', data.proposal.id, 7)
+            localStorage.setItem('proposal_id2', data.proposal.id)
+
+            proposal_id = data.proposal.id
+
+            displayProposalResult1(data, data.proposal.display_value, data.proposal.payout);
+            let calc = displayProposalResult2(data, data.proposal.display_value, data.proposal.payout)
+            // Display proposal details inside the up_proposal_info_cont
+            const infoContainer = document.getElementById('down_proposal_info_cont');
+            infoContainer.innerHTML = `
+        <p>${calc.netProPerc}</p>
+        <p>Details: ${data.proposal.longcode}</p>
+        <p>Ask Price: ${data.proposal.display_value}</p>
+        <p>Payout: ${data.proposal.payout}</p>
+        <p>Spot: ${data.proposal.spot}</p>
+        <p>ID: ${data.proposal.id}</p>
+        <p>website status: ${website_status_info}</P>
+    `;
+
+            stake_info2.textContent = data.proposal.display_value
+            payout_info2.textContent = data.proposal.payout
+
+            def_price_up = data.proposal.display_value
+            def_payout_up = data.proposal.payout
+            def_profit_up = calc.NetProfit
+
+        } else {
+            // If there's an error message, display it
+            document.getElementById('down_order_btn_down').textContent = data.error.message;
+        }
+    }
+}
+
 
 
 
@@ -233,84 +315,12 @@ async function order_propose2(api, amount, last_digit_prediction_or_barrier, sta
     const proposalResponse = async (res) => {
         try {
             const data = JSON.parse(res.data);
+            proposal_actions(data, proposalResponse)
 
-            // Check if there is an error object
-            if (data.error) {
-
-
-                setCookie('proposal_error2', data.error.message, 7)
-                localStorage.setItem('proposal_error2', data.error.message)
-
-                let proposal_id = getCookie('proposal_id2')
-                if (proposal_id) {
-                    deleteCookie('proposal_id2')
-                }
-
-                let proposal_id_lc = localStorage.getItem('proposal_id2')
-                if (proposal_id_lc) {
-                    localStorage.removeItem('proposal_id2')
-                }
-
-                proposal_id = null
-
-                // Safely access the error message
-                const errorMessage = data.error.message;
-                console.log('Error: %s ', errorMessage);
-                document.getElementById('down_order_btn_down').textContent = errorMessage;
-                document.getElementById('down_proposal_info_cont').textContent = errorMessage;
-                connection.removeEventListener('message', proposalResponse, false);
-                await api.disconnect();
-            } else if (data.msg_type === 'proposal') {
-                // Check if there's no error or the error message is null or empty
-                if (!data.error || !data.error.message) {
-
-                    let proposal_error = getCookie('proposal_error2')
-                    if (proposal_error) {
-                        deleteCookie('proposal_error2')
-                    }
-
-                    let proposal_error_lc = localStorage.getItem('proposal_error2')
-                    if (proposal_error_lc) {
-                        localStorage.removeItem('proposal_error2')
-                    }
-
-                    setCookie('proposal_id2', data.proposal.id, 7)
-                    localStorage.setItem('proposal_id2', data.proposal.id)
-
-                    proposal_id = data.proposal.id
-
-                    displayProposalResult1(data, data.proposal.display_value, data.proposal.payout);
-                    let calc = displayProposalResult2(data, data.proposal.display_value, data.proposal.payout)
-                    // Display proposal details inside the up_proposal_info_cont
-                    const infoContainer = document.getElementById('down_proposal_info_cont');
-                    infoContainer.innerHTML = `
-                    <p>${calc.netProPerc}</p>
-                    <p>Details: ${data.proposal.longcode}</p>
-                    <p>Ask Price: ${data.proposal.display_value}</p>
-                    <p>Payout: ${data.proposal.payout}</p>
-                    <p>Spot: ${data.proposal.spot}</p>
-                    <p>ID: ${data.proposal.id}</p>
-                    <p>website status: ${website_status_info}</P>
-                `;
-
-                    stake_info2.textContent = data.proposal.display_value
-                    payout_info2.textContent = data.proposal.payout
-
-                    def_price_up = data.proposal.display_value
-                    def_payout_up = data.proposal.payout
-                    def_profit_up = calc.NetProfit
-
-                } else {
-                    // If there's an error message, display it
-                    document.getElementById('down_order_btn_down').textContent = data.error.message;
-                }
-            }
         } catch (error) {
             console.error('Failed to process response:', error);
         }
     };
-
-
 
     const getProposal = async () => {
         connection.addEventListener('message', proposalResponse);
@@ -369,76 +379,7 @@ async function order_propose4(api, amount, stake_or_payout, contract_type, curre
     const proposalResponse = async (res) => {
         try {
             const data = JSON.parse(res.data);
-
-            // Check if there is an error object
-            if (data.error) {
-
-
-                setCookie('proposal_error2', data.error.message, 7)
-                localStorage.setItem('proposal_error2', data.error.message)
-
-                let proposal_id = getCookie('proposal_id2')
-                if (proposal_id) {
-                    deleteCookie('proposal_id2')
-                }
-
-                let proposal_id_lc = localStorage.getItem('proposal_id2')
-                if (proposal_id_lc) {
-                    localStorage.removeItem('proposal_id2')
-                }
-
-                proposal_id = null
-                // Safely access the error message
-                const errorMessage = data.error.message;
-                console.log('Error: %s ', errorMessage);
-                document.getElementById('down_order_btn_down').textContent = errorMessage;
-                document.getElementById('down_proposal_info_cont').textContent = errorMessage;
-                connection.removeEventListener('message', proposalResponse, false);
-                await api.disconnect();
-            } else if (data.msg_type === 'proposal') {
-                // Check if there's no error or the error message is null or empty
-                if (!data.error || !data.error.message) {
-
-                    let proposal_error = getCookie('proposal_error2')
-                    if (proposal_error) {
-                        deleteCookie('proposal_error2')
-                    }
-
-                    let proposal_error_lc = localStorage.getItem('proposal_error2')
-                    if (proposal_error_lc) {
-                        localStorage.removeItem('proposal_error2')
-                    }
-
-                    setCookie('proposal_id2', data.proposal.id, 7)
-                    localStorage.setItem('proposal_id2', data.proposal.id)
-
-                    proposal_id = data.proposal.id
-
-                    displayProposalResult1(data, data.proposal.display_value, data.proposal.payout);
-                    let calc = displayProposalResult2(data, data.proposal.display_value, data.proposal.payout)
-                    // Display proposal details inside the up_proposal_info_cont
-                    const infoContainer = document.getElementById('down_proposal_info_cont');
-                    infoContainer.innerHTML = `
-                    <p>${calc.netProPerc}</p>
-                    <p>Details: ${data.proposal.longcode}</p>
-                    <p>Ask Price: ${data.proposal.display_value}</p>
-                    <p>Payout: ${data.proposal.payout}</p>
-                    <p>Spot: ${data.proposal.spot}</p>
-                    <p>ID: ${data.proposal.id}</p>
-                    <p>website status: ${website_status_info}</P>
-                `;
-
-                    stake_info2.textContent = data.proposal.display_value
-                    payout_info2.textContent = data.proposal.payout
-
-                    def_price_up = data.proposal.display_value
-                    def_payout_up = data.proposal.payout
-                    def_profit_up = calc.NetProfit
-                } else {
-                    // If there's an error message, display it
-                    document.getElementById('down_order_btn_down').textContent = data.error.message;
-                }
-            }
+            proposal_actions(data, proposalResponse)
         } catch (error) {
             console.error('Failed to process response:', error);
         }
@@ -507,8 +448,8 @@ const websitePingResponse = async (res) => {
     }
 
     if (data.msg_type === 'ping') {
-        let data = data
-     }
+
+    }
 };
 
 
@@ -933,6 +874,9 @@ if (account_type_change_cont && current_balance) {
 
             message1 = message1_set
 
+            setCookie("message1", message1_set)
+            localStorage.setItem("message1", message1_set)
+
             apiAndAuthData = initializeApiInit(message1)
 
 
@@ -941,8 +885,16 @@ if (account_type_change_cont && current_balance) {
 
             message1 = message1_set
 
+            setCookie("message1", message1_set)
+            localStorage.setItem("message1", message1_set)
+
             apiAndAuthData = initializeApiInit(message1)
 
+        }
+
+        if (account_type_change_cont.style.display === 'block' && overlay3.style.display === 'block') {
+            account_type_change_cont.style.display = 'none';
+            overlay3.style.display = 'none';
         }
     });
 } else {
@@ -1255,6 +1207,119 @@ allDurationUnit.forEach(function (unit) {
 
 
 
+
+
+
+
+let proposal_open_contract = () => api.proposalOpenContract({
+    "proposal_open_contract": 1,
+    "subscribe": 1
+})
+
+const proposalOpenContractResponse = async (res) => {
+    const data = JSON.parse(res.data);
+    if (data.error !== undefined) {
+        console.log('Error: %s ', data.error.message);
+        connection.removeEventListener('message', proposalOpenContractResponse, false);
+        await api.disconnect();
+
+    } else if (data.msg_type === 'proposal_open_contract') {
+        console.log(data)
+        save_data(data)
+        open_proposal_actions(data)
+    }
+};
+
+const getProposalOpenContract = async () => {
+    connection.addEventListener('message', proposalOpenContractResponse);
+    proposal_open_contract()
+};
+
+const getProposalOpenContract2 = async () => {
+    connection.addEventListener('message', proposalOpenContractResponse);
+};
+
+const unsubscribeProposalOpenContract = () => {
+    connection.removeEventListener('message', proposalOpenContractResponse, false);
+};
+
+
+
+
+
+function run_open_contract_proposal() {
+
+    if (subscription_to_open_contract == true) {
+        getProposalOpenContract()
+    } else {
+        getProposalOpenContract2()
+    }
+
+    subscription_to_open_contract = false
+}
+
+
+
+
+
+
+
+// let proposalOpenContract = (contract_id) => proposalOpenContract({
+//     "proposal_open_contract": 1,
+//     "contract_id": contract_id,
+//     "subscribe": 1
+// })
+
+
+// const getProposalOpenContract = async (contract_id) => {
+//     connection.addEventListener('message', proposalOpenContractResponse);
+//     await api.proposalOpenContract({
+//         "proposal_open_contract": 1,
+//         "contract_id": contract_id,
+//         "subscribe": 1
+//     })
+// };
+
+
+// const proposalOpenContractResponse = async (res) => {
+//     const data = JSON.parse(res.data);
+//     if (data.error !== undefined) {
+//         console.log('Error: %s ', data.error.message);
+//         connection.removeEventListener('message', proposalOpenContractResponse, false);
+//         await api.disconnect();
+
+//     } else if (data.msg_type === 'proposal_open_contract') {
+//         console.log(data)
+//         save_data(data)
+//         open_proposal_actions(data)
+//     }
+// };
+
+// const unsubscribeProposalOpenContract = () => {
+//     connection.removeEventListener('message', proposalOpenContractResponse, false);
+// };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function convertTimestampTo12HourTime(timestamp) {
     // Convert the timestamp to a Date object
     const date = new Date(timestamp * 1000);
@@ -1405,7 +1470,7 @@ function before_trade() {
 }
 
 
-function after_trade(status, endDigit) {
+function after_trade(status, endDigit, is_expired, profit_proposal, profit_trade) {
     let slide_trade_result = document.getElementById('slide_trade_result')
     let allDigits = document.querySelectorAll('.ldgs')
     if (trade_type_secound.textContent === 'Matches/Differs' || trade_type_secound.textContent === 'Over/Under' || trade_type_secound.textContent === 'Odd/Even') {
@@ -1443,25 +1508,94 @@ let buy_price = null
 let contract_currency = null
 let time_of_trade = null
 let every_tick = null
+let contract_id = null
 
 
-let proposalOpenContract = (contract_id) => proposalOpenContract({
-    "proposal_open_contract": 1,
-    "contract_id": contract_id,
-    "subscribe": 1
-})
+function save_data(data) {
+    if (data.proposal_open_contract.contract_id == contract_id) {
+        if (data.proposal_open_contract.longcode) {
+            setCookie('open_proposal_longcodeProp', data.proposal_open_contract.longcode)
+            localStorage.setItem('open_proposal_longcodeProp', data.proposal_open_contract.longcode)
+        }
+
+        if (data.proposal_open_contract.tick_stream) {
+            let tick_value_array = []
+            tick_value_array.push(data.proposal_open_contract.tick_stream)
+            if (tick_value_array.length > 0 && tick_value_array[tick_value_array.length - 1].length > 0) {
+                let lastSubArray = tick_value_array[tick_value_array.length - 1];
+                let tick_stream_value = lastSubArray[lastSubArray.length - 1].tick_display_value;
+                setCookie('open_proposal_tick_stream', tick_stream_value)
+                localStorage.setItem('open_proposal_tick_stream', tick_stream_value)
+            }
+        }
+
+        if (data.proposal_open_contract.contract_type) {
+            setCookie('open_proposal_contract_type', data.proposal_open_contract.contract_type)
+            localStorage.setItem('open_proposal_contract_type', data.proposal_open_contract.contract_type)
+        }
+
+        if (data.proposal_open_contract.currency) {
+            setCookie('open_proposal_currency', data.proposal_open_contract.currency)
+            localStorage.setItem('open_proposal_currency', data.proposal_open_contract.currency)
+        }
+
+        if (data.proposal_open_contract.entry_tick) {
+            setCookie('open_proposal_entry_tick', data.proposal_open_contract.entry_tick)
+            localStorage.setItem('open_proposal_entry_tick', data.proposal_open_contract.entry_tick)
+        }
+
+        if (data.proposal_open_contract.exit_tick) {
+            setCookie('open_proposal_exit_tick', data.proposal_open_contract.exit_tick)
+            localStorage.setItem('open_proposal_exit_tick', data.proposal_open_contract.exit_tick)
+        }
+
+        if (data.proposal_open_contract.id) {
+            setCookie('open_proposal_id', data.proposal_open_contract.id)
+            localStorage.setItem('open_proposal_id', data.proposal_open_contract.id)
+        }
+
+        if (data.proposal_open_contract.is_expired) {
+            setCookie('open_proposal_is_expired', data.proposal_open_contract.is_expired)
+            localStorage.setItem('open_proposal_is_expired', data.proposal_open_contract.is_expired)
+        }
+
+        if (data.proposal_open_contract.profit) {
+            setCookie('open_proposal_profit', data.proposal_open_contract.profit)
+            localStorage.setItem('open_proposal_profit', data.proposal_open_contract.profit)
+        }
+
+        if (data.proposal_open_contract.payout) {
+            setCookie('open_proposal_payout', data.proposal_open_contract.payout)
+            localStorage.setItem('open_proposal_payout', data.proposal_open_contract.payout)
+        }
+
+        if (data.proposal_open_contract.buy_price) {
+            setCookie('open_proposal_buy_price', data.proposal_open_contract.buy_price)
+            localStorage.setItem('open_proposal_buy_price', data.proposal_open_contract.buy_price)
+        }
+
+        if (data.proposal_open_contract.status) {
+            setCookie('open_proposal_status', data.proposal_open_contract.status)
+            localStorage.setItem('open_proposal_status', data.proposal_open_contract.status)
+        }
+
+        if (data.proposal_open_contract.entry_tick_time) {
+            setCookie('open_proposal_entry_tick_time', data.proposal_open_contract.entry_tick_time)
+            localStorage.setItem('open_proposal_entry_tick_time', data.proposal_open_contract.entry_tick_time)
+        }
+
+        if (data.proposal_open_contract.exit_tick_time) {
+            setCookie('open_proposal_exit_tick_time', data.proposal_open_contract.exit_tick_time)
+            localStorage.setItem('open_proposal_exit_tick_time', data.proposal_open_contract.exit_tick_time)
+        }
+    }
+}
 
 
 
-const proposalOpenContractResponse = async (res) => {
-    const data = JSON.parse(res.data);
-    if (data.error !== undefined) {
-        console.log('Error: %s ', data.error.message);
-        connection.removeEventListener('message', proposalOpenContractResponse, false);
-        await api.disconnect();
 
-    } else if (data.msg_type === 'proposal_open_contract') {
-        console.log(data)
+function open_proposal_actions(data) {
+    if (data.proposal_open_contract.contract_id == contract_id) {
         longcodeProp = data.proposal_open_contract.longcode
         allProposalOpenContract.push(data.proposal_open_contract.tick_stream)
         document.getElementById('proposal_information').textContent = longcodeProp
@@ -1517,26 +1651,13 @@ const proposalOpenContractResponse = async (res) => {
         } else {
             console.log('no valid tick yet')
         }
-
     }
-};
 
-const getProposalOpenContract = async (contract_id) => {
-    connection.addEventListener('message', proposalOpenContractResponse);
-    await api.proposalOpenContract({
-        "proposal_open_contract": 1,
-        "contract_id": contract_id,
-        "subscribe": 1
-    })
-};
-
-const unsubscribeProposalOpenContract = () => {
-    connection.removeEventListener('message', proposalOpenContractResponse, false);
-};
+}
 
 
 
-let contract_id
+
 down_purchase_btn.addEventListener('click', async function () {
     const slider = document.getElementById('slide_trade_result').style.display = 'flex'
 
@@ -1560,8 +1681,9 @@ down_purchase_btn.addEventListener('click', async function () {
     });
 
     contract_id = buy.buy.contract_id;
+    console.log(contract_id)
 
-    getProposalOpenContract(contract_id)
+    run_open_contract_proposal()
 
 });
 

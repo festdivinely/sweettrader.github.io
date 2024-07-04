@@ -23,6 +23,29 @@
 
     <div>
         <div class="overlay" id="overlay"></div>
+        <div class="overlay2" id="overlay2"></div>
+        <div class="overlay2" id="overlay2"></div>
+        <div class="overlay3" id="overlay3"></div>
+        <div class="sidebar" id="sidebar">
+            <div class="close-btn">
+                &times;
+            </div>
+            <a href="#" class="active">Home</a>
+            <div href="#" class="toggle_dropdown" id="toggle_dropdown">
+                <div class="robot_text" id="robot_text">Trading Bots</div>
+                <div class="dropdown-arrow">&#9660;</div>
+            </div>
+            <div class="dropdown_content" id="dropdown_content">
+                <a href="#" class="bot1" id="bot1">Trading Bot 1</a>
+                <a href="#" class="bot2" id="bot2">Trading Bot 2</a>
+                <a href="#" class="bot3" id="bot3">Trading Bot 3</a>
+                <a href="#" class="bot4" id="bot4">Trading Bot 4</a>
+                <a href="#" class="bot5" id="bot5">Trading Bot 5</a>
+            </div>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Contact</a>
+        </div>
         <div class="nav" id="nav">
             <div class="hamburger_menu" id="hamburger_menu">&#9776;</div>
             <div class="nav_first" id="nav_first">
@@ -578,6 +601,179 @@
 
 
 
+        <div class="bot_show_cont" id="bot_show_cont">
+            <div class="summary_cont" id="summary_cont">
+                <div class="summary_text" id="summary_text">Summary</div>
+                <div class="close_and_info_cont" id="close_and_info_cont">
+                    <div class="slide_trade_cont">
+                        <div class="bot_settings" id="bot_settings">&#9881;</div>
+                        <div class="martingale" id="martingale">
+                            <span class="mat">&#109;</span>
+                            <span class="tick_check_amount" id="tick_check_amount"><span class="tick_check" id="tick_check">2</span><span>x</span><span class="martingale_jump" id="martingale_jump"></span></span>
+                        </div>
+                        <div class="all_vol_cont_stream">
+                            <div class="slide_vol_stream" id="stream10">5464.7348</div>
+                            <div class="slide_vol_stream" id="stream25">5464.7668</div>
+                            <div class="slide_vol_stream" id="stream50">6575.5454</div>
+                            <div class="slide_vol_stream" id="stream75">7865.6579</div>
+                            <div class="slide_vol_stream" id="stream100">444.56255</div>
+                            <div class="slide_vol_stream" id="streamAll">0.0000000</div>
+                        </div>
+                        <div class="carousal_button1 next">&#8592;</div>
+                        <div class="all_vol_cont">
+                            <div class="slide_vol">Vol 10</div>
+                            <div class="slide_vol">Vol 25</div>
+                            <div class="slide_vol">Vol 50</div>
+                            <div class="slide_vol">Vol 75</div>
+                            <div class="slide_vol">Vol 100</div>
+                            <div class="slide_vol">All vol</div>
+                        </div>
+                        <div class="carousal_button1 prev">&#8594;</div>
+                    </div>
+                    <div class="bot_details" id="bot_details">&#128161;</div>
+                    <div class="close_summary" id="close_summary">&times;</div>
+                </div>
+            </div>
+            <div class="start_btn" id="start_btn">
+                <div class="click_change" id="click_change">
+                    <div class="pause_button" id="pause_button">&#10074;&#10074;</div>
+                </div>
+                <div class="settings_cont" id="settings_cont">
+                    <div class="last_digit_set_cont">
+                        <div class="last_digit_settings last_one"><span class="bot_icon_set">&#129302;</span><span>Last one digit bot</span></div>
+                        <div class="last_digit_settings last_two"><span class="bot_icon_set">&#129302;</span><span>Last two digit bot</span></div>
+                        <div class="last_digit_settings last_three"><span class="bot_icon_set">&#129302;</span><span>Last three digit bot</span></div>
+                        <div class="last_digit_settings last_four"><span class="bot_icon_set">&#129302;</span><span>Last four digit bot</span></div>
+                        <div class="last_digit_settings last_five"><span class="bot_icon_set">&#129302;</span><span>Last five digit bot</span></div>
+                        <div class="last_digit_settings last_six"><span class="bot_icon_set">&#129302;</span><span>Last six digit bot</span></div>
+                        <div class="last_digit_settings last_seven"><span class="bot_icon_set">&#129302;</span><span>Last seven digit bot</span></div>
+                        <div class="last_digit_settings last_eight"><span class="bot_icon_set">&#129302;</span><span>Last eight digit bot</span></div>
+                        <div class="last_digit_settings last_nine"><span class="bot_icon_set">&#129302;</span><span>Last nine digit bot</span></div>
+                        <div class="last_digit_settings last_ten"><span class="bot_icon_set">&#129302;</span><span>Last ten digit bot</span></div>
+                    </div>
+                    <div class="martingale_jump_set">
+                        <div>martingale jump</div>
+                        <button class="increase_jump" id="increase_jump">+</button>
+                        <button class="reduce_jump" id="reduce_jump">-</button>
+                    </div>
+                </div>
+                <div class="flash_info_cont" id="flash_info_cont">
+                    <div class="flash_info" id="flash_info">martigale is not active</div>
+                </div>
+            </div>
+            <div class="bot_buy_info" id="bot_buy_info">
+                <div class="bot_state" id="bot_state">bot not running...</div>
+            </div>
+            <div>
+                <div class="text_info_hold" id="text_info_hold">
+                    <div class="attempting_buy" id="attempting_buy">attempting to buy</div>
+                    <div class="buy_succeded" id="buy_succeded">buy succeded</div>
+                    <div class="contract_close" id="contract_close">contract close</div>
+                </div>
+                <div class="connector buy_details">
+                    <div class="circled_cont">
+                        <div class="circle circle1" id="circle1"></div>
+                    </div>
+                    <div class="bar">
+                        <div class="progress1" id="progress1"></div>
+                    </div>
+                    <div class="circled_cont">
+                        <div class="circle circle2" id="circle2"></div>
+                    </div>
+                    <div class="bar">
+                        <div class="progress2" id="progress2"></div>
+                    </div>
+                    <div class="circled_cont">
+                        <div class="circle circle3" id="circle3"></div>
+                    </div>
+                </div>
+                <div class="text_info_hold text_info_hold2" id="text_info_hold2">
+                    <div class="attempting_buy attempting_buy2 tooltip2 a_b" id="attempting_buy2">Buy amount: 0.00</div>
+                    <div class="buy_succeded buy_succeded2 tooltip2 b_s" id="buy_succeded2">ID: 000000000000</div>
+                    <div class="contract_close contract_close2 tooltip2 c_c" id="contract_close2">ID: 000000000000</div>
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Row Heading</th>
+                                <th>Timestamp</th>
+                                <th>Reference</th>
+                                <th>Trade Type</th>
+                                <th>Entry Spot</th>
+                                <th>Exit Spot</th>
+                                <th>Buy Price</th>
+                                <th>Profit/Loss</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="tbody1" id="tbody1">
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-container table-container2">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Row Heading</th>
+                                <th>Account</th>
+                                <th>No of runs</th>
+                                <th>Total stake</th>
+                                <th>Total payout</th>
+                                <th>win</th>
+                                <th>loss</th>
+                                <th>Total Profit/Loss</th>
+                                <th>balance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Example rows -->
+                            <tr class="tr2">
+                                <td class="td2">1</td>
+                                <td class="td2" id="td2_account_id">VRTC2739948</td>
+                                <td class="td2" id="td2_no_of_runs">0</td>
+                                <td class="td2" id="td2_total_stake">0</td>
+                                <td class="td2" id="td2_total_payout">0</td>
+                                <td class="td2" id="td2_total_wins">0</td>
+                                <td class="td2" id="td2_total_loss">0</td>
+                                <td class="td2" id="td2_total_profit_loss">0</td>
+                                <td class="td2" id="td2_balance">0.000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="bot_log_show_cont" id="bot_log_show_cont">
+            <div class="log_summary_cont" id="log_summary_cont">
+                <div class="log_summary_text" id="log_summary_text">log</div>
+                <div class="log_close_and_info_cont" id="log_close_and_info_cont">
+                    <div class="log_close_summary" id="log_close_summary">&times;</div>
+                </div>
+            </div>
+            <div class="log_table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="log_th1">Timestamp</th>
+                            <th class="log_th2">Message</th>
+                            <th class="log_th3"></th>
+                        </tr>
+                    </thead>
+                    <tbody class="log_tbody1" id="log_tbody1">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
 
 
         <div class="main_body_cont_flex" id="main_body_cont_flex">
@@ -735,32 +931,43 @@
                         </div>
                         <div class="close_contract_result_container" id="close_contract_result_container">&times;</div>
                     </div>
-                    <div class="proposal_information" id="proposal_information">Win or loose Payout if ................ </div>
+                    <div class="proposal_information" id="proposal_information">Win or loose Payout if ................
+                    </div>
                     <div class="buy_price_loose_and_profit_container">
                         <div class="buy_price_container">
                             <div class="buy_price_text" id="buy_price_text">Buy Price</div>
-                            <div class="buy_price_figure" id="buy_price_figure"><span class="buy_price_figure_amount" id="buy_price_figure_amount">00.00 </span><span class="result_currency">USD</span></div>
+                            <div class="buy_price_figure" id="buy_price_figure"><span class="buy_price_figure_amount"
+                                    id="buy_price_figure_amount">00.00 </span><span class="result_currency">USD</span>
+                            </div>
                         </div>
                         <div class="price_after_trade_container">
                             <div class="price_after_trade_text" id="price_after_trade_text">Final Price</div>
-                            <div class="price_after_trade_figure" id="price_after_trade_figure"><span class="price_after_trade_figure_amount" id="price_after_trade_figure_amount">00.00 </span><span class="result_currency">USD</span></div>
+                            <div class="price_after_trade_figure" id="price_after_trade_figure"><span
+                                    class="price_after_trade_figure_amount" id="price_after_trade_figure_amount">00.00
+                                </span><span class="result_currency">USD</span></div>
                         </div>
                         <div class="profit_container">
                             <div class="profit_text" id="profit_text">Profit</div>
-                            <div class="profit_figure"><span class="profit_figure_amount" id="profit_figure_amount">0.00 </span><span class="result_currency">USD</span></div>
+                            <div class="profit_figure"><span class="profit_figure_amount" id="profit_figure_amount">0.00
+                                </span><span class="result_currency">USD</span></div>
                         </div>
                     </div>
-                    <div class="transaction_refrence">Your Transaction Reference Is: <span class="transaction_refrence_figure" id="transaction_refrence_figure">000000000000</span></div>
+                    <div class="transaction_refrence">Your Transaction Reference Is: <span
+                            class="transaction_refrence_figure" id="transaction_refrence_figure">000000000000</span>
+                    </div>
                     <div class="time_and_end_tic_container">
                         <div class="time_of_trade">
                             <div class="clock_icon">&#x23F0;</div>
                             <div class="trade_start_time" id="trade_start_time">00:00:00</div>
                         </div>
-                        <div class="end_tic_off_trade" id="end_tic_off_trade">0,000.000<span class="last_digit">3</span></div>
+                        <div class="end_tic_off_trade" id="end_tic_off_trade">0,000.000<span class="last_digit">3</span>
+                        </div>
                     </div>
                     <div class="last_digit_responds" id="last_digit_responds">
                         <div class="slide_trade_result last_digits" id="slide_trade_result">
-                            <div class="one_out_of_one"><span class="durr_amount_prop_count" id="durr_amount_prop_count">1</span><span>\</span><span class="durr_amount_prop" id="durr_amount_prop">1</span></div>
+                            <div class="one_out_of_one"><span class="durr_amount_prop_count"
+                                    id="durr_amount_prop_count">1</span><span>\</span><span class="durr_amount_prop"
+                                    id="durr_amount_prop">1</span></div>
                         </div>
                         <div class="last_digits ldgs zero">0</div>
                         <div class="last_digits ldgs one">1</div>
@@ -773,9 +980,10 @@
                         <div class="last_digits ldgs eight">8</div>
                         <div class="last_digits ldgs nine">9</div>
                     </div>
-                    
+
                     <div class="account_balance_after_trade_result"><span>Account Balance:
-                        </span><span class="balance_after_trade_end" id="balance_after_trade_end">569.05</span><span>USD</span></div>
+                        </span><span class="balance_after_trade_end"
+                            id="balance_after_trade_end">569.05</span><span>USD</span></div>
                 </div>
             </div>
 
@@ -811,7 +1019,8 @@
 
             <div class="buy_sell buy_sell_four" id="buy_sell_four">
                 <div class="multi_trade_cont">
-                    <div class="vol_10_cont">
+                    <div class="vol_10_cont tooltip">
+                        <span class="tooltiptext" id="tooltiptext10">This is a tooltip!</span>
                         <div class="vol_10 vol_stream" id="vol_10">
                             <span class="tick_strem" id="tick_stream10">2,345.87</span>
                             <span class="last_digit_tick">9</span>
@@ -859,7 +1068,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="vol_25_cont">
+                    <div class="vol_25_cont tooltip">
+                        <span class="tooltiptext">This is a tooltip!</span>
                         <div class="vol_25 vol_stream" id="vol_25">
                             <span class="tick_strem" id="tick_stream25">2,345.87</span>
                             <span class="last_digit_tick">9</span>
@@ -907,7 +1117,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="vol_50_cont">
+                    <div class="vol_50_cont tooltip">
+                        <span class="tooltiptext">This is a tooltip!</span>
                         <div class="vol_50 vol_stream" id="vol_50">
                             <span class="tick_strem" id="tick_stream50">2,345.87</span>
                             <span class="last_digit_tick">9</span>
@@ -955,7 +1166,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="vol_75_cont">
+                    <div class="vol_75_cont tooltip">
+                        <span class="tooltiptext">This is a tooltip!</span>
                         <div class="vol_75 vol_stream" id="vol_75">
                             <span class="tick_strem" id="tick_stream75">2,345.87</span>
                             <span class="last_digit_tick">9</span>
@@ -1003,7 +1215,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="vol_100_cont">
+                    <div class="vol_100_cont tooltip">
+                        <span class="tooltiptext">This is a tooltip!</span>
                         <div class="vol_100 vol_stream" id="vol_100">
                             <span class="tick_strem" id="tick_stream100">2,345.87</span>
                             <span class="last_digit_tick">9</span>

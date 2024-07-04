@@ -110,6 +110,26 @@ let barrier_result = document.getElementById("barrier_result")
 
 let close_contract_result_container = document.getElementById("close_contract_result_container")
 
+let balance_after_trade_end = document.getElementById('balance_after_trade_end')
+
+let brand = document.getElementById('brand')
+
+let bot1 = document.getElementById('bot1')
+let bot2 = document.getElementById('bot2')
+let bot3 = document.getElementById('bot3')
+let bot4 = document.getElementById('bot4')
+let bot5 = document.getElementById('bot5')
+
+
+let bot_show_cont = document.getElementById('bot_show_cont')
+let close_summary = document.getElementById('close_summary')
+
+let overlay3 = document.getElementById('overlay3')
+
+let td2_balance = document.getElementById('td2_balance')
+
+
+
 
 
 
@@ -207,12 +227,18 @@ let stake_or_payout = null
 
 let proposal_id = null
 
+let stake_amount_default = null
+
+let bot_current_vol1 = null
+let bot_current_vol12 = null
+let martingale_set = false
+
+let bot_set = null
+let bot_jump = null
 
 
 
-
-
-let message1 = null
+let message1 = localStorage.getItem('message1')
 
 
 let randomNumber = null;
@@ -251,10 +277,13 @@ let website_status_info = 'initial'
 
 
 
+let subscription_to_open_contract = true
 
 
 
 
+
+console.log('message1', message1)
 
 
 // Function to set a cookie
@@ -327,6 +356,81 @@ function displayProposalResult2(data, stake1, payout1) {
 
 
 
+async function proposal_actions(data, proposalResponse) {
+    // Check if there is an error object
+    if (data.error) {
+        // Safely access the error message
+        setCookie('proposal_error1', data.error.message, 7)
+        localStorage.setItem('proposal_error1', data.error.message)
+
+        let proposal_id = getCookie('proposal_id1')
+        if (proposal_id) {
+            deleteCookie('proposal_id1')
+        }
+
+        let proposal_id_lc = localStorage.getItem('proposal_id1')
+        if (proposal_id_lc) {
+            localStorage.removeItem('proposal_id1')
+        }
+
+        proposal_id = null
+
+        const errorMessage = data.error.message;
+        console.log('Error: %s ', errorMessage);
+        document.getElementById('up_order_btn_down').textContent = errorMessage;
+        document.getElementById('up_proposal_info_cont').textContent = errorMessage;
+        connection.removeEventListener('message', proposalResponse, false);
+        await api.disconnect();
+    } else if (data.msg_type === 'proposal') {
+        // Check if there's no error or the error message is null or empty
+        if (!data.error || !data.error.message) {
+
+            let proposal_error = getCookie('proposal_error1')
+            if (proposal_error) {
+                deleteCookie('proposal_error1')
+            }
+
+            let proposal_error_lc = localStorage.getItem('proposal_error1')
+            if (proposal_error_lc) {
+                localStorage.removeItem('proposal_error1')
+            }
+
+            setCookie('proposal_id1', data.proposal.id, 7)
+            localStorage.setItem('proposal_id1', data.proposal.id)
+            proposal_id = data.proposal.id
+
+            displayProposalResult1(data, data.proposal.display_value, data.proposal.payout);
+            let calc = displayProposalResult2(data, data.proposal.display_value, data.proposal.payout)
+            // Display proposal details inside the up_proposal_info_cont
+            const infoContainer = document.getElementById('up_proposal_info_cont');
+            infoContainer.innerHTML = `
+            <p>${calc.netProPerc}</p>
+            <p>Details: ${data.proposal.longcode}</p>
+            <p>Ask Price: ${data.proposal.display_value}</p>
+            <p>Payout: ${data.proposal.payout}</p>
+            <p>Spot: ${data.proposal.spot}</p>
+            <p>ID: ${data.proposal.id}</p>
+            <p>website status: ${website_status_info}</P>
+        `;
+
+            stake_info1.textContent = data.proposal.display_value
+            payout_info1.textContent = data.proposal.payout
+
+            def_price_up = data.proposal.display_value
+            def_payout_up = data.proposal.payout
+            def_profit_up = calc.NetProfit
+        } else {
+            // If there's an error message, display it
+            document.getElementById('up_order_btn_down').textContent = data.error.message;
+        }
+    }
+}
+
+
+
+
+
+
 async function order_propose1(api, amount, last_digit_prediction_or_barrier, stake_or_payout, contract_type, currency, duration, duration_unit, symbol) {
 
     let contract_type_set = null
@@ -368,82 +472,11 @@ async function order_propose1(api, amount, last_digit_prediction_or_barrier, sta
     const proposalResponse = async (res) => {
         try {
             const data = JSON.parse(res.data);
-
-            // Check if there is an error object
-            if (data.error) {
-                // Safely access the error message
-                setCookie('proposal_error1', data.error.message, 7)
-                localStorage.setItem('proposal_error1', data.error.message)
-
-                let proposal_id = getCookie('proposal_id1')
-                if (proposal_id) {
-                    deleteCookie('proposal_id1')
-                }
-
-                let proposal_id_lc = localStorage.getItem('proposal_id1')
-                if (proposal_id_lc) {
-                    localStorage.removeItem('proposal_id1')
-                }
-
-                proposal_id = null
-
-                const errorMessage = data.error.message;
-                console.log('Error: %s ', errorMessage);
-                document.getElementById('up_order_btn_down').textContent = errorMessage;
-                document.getElementById('up_proposal_info_cont').textContent = errorMessage;
-                connection.removeEventListener('message', proposalResponse, false);
-                await api.disconnect();
-            } else if (data.msg_type === 'proposal') {
-                // Check if there's no error or the error message is null or empty
-                if (!data.error || !data.error.message) {
-
-                    let proposal_error = getCookie('proposal_error1')
-                    if (proposal_error) {
-                        deleteCookie('proposal_error1')
-                    }
-
-                    let proposal_error_lc = localStorage.getItem('proposal_error1')
-                    if (proposal_error_lc) {
-                        localStorage.removeItem('proposal_error1')
-                    }
-
-                    setCookie('proposal_id1', data.proposal.id, 7)
-                    localStorage.setItem('proposal_id1', data.proposal.id)
-                    proposal_id = data.proposal.id
-
-                    displayProposalResult1(data, data.proposal.display_value, data.proposal.payout);
-                    let calc = displayProposalResult2(data, data.proposal.display_value, data.proposal.payout)
-                    // Display proposal details inside the up_proposal_info_cont
-                    const infoContainer = document.getElementById('up_proposal_info_cont');
-                    infoContainer.innerHTML = `
-                        <p>${calc.netProPerc}</p>
-                        <p>Details: ${data.proposal.longcode}</p>
-                        <p>Ask Price: ${data.proposal.display_value}</p>
-                        <p>Payout: ${data.proposal.payout}</p>
-                        <p>Spot: ${data.proposal.spot}</p>
-                        <p>ID: ${data.proposal.id}</p>
-                        <p>website status: ${website_status_info}</P>
-                    `;
-
-                    stake_info1.textContent = data.proposal.display_value
-                    payout_info1.textContent = data.proposal.payout
-
-                    def_price_up = data.proposal.display_value
-                    def_payout_up = data.proposal.payout
-                    def_profit_up = calc.NetProfit
-                } else {
-                    // If there's an error message, display it
-                    document.getElementById('up_order_btn_down').textContent = data.error.message;
-                }
-            }
+            proposal_actions(data, proposalResponse)
         } catch (error) {
             console.error('Failed to process response:', error);
         }
     };
-
-
-
-
 
     const getProposal = async () => {
         connection.addEventListener('message', proposalResponse);
@@ -503,76 +536,7 @@ async function order_propose3(api, amount, stake_or_payout, contract_type, curre
     const proposalResponse = async (res) => {
         try {
             const data = JSON.parse(res.data);
-
-            // Check if there is an error object
-            if (data.error) {
-
-                setCookie('proposal_error1', data.error.message, 7)
-                localStorage.setItem('proposal_error1', data.error.message)
-
-                let proposal_id = getCookie('proposal_id1')
-                if (proposal_id) {
-                    deleteCookie('proposal_id1')
-                }
-
-                let proposal_id_lc = localStorage.getItem('proposal_id1')
-                if (proposal_id_lc) {
-                    localStorage.removeItem('proposal_id1')
-                }
-
-                proposal_id = null
-
-                // Safely access the error message
-                const errorMessage = data.error.message;
-                console.log('Error: %s ', errorMessage);
-                document.getElementById('up_order_btn_down').textContent = errorMessage;
-                document.getElementById('up_proposal_info_cont').textContent = errorMessage;
-                connection.removeEventListener('message', proposalResponse, false);
-                await api.disconnect();
-            } else if (data.msg_type === 'proposal') {
-                // Check if there's no error or the error message is null or empty
-                if (!data.error || !data.error.message) {
-
-                    let proposal_error = getCookie('proposal_error1')
-                    if (proposal_error) {
-                        deleteCookie('proposal_error1')
-                    }
-
-                    let proposal_error_lc = localStorage.getItem('proposal_error1')
-                    if (proposal_error_lc) {
-                        localStorage.removeItem('proposal_error1')
-                    }
-
-                    setCookie('proposal_id1', data.proposal.id, 7)
-                    localStorage.setItem('proposal_id1', data.proposal.id)
-
-                    proposal_id = data.proposal.id
-
-                    displayProposalResult1(data, data.proposal.display_value, data.proposal.payout);
-                    let calc = displayProposalResult2(data, data.proposal.display_value, data.proposal.payout)
-                    // Display proposal details inside the up_proposal_info_cont
-                    const infoContainer = document.getElementById('up_proposal_info_cont');
-                    infoContainer.innerHTML = `
-                    <p>${calc.netProPerc}</p>
-                    <p>Details: ${data.proposal.longcode}</p>
-                    <p>Ask Price: ${data.proposal.display_value}</p>
-                    <p>Payout: ${data.proposal.payout}</p>
-                    <p>Spot: ${data.proposal.spot}</p>
-                    <p>ID: ${data.proposal.id}</p>
-                    <p>website status: ${website_status_info}</P>
-                `;
-
-                    stake_info1.textContent = data.proposal.display_value
-                    payout_info1.textContent = data.proposal.payout
-
-                    def_price_up = data.proposal.display_value
-                    def_payout_up = data.proposal.payout
-                    def_profit_up = calc.NetProfit
-                } else {
-                    // If there's an error message, display it
-                    document.getElementById('up_order_btn_down').textContent = data.error.message;
-                }
-            }
+            proposal_actions(data, proposalResponse)
         } catch (error) {
             console.error('Failed to process response:', error);
         }
@@ -620,6 +584,8 @@ const getWebsiteStatus = async () => {
 
 
 
+
+
 const ping = () => {
     setInterval(() => {
         api.ping();
@@ -637,8 +603,8 @@ const websitePingResponse = async (res) => {
     }
 
     if (data.msg_type === 'ping') {
-        let data = data.msg_type
-     }
+
+    }
 };
 
 
@@ -652,16 +618,9 @@ const getWebsitePing = async () => {
 
 
 
-const tickStream = () => api.subscribe({ "ticks": symbol_vol == null ? 'R_10' : symbol_vol });
+
 
 let balance_default = () => api.balance({ "balance": 1, "subscribe": 1 });
-
-
-
-
-
-let balance_after_trade_end = document.getElementById('balance_after_trade_end')
-
 
 const balanceResponse = async (res) => {
     const data = JSON.parse(res.data);
@@ -675,6 +634,7 @@ const balanceResponse = async (res) => {
     if (data.msg_type === 'balance') {
         balance_amount.textContent = data.balance.balance;
         balance_after_trade_end.textContent = data.balance.balance
+        td2_balance.textContent = data.balance.balance
     }
 };
 
@@ -691,6 +651,9 @@ const getbalance = async () => {
 function getRandom(strNumber) {
     return randomNumber = strNumber.charAt(strNumber.length - 1);
 }
+
+
+const tickStream = () => api.subscribe({ "ticks": symbol_vol == null ? 'R_10' : symbol_vol });
 
 const tickResponse = async (res) => {
     const data = JSON.parse(res.data);
@@ -902,6 +865,7 @@ function loadValuesFromCookies() {
     stake_or_payout_cookie = getCookie('stake_or_payout_cookie')
 
 
+
     last_digit_prediction_cookie = getCookie('last_digit_prediction_cookie')
     barrier_cookie = getCookie('barrier_cookie')
 
@@ -909,8 +873,6 @@ function loadValuesFromCookies() {
     let contract_type_text_cookie = getCookie('contract_type_text_cookie');
     let symbol_vol_text_cookie = getCookie('symbol_vol_text_cookie');
     let type_vol_text_cookie = getCookie('type_vol_text_cookie');
-
-
 
 
     shownSvg(contract_text_cookie)
@@ -977,7 +939,6 @@ function loadValuesFromCookies() {
 
 window.addEventListener('load', function () {
 
-
     let buy_sell_one_display_cookie = getCookie('buy_sell_one_display_cookie');
     let buy_sell_two_display_cookie = getCookie('buy_sell_two_display_cookie');
     let buy_sell_three_display_cookie = getCookie('buy_sell_three_display_cookie');
@@ -987,6 +948,7 @@ window.addEventListener('load', function () {
     loadValuesFromCookies();
 
 
+    let contract_text_cookie = getCookie('contract_text_cookie');
     duration_amount_cookie = getCookie('duration_amount_cookie');
     stake_amount_cookie = getCookie('stake_amount_cookie');
     duration_unit_cookie = getCookie('duration_unit_cookie');
@@ -1000,13 +962,19 @@ window.addEventListener('load', function () {
     last_digit_prediction_cookie = getCookie('last_digit_prediction_cookie')
     barrier_cookie = getCookie('barrier_cookie')
 
-
+    stake_amount_default = getCookie('stake_amount_default')
+    martingale_set = localStorage.getItem('martingale') 
+    bot_set = localStorage.getItem('bot_set')
+    bot_jump = localStorage.getItem('bot_jump')
 
     // Get the existing values of the cookies and local storage items
-    var contract_text_cookie = getCookie('contract_text_cookie');
-    var symbol_vol_text_cookie = getCookie('symbol_vol_text_cookie');
-    var contract_text_local_st = localStorage.getItem('contract_text_local_st');
-    var symbol_vol_text_local_st = localStorage.getItem('symbol_vol_text_local_st');
+
+    let symbol_vol_text_cookie = getCookie('symbol_vol_text_cookie');
+    let contract_text_local_st = localStorage.getItem('contract_text_local_st');
+    let symbol_vol_text_local_st = localStorage.getItem('symbol_vol_text_local_st');
+    bot_current_vol1 = localStorage.getItem('bot_current_vol1')
+    bot_current_vol12 = localStorage.getItem('bot_current_vol2')
+
 
     // Set the cookies and local storage items if they don't already exist
     if (!contract_text_cookie) {
@@ -1020,6 +988,37 @@ window.addEventListener('load', function () {
     }
     if (!symbol_vol_text_local_st) {
         localStorage.setItem('symbol_vol_text_local_st', "Volatility 10 Index");
+    }
+    if (!stake_amount_default) {
+        localStorage.setItem('stake_amount_default', document.getElementById('stake_amount_input').value);
+    }
+    if (!stake_amount_default) {
+        setCookie('stake_amount_default', document.getElementById('stake_amount_input').value);
+    }
+
+    if (!bot_current_vol1) {
+        localStorage.setItem('bot_current_vol1', 0)
+        setCookie('bot_current_vol1', 0)
+    }
+
+    if (!bot_current_vol12) {
+        localStorage.setItem('bot_current_vol2', 0)
+        setCookie('bot_current_vol2', 0)
+    }
+
+    if (!martingale_set) {
+        setCookie('martingale', 'false')
+        localStorage.setItem('martingale', 'false')
+    }
+
+    if (!bot_set) {
+        setCookie('bot_set', '2')
+        localStorage.setItem('bot_set', '2')
+    }
+
+    if (!bot_jump) {
+        setCookie('bot_jump', 0)
+        localStorage.setItem('bot_jump', 0)
     }
 
 
@@ -1453,29 +1452,29 @@ if (drop_down_light_cont && dropDownLight && dropUpLight && current_balance) {
 
 
 
-if (account_balance_drop_cont && account_type_change_cont && overlay) {
+if (account_balance_drop_cont && account_type_change_cont && overlay3) {
     account_balance_drop_cont.addEventListener('click', (event) => {
         event.stopPropagation(); // Prevent the event from propagating to the document
-        if (account_type_change_cont.style.display === 'block' && overlay.style.display === 'block') {
+        if (account_type_change_cont.style.display === 'block' && overlay3.style.display === 'block') {
             account_type_change_cont.style.display = 'none';
-            overlay.style.display = 'none';
+            overlay3.style.display = 'none';
         } else {
             account_type_change_cont.style.display = 'block';
-            overlay.style.display = 'block';
+            overlay3.style.display = 'block';
         }
     });
 
     document.addEventListener('click', (event) => {
         if (!account_type_change_cont.contains(event.target)) {
             account_type_change_cont.style.display = 'none';
-            overlay.style.display = 'none';
+            overlay3.style.display = 'none';
         }
     });
 
-    overlay.addEventListener('click', (event) => {
+    overlay3.addEventListener('click', (event) => {
         if (!account_type_change_cont.contains(event.target)) {
             account_type_change_cont.style.display = 'none';
-            overlay.style.display = 'none';
+            overlay3.style.display = 'none';
         }
     });
 } else {
@@ -1635,10 +1634,13 @@ if (account_type_change_cont && current_balance) {
         }
 
         // Prevent the event from propagating to the document
-        if (account_type_change_cont.style.display === 'block' && overlay.style.display === 'block') {
+        if (account_type_change_cont.style.display === 'block' && overlay3.style.display === 'block') {
             account_type_change_cont.style.display = 'none';
-            overlay.style.display = 'none';
+            overlay3.style.display = 'none';
         }
+        setTimeout(() => {
+            location.reload();
+        }, 1000);
     });
 } else {
     console.error('One or more elements are not found');
@@ -2496,6 +2498,121 @@ allDurationUnit.forEach(function (unit) {
 
 
 
+
+
+
+
+let proposal_open_contract = () => api.proposalOpenContract({
+    "proposal_open_contract": 1,
+    "subscribe": 1
+})
+
+const proposalOpenContractResponse = async (res) => {
+    const data = JSON.parse(res.data);
+    if (data.error !== undefined) {
+        console.log('Error: %s ', data.error.message);
+        connection.removeEventListener('message', proposalOpenContractResponse, false);
+        await api.disconnect();
+
+    } else if (data.msg_type === 'proposal_open_contract') {
+        console.log(data)
+        save_data(data)
+        open_proposal_actions(data)
+    }
+};
+
+const getProposalOpenContract = async (contract_id) => {
+    connection.addEventListener('message', proposalOpenContractResponse);
+    proposal_open_contract()
+};
+
+const getProposalOpenContract2 = async (contract_id) => {
+    connection.addEventListener('message', proposalOpenContractResponse);
+};
+
+const unsubscribeProposalOpenContract = () => {
+    connection.removeEventListener('message', proposalOpenContractResponse, false);
+};
+
+
+
+
+
+
+function run_open_contract_proposal() {
+
+    if (subscription_to_open_contract == true) {
+        getProposalOpenContract()
+    } else {
+        getProposalOpenContract2()
+    }
+
+    subscription_to_open_contract = false
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+// let proposalOpenContract = (contract_id) => proposalOpenContract({
+//     "proposal_open_contract": 1,
+//     "contract_id": contract_id,
+//     "subscribe": 1
+// })
+
+
+// const proposalOpenContractResponse = async (res) => {
+//     const data = JSON.parse(res.data);
+//     if (data.error !== undefined) {
+//         console.log('Error: %s ', data.error.message);
+//         connection.removeEventListener('message', proposalOpenContractResponse, false);
+//         await api.disconnect();
+
+//     } else if (data.msg_type === 'proposal_open_contract') {
+//         console.log(data)
+//         save_data(data)
+//         open_proposal_actions(data)
+//     }
+// };
+
+// const getProposalOpenContract = async (contract_id) => {
+//     connection.addEventListener('message', proposalOpenContractResponse);
+//     await api.proposalOpenContract({
+//         "proposal_open_contract": 1,
+//         "contract_id": contract_id,
+//         "subscribe": 1
+//     })
+// };
+
+// const unsubscribeProposalOpenContract = () => {
+//     connection.removeEventListener('message', proposalOpenContractResponse, false);
+// };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function convertTimestampTo12HourTime(timestamp) {
     // Convert the timestamp to a Date object
     const date = new Date(timestamp * 1000);
@@ -2525,11 +2642,6 @@ function convertTimestampTo12HourTime(timestamp) {
 
 
 
-
-
-
-
-
 function formatNumberAndBoldLastDecimal(number) {
     // Split the number into integer and decimal parts
     let [integerPart, decimalPart] = number.toString().split('.');
@@ -2548,13 +2660,6 @@ function formatNumberAndBoldLastDecimal(number) {
 
     return formattedNumber;
 }
-
-
-
-
-
-
-
 
 
 let contract_status_html = document.getElementById('contract_status')
@@ -2651,7 +2756,7 @@ function before_trade() {
 }
 
 
-function after_trade(status, endDigit) {
+function after_trade(status, endDigit, is_expired, profit_proposal, profit_trade) {
     let slide_trade_result = document.getElementById('slide_trade_result')
     let allDigits = document.querySelectorAll('.ldgs')
     if (trade_type_secound.textContent === 'Matches/Differs' || trade_type_secound.textContent === 'Over/Under' || trade_type_secound.textContent === 'Odd/Even') {
@@ -2673,8 +2778,6 @@ function after_trade(status, endDigit) {
 
 
 
-
-
 let allProposalOpenContract = []
 let longcodeProp = null
 let contract_ids_buy = null
@@ -2687,30 +2790,96 @@ let buy_price = null
 let contract_currency = null
 let time_of_trade = null
 let every_tick = null
+let contract_id = null
+
+function save_data(data) {
+    if (data.proposal_open_contract.contract_id == contract_id) {
+        if (data.proposal_open_contract.longcode) {
+            setCookie('open_proposal_longcodeProp', data.proposal_open_contract.longcode)
+            localStorage.setItem('open_proposal_longcodeProp', data.proposal_open_contract.longcode)
+        }
+
+        if (data.proposal_open_contract.tick_stream) {
+            let tick_value_array = []
+            tick_value_array.push(data.proposal_open_contract.tick_stream)
+            if (tick_value_array.length > 0 && tick_value_array[tick_value_array.length - 1].length > 0) {
+                let lastSubArray = tick_value_array[tick_value_array.length - 1];
+                let tick_stream_value = lastSubArray[lastSubArray.length - 1].tick_display_value;
+                setCookie('open_proposal_tick_stream', tick_stream_value)
+                localStorage.setItem('open_proposal_tick_stream', tick_stream_value)
+            }
+        }
+
+        if (data.proposal_open_contract.contract_type) {
+            setCookie('open_proposal_contract_type', data.proposal_open_contract.contract_type)
+            localStorage.setItem('open_proposal_contract_type', data.proposal_open_contract.contract_type)
+        }
+
+        if (data.proposal_open_contract.currency) {
+            setCookie('open_proposal_currency', data.proposal_open_contract.currency)
+            localStorage.setItem('open_proposal_currency', data.proposal_open_contract.currency)
+        }
+
+        if (data.proposal_open_contract.entry_tick) {
+            setCookie('open_proposal_entry_tick', data.proposal_open_contract.entry_tick)
+            localStorage.setItem('open_proposal_entry_tick', data.proposal_open_contract.entry_tick)
+        }
+
+        if (data.proposal_open_contract.exit_tick) {
+            setCookie('open_proposal_exit_tick', data.proposal_open_contract.exit_tick)
+            localStorage.setItem('open_proposal_exit_tick', data.proposal_open_contract.exit_tick)
+        }
+
+        if (data.proposal_open_contract.id) {
+            setCookie('open_proposal_id', data.proposal_open_contract.id)
+            localStorage.setItem('open_proposal_id', data.proposal_open_contract.id)
+        }
+
+        if (data.proposal_open_contract.is_expired) {
+            setCookie('open_proposal_is_expired', data.proposal_open_contract.is_expired)
+            localStorage.setItem('open_proposal_is_expired', data.proposal_open_contract.is_expired)
+        }
+
+        if (data.proposal_open_contract.profit) {
+            setCookie('open_proposal_profit', data.proposal_open_contract.profit)
+            localStorage.setItem('open_proposal_profit', data.proposal_open_contract.profit)
+        }
+
+        if (data.proposal_open_contract.payout) {
+            setCookie('open_proposal_payout', data.proposal_open_contract.payout)
+            localStorage.setItem('open_proposal_payout', data.proposal_open_contract.payout)
+        }
+
+        if (data.proposal_open_contract.buy_price) {
+            setCookie('open_proposal_buy_price', data.proposal_open_contract.buy_price)
+            localStorage.setItem('open_proposal_buy_price', data.proposal_open_contract.buy_price)
+        }
+
+        if (data.proposal_open_contract.status) {
+            setCookie('open_proposal_status', data.proposal_open_contract.status)
+            localStorage.setItem('open_proposal_status', data.proposal_open_contract.status)
+        }
+
+        if (data.proposal_open_contract.entry_tick_time) {
+            setCookie('open_proposal_entry_tick_time', data.proposal_open_contract.entry_tick_time)
+            localStorage.setItem('open_proposal_entry_tick_time', data.proposal_open_contract.entry_tick_time)
+        }
+
+        if (data.proposal_open_contract.exit_tick_time) {
+            setCookie('open_proposal_exit_tick_time', data.proposal_open_contract.exit_tick_time)
+            localStorage.setItem('open_proposal_exit_tick_time', data.proposal_open_contract.exit_tick_time)
+        }
+    }
+}
 
 
-let proposalOpenContract = (contract_id) => proposalOpenContract({
-    "proposal_open_contract": 1,
-    "contract_id": contract_id,
-    "subscribe": 1
-})
 
-
-
-const proposalOpenContractResponse = async (res) => {
-    const data = JSON.parse(res.data);
-    if (data.error !== undefined) {
-        console.log('Error: %s ', data.error.message);
-        connection.removeEventListener('message', proposalOpenContractResponse, false);
-        await api.disconnect();
-
-    } else if (data.msg_type === 'proposal_open_contract') {
-        console.log(data)
+function open_proposal_actions(data) {
+    if (data.proposal_open_contract.contract_id == contract_id) {
         longcodeProp = data.proposal_open_contract.longcode
         allProposalOpenContract.push(data.proposal_open_contract.tick_stream)
         document.getElementById('proposal_information').textContent = longcodeProp
 
-        console.log(allProposalOpenContract)
         if (allProposalOpenContract.length > 0 && allProposalOpenContract[allProposalOpenContract.length - 1].length > 0) {
             let lastSubArray = allProposalOpenContract[allProposalOpenContract.length - 1];
             let lastElementOfLastSubArray = lastSubArray[lastSubArray.length - 1].tick_display_value;
@@ -2760,33 +2929,12 @@ const proposalOpenContractResponse = async (res) => {
         } else {
             console.log('no valid tick yet')
         }
-
     }
-};
-
-const getProposalOpenContract = async (contract_id) => {
-    connection.addEventListener('message', proposalOpenContractResponse);
-    await api.proposalOpenContract({
-        "proposal_open_contract": 1,
-        "contract_id": contract_id,
-        "subscribe": 1
-    })
-};
-
-const unsubscribeProposalOpenContract = () => {
-    connection.removeEventListener('message', proposalOpenContractResponse, false);
-};
+}
 
 
 
 
-
-
-
-
-
-
-let contract_id
 up_purchase_btn.addEventListener('click', async function () {
     const slider = document.getElementById('slide_trade_result').style.display = 'flex'
 
@@ -2809,8 +2957,9 @@ up_purchase_btn.addEventListener('click', async function () {
     });
 
     contract_id = buy.buy.contract_id;
+    console.log(contract_id)
 
-    getProposalOpenContract(contract_id)
+    run_open_contract_proposal()
 
 });
 
@@ -2924,87 +3073,516 @@ function handleNewNumber(randomNumber) {
 
 
 
+document.addEventListener('DOMContentLoaded', function () {
+    // Wait for the DOM to be fully loaded before manipulating it
 
+    // Get the button container
+    var buttonContainer = document.querySelector('.click_change');
 
+    // Add click event listener to button container
+    buttonContainer.addEventListener('click', togglePlayPause);
 
+    // Function to toggle play and pause buttons
+    function togglePlayPause() {
+        var play_button = document.getElementById('play_button');
+        var pause_button = document.getElementById('pause_button');
 
 
+        if (play_button) {
+            play_button.parentNode.removeChild(play_button);
 
+            var pause_button = document.createElement('div');
+            pause_button.id = 'pause_button';
+            pause_button.className = 'pause_button';
+            pause_button.innerHTML = '&#10074;&#10074;';
+            buttonContainer.appendChild(pause_button);
+            document.getElementById('bot_state').textContent = 'Bot has stopped'
+        } else if (pause_button) {
+            pause_button.parentNode.removeChild(pause_button);
 
+            var play_button = document.createElement('div');
+            play_button.id = 'play_button';
+            play_button.className = 'play_button';
+            play_button.innerHTML = '&#9654;';
+            buttonContainer.appendChild(play_button);
+            document.getElementById('bot_state').textContent = 'Bot is running'
+        }
+    }
 
 
+    const tbody = document.getElementById('tbody1');
+
+    // Function to create and append rows based on data
+    function appendRows(data) {
+        data.forEach(item => {
+            // Create <tr> element
+            const row = document.createElement('tr');
+
+            // Assign unique ID to <tr> (optional)
+            row.id = `row-${item.id}`;
 
+            // Create <td> elements and append to <tr>
+            const td1 = document.createElement('td');
+            td1.textContent = item.id;
+            row.appendChild(td1);
 
+            const td2 = document.createElement('td');
+            td2.textContent = item.timestamp;
+            row.appendChild(td2);
 
+            const td3 = document.createElement('td');
+            td3.textContent = item.reference;
+            row.appendChild(td3);
 
+            const td4 = document.createElement('td');
+            td4.textContent = item.tradeType;
+            row.appendChild(td4);
 
+            const td5 = document.createElement('td');
+            td5.textContent = item.entrySpot;
+            row.appendChild(td5);
 
+            const td6 = document.createElement('td');
+            td6.textContent = item.exitSpot;
+            row.appendChild(td6);
 
+            const td7 = document.createElement('td');
+            td7.textContent = item.buyPrice;
+            row.appendChild(td7);
 
+            const td8 = document.createElement('td');
+            td8.textContent = item.profitLoss;
+            row.appendChild(td8);
 
+            const td9 = document.createElement('td');
+            td9.textContent = item.status;
+            row.appendChild(td9);
+
+            // Append <tr> to <tbody>
+            tbody.appendChild(row);
+        });
+    }
+
+
 
+});
 
 
 
+let hamburger = document.querySelector('.hamburger_menu');
+let sidebar = document.getElementById('sidebar');
+let closeBtn = document.querySelector('.close-btn');
+let overlay2 = document.querySelector('.overlay2');
 
 
+if ((hamburger && overlay2) || (first_drop_cont && brand)) {
+    hamburger.addEventListener('click', (event) => {
+        event.stopPropagation(); // Prevent the event from propagating to the document
+        if (sidebar.style.left === "-250px" && overlay2.style.display === 'none') {
+            sidebar.style.left = '0px';
+            overlay2.style.display = 'block';
+        } else {
+            sidebar.style.left = '-250px';
+            overlay2.style.display = 'none';
+        }
+    });
 
+    brand.addEventListener('click', (event) => {
+        event.stopPropagation(); // Prevent the event from propagating to the document
+        if (sidebar.style.left === "-250px" && overlay2.style.display === 'none') {
+            sidebar.style.left = '0px';
+            overlay2.style.display = 'block';
+        } else {
+            sidebar.style.left = '-250px';
+            overlay2.style.display = 'none';
+        }
+    });
 
 
+    closeBtn.addEventListener('click', (event) => {
+        if (sidebar.contains(event.target)) {
+            sidebar.style.left = '-250px';
+            overlay2.style.display = 'none';
+        }
+    });
 
 
+    overlay2.addEventListener('click', (event) => {
+        if (!sidebar.contains(event.target)) {
+            sidebar.style.left = '-250px';
+            overlay2.style.display = 'none';
+        }
+    });
+} else {
+    console.error('One or more elements are not found');
+}
 
 
 
 
 
+let toggleDropdown = document.getElementById('toggle_dropdown');
+let dropdownContent = document.getElementById('dropdown_content');
 
 
+toggleDropdown.addEventListener('click', function (event) {
+    event.preventDefault();
+    dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+});
 
 
+if (bot_show_cont && bot1) {
+    bot1.addEventListener('click', (event) => {
+        event.stopPropagation(); // Prevent the event from propagating to the document
+        if (bot_show_cont.style.display == 'none') {
+            bot_show_cont.style.display = 'block'
+            if (sidebar.style.left == '0px' && overlay2.style.display == 'block') {
+                sidebar.style.left = '-250px';
+                overlay2.style.display = 'none';
+            }
+        } else {
+            bot_show_cont.style.display = 'none'
+        }
+
+    });
+
+    close_summary.addEventListener('click', (event) => {
+        event.stopPropagation();
+        if (bot_show_cont.style.display == 'block') {
+            bot_show_cont.style.display = 'none'
+            if (sidebar.style.left == '0px' && overlay2.style.display == 'block') {
+                sidebar.style.left = '-250px';
+                overlay2.style.display = 'none';
+            }
+        } else {
+            bot_show_cont.style.display = 'block'
+        }
+    });
+
+} else {
+    console.error('One or more elements are not found');
+}
+
+
+
+
+
+
+
+
+let log_close_and_info_cont = document.getElementById('log_close_and_info_cont');
+let bot_log_show_cont = document.getElementById('bot_log_show_cont');
+let bot_details = document.getElementById('bot_details');
+
+if (bot_log_show_cont && bot_details) {
+    bot_details.addEventListener('click', (event) => {
+        event.stopPropagation(); // Prevent the event from propagating to the document
+        if (bot_log_show_cont.style.display == 'none') {
+            bot_log_show_cont.style.display = 'block'
+        } else {
+            bot_log_show_cont.style.display = 'none'
+        }
+
+    });
+
+    log_close_and_info_cont.addEventListener('click', (event) => {
+        event.stopPropagation();
+        if (bot_log_show_cont.style.display == 'block') {
+            bot_log_show_cont.style.display = 'none'
+        } else {
+            bot_log_show_cont.style.display = 'block'
+        }
+    });
 
+} else {
+    console.error('One or more elements are not found');
+}
 
+
+
+
 
+let martingale = document.getElementById('martingale');
+let flash_info_cont = document.getElementById('flash_info_cont');
+let tick_check_amount = document.getElementById('tick_check_amount');
+let bot_settings = document.getElementById('bot_settings');
+let settings_cont = document.getElementById('settings_cont');
+let tick_check = document.getElementById('tick_check');
+let martingale_jump = document.getElementById('martingale_jump');
+let increase_jump = document.getElementById('increase_jump');
+let reduce_jump = document.getElementById('reduce_jump');
 
+const prevButton = document.querySelector(".prev");
+const nextButton = document.querySelector(".next");
+const volumes = document.querySelectorAll(".slide_vol");
+const volumes_stream = document.querySelectorAll(".slide_vol_stream");
+const last_digit_settings = document.querySelectorAll(".last_digit_settings");
 
+let currentIndex = localStorage.getItem('bot_current_vol1') || 0;
+let currentIndex2 = localStorage.getItem('bot_current_vol2') || 0;
 
 
+// Show initial volume
+volumes[currentIndex].classList.add("active");
+volumes_stream[currentIndex].classList.add("active");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Previous button functionality
+prevButton.addEventListener("click", function () {
+    volumes[currentIndex].classList.remove("active");
+    volumes_stream[currentIndex].classList.remove("active");
+    currentIndex = (currentIndex - 1 + volumes.length) % volumes.length;
+    localStorage.setItem('bot_current_vol1', currentIndex)
+    setCookie('bot_current_vol1', currentIndex)
+    currentIndex2 = (currentIndex2 - 1 + volumes_stream.length) % volumes_stream.length;
+    localStorage.setItem('bot_current_vol2', currentIndex)
+    setCookie('bot_current_vol2', currentIndex)
+    volumes[currentIndex].classList.add("active");
+    volumes_stream[currentIndex2].classList.add("active");
+});
+
+// Next button functionality
+nextButton.addEventListener("click", function () {
+    volumes[currentIndex].classList.remove("active");
+    volumes_stream[currentIndex2].classList.remove("active");
+    currentIndex = (currentIndex + 1) % volumes.length;
+    localStorage.setItem('bot_current_vol1', currentIndex)
+    setCookie('bot_current_vol1', currentIndex)
+    currentIndex2 = (currentIndex2 + 1) % volumes_stream.length;
+    localStorage.setItem('bot_current_vol2', currentIndex)
+    setCookie('bot_current_vol2', currentIndex)
+    volumes[currentIndex].classList.add("active");
+    volumes_stream[currentIndex2].classList.add("active");
+});
+
+
+
+
+// Add click event listener
+martingale.addEventListener('click', function () {
+    if (martingale.classList.contains('active_mat')) {
+        martingale.classList.remove('active_mat');
+        setCookie('martingale', 'false')
+        localStorage.setItem('martingale', 'false')
+        flash_info_cont.textContent = 'martigale is not active'
+        tick_check_amount.style.color = '#fff'
+
+    } else {
+        martingale.classList.add('active_mat');
+        setCookie('martingale', 'true')
+        localStorage.setItem('martingale', 'true')
+        flash_info_cont.textContent = 'martigale is active'
+        tick_check_amount.style.color = '#fff'
+    }
+
+    if (flash_info_cont.classList.contains('show_flash_info')) {
+        flash_info_cont.classList.remove('show_flash_info')
+
+        setTimeout(() => {
+            flash_info_cont.classList.remove('show_flash_info')
+        }, 5000)
+
+    } else {
+        flash_info_cont.classList.add('show_flash_info')
+
+        setTimeout(() => {
+            flash_info_cont.classList.remove('show_flash_info')
+        }, 5000)
+    }
+});
+
+
+
+
+function bot_set_default() {
+    let curr_bot_set = localStorage.getItem('bot_set');
+
+    if (curr_bot_set === null) {
+        setTimeout(bot_set_default, 100); 
+        return;
+    }
+
+    tick_check.textContent = curr_bot_set;
+}
+
+bot_set_default();
+
+
+// Add click event listener
+bot_settings.addEventListener('click', function () {
+    if (settings_cont.style.display == 'none') {
+        settings_cont.style.display = 'block'
+    } else {
+        settings_cont.style.display = 'none'
+    }
+});
+
+
+document.addEventListener('click', (event) => {
+    if (!bot_settings.contains(event.target)  && !settings_cont.contains(event.target)) {
+        settings_cont.style.display = 'none';
+    }
+});
+
+
+last_digit_settings.forEach(function (bot_setting) {
+    bot_setting.addEventListener('click', function () {
+        let bot_set = this.textContent.slice(2)
+        if (bot_set == 'Last one digit bot') {
+            localStorage.setItem('bot_set', '1')
+            setCookie('bot_set', '1')
+            this.classList.add('confirm_set_click')
+
+            bot_set_default()
+
+            setTimeout(() => {
+                this.classList.remove('confirm_set_click')
+            }, 2000)
+        }
+        if (bot_set == 'Last two digit bot') {
+            localStorage.setItem('bot_set', '2')
+            setCookie('bot_set', '2')
+            this.classList.add('confirm_set_click')
+
+            bot_set_default()
+
+            setTimeout(() => {
+                this.classList.remove('confirm_set_click')
+            }, 2000)
+        }
+        if (bot_set == 'Last three digit bot') {
+            localStorage.setItem('bot_set', '3')
+            setCookie('bot_set', '3')
+            this.classList.add('confirm_set_click')
+
+            bot_set_default()
+
+            setTimeout(() => {
+                this.classList.remove('confirm_set_click')
+            }, 2000)
+        }
+        if (bot_set == 'Last four digit bot') {
+            localStorage.setItem('bot_set', '4')
+            setCookie('bot_set', '4')
+            this.classList.add('confirm_set_click')
+
+            bot_set_default()
+
+            setTimeout(() => {
+                this.classList.remove('confirm_set_click')
+            }, 2000)
+        }
+        if (bot_set == 'Last five digit bot') {
+            localStorage.setItem('bot_set', '5')
+            setCookie('bot_set', '5')
+            this.classList.add('confirm_set_click')
+
+            bot_set_default()
+
+            setTimeout(() => {
+                this.classList.remove('confirm_set_click')
+            }, 2000)
+        }
+        if (bot_set == 'Last six digit bot') {
+            localStorage.setItem('bot_set', '6')
+            setCookie('bot_set', '6')
+            this.classList.add('confirm_set_click')
+
+            bot_set_default()
+
+            setTimeout(() => {
+                this.classList.remove('confirm_set_click')
+            }, 2000)
+        }
+        if (bot_set == 'Last seven digit bot') {
+            localStorage.setItem('bot_set', '7')
+            setCookie('bot_set', '7')
+            this.classList.add('confirm_set_click')
+
+            bot_set_default()
+
+            setTimeout(() => {
+                this.classList.remove('confirm_set_click')
+            }, 2000)
+        }
+        if (bot_set == 'Last eight digit bot') {
+            localStorage.setItem('bot_set', '8')
+            setCookie('bot_set', '8')
+            this.classList.add('confirm_set_click')
+
+            bot_set_default()
+
+            setTimeout(() => {
+                this.classList.remove('confirm_set_click')
+            }, 2000)
+        }
+        if (bot_set == 'Last nine digit bot') {
+            localStorage.setItem('bot_set', '9')
+            setCookie('bot_set', '9')
+            this.classList.add('confirm_set_click')
+
+            bot_set_default()
+
+            setTimeout(() => {
+                this.classList.remove('confirm_set_click')
+            }, 2000)
+        }
+        if (bot_set == 'Last ten digit bot') {
+            localStorage.setItem('bot_set', '10')
+            setCookie('bot_set', '10')
+            this.classList.add('confirm_set_click')
+
+            bot_set_default()
+
+            setTimeout(() => {
+                this.classList.remove('confirm_set_click')
+            }, 2000)
+        }
+    })
+});
+
+
+
+
+let jump_count = null
+
+function jump_count_set(){
+    localStorage.setItem('bot_jump', jump_count)
+    setCookie('bot_jump', jump_count)
+}
+
+function jump_count_set2(){
+   jump_count = parseInt(localStorage.getItem('bot_jump'))
+    
+    if (jump_count === null) {
+        setTimeout(jump_count_set2, 100); 
+        return;
+    }
+
+    if(jump_count > 0){
+        martingale_jump.textContent = 'j' + jump_count
+    }else{
+        martingale_jump.textContent = ''
+    }
+}
+
+
+jump_count_set2()
+
+
+
+increase_jump.addEventListener('click', () => {
+    jump_count = jump_count + 1
+    jump_count_set()
+    jump_count_set2()
+})
+
+reduce_jump.addEventListener('click', () => {
+    if(jump_count > 0){
+        jump_count = jump_count - 1
+        jump_count_set()
+        jump_count_set2()
+    }
+})
 
 
 
