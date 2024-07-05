@@ -3052,6 +3052,8 @@ body {
     cursor: pointer;
 }
 
+
+
 .summary_text {
     margin-right: auto;
 }
@@ -3145,6 +3147,19 @@ th {
 }
 
 
+@media (max-width: 475px) {
+    .bot_show_cont {
+        font-size: var(--text-size-xxl);
+    }
+
+    .bot_details {
+        font-size: calc(var(--text-size-xxl) + .4rem);
+    }
+
+}
+
+
+
 @media (max-width: 800px) {
     .bot_show_cont {
         margin-top: calc(var(--spacing-xxl));
@@ -3174,6 +3189,36 @@ th {
         margin-top: calc(var(--spacing-xxl) + .5rem);
     }
 }
+
+
+@media (max-width: 480px) {
+    .bot_show_cont {
+        margin-top: calc(var(--spacing-xxl) + 4rem);
+    }
+}
+
+
+@media (max-width: 475px) {
+    .bot_show_cont {
+        margin-top: calc(var(--spacing-xxl) + 4.5rem);
+    }
+}
+
+@media (max-width: 345px) {
+    .bot_show_cont {
+        margin-top: calc(var(--spacing-xxl) + 5.5rem);
+    }
+}
+@media (max-width: 340px) {
+    .bot_show_cont {
+        margin-top: calc(var(--spacing-xxl) + 4.5rem);
+    }
+}
+
+
+
+
+
 
 .table-container2 {
     height: fit-content;
@@ -3308,6 +3353,7 @@ th {
     display: flex;
     padding: var(--spacing-s) var(--spacing-m);
 }
+
 
 .log_close_summary {
     padding: 0 var(--spacing-s);
@@ -3569,6 +3615,19 @@ th {
 
 
 
+@media (max-width: 475px) {
+    .martingale {
+        padding: var(--spacing-s) calc(var(--spacing-s) + .3rem);
+    }
+}
+
+
+
+
+
+
+
+
 #martingale.martingale.active_mat {
     color: #000;
     box-shadow:
@@ -3647,6 +3706,10 @@ th {
     cursor: pointer;
 }
 
+
+
+
+
 .settings_cont {
     display: none;
     position: absolute;
@@ -3709,14 +3772,21 @@ th {
 }
 
 
+.settings_elements {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 
 
 
 
 
-.last_digit_set_cont {
-   
+.carousal_button_cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .martingale_jump_set {
@@ -3743,6 +3813,9 @@ th {
 }
 
 
+.Summary_logo {
+    display: none;
+}
 
 
 
@@ -3761,6 +3834,106 @@ th {
 
 
 
+
+
+@media (max-width: 900px) {
+
+    .carousal_button_cont {
+        display: none;
+    }
+
+    .bot_details {
+        display: none;
+    }
+}
+
+@media (max-width: 500px) {
+    .martingale {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .bot_settings {
+        font-size: calc(var(--text-size-xxl) + 1.3rem);
+    }
+
+    .close_summary {
+        font-size: calc(var(--text-size-xxl) + .6rem);
+        padding: 0 var(--spacing-l);
+    }
+
+    .all_vol_cont_stream {
+        font-size: calc(var(--text-size-xl));
+        margin-left: var(--spacing-l);
+    }
+
+    .table-container {
+        font-size: calc(var(--text-size-l) + .1rem);
+    }
+
+    .text_info_hold {
+        font-size: calc(var(--text-size-l) + .1rem);
+    }
+
+    .Summary_text {
+        display: none;
+    }
+
+    .Summary_logo {
+        display: block;
+        font-size: large;
+    }
+
+    .summary_cont {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+
+
+
+@media (max-width: 350px) {
+
+    #attempting_buy {
+        width: 12ch;
+        text-overflow: ellipsis;
+        white-space: nowrap; 
+        overflow: hidden; 
+    }
+
+    #buy_succeded {
+        width: 9ch;
+        text-overflow: ellipsis;
+        white-space: nowrap; 
+        overflow: hidden; 
+    }
+
+    #contract_close {
+        width: 9ch;
+        text-overflow: ellipsis;
+        white-space: nowrap; 
+        overflow: hidden; 
+    }
+}
+
+
+
+
+@media (max-width: 480px) {
+    .bot_settings {
+        font-size: calc(var(--text-size-xxl) + .3rem);
+    }
+}
+
+@media (max-width: 480px) {
+    .close_summary {
+        font-size: calc(var(--spacing-xxl) + .3rem);
+        padding: 0 var(--spacing-m);
+    }
+}
 
 
 

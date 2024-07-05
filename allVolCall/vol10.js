@@ -660,11 +660,29 @@ async function buy_bot(martinglae, current_number) {
 
     if(martinglae == 'true' && contract_status2 == 'lost'){
         stake_amount = stake_amount * 10.1
+      
     }else if(martinglae == 'true' && contract_status2 == 'won'){
         stake_amount = stake_amount_default
     }else{
         stake_amount = stake_amount_default
     }
+
+    jump_count = parseInt(localStorage.getItem('bot_jump'))
+
+    if(jump_count && jump_count > 0){
+        if(contract_status2 == 'lost'){
+            localStorage.setItem('bot_jump', jump_count)
+            setCookie('bot_jump', jump_count)     
+        }else if(contract_status2 == 'won'){
+            localStorage.setItem('bot_jump')
+            setCookie('bot_jump')
+        }else{
+            stake_amount = stake_amount_default
+        }
+    
+    }
+
+    
 
     wonEncountered = false
     before_trade();
