@@ -3273,6 +3273,7 @@ if (bot_show_cont && bot1) {
 let log_close_and_info_cont = document.getElementById('log_close_and_info_cont');
 let bot_log_show_cont = document.getElementById('bot_log_show_cont');
 let bot_details = document.getElementById('bot_details');
+let bot_details2 = document.getElementById('bot_details2');
 
 if (bot_log_show_cont && bot_details) {
     bot_details.addEventListener('click', (event) => {
@@ -3300,6 +3301,22 @@ if (bot_log_show_cont && bot_details) {
 
 
 
+if (bot_log_show_cont && bot_details) {
+    bot_details2.addEventListener('click', (event) => {
+        event.stopPropagation(); // Prevent the event from propagating to the document
+        if (bot_log_show_cont.style.display == 'none') {
+            bot_log_show_cont.style.display = 'block'
+        } else {
+            bot_log_show_cont.style.display = 'none'
+        }
+
+    });
+} else {
+    console.error('One or more elements are not found');
+}
+
+
+
 
 
 let martingale = document.getElementById('martingale');
@@ -3312,6 +3329,17 @@ let martingale_jump = document.getElementById('martingale_jump');
 let increase_jump = document.getElementById('increase_jump');
 let reduce_jump = document.getElementById('reduce_jump');
 
+let bot_settings2 = document.getElementById('bot_settings2');
+
+const prevButton2 = document.querySelector(".prev2");
+const nextButton2 = document.querySelector(".next2");
+
+const volumes2 = document.querySelectorAll(".slide_vol2");
+let tick_check2 = document.getElementById('tick_check2');
+let martingale2 = document.getElementById('martingale2');
+let martingale_jump2 = document.getElementById('martingale_jump2');
+let martingale_jump_set = document.getElementById('martingale_jump_set');
+
 const prevButton = document.querySelector(".prev");
 const nextButton = document.querySelector(".next");
 const volumes = document.querySelectorAll(".slide_vol");
@@ -3320,37 +3348,48 @@ const last_digit_settings = document.querySelectorAll(".last_digit_settings");
 
 let currentIndex = localStorage.getItem('bot_current_vol1') || 0;
 let currentIndex2 = localStorage.getItem('bot_current_vol2') || 0;
+let currentIndex3 = localStorage.getItem('bot_current_vol3') || 0;
 
 
 // Show initial volume
 volumes[currentIndex].classList.add("active");
+volumes2[currentIndex].classList.add("active");
 volumes_stream[currentIndex].classList.add("active");
+
 
 // Previous button functionality
 prevButton.addEventListener("click", function () {
     volumes[currentIndex].classList.remove("active");
+    volumes2[currentIndex].classList.remove("active");
     volumes_stream[currentIndex].classList.remove("active");
     currentIndex = (currentIndex - 1 + volumes.length) % volumes.length;
     localStorage.setItem('bot_current_vol1', currentIndex)
+    localStorage.setItem('bot_current_vol3', currentIndex)
     setCookie('bot_current_vol1', currentIndex)
+    setCookie('bot_current_vol3', currentIndex)
     currentIndex2 = (currentIndex2 - 1 + volumes_stream.length) % volumes_stream.length;
     localStorage.setItem('bot_current_vol2', currentIndex)
     setCookie('bot_current_vol2', currentIndex)
     volumes[currentIndex].classList.add("active");
+    volumes2[currentIndex].classList.add("active");
     volumes_stream[currentIndex2].classList.add("active");
 });
 
 // Next button functionality
 nextButton.addEventListener("click", function () {
     volumes[currentIndex].classList.remove("active");
+    volumes2[currentIndex].classList.remove("active");
     volumes_stream[currentIndex2].classList.remove("active");
     currentIndex = (currentIndex + 1) % volumes.length;
     localStorage.setItem('bot_current_vol1', currentIndex)
+    localStorage.setItem('bot_current_vol3', currentIndex)
     setCookie('bot_current_vol1', currentIndex)
+    setCookie('bot_current_vol3', currentIndex)
     currentIndex2 = (currentIndex2 + 1) % volumes_stream.length;
     localStorage.setItem('bot_current_vol2', currentIndex)
     setCookie('bot_current_vol2', currentIndex)
     volumes[currentIndex].classList.add("active");
+    volumes2[currentIndex].classList.add("active");
     volumes_stream[currentIndex2].classList.add("active");
 });
 
@@ -3361,6 +3400,7 @@ nextButton.addEventListener("click", function () {
 martingale.addEventListener('click', function () {
     if (martingale.classList.contains('active_mat')) {
         martingale.classList.remove('active_mat');
+        martingale2.classList.remove('active_mat');
         setCookie('martingale', 'false')
         localStorage.setItem('martingale', 'false')
         flash_info_cont.textContent = 'martigale is not active'
@@ -3368,6 +3408,7 @@ martingale.addEventListener('click', function () {
 
     } else {
         martingale.classList.add('active_mat');
+        martingale2.classList.add('active_mat');
         setCookie('martingale', 'true')
         localStorage.setItem('martingale', 'true')
         flash_info_cont.textContent = 'martigale is active'
@@ -3402,6 +3443,7 @@ function bot_set_default() {
     }
 
     tick_check.textContent = curr_bot_set;
+    tick_check2.textContent = curr_bot_set;
 }
 
 bot_set_default();
@@ -3418,7 +3460,7 @@ bot_settings.addEventListener('click', function () {
 
 
 document.addEventListener('click', (event) => {
-    if (!bot_settings.contains(event.target)  && !settings_cont.contains(event.target)) {
+    if (!bot_settings.contains(event.target)  && !settings_cont.contains(event.target) && !martingale_jump_set.contains(event.target)) {
         settings_cont.style.display = 'none';
     }
 });
@@ -3542,7 +3584,6 @@ last_digit_settings.forEach(function (bot_setting) {
 
 
 
-
 let jump_count = null
 
 function jump_count_set(){
@@ -3560,8 +3601,10 @@ function jump_count_set2(){
 
     if(jump_count > 0){
         martingale_jump.textContent = 'j' + jump_count
+        martingale_jump2.textContent = 'j' + jump_count
     }else{
         martingale_jump.textContent = ''
+        martingale_jump2.textContent = ''
     }
 }
 
@@ -3570,13 +3613,15 @@ jump_count_set2()
 
 
 
-increase_jump.addEventListener('click', () => {
+increase_jump.addEventListener('click', (event) => {
+    event.preventDefault()
     jump_count = jump_count + 1
     jump_count_set()
     jump_count_set2()
 })
 
-reduce_jump.addEventListener('click', () => {
+reduce_jump.addEventListener('click', (event) => {
+    event.preventDefault()
     if(jump_count > 0){
         jump_count = jump_count - 1
         jump_count_set()
@@ -3590,6 +3635,13 @@ reduce_jump.addEventListener('click', () => {
 
 
 
+bot_settings2.addEventListener('click', function () {
+    if (settings_cont.style.display == 'none') {
+        settings_cont.style.display = 'block'
+    } else {
+        settings_cont.style.display = 'none'
+    }
+});
 
 
 
@@ -3597,26 +3649,78 @@ reduce_jump.addEventListener('click', () => {
 
 
 
+// Previous button functionality
+prevButton2.addEventListener("click", function () {
+    volumes[currentIndex].classList.remove("active");
+    volumes2[currentIndex].classList.remove("active");
+    volumes_stream[currentIndex].classList.remove("active");
+    currentIndex = (currentIndex - 1 + volumes.length) % volumes.length;
+    localStorage.setItem('bot_current_vol1', currentIndex)
+    localStorage.setItem('bot_current_vol3', currentIndex)
+    setCookie('bot_current_vol1', currentIndex)
+    setCookie('bot_current_vol3', currentIndex)
+    currentIndex2 = (currentIndex2 - 1 + volumes_stream.length) % volumes_stream.length;
+    localStorage.setItem('bot_current_vol2', currentIndex)
+    setCookie('bot_current_vol2', currentIndex)
+    volumes[currentIndex].classList.add("active");
+    volumes2[currentIndex].classList.add("active");
+    volumes_stream[currentIndex2].classList.add("active");
+});
+
+// Next button functionality
+nextButton2.addEventListener("click", function () {
+    volumes[currentIndex].classList.remove("active");
+    volumes2[currentIndex].classList.remove("active");
+    volumes_stream[currentIndex2].classList.remove("active");
+    currentIndex = (currentIndex + 1) % volumes.length;
+    localStorage.setItem('bot_current_vol1', currentIndex)
+    localStorage.setItem('bot_current_vol3', currentIndex)
+    setCookie('bot_current_vol1', currentIndex)
+    setCookie('bot_current_vol3', currentIndex)
+    currentIndex2 = (currentIndex2 + 1) % volumes_stream.length;
+    localStorage.setItem('bot_current_vol2', currentIndex)
+    setCookie('bot_current_vol2', currentIndex)
+    volumes[currentIndex].classList.add("active");
+    volumes2[currentIndex].classList.add("active");
+    volumes_stream[currentIndex2].classList.add("active");
+});
 
 
 
+// Add click event listener
+martingale2.addEventListener('click', function () {
+    if (martingale2.classList.contains('active_mat')) {
+        martingale2.classList.remove('active_mat');
+        martingale.classList.remove('active_mat');
+        setCookie('martingale', 'false')
+        localStorage.setItem('martingale', 'false')
+        flash_info_cont.textContent = 'martigale is not active'
+        tick_check_amount.style.color = '#fff'
 
+    } else {
+        martingale2.classList.add('active_mat');
+        martingale.classList.add('active_mat');
+        setCookie('martingale', 'true')
+        localStorage.setItem('martingale', 'true')
+        flash_info_cont.textContent = 'martigale is active'
+        tick_check_amount.style.color = '#fff'
+    }
 
+    if (flash_info_cont.classList.contains('show_flash_info')) {
+        flash_info_cont.classList.remove('show_flash_info')
 
+        setTimeout(() => {
+            flash_info_cont.classList.remove('show_flash_info')
+        }, 5000)
 
+    } else {
+        flash_info_cont.classList.add('show_flash_info')
 
-
-
-
-
-
-
-
-
-
-
-
-
+        setTimeout(() => {
+            flash_info_cont.classList.remove('show_flash_info')
+        }, 5000)
+    }
+});
 
 
 
