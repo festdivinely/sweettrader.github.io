@@ -548,7 +548,7 @@ th {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 999;
+    z-index: 9999999999999;
     /* Ensure overlay is above everything */
 }
 
@@ -10475,16 +10475,6 @@ th {
 }
 
 
-.carousel_arrow_right:hover {
-    background-color: #ece8e8;
-}
-
-.carousel_arrow_left:hover {
-    background-color: #ece8e8;
-}
-
-
-
 .carousel-container-bot {
     overflow: hidden;
     border: 2px solid #ccc;
@@ -10892,13 +10882,73 @@ th {
     border-radius: .3rem;
 }
 
+@media (max-width: 768px) {
+    .increase_all_bot_set {
+        padding: var(--spacing-m) calc(var(--spacing-s) + .6rem);
+        margin-top: var(--spacing-xxl);
+    }
+
+    .reduce_all_bot_set {
+        padding: var(--spacing-m) calc(var(--spacing-s) + .7rem);
+        margin-top: var(--spacing-xxl);
+    }
+
+    .increase_all_bot_jump {
+        padding: var(--spacing-m) calc(var(--spacing-s) + .6rem);
+        margin-top: var(--spacing-xxl);
+    }
+
+    .reduce_all_bot_jump {
+        padding: var(--spacing-m) calc(var(--spacing-s) + .7rem);
+        margin-top: var(--spacing-xxl);
+    }
+
+    .increase_reduce_text {
+        padding: var(--spacing-s) var(--spacing-xxl);
+    }
+}
+
+
+@media (max-width: 478px) {
+    .increase_all_bot_set {
+        padding: var(--spacing-xl) calc(var(--spacing-s) + .9rem);
+        margin-top: calc(var(--spacing-xxl) + .5rem);
+        margin-right: var(--spacing-xl);
+    }
+
+    .reduce_all_bot_set {
+        padding: var(--spacing-xl) calc(var(--spacing-s) + 1rem);
+        margin-top: calc(var(--spacing-xxl) + .5rem);
+    }
+
+    .increase_all_bot_jump {
+        padding: var(--spacing-xl) calc(var(--spacing-s) + .9rem);
+        margin-top: calc(var(--spacing-xxl) + .5rem);
+        margin-right: var(--spacing-xl);
+    }
+
+    .reduce_all_bot_jump {
+        padding: var(--spacing-xl) calc(var(--spacing-s) + 1rem);
+        margin-top: calc(var(--spacing-xxl) + .5rem);
+    }
+
+
+    .play_button2,
+    .pause_button2 {
+        padding: var(--spacing-l) calc(var(--spacing-m) + .4em);
+    }
+
+    .all_bot_mat {
+        padding: var(--spacing-m) calc(var(--spacing-s) + .3rem);
+        margin-top: var(--spacing-xxl);
+    }
+}
 
 
 
 
 
-
-.carousel_container_tick_history { 
+.carousel_container_tick_history {
     overflow: hidden;
 }
 

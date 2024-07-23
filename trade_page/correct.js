@@ -234,12 +234,27 @@ let bot_set = null
 let bot_set_store = null
 let bot_jump = null
 
+
+let bot_current_vol1_cookie = null
+let bot_current_vol12_cookie = null
+let martingale_set_cookie = false
+let bot_set_cookie = null
+let bot_set_store_cookie = null
+let bot_jump_cookie = null
+
 let bot_current_vol1_carousel2 = null
 let bot_current_vol12_carousel2 = null
 let martingale_set_carousel2 = false
 let bot_set_carousel2 = null
 let bot_set_store_carousel2 = null
 let bot_jump_carousel2 = null
+
+let bot_current_vol1_carousel2_cookie = null
+let bot_current_vol12_carousel2_cookie = null
+let martingale_set_carousel2_cookie = false
+let bot_set_carousel2_cookie = null
+let bot_set_store_carousel2_cookie = null
+let bot_jump_carousel2_cookie = null
 
 
 let bot_current_vol1_carousel3 = null
@@ -249,6 +264,13 @@ let bot_set_carousel3 = null
 let bot_set_store_carousel3 = null
 let bot_jump_carousel3 = null
 
+let bot_current_vol1_carousel3_cookie = null
+let bot_current_vol12_carousel3_cookie = null
+let martingale_set_carousel3_cookie = false
+let bot_set_carousel3_cookie = null
+let bot_set_store_carousel3_cookie = null
+let bot_jump_carousel3_cookie = null
+
 
 let bot_current_vol1_carousel4 = null
 let bot_current_vol12_carousel4 = null
@@ -256,6 +278,13 @@ let martingale_set_carousel4 = false
 let bot_set_carousel4 = null
 let bot_set_store_carousel4 = null
 let bot_jump_carousel4 = null
+
+let bot_current_vol1_carousel4_cookie = null
+let bot_current_vol12_carousel4_cookie = null
+let martingale_set_carousel4_cookie = false
+let bot_set_carousel4_cookie = null
+let bot_set_store_carousel4_cookie = null
+let bot_jump_carousel4_cookie = null
 
 
 let bot_current_vol1_carousel5 = null
@@ -265,6 +294,13 @@ let bot_set_carousel5 = null
 let bot_set_store_carousel5 = null
 let bot_jump_carousel5 = null
 
+let bot_current_vol1_carousel5_cookie = null
+let bot_current_vol12_carousel5_cookie = null
+let martingale_set_carousel5_cookie = false
+let bot_set_carousel5_cookie = null
+let bot_set_store_carousel5_cookie = null
+let bot_jump_carousel5_cookie = null
+
 
 let bot_current_vol1_carousel6 = null
 let bot_current_vol12_carousel6 = null
@@ -273,12 +309,28 @@ let bot_set_carousel6 = null
 let bot_set_store_carousel6 = null
 let bot_jump_carousel6 = null
 
+
+let bot_current_vol1_carousel6_cookie = null
+let bot_current_vol12_carousel6_cookie = null
+let martingale_set_carousel6_cookie = false
+let bot_set_carousel6_cookie = null
+let bot_set_store_carousel6_cookie = null
+let bot_jump_carousel6_cookie = null
+
 let bot_current_vol1_carousel7 = null
 let bot_current_vol12_carousel7 = null
 let martingale_set_carousel7 = false
 let bot_set_carousel7 = null
 let bot_set_store_carousel7 = null
 let bot_jump_carousel7 = null
+
+
+let bot_current_vol1_carousel7_cookie = null
+let bot_current_vol12_carousel7_cookie = null
+let martingale_set_carousel7_cookie = false
+let bot_set_carousel7_cookie = null
+let bot_set_store_carousel7_cookie = null
+let bot_jump_carousel7_cookie = null
 
 
 let bot_current_vol1_carousel8 = null
@@ -289,12 +341,28 @@ let bot_set_store_carousel8 = null
 let bot_jump_carousel8 = null
 
 
+let bot_current_vol1_carousel8_cookie = null
+let bot_current_vol12_carousel8_cookie = null
+let martingale_set_carousel8_cookie = false
+let bot_set_carousel8_cookie = null
+let bot_set_store_carousel8_cookie = null
+let bot_jump_carousel8_cookie = null
+
+
 let bot_current_vol1_carousel9 = null
 let bot_current_vol12_carousel9 = null
 let martingale_set_carousel9 = false
 let bot_set_carousel9 = null
 let bot_set_store_carousel9 = null
 let bot_jump_carousel9 = null
+
+
+let bot_current_vol1_carousel9_cookie = null
+let bot_current_vol12_carousel9_cookie = null
+let martingale_set_carousel9_cookie = false
+let bot_set_carousel9_cookie = null
+let bot_set_store_carousel9_cookie = null
+let bot_jump_carousel9_cookie = null
 
 
 let bot_current_vol1_carousel10 = null
@@ -304,8 +372,16 @@ let bot_set_carousel10 = null
 let bot_set_store_carousel10 = null
 let bot_jump_carousel10 = null
 
+let bot_current_vol1_carousel10_cookie = null
+let bot_current_vol12_carousel10_cookie = null
+let martingale_set_carousel10_cookie = false
+let bot_set_carousel10_cookie = null
+let bot_set_store_carousel10_cookie = null
+let bot_jump_carousel10_cookie = null
 
-let message1 = localStorage.getItem('message1')
+
+let message1_local_st = localStorage.getItem('message1')
+let message1 = localStorage.getItem('message1') ? localStorage.getItem('message1') : getCookie('message1')
 
 
 let randomNumber = null;
@@ -873,10 +949,27 @@ async function initializeApi(message1) {
                 localStorage.setItem("demo_icon_usd", false)
 
                 let real_balance = localStorage.getItem('real_balance')
-                current_balance_fig.textContent = real_balance
+                let real_balance_cookie = localStorage.getItem('real_balance')
+
+                if (real_balance && real !== null) {
+                    current_balance_fig.textContent = real_balance
+                } else if (real_balance_cookie && real_balance_cookie !== null) {
+                    current_balance_fig.textContent = real_balance_cookie
+                } else {
+                    current_balance_fig.textContent = "error"
+                }
 
                 let login_id = localStorage.getItem('real_id')
-                logi_id.textContent = login_id
+                let login_id_cookie = localStorage.getItem('real_id')
+
+                if (login_id && login_id !== null) {
+                    logi_id.textContent = login_id
+                } else if (login_id_cookie && login_id_cookie !== null) {
+                    logi_id.textContent = login_id_cookie
+                } else {
+                    logi_id.textContent = login_id
+                }
+
 
 
             } else {
@@ -1039,51 +1132,101 @@ window.addEventListener('load', function () {
     bot_set_store = localStorage.getItem('bot_set_store')
     bot_jump = localStorage.getItem('bot_jump')
 
+    martingale_set = getCookie('martingale')
+    bot_set = getCookie('bot_set')
+    bot_set_store = getCookie('bot_set_store')
+    bot_jump = getCookie('bot_jump')
+
     martingale_set_carousel2 = localStorage.getItem('martingale_carousel2')
     bot_set_carousel2 = localStorage.getItem('bot_set_carousel2')
     bot_set_store_carousel2 = localStorage.getItem('bot_set_store_carousel2')
     bot_jump_carousel2 = localStorage.getItem('bot_jump_carousel2')
+
+
+    martingale_set_carousel2 = getCookie('martingale_carousel2')
+    bot_set_carousel2 = getCookie('bot_set_carousel2')
+    bot_set_store_carousel2 = getCookie('bot_set_store_carousel2')
+    bot_jump_carousel2 = getCookie('bot_jump_carousel2')
 
     martingale_set_carousel3 = localStorage.getItem('martingale_carousel3')
     bot_set_carousel3 = localStorage.getItem('bot_set_carousel3')
     bot_set_store_carousel3 = localStorage.getItem('bot_set_store_carousel3')
     bot_jump_carousel3 = localStorage.getItem('bot_jump_carousel3')
 
+    martingale_set_carousel3 = getCookie('martingale_carousel3')
+    bot_set_carousel3 = getCookie('bot_set_carousel3')
+    bot_set_store_carousel3 = getCookie('bot_set_store_carousel3')
+    bot_jump_carousel3 = getCookie('bot_jump_carousel3')
+
     martingale_set_carousel4 = localStorage.getItem('martingale_carousel4')
     bot_set_carousel4 = localStorage.getItem('bot_set_carousel4')
     bot_set_store_carousel4 = localStorage.getItem('bot_set_store_carousel4')
     bot_jump_carousel4 = localStorage.getItem('bot_jump_carousel4')
+
+    martingale_set_carousel4 = getCookie('martingale_carousel4')
+    bot_set_carousel4 = getCookie('bot_set_carousel4')
+    bot_set_store_carousel4 = getCookie('bot_set_store_carousel4')
+    bot_jump_carousel4 = getCookie('bot_jump_carousel4')
 
     martingale_set_carousel5 = localStorage.getItem('martingale_carousel5')
     bot_set_carousel5 = localStorage.getItem('bot_set_carousel5')
     bot_set_store_carousel5 = localStorage.getItem('bot_set_store_carousel5')
     bot_jump_carousel5 = localStorage.getItem('bot_jump_carousel5')
 
+    martingale_set_carousel5 = getCookie('martingale_carousel5')
+    bot_set_carousel5 = getCookie('bot_set_carousel5')
+    bot_set_store_carousel5 = getCookie('bot_set_store_carousel5')
+    bot_jump_carousel5 = getCookie('bot_jump_carousel5')
+
     martingale_set_carousel6 = localStorage.getItem('martingale_carousel6')
     bot_set_carousel6 = localStorage.getItem('bot_set_carousel6')
     bot_set_store_carousel6 = localStorage.getItem('bot_set_store_carousel6')
     bot_jump_carousel6 = localStorage.getItem('bot_jump_carousel6')
+
+    martingale_set_carousel6 = getCookie('martingale_carousel6')
+    bot_set_carousel6 = getCookie('bot_set_carousel6')
+    bot_set_store_carousel6 = getCookie('bot_set_store_carousel6')
+    bot_jump_carousel6 = getCookie('bot_jump_carousel6')
 
     martingale_set_carousel7 = localStorage.getItem('martingale_carousel7')
     bot_set_carousel7 = localStorage.getItem('bot_set_carousel7')
     bot_set_store_carousel7 = localStorage.getItem('bot_set_store_carousel7')
     bot_jump_carousel7 = localStorage.getItem('bot_jump_carousel7')
 
+    martingale_set_carousel7 = getCookie('martingale_carousel7')
+    bot_set_carousel7 = getCookie('bot_set_carousel7')
+    bot_set_store_carousel7 = getCookie('bot_set_store_carousel7')
+    bot_jump_carousel7 = getCookie('bot_jump_carousel7')
+
     martingale_set_carousel8 = localStorage.getItem('martingale_carousel8')
     bot_set_carousel8 = localStorage.getItem('bot_set_carousel8')
     bot_set_store_carousel8 = localStorage.getItem('bot_set_store_carousel8')
     bot_jump_carousel8 = localStorage.getItem('bot_jump_carousel8')
+
+    martingale_set_carousel8 = getCookie('martingale_carousel8')
+    bot_set_carousel8 = getCookie('bot_set_carousel8')
+    bot_set_store_carousel8 = getCookie('bot_set_store_carousel8')
+    bot_jump_carousel8 = getCookie('bot_jump_carousel8')
 
     martingale_set_carousel9 = localStorage.getItem('martingale_carousel9')
     bot_set_carousel9 = localStorage.getItem('bot_set_carousel9')
     bot_set_store_carousel9 = localStorage.getItem('bot_set_store_carousel9')
     bot_jump_carousel9 = localStorage.getItem('bot_jump_carousel9')
 
+    martingale_set_carousel9 = getCookie('martingale_carousel9')
+    bot_set_carousel9 = getCookie('bot_set_carousel9')
+    bot_set_store_carousel9 = getCookie('bot_set_store_carousel9')
+    bot_jump_carousel9 = getCookie('bot_jump_carousel9')
+
     martingale_set_carousel10 = localStorage.getItem('martingale_carousel10')
     bot_set_carousel10 = localStorage.getItem('bot_set_carousel10')
     bot_set_store_carousel10 = localStorage.getItem('bot_set_store_carousel10')
     bot_jump_carousel10 = localStorage.getItem('bot_jump_carousel10')
 
+    martingale_set_carousel10 = getCookie('martingale_carousel10')
+    bot_set_carousel10 = getCookie('bot_set_carousel10')
+    bot_set_store_carousel10 = getCookie('bot_set_store_carousel10')
+    bot_jump_carousel10 = getCookie('bot_jump_carousel10')
 
     // Get the existing values of the cookies and local storage items
 
@@ -1094,111 +1237,142 @@ window.addEventListener('load', function () {
     bot_current_vol1 = localStorage.getItem('bot_current_vol1')
     bot_current_vol12 = localStorage.getItem('bot_current_vol2')
 
+    bot_current_vol1 = getCookie('bot_current_vol1')
+    bot_current_vol12 = getCookie('bot_current_vol2')
+
     bot_current_vol1_carousel2 = localStorage.getItem('bot_current_vol1_carousel2')
     bot_current_vol12_carousel2 = localStorage.getItem('bot_current_vol2_carousel2')
+
+    bot_current_vol1_carousel2 = getCookie('bot_current_vol1_carousel2')
+    bot_current_vol12_carousel2 = getCookie('bot_current_vol2_carousel2')
 
     bot_current_vol1_carousel3 = localStorage.getItem('bot_current_vol1_carousel3')
     bot_current_vol12_carousel3 = localStorage.getItem('bot_current_vol2_carousel3')
 
+    bot_current_vol1_carousel3 = getCookie('bot_current_vol1_carousel3')
+    bot_current_vol12_carousel3 = getCookie('bot_current_vol2_carousel3')
+
     bot_current_vol1_carousel4 = localStorage.getItem('bot_current_vol1_carousel4')
     bot_current_vol12_carousel4 = localStorage.getItem('bot_current_vol2_carousel4')
+
+    bot_current_vol1_carousel4 = getCookie('bot_current_vol1_carousel4')
+    bot_current_vol12_carousel4 = getCookie('bot_current_vol2_carousel4')
 
     bot_current_vol1_carousel5 = localStorage.getItem('bot_current_vol1_carousel5')
     bot_current_vol12_carousel5 = localStorage.getItem('bot_current_vol2_carousel5')
 
+    bot_current_vol1_carousel5 = getCookie('bot_current_vol1_carousel5')
+    bot_current_vol12_carousel5 = getCookie('bot_current_vol2_carousel5')
+
     bot_current_vol1_carousel6 = localStorage.getItem('bot_current_vol1_carousel6')
     bot_current_vol12_carousel6 = localStorage.getItem('bot_current_vol2_carousel6')
+
+    bot_current_vol1_carousel6 = getCookie('bot_current_vol1_carousel6')
+    bot_current_vol12_carousel6 = getCookie('bot_current_vol2_carousel6')
 
     bot_current_vol1_carousel7 = localStorage.getItem('bot_current_vol1_carousel7')
     bot_current_vol12_carousel7 = localStorage.getItem('bot_current_vol2_carousel7')
 
+    bot_current_vol1_carousel7 = getCookie('bot_current_vol1_carousel7')
+    bot_current_vol12_carousel7 = getCookie('bot_current_vol2_carousel7')
+
     bot_current_vol1_carousel8 = localStorage.getItem('bot_current_vol1_carousel8')
     bot_current_vol12_carousel8 = localStorage.getItem('bot_current_vol2_carousel8')
+
+    bot_current_vol1_carousel8 = getCookie('bot_current_vol1_carousel8')
+    bot_current_vol12_carousel8 = getCookie('bot_current_vol2_carousel8')
 
     bot_current_vol1_carousel9 = localStorage.getItem('bot_current_vol1_carousel9')
     bot_current_vol12_carousel9 = localStorage.getItem('bot_current_vol2_carousel9')
 
+    bot_current_vol1_carousel9 = getCookie('bot_current_vol1_carousel9')
+    bot_current_vol12_carousel9 = getCookie('bot_current_vol2_carousel9')
+
     bot_current_vol1_carousel10 = localStorage.getItem('bot_current_vol1_carousel10')
     bot_current_vol12_carousel10 = localStorage.getItem('bot_current_vol2_carousel10')
 
+    bot_current_vol1_carousel10 = getCookie('bot_current_vol1_carousel10')
+    bot_current_vol12_carousel10 = getCookie('bot_current_vol2_carousel10')
 
     // Set the cookies and local storage items if they don't already exist
     if (!contract_text_cookie) {
         setCookie('contract_text_cookie', "Matches/Differs", 7);
+        localStorage.setItem('contract_text_local_st', "Matches/Differs", 7);
     }
     if (!symbol_vol_text_cookie) {
         setCookie('symbol_vol_text_cookie', "Volatility 10 Index", 7);
+        localStorage.setItem('symbol_vol_text_local_st', "Volatility 10 Index", 7);
     }
     if (!contract_text_local_st) {
+        setCookie('contract_text_local_cookie', "Matches/Differs");
         localStorage.setItem('contract_text_local_st', "Matches/Differs");
     }
-    if (!symbol_vol_text_local_st) {
+    if (!symbol_vol_text_local_st && !symbol_vol_text_cookie) {
+        setCookie('symbol_vol_text_local_cookie', "Volatility 10 Index");
         localStorage.setItem('symbol_vol_text_local_st', "Volatility 10 Index");
     }
     if (!stake_amount_default) {
         localStorage.setItem('stake_amount_default', document.getElementById('stake_amount_input').value);
-    }
-    if (!stake_amount_default) {
         setCookie('stake_amount_default', document.getElementById('stake_amount_input').value);
     }
 
-    if (!bot_current_vol1) {
+    if (!bot_current_vol1 && !bot_current_vol1_cookie) {
         localStorage.setItem('bot_current_vol1', 0)
         setCookie('bot_current_vol1', 0)
     }
 
-    if (!bot_current_vol12) {
+    if (!bot_current_vol12 && !bot_current_vol12_cookie) {
         localStorage.setItem('bot_current_vol2', 0)
         setCookie('bot_current_vol2', 0)
     }
 
-    if (!martingale_set) {
+    if (!martingale_set && !martingale_set_cookie) {
         setCookie('martingale', 'false')
         localStorage.setItem('martingale', 'false')
     }
 
-    if (!bot_set) {
+    if (!bot_set && !bot_set_cookie) {
         setCookie('bot_set', '2')
         localStorage.setItem('bot_set', '2')
     }
 
-    if (!bot_set_store) {
+    if (!bot_set_store && !bot_set_store_cookie) {
         setCookie('bot_set_store', '2')
         localStorage.setItem('bot_set_store', '2')
     }
 
-    if (!bot_jump) {
+    if (!bot_jump && !bot_jump_cookie) {
         setCookie('bot_jump', 0)
         localStorage.setItem('bot_jump', 0)
     }
 
 
-    if (!bot_current_vol1_carousel2) {
+    if (!bot_current_vol1_carousel2 && !bot_current_vol12_carousel2_cookie) {
         localStorage.setItem('bot_current_vol1_carousel2', 1)
         setCookie('bot_current_vol1_carousel2', 1)
     }
 
-    if (!bot_current_vol12_carousel2) {
+    if (!bot_current_vol12_carousel2 && !bot_current_vol12_carousel2_cookie) {
         localStorage.setItem('bot_current_vol2_carousel2', 1)
         setCookie('bot_current_vol2_carousel2', 1)
     }
 
-    if (!martingale_set_carousel2) {
+    if (!martingale_set_carousel2 && !martingale_set_carousel2_cookie) {
         setCookie('martingale_carousel2', 'false')
         localStorage.setItem('martingale_carousel2', 'false')
     }
 
-    if (!bot_set_carousel2) {
+    if (!bot_set_carousel2 && !bot_set_carousel2_cookie) {
         setCookie('bot_set_carousel2', '2')
         localStorage.setItem('bot_set_carousel2', '2')
     }
 
-    if (!bot_set_store_carousel2) {
+    if (!bot_set_store_carousel2 && !bot_set_store_carousel2_cookie) {
         setCookie('bot_set_store_carousel2', '2')
         localStorage.setItem('bot_set_store_carousel2', '2')
     }
 
-    if (!bot_jump_carousel2) {
+    if (!bot_jump_carousel2 && !bot_jump_carousel2_cookie) {
         setCookie('bot_jump_carousel2', 0)
         localStorage.setItem('bot_jump_carousel2', 0)
     }
@@ -1206,262 +1380,260 @@ window.addEventListener('load', function () {
 
 
 
-    if (!bot_current_vol1_carousel3) {
-        localStorage.setItem('bot_current_vol1_carousel3', 2)
-        setCookie('bot_current_vol1_carousel3', 2)
+    if (!bot_current_vol1_carousel3 && !bot_current_vol12_carousel3_cookie) {
+        localStorage.setItem('bot_current_vol1_carousel3', 1)
+        setCookie('bot_current_vol1_carousel3', 1)
     }
 
-    if (!bot_current_vol12_carousel3) {
-        localStorage.setItem('bot_current_vol2_carousel3', 2)
-        setCookie('bot_current_vol2_carousel3', 2)
+    if (!bot_current_vol12_carousel3 && !bot_current_vol12_carousel3_cookie) {
+        localStorage.setItem('bot_current_vol2_carousel3', 1)
+        setCookie('bot_current_vol2_carousel3', 1)
     }
 
-    if (!martingale_set_carousel3) {
+    if (!martingale_set_carousel3 && !martingale_set_carousel3_cookie) {
         setCookie('martingale_carousel3', 'false')
         localStorage.setItem('martingale_carousel3', 'false')
     }
 
-    if (!bot_set_carousel3) {
+    if (!bot_set_carousel3 && !bot_set_carousel3_cookie) {
         setCookie('bot_set_carousel3', '2')
         localStorage.setItem('bot_set_carousel3', '2')
     }
 
-    if (!bot_set_store_carousel3) {
+    if (!bot_set_store_carousel3 && !bot_set_store_carousel3_cookie) {
         setCookie('bot_set_store_carousel3', '2')
         localStorage.setItem('bot_set_store_carousel3', '2')
     }
 
-    if (!bot_jump_carousel3) {
+    if (!bot_jump_carousel3 && !bot_jump_carousel3_cookie) {
         setCookie('bot_jump_carousel3', 0)
         localStorage.setItem('bot_jump_carousel3', 0)
     }
 
 
 
-
-    if (!bot_current_vol1_carousel4) {
-        localStorage.setItem('bot_current_vol1_carousel4', 3)
-        setCookie('bot_current_vol1_carousel4', 3)
+    if (!bot_current_vol1_carousel4 && !bot_current_vol12_carousel4_cookie) {
+        localStorage.setItem('bot_current_vol1_carousel4', 1)
+        setCookie('bot_current_vol1_carousel4', 1)
     }
 
-    if (!bot_current_vol12_carousel4) {
-        localStorage.setItem('bot_current_vol2_carousel4', 3)
-        setCookie('bot_current_vol2_carousel4', 3)
+    if (!bot_current_vol12_carousel4 && !bot_current_vol12_carousel4_cookie) {
+        localStorage.setItem('bot_current_vol2_carousel4', 1)
+        setCookie('bot_current_vol2_carousel4', 1)
     }
 
-    if (!martingale_set_carousel4) {
+    if (!martingale_set_carousel4 && !martingale_set_carousel4_cookie) {
         setCookie('martingale_carousel4', 'false')
         localStorage.setItem('martingale_carousel4', 'false')
     }
 
-    if (!bot_set_carousel4) {
+    if (!bot_set_carousel4 && !bot_set_carousel4_cookie) {
         setCookie('bot_set_carousel4', '2')
         localStorage.setItem('bot_set_carousel4', '2')
     }
 
-    if (!bot_set_store_carousel4) {
+    if (!bot_set_store_carousel4 && !bot_set_store_carousel4_cookie) {
         setCookie('bot_set_store_carousel4', '2')
         localStorage.setItem('bot_set_store_carousel4', '2')
     }
 
-    if (!bot_jump_carousel4) {
+    if (!bot_jump_carousel4 && !bot_jump_carousel4_cookie) {
         setCookie('bot_jump_carousel4', 0)
         localStorage.setItem('bot_jump_carousel4', 0)
     }
 
 
 
-    if (!bot_current_vol1_carousel5) {
-        localStorage.setItem('bot_current_vol1_carousel5', 4)
-        setCookie('bot_current_vol1_carousel5', 4)
+    if (!bot_current_vol1_carousel5 && !bot_current_vol12_carousel5_cookie) {
+        localStorage.setItem('bot_current_vol1_carousel5', 1)
+        setCookie('bot_current_vol1_carousel5', 1)
     }
 
-    if (!bot_current_vol12_carousel5) {
-        localStorage.setItem('bot_current_vol2_carousel5', 4)
-        setCookie('bot_current_vol2_carousel5', 4)
+    if (!bot_current_vol12_carousel5 && !bot_current_vol12_carousel5_cookie) {
+        localStorage.setItem('bot_current_vol2_carousel5', 1)
+        setCookie('bot_current_vol2_carousel5', 1)
     }
 
-    if (!martingale_set_carousel5) {
+    if (!martingale_set_carousel5 && !martingale_set_carousel5_cookie) {
         setCookie('martingale_carousel5', 'false')
         localStorage.setItem('martingale_carousel5', 'false')
     }
 
-    if (!bot_set_carousel5) {
+    if (!bot_set_carousel5 && !bot_set_carousel5_cookie) {
         setCookie('bot_set_carousel5', '2')
         localStorage.setItem('bot_set_carousel5', '2')
     }
 
-    if (!bot_set_store_carousel5) {
+    if (!bot_set_store_carousel5 && !bot_set_store_carousel5_cookie) {
         setCookie('bot_set_store_carousel5', '2')
         localStorage.setItem('bot_set_store_carousel5', '2')
     }
 
-    if (!bot_jump_carousel5) {
+    if (!bot_jump_carousel5 && !bot_jump_carousel5_cookie) {
         setCookie('bot_jump_carousel5', 0)
         localStorage.setItem('bot_jump_carousel5', 0)
     }
 
 
 
-    if (!bot_current_vol1_carousel6) {
-        localStorage.setItem('bot_current_vol1_carousel6', 5)
-        setCookie('bot_current_vol1_carousel6', 5)
+    if (!bot_current_vol1_carousel6 && !bot_current_vol12_carousel6_cookie) {
+        localStorage.setItem('bot_current_vol1_carousel6', 1)
+        setCookie('bot_current_vol1_carousel6', 1)
     }
 
-    if (!bot_current_vol12_carousel6) {
-        localStorage.setItem('bot_current_vol2_carousel6', 5)
-        setCookie('bot_current_vol2_carousel6', 5)
+    if (!bot_current_vol12_carousel6 && !bot_current_vol12_carousel6_cookie) {
+        localStorage.setItem('bot_current_vol2_carousel6', 1)
+        setCookie('bot_current_vol2_carousel6', 1)
     }
 
-    if (!martingale_set_carousel6) {
+    if (!martingale_set_carousel6 && !martingale_set_carousel6_cookie) {
         setCookie('martingale_carousel6', 'false')
         localStorage.setItem('martingale_carousel6', 'false')
     }
 
-    if (!bot_set_carousel6) {
+    if (!bot_set_carousel6 && !bot_set_carousel6_cookie) {
         setCookie('bot_set_carousel6', '2')
         localStorage.setItem('bot_set_carousel6', '2')
     }
 
-    if (!bot_set_store_carousel6) {
+    if (!bot_set_store_carousel6 && !bot_set_store_carousel6_cookie) {
         setCookie('bot_set_store_carousel6', '2')
         localStorage.setItem('bot_set_store_carousel6', '2')
     }
 
-    if (!bot_jump_carousel6) {
+    if (!bot_jump_carousel6 && !bot_jump_carousel6_cookie) {
         setCookie('bot_jump_carousel6', 0)
         localStorage.setItem('bot_jump_carousel6', 0)
     }
 
 
 
-    if (!bot_current_vol1_carousel7) {
-        localStorage.setItem('bot_current_vol1_carousel7', 6)
-        setCookie('bot_current_vol1_carousel7', 6)
+
+    if (!bot_current_vol1_carousel7 && !bot_current_vol12_carousel7_cookie) {
+        localStorage.setItem('bot_current_vol1_carousel7', 1)
+        setCookie('bot_current_vol1_carousel7', 1)
     }
 
-    if (!bot_current_vol12_carousel7) {
-        localStorage.setItem('bot_current_vol2_carousel7', 6)
-        setCookie('bot_current_vol2_carousel7', 6)
+    if (!bot_current_vol12_carousel7 && !bot_current_vol12_carousel7_cookie) {
+        localStorage.setItem('bot_current_vol2_carousel7', 1)
+        setCookie('bot_current_vol2_carousel7', 1)
     }
 
-    if (!martingale_set_carousel7) {
+    if (!martingale_set_carousel7 && !martingale_set_carousel7_cookie) {
         setCookie('martingale_carousel7', 'false')
         localStorage.setItem('martingale_carousel7', 'false')
     }
 
-    if (!bot_set_carousel7) {
+    if (!bot_set_carousel7 && !bot_set_carousel7_cookie) {
         setCookie('bot_set_carousel7', '2')
         localStorage.setItem('bot_set_carousel7', '2')
     }
 
-    if (!bot_set_store_carousel7) {
+    if (!bot_set_store_carousel7 && !bot_set_store_carousel7_cookie) {
         setCookie('bot_set_store_carousel7', '2')
         localStorage.setItem('bot_set_store_carousel7', '2')
     }
 
-    if (!bot_jump_carousel7) {
+    if (!bot_jump_carousel7 && !bot_jump_carousel7_cookie) {
         setCookie('bot_jump_carousel7', 0)
         localStorage.setItem('bot_jump_carousel7', 0)
     }
 
 
 
-    if (!bot_current_vol1_carousel8) {
-        localStorage.setItem('bot_current_vol1_carousel8', 7)
-        setCookie('bot_current_vol1_carousel8', 7)
+    if (!bot_current_vol1_carousel8 && !bot_current_vol12_carousel8_cookie) {
+        localStorage.setItem('bot_current_vol1_carousel8', 1)
+        setCookie('bot_current_vol1_carousel8', 1)
     }
 
-    if (!bot_current_vol12_carousel8) {
-        localStorage.setItem('bot_current_vol2_carousel8', 7)
-        setCookie('bot_current_vol2_carousel8', 7)
+    if (!bot_current_vol12_carousel8 && !bot_current_vol12_carousel8_cookie) {
+        localStorage.setItem('bot_current_vol2_carousel8', 1)
+        setCookie('bot_current_vol2_carousel8', 1)
     }
 
-    if (!martingale_set_carousel8) {
+    if (!martingale_set_carousel8 && !martingale_set_carousel8_cookie) {
         setCookie('martingale_carousel8', 'false')
         localStorage.setItem('martingale_carousel8', 'false')
     }
 
-    if (!bot_set_carousel8) {
+    if (!bot_set_carousel8 && !bot_set_carousel8_cookie) {
         setCookie('bot_set_carousel8', '2')
         localStorage.setItem('bot_set_carousel8', '2')
     }
 
-    if (!bot_set_store_carousel8) {
+    if (!bot_set_store_carousel8 && !bot_set_store_carousel8_cookie) {
         setCookie('bot_set_store_carousel8', '2')
         localStorage.setItem('bot_set_store_carousel8', '2')
     }
 
-    if (!bot_jump_carousel8) {
+    if (!bot_jump_carousel8 && !bot_jump_carousel8_cookie) {
         setCookie('bot_jump_carousel8', 0)
         localStorage.setItem('bot_jump_carousel8', 0)
     }
 
 
 
-    if (!bot_current_vol1_carousel9) {
-        localStorage.setItem('bot_current_vol1_carousel9', 8)
-        setCookie('bot_current_vol1_carousel9', 8)
+    if (!bot_current_vol1_carousel9 && !bot_current_vol12_carousel9_cookie) {
+        localStorage.setItem('bot_current_vol1_carousel9', 1)
+        setCookie('bot_current_vol1_carousel9', 1)
     }
 
-    if (!bot_current_vol12_carousel9) {
-        localStorage.setItem('bot_current_vol2_carousel9', 8)
-        setCookie('bot_current_vol2_carousel9', 8)
+    if (!bot_current_vol12_carousel9 && !bot_current_vol12_carousel9_cookie) {
+        localStorage.setItem('bot_current_vol2_carousel9', 1)
+        setCookie('bot_current_vol2_carousel9', 1)
     }
 
-    if (!martingale_set_carousel9) {
+    if (!martingale_set_carousel9 && !martingale_set_carousel9_cookie) {
         setCookie('martingale_carousel9', 'false')
         localStorage.setItem('martingale_carousel9', 'false')
     }
 
-    if (!bot_set_carousel9) {
+    if (!bot_set_carousel9 && !bot_set_carousel9_cookie) {
         setCookie('bot_set_carousel9', '2')
         localStorage.setItem('bot_set_carousel9', '2')
     }
 
-    if (!bot_set_store_carousel9) {
+    if (!bot_set_store_carousel9 && !bot_set_store_carousel9_cookie) {
         setCookie('bot_set_store_carousel9', '2')
         localStorage.setItem('bot_set_store_carousel9', '2')
     }
 
-    if (!bot_jump_carousel9) {
+    if (!bot_jump_carousel9 && !bot_jump_carousel9_cookie) {
         setCookie('bot_jump_carousel9', 0)
         localStorage.setItem('bot_jump_carousel9', 0)
     }
 
 
 
-    if (!bot_current_vol1_carousel10) {
-        localStorage.setItem('bot_current_vol1_carousel10', 9)
-        setCookie('bot_current_vol1_carousel10', 9)
+    if (!bot_current_vol1_carousel10 && !bot_current_vol12_carousel10_cookie) {
+        localStorage.setItem('bot_current_vol1_carousel10', 1)
+        setCookie('bot_current_vol1_carousel10', 1)
     }
 
-    if (!bot_current_vol12_carousel10) {
-        localStorage.setItem('bot_current_vol2_carousel10', 9)
-        setCookie('bot_current_vol2_carousel10', 9)
+    if (!bot_current_vol12_carousel10 && !bot_current_vol12_carousel10_cookie) {
+        localStorage.setItem('bot_current_vol2_carousel10', 1)
+        setCookie('bot_current_vol2_carousel10', 1)
     }
 
-    if (!martingale_set_carousel10) {
+    if (!martingale_set_carousel10 && !martingale_set_carousel10_cookie) {
         setCookie('martingale_carousel10', 'false')
         localStorage.setItem('martingale_carousel10', 'false')
     }
 
-    if (!bot_set_carousel10) {
+    if (!bot_set_carousel10 && !bot_set_carousel10_cookie) {
         setCookie('bot_set_carousel10', '2')
         localStorage.setItem('bot_set_carousel10', '2')
     }
 
-    if (!bot_set_store_carousel10) {
+    if (!bot_set_store_carousel10 && !bot_set_store_carousel10_cookie) {
         setCookie('bot_set_store_carousel10', '2')
         localStorage.setItem('bot_set_store_carousel10', '2')
     }
 
-    if (!bot_jump_carousel10) {
+    if (!bot_jump_carousel10 && !bot_jump_carousel10_cookie) {
         setCookie('bot_jump_carousel10', 0)
         localStorage.setItem('bot_jump_carousel10', 0)
     }
-
-
 
 
 
@@ -3790,23 +3962,50 @@ carousel_tick_info_item[indexTickHistory].style.display = 'block';
 
 const draggable = document.getElementById('carousel_arrow');
 
-draggable.addEventListener('mousedown', (e) => {
-    let offsetX = e.clientX - parseInt(window.getComputedStyle(draggable).left);
-    let offsetY = e.clientY - parseInt(window.getComputedStyle(draggable).top);
-
-    function mouseMoveHandler(e) {
-        draggable.style.left = `${e.clientX - offsetX}px`;
-        draggable.style.top = `${e.clientY - offsetY}px`;
+// Function to handle dragging
+function startDrag(e) {
+    let initialX, initialY;
+    if (e.type === 'mousedown') {
+        initialX = e.clientX;
+        initialY = e.clientY;
+    } else if (e.type === 'touchstart') {
+        initialX = e.touches[0].clientX;
+        initialY = e.touches[0].clientY;
     }
 
-    function mouseUpHandler() {
-        document.removeEventListener('mousemove', mouseMoveHandler);
-        document.removeEventListener('mouseup', mouseUpHandler);
+    let offsetX = initialX - parseInt(window.getComputedStyle(draggable).left);
+    let offsetY = initialY - parseInt(window.getComputedStyle(draggable).top);
+
+    function moveHandler(e) {
+        let currentX, currentY;
+        if (e.type === 'mousemove') {
+            currentX = e.clientX;
+            currentY = e.clientY;
+        } else if (e.type === 'touchmove') {
+            currentX = e.touches[0].clientX;
+            currentY = e.touches[0].clientY;
+        }
+        draggable.style.left = `${currentX - offsetX}px`;
+        draggable.style.top = `${currentY - offsetY}px`;
     }
 
-    document.addEventListener('mousemove', mouseMoveHandler);
-    document.addEventListener('mouseup', mouseUpHandler);
-});
+    function endHandler() {
+        document.removeEventListener('mousemove', moveHandler);
+        document.removeEventListener('mouseup', endHandler);
+        document.removeEventListener('touchmove', moveHandler);
+        document.removeEventListener('touchend', endHandler);
+    }
+
+    document.addEventListener('mousemove', moveHandler);
+    document.addEventListener('mouseup', endHandler);
+    document.addEventListener('touchmove', moveHandler);
+    document.addEventListener('touchend', endHandler);
+}
+
+// Add event listeners for both mouse and touch events
+draggable.addEventListener('mousedown', startDrag);
+draggable.addEventListener('touchstart', startDrag);
+
 
 
 
@@ -3940,6 +4139,7 @@ function togglePlayPause2() {
 
     if (play_button2) {
         localStorage.setItem('all_bot_start_stop1', 'stop_bots')
+        setCookie('all_bot_start_stop1', 'stop_bots')
         set_all_bot_stop()
         play_button2.parentNode.removeChild(play_button2);
 
@@ -3951,6 +4151,7 @@ function togglePlayPause2() {
         document.getElementById('all_bot_text').textContent = 'all Bots has stopped'
     } else if (pause_button2) {
         localStorage.setItem('all_bot_start_stop1', 'start_bots')
+        setCookie('all_bot_start_stop1', 'start_bots')
         set_all_bot_running()
         pause_button2.parentNode.removeChild(pause_button2);
 
@@ -3981,6 +4182,20 @@ document.addEventListener('DOMContentLoaded', function () {
     localStorage.setItem('martingale_carousel9', 'false');
     localStorage.setItem('martingale_carousel10', 'false');
     // Wait for the DOM to be fully loaded before manipulating it
+
+    setCookie('all_bot_start_stop1', 'stop_bots')
+    setCookie('all_bot_martingale', 'false')
+
+    setCookie('martingale', 'false');
+    setCookie('martingale_carousel2', 'false');
+    setCookie('martingale_carousel3', 'false');
+    setCookie('martingale_carousel4', 'false');
+    setCookie('martingale_carousel5', 'false');
+    setCookie('martingale_carousel6', 'false');
+    setCookie('martingale_carousel7', 'false');
+    setCookie('martingale_carousel8', 'false');
+    setCookie('martingale_carousel9', 'false');
+    setCookie('martingale_carousel10', 'false');
 });
 
 
@@ -4057,6 +4272,17 @@ function all_bot_set() {
     localStorage.setItem('bot_set_carousel8', `${all_bot_set_count}`)
     localStorage.setItem('bot_set_carousel9', `${all_bot_set_count}`)
     localStorage.setItem('bot_set_carousel10', `${all_bot_set_count}`)
+
+    setCookie('bot_set', `${all_bot_set_count}`)
+    setCookie('bot_set_carousel2', `${all_bot_set_count}`)
+    setCookie('bot_set_carousel3', `${all_bot_set_count}`)
+    setCookie('bot_set_carousel4', `${all_bot_set_count}`)
+    setCookie('bot_set_carousel5', `${all_bot_set_count}`)
+    setCookie('bot_set_carousel6', `${all_bot_set_count}`)
+    setCookie('bot_set_carousel7', `${all_bot_set_count}`)
+    setCookie('bot_set_carousel8', `${all_bot_set_count}`)
+    setCookie('bot_set_carousel9', `${all_bot_set_count}`)
+    setCookie('bot_set_carousel10', `${all_bot_set_count}`)
 }
 
 
@@ -4191,6 +4417,17 @@ function set_all_martigale() {
     localStorage.setItem('martingale_carousel8', 'true');
     localStorage.setItem('martingale_carousel9', 'true');
     localStorage.setItem('martingale_carousel10', 'true');
+
+    setCookie('martingale', 'true');
+    setCookie('martingale_carousel2', 'true');
+    setCookie('martingale_carousel3', 'true');
+    setCookie('martingale_carousel4', 'true');
+    setCookie('martingale_carousel5', 'true');
+    setCookie('martingale_carousel6', 'true');
+    setCookie('martingale_carousel7', 'true');
+    setCookie('martingale_carousel8', 'true');
+    setCookie('martingale_carousel9', 'true');
+    setCookie('martingale_carousel10', 'true');
 }
 function remove_all_martigale() {
     localStorage.setItem('martingale', 'false');
@@ -4203,6 +4440,17 @@ function remove_all_martigale() {
     localStorage.setItem('martingale_carousel8', 'false');
     localStorage.setItem('martingale_carousel9', 'false');
     localStorage.setItem('martingale_carousel10', 'false');
+
+    setCookie('martingale', 'false');
+    setCookie('martingale_carousel2', 'false');
+    setCookie('martingale_carousel3', 'false');
+    setCookie('martingale_carousel4', 'false');
+    setCookie('martingale_carousel5', 'false');
+    setCookie('martingale_carousel6', 'false');
+    setCookie('martingale_carousel7', 'false');
+    setCookie('martingale_carousel8', 'false');
+    setCookie('martingale_carousel9', 'false');
+    setCookie('martingale_carousel10', 'false');
 }
 
 
@@ -4216,12 +4464,14 @@ all_bot_mat.addEventListener('click', () => {
     if (!all_bot_mat.classList.contains('all_mat_active') && (!all_martingale || all_martingale == 'false')) {
         all_bot_mat.classList.add('all_mat_active')
         localStorage.setItem('all_bot_martingale', 'true')
+        setCookie('all_bot_martingale', 'true')
         set_all_martigale()
         set_all_martigale_active()
         on_all_mat.textContent = 'all bot martinglae on'
     } else {
         all_bot_mat.classList.remove('all_mat_active')
         localStorage.setItem('all_bot_martingale', 'false')
+        setCookie('all_bot_martingale', 'false')
         remove_all_martigale()
         remove_all_martigale_active()
         on_all_mat.textContent = 'all bot martinglae off'

@@ -1245,7 +1245,7 @@ let bot_total_profit_loss = 0
 
 
 
-let message1 = localStorage.getItem('message1')
+let message1 = localStorage.getItem('message1') ? localStorage.getItem('message1') : getCookie('message1')
 
 
 let randomNumber = null;
@@ -1283,6 +1283,7 @@ let def_profit_up = null
 let website_status_info = 'initial'
 
 let symbol50 = null
+let symbol50_cookie = null
 
 
 let subscription_to_open_contract = true
@@ -1324,6 +1325,7 @@ document.addEventListener('DOMContentLoaded', function () {
     localStorage.setItem('symbol50', 'R_50')
 
     symbol50 = localStorage.getItem('symbol50')
+    symbol50_cookie = getCookie('symbol50')
 
 });
 
@@ -1774,16 +1776,17 @@ async function buy_bot(martingale, current_number) {
     last_digit_prediction_or_barrier = parseInt(current_number);
 
     let contract_text_local_st = localStorage.getItem('contract_text_local_st')
+    let contract_text_cookie = getCookie('contract_text_cookie')
 
     if (martingale == 'true' && contract_status2 == 'lost') {
-        if(contract_text_local_st && contract_text_local_st == 'Matches/Differs'){
+        if(contract_text_local_st && contract_text_local_st == 'Matches/Differs' || contract_text_cookie && contract_text_cookie == 'Matches/Differs'){
             martingale_count += 1
             stake_amount = martingale_store[martingale_count]
         }else{
             stake_amount = stake_amount * 10.1
         }
     } else if (initial_stake = true || (martingale == 'true' && contract_status2 == 'won')) {
-        if(contract_text_local_st && contract_text_local_st == 'Matches/Differs'){
+        if(contract_text_local_st && contract_text_local_st == 'Matches/Differs' || contract_text_cookie && contract_text_cookie == 'Matches/Differs'){
             martingale_count = 0
             stake_amount = martingale_store[martingale_count]
         }else{
@@ -2183,6 +2186,7 @@ async function startBot(martingale, lastNumber10, lastNumber9, lastNumber8, last
 
 let bot_state_carousel3 = "stop_bot"
 let all_bot_start_stop1 = null
+let all_bot_start_stop1_cookie = null
 
 let buttonContainer_carousel3 = document.querySelector('.click_change_carousel3');
 
@@ -2230,6 +2234,14 @@ let martingale_active_carousel3 = null
 let bot_set_carousel3 = null
 let set_bot_jump_carousel3 = null
 let initial_set_jump = true
+
+
+let currentvol_carousel3_cookie = null
+let currentvol2_carousel3_cookie = null
+let martingale_active_carousel3_cookie = null
+let bot_set_carousel3_cookie = null
+let set_bot_jump_carousel3_cookie = null
+let initial_set_jump_cookie = true
 
 
 let currentRandom = null
@@ -2337,22 +2349,29 @@ const tickResponse = async (res) => {
         stream50_carousel3.textContent = strNumber
 
         all_bot_start_stop1 = localStorage.getItem('all_bot_start_stop1')
-
+        all_bot_start_stop1_cookie = getCookie('all_bot_start_stop1')
+        
         currentvol_carousel3 = localStorage.getItem('bot_current_vol1_carousel3');
         currentvol2_carousel3 = localStorage.getItem('bot_current_vol2_carousel3');
         martingale_active_carousel3 = localStorage.getItem('martingale_carousel3');
         bot_set_carousel3 = localStorage.getItem('bot_set_carousel3');
-
         set_bot_jump_carousel3 = localStorage.getItem('bot_jump_carousel3')
-
-        if((set_bot_jump_carousel3 && set_bot_jump_carousel3 > 0) && contract_status2 == 'lost'){
-            bot_set_carousel3 = parseInt(bot_set_carousel3) + parseInt(set_bot_jump_carousel3)
+        
+        currentvol_carousel3_cookie = getCookie('bot_current_vol1_carousel3');
+        currentvol2_carousel3_cookie = getCookie('bot_current_vol2_carousel3');
+        martingale_active_carousel3_cookie = getCookie('martingale_carousel3');
+        bot_set_carousel3_cookie = getCookie('bot_set_carousel3');
+        set_bot_jump_carousel3_cookie = getCookie('bot_jump_carousel3')
+        
+        if(((set_bot_jump_carousel3 && set_bot_jump_carousel3 > 0) && contract_status2 == 'lost') || ((set_bot_jump_carousel3_cookie && set_bot_jump_carousel3_cookie > 0) && contract_status2 == 'lost')){
+            bot_set_carousel3 = (parseInt(bot_set_carousel3) + parseInt(set_bot_jump_carousel3)) !== null ? (parseInt(bot_set_carousel3) + parseInt(set_bot_jump_carousel3)) : (parseInt(bot_set_carousel3_cookie) + parseInt(set_bot_jump_carousel3_cookie))
             contract_status2 == 'reset'
-        }else if(initial_set_jump == true || (contract_status2 == 'won' && (set_bot_jump_carousel3 && set_bot_jump_carousel3 > 0))){
-            bot_set_carousel3 = localStorage.getItem('bot_set_carousel3');
+        }else if((initial_set_jump == true || (contract_status2 == 'won' && (set_bot_jump_carousel3 && set_bot_jump_carousel3 > 0))) || (initial_set_jump_cookie == true || (contract_status2 == 'won' && (set_bot_jump_carousel3_cookie && set_bot_jump_carousel3_cookie > 0)))){
+            bot_set_carousel3 = localStorage.getItem('bot_set_carousel3') ? localStorage.getItem('bot_set_carousel3') : getCookie('bot_set_carousel3');
             initial_set_jump = false
+            initial_set_jump_cookie = false
         }else{
-            bot_set_carousel3 = localStorage.getItem('bot_set_carousel3');
+            bot_set_carousel3 = localStorage.getItem('bot_set_carousel3') ? localStorage.getItem('bot_set_carousel3') : getCookie("bot_set_carousel3");
         }
 
         let bot_count = bot_id
@@ -3517,48 +3536,91 @@ let currentIndex = localStorage.getItem('bot_current_vol1_carousel3') || 0;
 let currentIndex2 = localStorage.getItem('bot_current_vol2_carousel3') || 0;
 let currentIndex3 = localStorage.getItem('bot_current_vol3_carousel3') || 0;
 
+let currentIndex_cookie = localStorage.getItem('bot_current_vol1_carousel3') || 0;
+let currentIndex2_cookie = localStorage.getItem('bot_current_vol2_carousel3') || 0;
+let currentIndex3_cookie = localStorage.getItem('bot_current_vol3_carousel3') || 0;
+
 
 // Show initial volume
-volumes[currentIndex].classList.add("active");
-volumes2[currentIndex].classList.add("active");
-volumes_stream[currentIndex].classList.add("active");
+if ((currentIndex && currentIndex !== null)) {
+    volumes[currentIndex].classList.add("active");
+    volumes2[currentIndex].classList.add("active");
+    volumes_stream[currentIndex].classList.add("active");
+} else if ((currentIndex_cookie && currentIndex_cookie !== null)) {
+    volumes[currentIndex_cookie].classList.add("active");
+    volumes2[currentIndex_cookie].classList.add("active");
+    volumes_stream[currentIndex_cookie].classList.add("active");
+}
 
-console.log("slide vol 50", currentIndex, currentIndex2)
 
 // Previous button functionality
 prevButton.addEventListener("click", function () {
-    volumes[currentIndex].classList.remove("active");
-    volumes2[currentIndex].classList.remove("active");
-    volumes_stream[currentIndex].classList.remove("active");
-    currentIndex = (currentIndex - 1 + volumes.length) % volumes.length;
-    localStorage.setItem('bot_current_vol1_carousel3', currentIndex)
-    localStorage.setItem('bot_current_vol3_carousel3', currentIndex)
-    setCookie('bot_current_vol1_carousel3', currentIndex)
-    setCookie('bot_current_vol3_carousel3', currentIndex)
-    currentIndex2 = (currentIndex2 - 1 + volumes_stream.length) % volumes_stream.length;
-    localStorage.setItem('bot_current_vol2_carousel3', currentIndex)
-    setCookie('bot_current_vol2_carousel3', currentIndex)
-    volumes[currentIndex].classList.add("active");
-    volumes2[currentIndex].classList.add("active");
-    volumes_stream[currentIndex2].classList.add("active");
+    if (currentIndex && currentIndex !== null) {
+        volumes[currentIndex].classList.remove("active");
+        volumes2[currentIndex].classList.remove("active");
+        volumes_stream[currentIndex].classList.remove("active");
+        currentIndex = (currentIndex - 1 + volumes.length) % volumes.length;
+        localStorage.setItem('bot_current_vol1_carousel3', currentIndex)
+        localStorage.setItem('bot_current_vol3_carousel3', currentIndex)
+        setCookie('bot_current_vol1_carousel3', currentIndex)
+        setCookie('bot_current_vol3_carousel3', currentIndex)
+        currentIndex2 = (currentIndex2 - 1 + volumes_stream.length) % volumes_stream.length;
+        localStorage.setItem('bot_current_vol2_carousel3', currentIndex)
+        setCookie('bot_current_vol2_carousel3', currentIndex)
+        volumes[currentIndex].classList.add("active");
+        volumes2[currentIndex].classList.add("active");
+        volumes_stream[currentIndex2].classList.add("active");
+    } else if (currentIndex_cookie && currentIndex_cookie !== null) {
+        volumes[currentIndex_cookie].classList.remove("active");
+        volumes2[currentIndex_cookie].classList.remove("active");
+        volumes_stream[currentIndex_cookie].classList.remove("active");
+        currentIndex_cookie = (currentIndex_cookie - 1 + volumes.length) % volumes.length;
+        localStorage.setItem('bot_current_vol1_carousel3', currentIndex_cookie)
+        localStorage.setItem('bot_current_vol3_carousel3', currentIndex_cookie)
+        setCookie('bot_current_vol1_carousel3', currentIndex_cookie)
+        setCookie('bot_current_vol3_carousel3', currentIndex_cookie)
+        currentIndex2_cookie = (currentIndex2_cookie - 1 + volumes_stream.length) % volumes_stream.length;
+        localStorage.setItem('bot_current_vol2_carousel3', currentIndex_cookie)
+        setCookie('bot_current_vol2_carousel3', currentIndex_cookie)
+        volumes[currentIndex_cookie].classList.add("active");
+        volumes2[currentIndex_cookie].classList.add("active");
+        volumes_stream[currentIndex2_cookie].classList.add("active");
+    }
 });
 
 // Next button functionality
 nextButton.addEventListener("click", function () {
-    volumes[currentIndex].classList.remove("active");
-    volumes2[currentIndex].classList.remove("active");
-    volumes_stream[currentIndex2].classList.remove("active");
-    currentIndex = (currentIndex + 1) % volumes.length;
-    localStorage.setItem('bot_current_vol1_carousel3', currentIndex)
-    localStorage.setItem('bot_current_vol3_carousel3', currentIndex)
-    setCookie('bot_current_vol1_carousel3', currentIndex)
-    setCookie('bot_current_vol3_carousel3', currentIndex)
-    currentIndex2 = (currentIndex2 + 1) % volumes_stream.length;
-    localStorage.setItem('bot_current_vol2_carousel3', currentIndex)
-    setCookie('bot_current_vol2_carousel3', currentIndex)
-    volumes[currentIndex].classList.add("active");
-    volumes2[currentIndex].classList.add("active");
-    volumes_stream[currentIndex2].classList.add("active");
+    if (currentIndex && currentIndex !== null) {
+        volumes[currentIndex].classList.remove("active");
+        volumes2[currentIndex].classList.remove("active");
+        volumes_stream[currentIndex2].classList.remove("active");
+        currentIndex = (currentIndex + 1) % volumes.length;
+        localStorage.setItem('bot_current_vol1_carousel3', currentIndex)
+        localStorage.setItem('bot_current_vol3_carousel3', currentIndex)
+        setCookie('bot_current_vol1_carousel3', currentIndex)
+        setCookie('bot_current_vol3_carousel3', currentIndex)
+        currentIndex2 = (currentIndex2 + 1) % volumes_stream.length;
+        localStorage.setItem('bot_current_vol2_carousel3', currentIndex)
+        setCookie('bot_current_vol2_carousel3', currentIndex)
+        volumes[currentIndex].classList.add("active");
+        volumes2[currentIndex].classList.add("active");
+        volumes_stream[currentIndex2].classList.add("active");
+    } else if (currentIndex_cookie && currentIndex_cookie !== null) {
+        volumes[currentIndex_cookie].classList.remove("active");
+        volumes2[currentIndex_cookie].classList.remove("active");
+        volumes_stream[currentIndex2_cookie].classList.remove("active");
+        currentIndex_cookie = (currentIndex_cookie + 1) % volumes.length;
+        localStorage.setItem('bot_current_vol1_carousel3', currentIndex_cookie)
+        localStorage.setItem('bot_current_vol3_carousel3', currentIndex_cookie)
+        setCookie('bot_current_vol1_carousel3', currentIndex_cookie)
+        setCookie('bot_current_vol3_carousel3', currentIndex_cookie)
+        currentIndex2_cookie = (currentIndex2_cookie + 1) % volumes_stream.length;
+        localStorage.setItem('bot_current_vol2_carousel3', currentIndex_cookie)
+        setCookie('bot_current_vol2_carousel3', currentIndex_cookie)
+        volumes[currentIndex_cookie].classList.add("active");
+        volumes2[currentIndex_cookie].classList.add("active");
+        volumes_stream[currentIndex2_cookie].classList.add("active");
+    }
 });
 
 
@@ -3641,14 +3703,14 @@ last_digit_settings.forEach(function (bot_setting) {
             console.log('one digit')
             localStorage.setItem('bot_set_carousel3', '1')
             setCookie('bot_set_carousel3', '1')
-    
+
             localStorage.setItem('bot_set_store_carousel3', '1')
             setCookie('bot_set_store_carousel3', '1')
-    
+
             this.classList.add('confirm_set_click')
-    
+
             bot_set_default()
-    
+
             setTimeout(() => {
                 this.classList.remove('confirm_set_click')
             }, 2000)
@@ -3657,15 +3719,15 @@ last_digit_settings.forEach(function (bot_setting) {
             console.log('two digit')
             localStorage.setItem('bot_set_carousel3', '2')
             setCookie('bot_set_carousel3', '2')
-    
+
             localStorage.setItem('bot_set_store_carousel3', '2')
             setCookie('bot_set_store_carousel3', '2')
-    
-    
+
+
             this.classList.add('confirm_set_click')
-    
+
             bot_set_default()
-    
+
             setTimeout(() => {
                 this.classList.remove('confirm_set_click')
             }, 2000)
@@ -3674,14 +3736,14 @@ last_digit_settings.forEach(function (bot_setting) {
             console.log('three digit')
             localStorage.setItem('bot_set_carousel3', '3')
             setCookie('bot_set_carousel3', '3')
-    
+
             localStorage.setItem('bot_set_store_carousel3', '3')
             setCookie('bot_set_store_carousel3', '3')
-    
+
             this.classList.add('confirm_set_click')
-    
+
             bot_set_default()
-    
+
             setTimeout(() => {
                 this.classList.remove('confirm_set_click')
             }, 2000)
@@ -3690,14 +3752,14 @@ last_digit_settings.forEach(function (bot_setting) {
             console.log('four digit')
             localStorage.setItem('bot_set_carousel3', '4')
             setCookie('bot_set_carousel3', '4')
-    
+
             localStorage.setItem('bot_set_store_carousel3', '4')
             setCookie('bot_set_store_carousel3', '4')
-    
+
             this.classList.add('confirm_set_click')
-    
+
             bot_set_default()
-    
+
             setTimeout(() => {
                 this.classList.remove('confirm_set_click')
             }, 2000)
@@ -3706,14 +3768,14 @@ last_digit_settings.forEach(function (bot_setting) {
             console.log('five digit')
             localStorage.setItem('bot_set_carousel3', '5')
             setCookie('bot_set_carousel3', '5')
-    
+
             localStorage.setItem('bot_set_store_carousel3', '5')
             setCookie('bot_set_store_carousel3', '5')
-    
+
             this.classList.add('confirm_set_click')
-    
+
             bot_set_default()
-    
+
             setTimeout(() => {
                 this.classList.remove('confirm_set_click')
             }, 2000)
@@ -3722,14 +3784,14 @@ last_digit_settings.forEach(function (bot_setting) {
             console.log('six digit')
             localStorage.setItem('bot_set_carousel3', '6')
             setCookie('bot_set_carousel3', '6')
-    
+
             localStorage.setItem('bot_set_store_carousel3', '6')
             setCookie('bot_set_store_carousel3', '6')
-    
+
             this.classList.add('confirm_set_click')
-    
+
             bot_set_default()
-    
+
             setTimeout(() => {
                 this.classList.remove('confirm_set_click')
             }, 2000)
@@ -3738,14 +3800,14 @@ last_digit_settings.forEach(function (bot_setting) {
             console.log('seven digit')
             localStorage.setItem('bot_set_carousel3', '7')
             setCookie('bot_set_carousel3', '7')
-    
+
             localStorage.setItem('bot_set_store_carousel3', '7')
             setCookie('bot_set_store_carousel3', '7')
-    
+
             this.classList.add('confirm_set_click')
-    
+
             bot_set_default()
-    
+
             setTimeout(() => {
                 this.classList.remove('confirm_set_click')
             }, 2000)
@@ -3754,14 +3816,14 @@ last_digit_settings.forEach(function (bot_setting) {
             console.log('eight digit')
             localStorage.setItem('bot_set_carousel3', '8')
             setCookie('bot_set_carousel3', '8')
-    
+
             localStorage.setItem('bot_set_store_carousel3', '8')
             setCookie('bot_set_store_carousel3', '8')
-    
+
             this.classList.add('confirm_set_click')
-    
+
             bot_set_default()
-    
+
             setTimeout(() => {
                 this.classList.remove('confirm_set_click')
             }, 2000)
@@ -3770,14 +3832,14 @@ last_digit_settings.forEach(function (bot_setting) {
             console.log('nine digit')
             localStorage.setItem('bot_set_carousel3', '9')
             setCookie('bot_set_carousel3', '9')
-    
+
             localStorage.setItem('bot_set_store_carousel3', '9')
             setCookie('bot_set_store_carousel3', '9')
-    
+
             this.classList.add('confirm_set_click')
-    
+
             bot_set_default()
-    
+
             setTimeout(() => {
                 this.classList.remove('confirm_set_click')
             }, 2000)
@@ -3786,14 +3848,14 @@ last_digit_settings.forEach(function (bot_setting) {
             console.log('ten digit')
             localStorage.setItem('bot_set_carousel3', '10')
             setCookie('bot_set_carousel3', '10')
-    
+
             localStorage.setItem('bot_set_store_carousel3', '10')
             setCookie('bot_set_store_carousel3', '10')
-    
+
             this.classList.add('confirm_set_click')
-    
+
             bot_set_default()
-    
+
             setTimeout(() => {
                 this.classList.remove('confirm_set_click')
             }, 2000)
@@ -3811,7 +3873,7 @@ function jump_count_set() {
 }
 
 function jump_count_set2() {
-    let stored_jump_count = localStorage.getItem('bot_jump_carousel3');
+    let stored_jump_count = localStorage.getItem('bot_jump_carousel3') ? localStorage.getItem('bot_jump_carousel3') : getCookie('bot_jump_carousel3');
 
     // Parse the value and handle the case where it is null or NaN
     jump_count = stored_jump_count !== null ? parseInt(stored_jump_count, 10) : 0;
@@ -3873,38 +3935,72 @@ bot_settings2.addEventListener('click', function () {
 
 // Previous button functionality
 prevButton2.addEventListener("click", function () {
-    volumes[currentIndex].classList.remove("active");
-    volumes2[currentIndex].classList.remove("active");
-    volumes_stream[currentIndex].classList.remove("active");
-    currentIndex = (currentIndex - 1 + volumes.length) % volumes.length;
-    localStorage.setItem('bot_current_vol1_carousel3', currentIndex)
-    localStorage.setItem('bot_current_vol3_carousel3', currentIndex)
-    setCookie('bot_current_vol1_carousel3', currentIndex)
-    setCookie('bot_current_vol3_carousel3', currentIndex)
-    currentIndex2 = (currentIndex2 - 1 + volumes_stream.length) % volumes_stream.length;
-    localStorage.setItem('bot_current_vol2_carousel3', currentIndex)
-    setCookie('bot_current_vol2_carousel3', currentIndex)
-    volumes[currentIndex].classList.add("active");
-    volumes2[currentIndex].classList.add("active");
-    volumes_stream[currentIndex2].classList.add("active");
+    if (currentIndex && currentIndex !== null) {
+        volumes[currentIndex].classList.remove("active");
+        volumes2[currentIndex].classList.remove("active");
+        volumes_stream[currentIndex].classList.remove("active");
+        currentIndex = (currentIndex - 1 + volumes.length) % volumes.length;
+        localStorage.setItem('bot_current_vol1_carousel3', currentIndex)
+        localStorage.setItem('bot_current_vol3_carousel3', currentIndex)
+        setCookie('bot_current_vol1_carousel3', currentIndex)
+        setCookie('bot_current_vol3_carousel3', currentIndex)
+        currentIndex2 = (currentIndex2 - 1 + volumes_stream.length) % volumes_stream.length;
+        localStorage.setItem('bot_current_vol2_carousel3', currentIndex)
+        setCookie('bot_current_vol2_carousel3', currentIndex)
+        volumes[currentIndex].classList.add("active");
+        volumes2[currentIndex].classList.add("active");
+        volumes_stream[currentIndex2].classList.add("active");
+    } else if (currentIndex_cookie && currentIndex_cookie !== null) {
+        volumes[currentIndex_cookie].classList.remove("active");
+        volumes2[currentIndex_cookie].classList.remove("active");
+        volumes_stream[currentIndex_cookie].classList.remove("active");
+        currentIndex_cookie = (currentIndex_cookie - 1 + volumes.length) % volumes.length;
+        localStorage.setItem('bot_current_vol1_carousel3', currentIndex_cookie)
+        localStorage.setItem('bot_current_vol3_carousel3', currentIndex_cookie)
+        setCookie('bot_current_vol1_carousel3', currentIndex_cookie)
+        setCookie('bot_current_vol3_carousel3', currentIndex_cookie)
+        currentIndex2_cookie = (currentIndex2_cookie - 1 + volumes_stream.length) % volumes_stream.length;
+        localStorage.setItem('bot_current_vol2_carousel3', currentIndex_cookie)
+        setCookie('bot_current_vol2_carousel3', currentIndex_cookie)
+        volumes[currentIndex_cookie].classList.add("active");
+        volumes2[currentIndex_cookie].classList.add("active");
+        volumes_stream[currentIndex2_cookie].classList.add("active");
+    }
 });
 
 // Next button functionality
 nextButton2.addEventListener("click", function () {
-    volumes[currentIndex].classList.remove("active");
-    volumes2[currentIndex].classList.remove("active");
-    volumes_stream[currentIndex2].classList.remove("active");
-    currentIndex = (currentIndex + 1) % volumes.length;
-    localStorage.setItem('bot_current_vol1_carousel3', currentIndex)
-    localStorage.setItem('bot_current_vol3_carousel3', currentIndex)
-    setCookie('bot_current_vol1_carousel3', currentIndex)
-    setCookie('bot_current_vol3_carousel3', currentIndex)
-    currentIndex2 = (currentIndex2 + 1) % volumes_stream.length;
-    localStorage.setItem('bot_current_vol2_carousel3', currentIndex)
-    setCookie('bot_current_vol2_carousel3', currentIndex)
-    volumes[currentIndex].classList.add("active");
-    volumes2[currentIndex].classList.add("active");
-    volumes_stream[currentIndex2].classList.add("active");
+    if (currentIndex && currentIndex !== null) {
+        volumes[currentIndex].classList.remove("active");
+        volumes2[currentIndex].classList.remove("active");
+        volumes_stream[currentIndex2].classList.remove("active");
+        currentIndex = (currentIndex + 1) % volumes.length;
+        localStorage.setItem('bot_current_vol1_carousel3', currentIndex)
+        localStorage.setItem('bot_current_vol3_carousel3', currentIndex)
+        setCookie('bot_current_vol1_carousel3', currentIndex)
+        setCookie('bot_current_vol3_carousel3', currentIndex)
+        currentIndex2 = (currentIndex2 + 1) % volumes_stream.length;
+        localStorage.setItem('bot_current_vol2_carousel3', currentIndex)
+        setCookie('bot_current_vol2_carousel3', currentIndex)
+        volumes[currentIndex].classList.add("active");
+        volumes2[currentIndex].classList.add("active");
+        volumes_stream[currentIndex2].classList.add("active");
+    } else if (currentIndex_cookie && currentIndex_cookie !== null) {
+        volumes[currentIndex].classList.remove("active");
+        volumes2[currentIndex].classList.remove("active");
+        volumes_stream[currentIndex2].classList.remove("active");
+        currentIndex = (currentIndex + 1) % volumes.length;
+        localStorage.setItem('bot_current_vol1_carousel3', currentIndex)
+        localStorage.setItem('bot_current_vol3_carousel3', currentIndex)
+        setCookie('bot_current_vol1_carousel3', currentIndex)
+        setCookie('bot_current_vol3_carousel3', currentIndex)
+        currentIndex2 = (currentIndex2 + 1) % volumes_stream.length;
+        localStorage.setItem('bot_current_vol2_carousel3', currentIndex)
+        setCookie('bot_current_vol2_carousel3', currentIndex)
+        volumes[currentIndex].classList.add("active");
+        volumes2[currentIndex].classList.add("active");
+        volumes_stream[currentIndex2].classList.add("active");
+    }
 });
 
 
