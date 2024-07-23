@@ -121,8 +121,6 @@ let bot4 = document.getElementById('bot4')
 let bot5 = document.getElementById('bot5')
 
 
-let bot_show_cont = document.getElementById('bot_show_cont')
-let close_summary = document.getElementById('close_summary')
 
 let overlay3 = document.getElementById('overlay3')
 
@@ -232,10 +230,79 @@ let stake_amount_default = null
 let bot_current_vol1 = null
 let bot_current_vol12 = null
 let martingale_set = false
-
 let bot_set = null
+let bot_set_store = null
 let bot_jump = null
 
+let bot_current_vol1_carousel2 = null
+let bot_current_vol12_carousel2 = null
+let martingale_set_carousel2 = false
+let bot_set_carousel2 = null
+let bot_set_store_carousel2 = null
+let bot_jump_carousel2 = null
+
+
+let bot_current_vol1_carousel3 = null
+let bot_current_vol12_carousel3 = null
+let martingale_set_carousel3 = false
+let bot_set_carousel3 = null
+let bot_set_store_carousel3 = null
+let bot_jump_carousel3 = null
+
+
+let bot_current_vol1_carousel4 = null
+let bot_current_vol12_carousel4 = null
+let martingale_set_carousel4 = false
+let bot_set_carousel4 = null
+let bot_set_store_carousel4 = null
+let bot_jump_carousel4 = null
+
+
+let bot_current_vol1_carousel5 = null
+let bot_current_vol12_carousel5 = null
+let martingale_set_carousel5 = false
+let bot_set_carousel5 = null
+let bot_set_store_carousel5 = null
+let bot_jump_carousel5 = null
+
+
+let bot_current_vol1_carousel6 = null
+let bot_current_vol12_carousel6 = null
+let martingale_set_carousel6 = false
+let bot_set_carousel6 = null
+let bot_set_store_carousel6 = null
+let bot_jump_carousel6 = null
+
+let bot_current_vol1_carousel7 = null
+let bot_current_vol12_carousel7 = null
+let martingale_set_carousel7 = false
+let bot_set_carousel7 = null
+let bot_set_store_carousel7 = null
+let bot_jump_carousel7 = null
+
+
+let bot_current_vol1_carousel8 = null
+let bot_current_vol12_carousel8 = null
+let martingale_set_carousel8 = false
+let bot_set_carousel8 = null
+let bot_set_store_carousel8 = null
+let bot_jump_carousel8 = null
+
+
+let bot_current_vol1_carousel9 = null
+let bot_current_vol12_carousel9 = null
+let martingale_set_carousel9 = false
+let bot_set_carousel9 = null
+let bot_set_store_carousel9 = null
+let bot_jump_carousel9 = null
+
+
+let bot_current_vol1_carousel10 = null
+let bot_current_vol12_carousel10 = null
+let martingale_set_carousel10 = false
+let bot_set_carousel10 = null
+let bot_set_store_carousel10 = null
+let bot_jump_carousel10 = null
 
 
 let message1 = localStorage.getItem('message1')
@@ -632,15 +699,24 @@ const balanceResponse = async (res) => {
     }
 
     if (data.msg_type === 'balance') {
-        balance_amount.textContent = data.balance.balance;
-        balance_after_trade_end.textContent = data.balance.balance
-        td2_balance.textContent = data.balance.balance
+        if (balance_amount) {
+            balance_amount.textContent = data.balance.balance;
+        }
+
+        if (balance_after_trade_end) {
+            balance_after_trade_end.textContent = data.balance.balance
+        }
+
+        if (td2_balance) {
+            td2_balance.textContent = data.balance.balance
+        }
     }
 };
 
 
 const getbalance = async () => {
     connection.addEventListener('message', balanceResponse);
+
     await balance_default();
 };
 
@@ -803,7 +879,6 @@ async function initializeApi(message1) {
                 logi_id.textContent = login_id
 
 
-
             } else {
                 setCookie('demo_balance', authorize_response.authorize.balance)
                 setCookie('demo_id', authorize_response.authorize.loginid)
@@ -811,16 +886,11 @@ async function initializeApi(message1) {
                 setCookie("demo_icon_usd", true)
 
 
-
                 localStorage.setItem('demo_balance', authorize_response.authorize.balance)
                 localStorage.setItem('demo_id', authorize_response.authorize.loginid)
                 localStorage.setItem("real_icon_usd", false)
                 localStorage.setItem("demo_icon_usd", true)
             }
-
-
-
-
         }
 
         subscribeTicks()
@@ -963,17 +1033,93 @@ window.addEventListener('load', function () {
     barrier_cookie = getCookie('barrier_cookie')
 
     stake_amount_default = getCookie('stake_amount_default')
-    martingale_set = localStorage.getItem('martingale') 
+
+    martingale_set = localStorage.getItem('martingale')
     bot_set = localStorage.getItem('bot_set')
+    bot_set_store = localStorage.getItem('bot_set_store')
     bot_jump = localStorage.getItem('bot_jump')
+
+    martingale_set_carousel2 = localStorage.getItem('martingale_carousel2')
+    bot_set_carousel2 = localStorage.getItem('bot_set_carousel2')
+    bot_set_store_carousel2 = localStorage.getItem('bot_set_store_carousel2')
+    bot_jump_carousel2 = localStorage.getItem('bot_jump_carousel2')
+
+    martingale_set_carousel3 = localStorage.getItem('martingale_carousel3')
+    bot_set_carousel3 = localStorage.getItem('bot_set_carousel3')
+    bot_set_store_carousel3 = localStorage.getItem('bot_set_store_carousel3')
+    bot_jump_carousel3 = localStorage.getItem('bot_jump_carousel3')
+
+    martingale_set_carousel4 = localStorage.getItem('martingale_carousel4')
+    bot_set_carousel4 = localStorage.getItem('bot_set_carousel4')
+    bot_set_store_carousel4 = localStorage.getItem('bot_set_store_carousel4')
+    bot_jump_carousel4 = localStorage.getItem('bot_jump_carousel4')
+
+    martingale_set_carousel5 = localStorage.getItem('martingale_carousel5')
+    bot_set_carousel5 = localStorage.getItem('bot_set_carousel5')
+    bot_set_store_carousel5 = localStorage.getItem('bot_set_store_carousel5')
+    bot_jump_carousel5 = localStorage.getItem('bot_jump_carousel5')
+
+    martingale_set_carousel6 = localStorage.getItem('martingale_carousel6')
+    bot_set_carousel6 = localStorage.getItem('bot_set_carousel6')
+    bot_set_store_carousel6 = localStorage.getItem('bot_set_store_carousel6')
+    bot_jump_carousel6 = localStorage.getItem('bot_jump_carousel6')
+
+    martingale_set_carousel7 = localStorage.getItem('martingale_carousel7')
+    bot_set_carousel7 = localStorage.getItem('bot_set_carousel7')
+    bot_set_store_carousel7 = localStorage.getItem('bot_set_store_carousel7')
+    bot_jump_carousel7 = localStorage.getItem('bot_jump_carousel7')
+
+    martingale_set_carousel8 = localStorage.getItem('martingale_carousel8')
+    bot_set_carousel8 = localStorage.getItem('bot_set_carousel8')
+    bot_set_store_carousel8 = localStorage.getItem('bot_set_store_carousel8')
+    bot_jump_carousel8 = localStorage.getItem('bot_jump_carousel8')
+
+    martingale_set_carousel9 = localStorage.getItem('martingale_carousel9')
+    bot_set_carousel9 = localStorage.getItem('bot_set_carousel9')
+    bot_set_store_carousel9 = localStorage.getItem('bot_set_store_carousel9')
+    bot_jump_carousel9 = localStorage.getItem('bot_jump_carousel9')
+
+    martingale_set_carousel10 = localStorage.getItem('martingale_carousel10')
+    bot_set_carousel10 = localStorage.getItem('bot_set_carousel10')
+    bot_set_store_carousel10 = localStorage.getItem('bot_set_store_carousel10')
+    bot_jump_carousel10 = localStorage.getItem('bot_jump_carousel10')
+
 
     // Get the existing values of the cookies and local storage items
 
     let symbol_vol_text_cookie = getCookie('symbol_vol_text_cookie');
     let contract_text_local_st = localStorage.getItem('contract_text_local_st');
     let symbol_vol_text_local_st = localStorage.getItem('symbol_vol_text_local_st');
+
     bot_current_vol1 = localStorage.getItem('bot_current_vol1')
     bot_current_vol12 = localStorage.getItem('bot_current_vol2')
+
+    bot_current_vol1_carousel2 = localStorage.getItem('bot_current_vol1_carousel2')
+    bot_current_vol12_carousel2 = localStorage.getItem('bot_current_vol2_carousel2')
+
+    bot_current_vol1_carousel3 = localStorage.getItem('bot_current_vol1_carousel3')
+    bot_current_vol12_carousel3 = localStorage.getItem('bot_current_vol2_carousel3')
+
+    bot_current_vol1_carousel4 = localStorage.getItem('bot_current_vol1_carousel4')
+    bot_current_vol12_carousel4 = localStorage.getItem('bot_current_vol2_carousel4')
+
+    bot_current_vol1_carousel5 = localStorage.getItem('bot_current_vol1_carousel5')
+    bot_current_vol12_carousel5 = localStorage.getItem('bot_current_vol2_carousel5')
+
+    bot_current_vol1_carousel6 = localStorage.getItem('bot_current_vol1_carousel6')
+    bot_current_vol12_carousel6 = localStorage.getItem('bot_current_vol2_carousel6')
+
+    bot_current_vol1_carousel7 = localStorage.getItem('bot_current_vol1_carousel7')
+    bot_current_vol12_carousel7 = localStorage.getItem('bot_current_vol2_carousel7')
+
+    bot_current_vol1_carousel8 = localStorage.getItem('bot_current_vol1_carousel8')
+    bot_current_vol12_carousel8 = localStorage.getItem('bot_current_vol2_carousel8')
+
+    bot_current_vol1_carousel9 = localStorage.getItem('bot_current_vol1_carousel9')
+    bot_current_vol12_carousel9 = localStorage.getItem('bot_current_vol2_carousel9')
+
+    bot_current_vol1_carousel10 = localStorage.getItem('bot_current_vol1_carousel10')
+    bot_current_vol12_carousel10 = localStorage.getItem('bot_current_vol2_carousel10')
 
 
     // Set the cookies and local storage items if they don't already exist
@@ -1016,10 +1162,307 @@ window.addEventListener('load', function () {
         localStorage.setItem('bot_set', '2')
     }
 
+    if (!bot_set_store) {
+        setCookie('bot_set_store', '2')
+        localStorage.setItem('bot_set_store', '2')
+    }
+
     if (!bot_jump) {
         setCookie('bot_jump', 0)
         localStorage.setItem('bot_jump', 0)
     }
+
+
+    if (!bot_current_vol1_carousel2) {
+        localStorage.setItem('bot_current_vol1_carousel2', 1)
+        setCookie('bot_current_vol1_carousel2', 1)
+    }
+
+    if (!bot_current_vol12_carousel2) {
+        localStorage.setItem('bot_current_vol2_carousel2', 1)
+        setCookie('bot_current_vol2_carousel2', 1)
+    }
+
+    if (!martingale_set_carousel2) {
+        setCookie('martingale_carousel2', 'false')
+        localStorage.setItem('martingale_carousel2', 'false')
+    }
+
+    if (!bot_set_carousel2) {
+        setCookie('bot_set_carousel2', '2')
+        localStorage.setItem('bot_set_carousel2', '2')
+    }
+
+    if (!bot_set_store_carousel2) {
+        setCookie('bot_set_store_carousel2', '2')
+        localStorage.setItem('bot_set_store_carousel2', '2')
+    }
+
+    if (!bot_jump_carousel2) {
+        setCookie('bot_jump_carousel2', 0)
+        localStorage.setItem('bot_jump_carousel2', 0)
+    }
+
+
+
+
+    if (!bot_current_vol1_carousel3) {
+        localStorage.setItem('bot_current_vol1_carousel3', 2)
+        setCookie('bot_current_vol1_carousel3', 2)
+    }
+
+    if (!bot_current_vol12_carousel3) {
+        localStorage.setItem('bot_current_vol2_carousel3', 2)
+        setCookie('bot_current_vol2_carousel3', 2)
+    }
+
+    if (!martingale_set_carousel3) {
+        setCookie('martingale_carousel3', 'false')
+        localStorage.setItem('martingale_carousel3', 'false')
+    }
+
+    if (!bot_set_carousel3) {
+        setCookie('bot_set_carousel3', '2')
+        localStorage.setItem('bot_set_carousel3', '2')
+    }
+
+    if (!bot_set_store_carousel3) {
+        setCookie('bot_set_store_carousel3', '2')
+        localStorage.setItem('bot_set_store_carousel3', '2')
+    }
+
+    if (!bot_jump_carousel3) {
+        setCookie('bot_jump_carousel3', 0)
+        localStorage.setItem('bot_jump_carousel3', 0)
+    }
+
+
+
+
+    if (!bot_current_vol1_carousel4) {
+        localStorage.setItem('bot_current_vol1_carousel4', 3)
+        setCookie('bot_current_vol1_carousel4', 3)
+    }
+
+    if (!bot_current_vol12_carousel4) {
+        localStorage.setItem('bot_current_vol2_carousel4', 3)
+        setCookie('bot_current_vol2_carousel4', 3)
+    }
+
+    if (!martingale_set_carousel4) {
+        setCookie('martingale_carousel4', 'false')
+        localStorage.setItem('martingale_carousel4', 'false')
+    }
+
+    if (!bot_set_carousel4) {
+        setCookie('bot_set_carousel4', '2')
+        localStorage.setItem('bot_set_carousel4', '2')
+    }
+
+    if (!bot_set_store_carousel4) {
+        setCookie('bot_set_store_carousel4', '2')
+        localStorage.setItem('bot_set_store_carousel4', '2')
+    }
+
+    if (!bot_jump_carousel4) {
+        setCookie('bot_jump_carousel4', 0)
+        localStorage.setItem('bot_jump_carousel4', 0)
+    }
+
+
+
+    if (!bot_current_vol1_carousel5) {
+        localStorage.setItem('bot_current_vol1_carousel5', 4)
+        setCookie('bot_current_vol1_carousel5', 4)
+    }
+
+    if (!bot_current_vol12_carousel5) {
+        localStorage.setItem('bot_current_vol2_carousel5', 4)
+        setCookie('bot_current_vol2_carousel5', 4)
+    }
+
+    if (!martingale_set_carousel5) {
+        setCookie('martingale_carousel5', 'false')
+        localStorage.setItem('martingale_carousel5', 'false')
+    }
+
+    if (!bot_set_carousel5) {
+        setCookie('bot_set_carousel5', '2')
+        localStorage.setItem('bot_set_carousel5', '2')
+    }
+
+    if (!bot_set_store_carousel5) {
+        setCookie('bot_set_store_carousel5', '2')
+        localStorage.setItem('bot_set_store_carousel5', '2')
+    }
+
+    if (!bot_jump_carousel5) {
+        setCookie('bot_jump_carousel5', 0)
+        localStorage.setItem('bot_jump_carousel5', 0)
+    }
+
+
+
+    if (!bot_current_vol1_carousel6) {
+        localStorage.setItem('bot_current_vol1_carousel6', 5)
+        setCookie('bot_current_vol1_carousel6', 5)
+    }
+
+    if (!bot_current_vol12_carousel6) {
+        localStorage.setItem('bot_current_vol2_carousel6', 5)
+        setCookie('bot_current_vol2_carousel6', 5)
+    }
+
+    if (!martingale_set_carousel6) {
+        setCookie('martingale_carousel6', 'false')
+        localStorage.setItem('martingale_carousel6', 'false')
+    }
+
+    if (!bot_set_carousel6) {
+        setCookie('bot_set_carousel6', '2')
+        localStorage.setItem('bot_set_carousel6', '2')
+    }
+
+    if (!bot_set_store_carousel6) {
+        setCookie('bot_set_store_carousel6', '2')
+        localStorage.setItem('bot_set_store_carousel6', '2')
+    }
+
+    if (!bot_jump_carousel6) {
+        setCookie('bot_jump_carousel6', 0)
+        localStorage.setItem('bot_jump_carousel6', 0)
+    }
+
+
+
+    if (!bot_current_vol1_carousel7) {
+        localStorage.setItem('bot_current_vol1_carousel7', 6)
+        setCookie('bot_current_vol1_carousel7', 6)
+    }
+
+    if (!bot_current_vol12_carousel7) {
+        localStorage.setItem('bot_current_vol2_carousel7', 6)
+        setCookie('bot_current_vol2_carousel7', 6)
+    }
+
+    if (!martingale_set_carousel7) {
+        setCookie('martingale_carousel7', 'false')
+        localStorage.setItem('martingale_carousel7', 'false')
+    }
+
+    if (!bot_set_carousel7) {
+        setCookie('bot_set_carousel7', '2')
+        localStorage.setItem('bot_set_carousel7', '2')
+    }
+
+    if (!bot_set_store_carousel7) {
+        setCookie('bot_set_store_carousel7', '2')
+        localStorage.setItem('bot_set_store_carousel7', '2')
+    }
+
+    if (!bot_jump_carousel7) {
+        setCookie('bot_jump_carousel7', 0)
+        localStorage.setItem('bot_jump_carousel7', 0)
+    }
+
+
+
+    if (!bot_current_vol1_carousel8) {
+        localStorage.setItem('bot_current_vol1_carousel8', 7)
+        setCookie('bot_current_vol1_carousel8', 7)
+    }
+
+    if (!bot_current_vol12_carousel8) {
+        localStorage.setItem('bot_current_vol2_carousel8', 7)
+        setCookie('bot_current_vol2_carousel8', 7)
+    }
+
+    if (!martingale_set_carousel8) {
+        setCookie('martingale_carousel8', 'false')
+        localStorage.setItem('martingale_carousel8', 'false')
+    }
+
+    if (!bot_set_carousel8) {
+        setCookie('bot_set_carousel8', '2')
+        localStorage.setItem('bot_set_carousel8', '2')
+    }
+
+    if (!bot_set_store_carousel8) {
+        setCookie('bot_set_store_carousel8', '2')
+        localStorage.setItem('bot_set_store_carousel8', '2')
+    }
+
+    if (!bot_jump_carousel8) {
+        setCookie('bot_jump_carousel8', 0)
+        localStorage.setItem('bot_jump_carousel8', 0)
+    }
+
+
+
+    if (!bot_current_vol1_carousel9) {
+        localStorage.setItem('bot_current_vol1_carousel9', 8)
+        setCookie('bot_current_vol1_carousel9', 8)
+    }
+
+    if (!bot_current_vol12_carousel9) {
+        localStorage.setItem('bot_current_vol2_carousel9', 8)
+        setCookie('bot_current_vol2_carousel9', 8)
+    }
+
+    if (!martingale_set_carousel9) {
+        setCookie('martingale_carousel9', 'false')
+        localStorage.setItem('martingale_carousel9', 'false')
+    }
+
+    if (!bot_set_carousel9) {
+        setCookie('bot_set_carousel9', '2')
+        localStorage.setItem('bot_set_carousel9', '2')
+    }
+
+    if (!bot_set_store_carousel9) {
+        setCookie('bot_set_store_carousel9', '2')
+        localStorage.setItem('bot_set_store_carousel9', '2')
+    }
+
+    if (!bot_jump_carousel9) {
+        setCookie('bot_jump_carousel9', 0)
+        localStorage.setItem('bot_jump_carousel9', 0)
+    }
+
+
+
+    if (!bot_current_vol1_carousel10) {
+        localStorage.setItem('bot_current_vol1_carousel10', 9)
+        setCookie('bot_current_vol1_carousel10', 9)
+    }
+
+    if (!bot_current_vol12_carousel10) {
+        localStorage.setItem('bot_current_vol2_carousel10', 9)
+        setCookie('bot_current_vol2_carousel10', 9)
+    }
+
+    if (!martingale_set_carousel10) {
+        setCookie('martingale_carousel10', 'false')
+        localStorage.setItem('martingale_carousel10', 'false')
+    }
+
+    if (!bot_set_carousel10) {
+        setCookie('bot_set_carousel10', '2')
+        localStorage.setItem('bot_set_carousel10', '2')
+    }
+
+    if (!bot_set_store_carousel10) {
+        setCookie('bot_set_store_carousel10', '2')
+        localStorage.setItem('bot_set_store_carousel10', '2')
+    }
+
+    if (!bot_jump_carousel10) {
+        setCookie('bot_jump_carousel10', 0)
+        localStorage.setItem('bot_jump_carousel10', 0)
+    }
+
+
+
 
 
     if (symbol_vol_cookie) {
@@ -3071,104 +3514,6 @@ function handleNewNumber(randomNumber) {
 }
 
 
-
-
-document.addEventListener('DOMContentLoaded', function () {
-    // Wait for the DOM to be fully loaded before manipulating it
-
-    // Get the button container
-    var buttonContainer = document.querySelector('.click_change');
-
-    // Add click event listener to button container
-    buttonContainer.addEventListener('click', togglePlayPause);
-
-    // Function to toggle play and pause buttons
-    function togglePlayPause() {
-        var play_button = document.getElementById('play_button');
-        var pause_button = document.getElementById('pause_button');
-
-
-        if (play_button) {
-            play_button.parentNode.removeChild(play_button);
-
-            var pause_button = document.createElement('div');
-            pause_button.id = 'pause_button';
-            pause_button.className = 'pause_button';
-            pause_button.innerHTML = '&#10074;&#10074;';
-            buttonContainer.appendChild(pause_button);
-            document.getElementById('bot_state').textContent = 'Bot has stopped'
-        } else if (pause_button) {
-            pause_button.parentNode.removeChild(pause_button);
-
-            var play_button = document.createElement('div');
-            play_button.id = 'play_button';
-            play_button.className = 'play_button';
-            play_button.innerHTML = '&#9654;';
-            buttonContainer.appendChild(play_button);
-            document.getElementById('bot_state').textContent = 'Bot is running'
-        }
-    }
-
-
-    const tbody = document.getElementById('tbody1');
-
-    // Function to create and append rows based on data
-    function appendRows(data) {
-        data.forEach(item => {
-            // Create <tr> element
-            const row = document.createElement('tr');
-
-            // Assign unique ID to <tr> (optional)
-            row.id = `row-${item.id}`;
-
-            // Create <td> elements and append to <tr>
-            const td1 = document.createElement('td');
-            td1.textContent = item.id;
-            row.appendChild(td1);
-
-            const td2 = document.createElement('td');
-            td2.textContent = item.timestamp;
-            row.appendChild(td2);
-
-            const td3 = document.createElement('td');
-            td3.textContent = item.reference;
-            row.appendChild(td3);
-
-            const td4 = document.createElement('td');
-            td4.textContent = item.tradeType;
-            row.appendChild(td4);
-
-            const td5 = document.createElement('td');
-            td5.textContent = item.entrySpot;
-            row.appendChild(td5);
-
-            const td6 = document.createElement('td');
-            td6.textContent = item.exitSpot;
-            row.appendChild(td6);
-
-            const td7 = document.createElement('td');
-            td7.textContent = item.buyPrice;
-            row.appendChild(td7);
-
-            const td8 = document.createElement('td');
-            td8.textContent = item.profitLoss;
-            row.appendChild(td8);
-
-            const td9 = document.createElement('td');
-            td9.textContent = item.status;
-            row.appendChild(td9);
-
-            // Append <tr> to <tbody>
-            tbody.appendChild(row);
-        });
-    }
-
-
-
-});
-
-
-
 let hamburger = document.querySelector('.hamburger_menu');
 let sidebar = document.getElementById('sidebar');
 let closeBtn = document.querySelector('.close-btn');
@@ -3220,9 +3565,262 @@ if ((hamburger && overlay2) || (first_drop_cont && brand)) {
 
 
 
+const carousel_bot = document.querySelector('.carousel-bot');
+const items_bot = document.querySelectorAll('.slide');
+const totalItems2 = items_bot.length;
+const prevButton2 = document.getElementById('carousel_arrow_right');
+const nextButton2 = document.getElementById('carousel_arrow_left');
+const bot_section = document.getElementById('bot_section');
+const carousel_arrow = document.getElementById('carousel_arrow');
+const item1_layout = document.getElementById('item1-bot');
+let index2 = 0;
+
+
+
+function set_layout_default() {
+    let allSet = true;
+
+    if (!bot_section.classList.contains('set_section')) {
+        bot_section.classList.add('set_section');
+        allSet = false;
+    }
+
+    if (!carousel_arrow.classList.contains('set_arror')) {
+        carousel_arrow.classList.add('set_arror');
+        allSet = false;
+    }
+
+    if (!item1_layout.classList.contains('set_layout')) {
+        item1_layout.classList.add('set_layout');
+        allSet = false;
+    }
+
+    return allSet;
+}
+
+const checkInterval = setInterval(() => {
+    if (set_layout_default()) {
+        clearInterval(checkInterval);
+    }
+}, 100); // Check every 100ms
+
+
+
+function showItem2(newIndex) {
+    items_bot[index2].style.display = 'none';
+    items_bot[newIndex].style.display = 'block';
+    index2 = newIndex;
+}
+
+
+
+function set_layout() {
+    let allSet = true;
+
+    if (bot_section.classList.contains('set_section')) {
+        bot_section.classList.remove('set_section');
+        bot_section.classList.add('set_section2');
+        allSet = false;
+    }
+
+    if (carousel_arrow.classList.contains('set_arror')) {
+        carousel_arrow.classList.remove('set_arror');
+        carousel_arrow.classList.add('set_arror2');
+        allSet = false;
+    }
+
+    if (item1_layout.classList.contains('set_layout')) {
+        item1_layout.classList.remove('set_layout');
+        allSet = false;
+    }
+
+    return allSet;
+}
+
+function checkAndSetLayout(callback) {
+    const checkIntervalLayout = setInterval(() => {
+        if (set_layout()) {
+            clearInterval(checkIntervalLayout);
+            callback(); // Call the callback function once the layout is set
+        }
+    }, 100); // Check every 100ms
+}
+
+function showNext2() {
+    checkAndSetLayout(() => {
+        const nextIndex = (index2 + 1) % totalItems2;
+        items_bot[index2].style.transform = 'translateX(-100%)';
+        items_bot[nextIndex].style.transform = 'translateX(100%)';
+        items_bot[nextIndex].style.display = 'block';
+        setTimeout(() => {
+            items_bot[index2].style.display = 'none';
+            items_bot[nextIndex].style.transform = 'translateX(0)';
+            index2 = nextIndex;
+        }, 50);
+    });
+}
+
+function showPrev2() {
+    checkAndSetLayout(() => {
+        const prevIndex = (index2 - 1 + totalItems2) % totalItems2;
+        items_bot[index2].style.transform = 'translateX(100%)';
+        items_bot[prevIndex].style.transform = 'translateX(-100%)';
+        items_bot[prevIndex].style.display = 'block';
+        setTimeout(() => {
+            items_bot[index2].style.display = 'none';
+            items_bot[prevIndex].style.transform = 'translateX(0)';
+            index2 = prevIndex;
+        }, 50);
+    });
+}
+
+nextButton2.addEventListener('click', showNext2);
+prevButton2.addEventListener('click', showPrev2);
+
+items_bot[index2].style.display = 'block';
+
+
+
+
+
+
+
+const carousel = document.querySelector('.carousel');
+const items = document.querySelectorAll('.carousel-item');
+const totalItems = items.length;
+const prevButton = document.querySelectorAll('.prev_slide_info');
+const nextButton = document.querySelectorAll('.next_slide_info');
+let index = 0;
+
+function showItem(newIndex) {
+    items[index].style.display = 'none';
+    items[newIndex].style.display = 'block';
+    index = newIndex;
+}
+
+function showNext() {
+    const nextIndex = (index + 1) % totalItems;
+    items[index].style.transform = 'translateX(-100%)';
+    items[nextIndex].style.transform = 'translateX(100%)';
+    items[nextIndex].style.display = 'block';
+    setTimeout(() => {
+        items[index].style.display = 'none';
+        items[nextIndex].style.transform = 'translateX(0)';
+        index = nextIndex;
+    }, 50);
+}
+
+function showPrev() {
+    const prevIndex = (index - 1 + totalItems) % totalItems;
+    items[index].style.transform = 'translateX(100%)';
+    items[prevIndex].style.transform = 'translateX(-100%)';
+    items[prevIndex].style.display = 'block';
+    setTimeout(() => {
+        items[index].style.display = 'none';
+        items[prevIndex].style.transform = 'translateX(0)';
+        index = prevIndex;
+    }, 50);
+}
+
+nextButton.forEach(button => {
+    button.addEventListener('click', showNext);
+});
+
+prevButton.forEach(button => {
+    button.addEventListener('click', showPrev);
+});
+
+items[index].style.display = 'block';
+
+
+
+
+
+const all_tick_history_carousel = document.querySelector('.all_tick_history_carousel');
+const carousel_tick_info_item = document.querySelectorAll('.carousel_tick_info_item');
+const totalItemsTickHistory = carousel_tick_info_item.length;
+const prevButtonTickHistory = document.querySelectorAll('.prev_tick_history');
+const nextButtonTickHistory = document.querySelectorAll('.next_tick_history');
+let indexTickHistory = 0;
+
+function showItemTickHistory(newIndex) {
+    carousel_tick_info_item[indexTickHistory].style.display = 'none';
+    carousel_tick_info_item[newIndex].style.display = 'block';
+    indexTickHistory = newIndex;
+}
+
+function showNextTickHistory() {
+    const nextIndex = (indexTickHistory + 1) % totalItemsTickHistory;
+    carousel_tick_info_item[indexTickHistory].style.transform = 'translateX(-100%)';
+    carousel_tick_info_item[nextIndex].style.transform = 'translateX(100%)';
+    carousel_tick_info_item[nextIndex].style.display = 'block';
+    setTimeout(() => {
+        carousel_tick_info_item[indexTickHistory].style.display = 'none';
+        carousel_tick_info_item[nextIndex].style.transform = 'translateX(0)';
+        indexTickHistory = nextIndex;
+    }, 50);
+}
+
+function showPrevTickHistory() {
+    const prevIndex = (indexTickHistory - 1 + totalItemsTickHistory) % totalItemsTickHistory;
+    carousel_tick_info_item[indexTickHistory].style.transform = 'translateX(100%)';
+    carousel_tick_info_item[prevIndex].style.transform = 'translateX(-100%)';
+    carousel_tick_info_item[prevIndex].style.display = 'block';
+    setTimeout(() => {
+        carousel_tick_info_item[indexTickHistory].style.display = 'none';
+        carousel_tick_info_item[prevIndex].style.transform = 'translateX(0)';
+        indexTickHistory = prevIndex;
+    }, 50);
+}
+
+nextButtonTickHistory.forEach(button => {
+    button.addEventListener('click', showNextTickHistory);
+});
+
+prevButtonTickHistory.forEach(button => {
+    button.addEventListener('click', showPrevTickHistory);
+});
+
+carousel_tick_info_item[indexTickHistory].style.display = 'block';
+
+
+
+
+
+
+const draggable = document.getElementById('carousel_arrow');
+
+draggable.addEventListener('mousedown', (e) => {
+    let offsetX = e.clientX - parseInt(window.getComputedStyle(draggable).left);
+    let offsetY = e.clientY - parseInt(window.getComputedStyle(draggable).top);
+
+    function mouseMoveHandler(e) {
+        draggable.style.left = `${e.clientX - offsetX}px`;
+        draggable.style.top = `${e.clientY - offsetY}px`;
+    }
+
+    function mouseUpHandler() {
+        document.removeEventListener('mousemove', mouseMoveHandler);
+        document.removeEventListener('mouseup', mouseUpHandler);
+    }
+
+    document.addEventListener('mousemove', mouseMoveHandler);
+    document.addEventListener('mouseup', mouseUpHandler);
+});
+
+
+
+
+// let sidebar = document.getElementById('sidebar');
+// let bot_section = document.getElementById('bot_section');
+// let bot1 = document.getElementById('bot1');
+// let overlay2 = document.getElementById('overlay2');
+// let close_summary = document.getElementById('close_summary');
 
 let toggleDropdown = document.getElementById('toggle_dropdown');
 let dropdownContent = document.getElementById('dropdown_content');
+const close_summary_all = document.querySelectorAll('.csmry');
+
 
 
 toggleDropdown.addEventListener('click', function (event) {
@@ -3230,86 +3828,33 @@ toggleDropdown.addEventListener('click', function (event) {
     dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
 });
 
-
-if (bot_show_cont && bot1) {
+if (bot_section && bot1) {
     bot1.addEventListener('click', (event) => {
+        let bot_section = document.getElementById('bot_section');
         event.stopPropagation(); // Prevent the event from propagating to the document
-        if (bot_show_cont.style.display == 'none') {
-            bot_show_cont.style.display = 'block'
-            if (sidebar.style.left == '0px' && overlay2.style.display == 'block') {
+        if (bot_section.style.display === 'none') {
+            console.log('bot section block')
+            bot_section.style.display = 'block';
+            if (sidebar.style.left === '0px' && overlay2.style.display === 'block') {
                 sidebar.style.left = '-250px';
                 overlay2.style.display = 'none';
             }
         } else {
-            bot_show_cont.style.display = 'none'
+            bot_section.style.display = 'none';
         }
-
     });
 
-    close_summary.addEventListener('click', (event) => {
-        event.stopPropagation();
-        if (bot_show_cont.style.display == 'block') {
-            bot_show_cont.style.display = 'none'
-            if (sidebar.style.left == '0px' && overlay2.style.display == 'block') {
-                sidebar.style.left = '-250px';
-                overlay2.style.display = 'none';
+    close_summary_all.forEach(close => {
+        close.addEventListener('click', (event) => {
+            event.stopPropagation();
+            if (bot_section.style.display === 'block') {
+                bot_section.style.display = 'none';
+                if (sidebar.style.left === '0px' && overlay2.style.display === 'block') {
+                    sidebar.style.left = '-250px';
+                    overlay2.style.display = 'none';
+                }
             }
-        } else {
-            bot_show_cont.style.display = 'block'
-        }
-    });
-
-} else {
-    console.error('One or more elements are not found');
-}
-
-
-
-
-
-
-
-
-let log_close_and_info_cont = document.getElementById('log_close_and_info_cont');
-let bot_log_show_cont = document.getElementById('bot_log_show_cont');
-let bot_details = document.getElementById('bot_details');
-let bot_details2 = document.getElementById('bot_details2');
-
-if (bot_log_show_cont && bot_details) {
-    bot_details.addEventListener('click', (event) => {
-        event.stopPropagation(); // Prevent the event from propagating to the document
-        if (bot_log_show_cont.style.display == 'none') {
-            bot_log_show_cont.style.display = 'block'
-        } else {
-            bot_log_show_cont.style.display = 'none'
-        }
-
-    });
-
-    log_close_and_info_cont.addEventListener('click', (event) => {
-        event.stopPropagation();
-        if (bot_log_show_cont.style.display == 'block') {
-            bot_log_show_cont.style.display = 'none'
-        } else {
-            bot_log_show_cont.style.display = 'block'
-        }
-    });
-
-} else {
-    console.error('One or more elements are not found');
-}
-
-
-
-if (bot_log_show_cont && bot_details) {
-    bot_details2.addEventListener('click', (event) => {
-        event.stopPropagation(); // Prevent the event from propagating to the document
-        if (bot_log_show_cont.style.display == 'none') {
-            bot_log_show_cont.style.display = 'block'
-        } else {
-            bot_log_show_cont.style.display = 'none'
-        }
-
+        });
     });
 } else {
     console.error('One or more elements are not found');
@@ -3317,451 +3862,604 @@ if (bot_log_show_cont && bot_details) {
 
 
 
+let sumary_for_bots = document.querySelectorAll('.smryt');
+let sidebar2 = document.getElementById('sidebar2');
+let closeBtn2 = document.querySelector('.close-btn2');
+let overlay4 = document.querySelector('.overlay4');
 
 
-let martingale = document.getElementById('martingale');
-let flash_info_cont = document.getElementById('flash_info_cont');
-let tick_check_amount = document.getElementById('tick_check_amount');
-let bot_settings = document.getElementById('bot_settings');
-let settings_cont = document.getElementById('settings_cont');
-let tick_check = document.getElementById('tick_check');
-let martingale_jump = document.getElementById('martingale_jump');
-let increase_jump = document.getElementById('increase_jump');
-let reduce_jump = document.getElementById('reduce_jump');
-
-let bot_settings2 = document.getElementById('bot_settings2');
-
-const prevButton2 = document.querySelector(".prev2");
-const nextButton2 = document.querySelector(".next2");
-
-const volumes2 = document.querySelectorAll(".slide_vol2");
-let tick_check2 = document.getElementById('tick_check2');
-let martingale2 = document.getElementById('martingale2');
-let martingale_jump2 = document.getElementById('martingale_jump2');
-let martingale_jump_set = document.getElementById('martingale_jump_set');
-
-const prevButton = document.querySelector(".prev");
-const nextButton = document.querySelector(".next");
-const volumes = document.querySelectorAll(".slide_vol");
-const volumes_stream = document.querySelectorAll(".slide_vol_stream");
-const last_digit_settings = document.querySelectorAll(".last_digit_settings");
-
-let currentIndex = localStorage.getItem('bot_current_vol1') || 0;
-let currentIndex2 = localStorage.getItem('bot_current_vol2') || 0;
-let currentIndex3 = localStorage.getItem('bot_current_vol3') || 0;
-
-
-// Show initial volume
-volumes[currentIndex].classList.add("active");
-volumes2[currentIndex].classList.add("active");
-volumes_stream[currentIndex].classList.add("active");
-
-
-// Previous button functionality
-prevButton.addEventListener("click", function () {
-    volumes[currentIndex].classList.remove("active");
-    volumes2[currentIndex].classList.remove("active");
-    volumes_stream[currentIndex].classList.remove("active");
-    currentIndex = (currentIndex - 1 + volumes.length) % volumes.length;
-    localStorage.setItem('bot_current_vol1', currentIndex)
-    localStorage.setItem('bot_current_vol3', currentIndex)
-    setCookie('bot_current_vol1', currentIndex)
-    setCookie('bot_current_vol3', currentIndex)
-    currentIndex2 = (currentIndex2 - 1 + volumes_stream.length) % volumes_stream.length;
-    localStorage.setItem('bot_current_vol2', currentIndex)
-    setCookie('bot_current_vol2', currentIndex)
-    volumes[currentIndex].classList.add("active");
-    volumes2[currentIndex].classList.add("active");
-    volumes_stream[currentIndex2].classList.add("active");
-});
-
-// Next button functionality
-nextButton.addEventListener("click", function () {
-    volumes[currentIndex].classList.remove("active");
-    volumes2[currentIndex].classList.remove("active");
-    volumes_stream[currentIndex2].classList.remove("active");
-    currentIndex = (currentIndex + 1) % volumes.length;
-    localStorage.setItem('bot_current_vol1', currentIndex)
-    localStorage.setItem('bot_current_vol3', currentIndex)
-    setCookie('bot_current_vol1', currentIndex)
-    setCookie('bot_current_vol3', currentIndex)
-    currentIndex2 = (currentIndex2 + 1) % volumes_stream.length;
-    localStorage.setItem('bot_current_vol2', currentIndex)
-    setCookie('bot_current_vol2', currentIndex)
-    volumes[currentIndex].classList.add("active");
-    volumes2[currentIndex].classList.add("active");
-    volumes_stream[currentIndex2].classList.add("active");
-});
-
-
-
-
-// Add click event listener
-martingale.addEventListener('click', function () {
-    if (martingale.classList.contains('active_mat')) {
-        martingale.classList.remove('active_mat');
-        martingale2.classList.remove('active_mat');
-        setCookie('martingale', 'false')
-        localStorage.setItem('martingale', 'false')
-        flash_info_cont.textContent = 'martigale is not active'
-        tick_check_amount.style.color = '#fff'
-
-    } else {
-        martingale.classList.add('active_mat');
-        martingale2.classList.add('active_mat');
-        setCookie('martingale', 'true')
-        localStorage.setItem('martingale', 'true')
-        flash_info_cont.textContent = 'martigale is active'
-        tick_check_amount.style.color = '#fff'
-    }
-
-    if (flash_info_cont.classList.contains('show_flash_info')) {
-        flash_info_cont.classList.remove('show_flash_info')
-
-        setTimeout(() => {
-            flash_info_cont.classList.remove('show_flash_info')
-        }, 5000)
-
-    } else {
-        flash_info_cont.classList.add('show_flash_info')
-
-        setTimeout(() => {
-            flash_info_cont.classList.remove('show_flash_info')
-        }, 5000)
-    }
-});
-
-
-
-
-function bot_set_default() {
-    let curr_bot_set = localStorage.getItem('bot_set');
-
-    if (curr_bot_set === null) {
-        setTimeout(bot_set_default, 100); 
-        return;
-    }
-
-    tick_check.textContent = curr_bot_set;
-    tick_check2.textContent = curr_bot_set;
-}
-
-bot_set_default();
-
-
-// Add click event listener
-bot_settings.addEventListener('click', function () {
-    if (settings_cont.style.display == 'none') {
-        settings_cont.style.display = 'block'
-    } else {
-        settings_cont.style.display = 'none'
-    }
-});
-
-
-document.addEventListener('click', (event) => {
-    if (!bot_settings.contains(event.target)  && !settings_cont.contains(event.target) && !martingale_jump_set.contains(event.target)) {
-        settings_cont.style.display = 'none';
-    }
-});
-
-
-last_digit_settings.forEach(function (bot_setting) {
-    bot_setting.addEventListener('click', function () {
-        let bot_set = this.textContent.slice(2)
-        if (bot_set == 'Last one digit bot') {
-            localStorage.setItem('bot_set', '1')
-            setCookie('bot_set', '1')
-            this.classList.add('confirm_set_click')
-
-            bot_set_default()
-
-            setTimeout(() => {
-                this.classList.remove('confirm_set_click')
-            }, 2000)
-        }
-        if (bot_set == 'Last two digit bot') {
-            localStorage.setItem('bot_set', '2')
-            setCookie('bot_set', '2')
-            this.classList.add('confirm_set_click')
-
-            bot_set_default()
-
-            setTimeout(() => {
-                this.classList.remove('confirm_set_click')
-            }, 2000)
-        }
-        if (bot_set == 'Last three digit bot') {
-            localStorage.setItem('bot_set', '3')
-            setCookie('bot_set', '3')
-            this.classList.add('confirm_set_click')
-
-            bot_set_default()
-
-            setTimeout(() => {
-                this.classList.remove('confirm_set_click')
-            }, 2000)
-        }
-        if (bot_set == 'Last four digit bot') {
-            localStorage.setItem('bot_set', '4')
-            setCookie('bot_set', '4')
-            this.classList.add('confirm_set_click')
-
-            bot_set_default()
-
-            setTimeout(() => {
-                this.classList.remove('confirm_set_click')
-            }, 2000)
-        }
-        if (bot_set == 'Last five digit bot') {
-            localStorage.setItem('bot_set', '5')
-            setCookie('bot_set', '5')
-            this.classList.add('confirm_set_click')
-
-            bot_set_default()
-
-            setTimeout(() => {
-                this.classList.remove('confirm_set_click')
-            }, 2000)
-        }
-        if (bot_set == 'Last six digit bot') {
-            localStorage.setItem('bot_set', '6')
-            setCookie('bot_set', '6')
-            this.classList.add('confirm_set_click')
-
-            bot_set_default()
-
-            setTimeout(() => {
-                this.classList.remove('confirm_set_click')
-            }, 2000)
-        }
-        if (bot_set == 'Last seven digit bot') {
-            localStorage.setItem('bot_set', '7')
-            setCookie('bot_set', '7')
-            this.classList.add('confirm_set_click')
-
-            bot_set_default()
-
-            setTimeout(() => {
-                this.classList.remove('confirm_set_click')
-            }, 2000)
-        }
-        if (bot_set == 'Last eight digit bot') {
-            localStorage.setItem('bot_set', '8')
-            setCookie('bot_set', '8')
-            this.classList.add('confirm_set_click')
-
-            bot_set_default()
-
-            setTimeout(() => {
-                this.classList.remove('confirm_set_click')
-            }, 2000)
-        }
-        if (bot_set == 'Last nine digit bot') {
-            localStorage.setItem('bot_set', '9')
-            setCookie('bot_set', '9')
-            this.classList.add('confirm_set_click')
-
-            bot_set_default()
-
-            setTimeout(() => {
-                this.classList.remove('confirm_set_click')
-            }, 2000)
-        }
-        if (bot_set == 'Last ten digit bot') {
-            localStorage.setItem('bot_set', '10')
-            setCookie('bot_set', '10')
-            this.classList.add('confirm_set_click')
-
-            bot_set_default()
-
-            setTimeout(() => {
-                this.classList.remove('confirm_set_click')
-            }, 2000)
-        }
+if ((sumary_for_bots && overlay4)) {
+    sumary_for_bots.forEach(bot => {
+        bot.addEventListener('click', (event) => {
+            event.stopPropagation(); // Prevent the event from propagating to the document
+            if (sidebar2.style.left === "-250px" && overlay4.style.display === 'none') {
+                sidebar2.style.left = '0px';
+                overlay4.style.display = 'block';
+            } else {
+                sidebar2.style.left = '-250px';
+                overlay4.style.display = 'none';
+            }
+        });
     })
+
+    closeBtn2.addEventListener('click', (event) => {
+        if (sidebar2.contains(event.target)) {
+            sidebar2.style.left = '-250px';
+            overlay4.style.display = 'none';
+        }
+    });
+
+
+    overlay4.addEventListener('click', (event) => {
+        if (!sidebar2.contains(event.target)) {
+            sidebar2.style.left = '-250px';
+            overlay4.style.display = 'none';
+        }
+    });
+} else {
+    console.error('One or more elements are not found');
+}
+
+
+
+
+
+function set_all_bot_running() {
+    document.getElementById('bot_state').textContent = 'Bot is running';
+    document.getElementById('bot_state_carousel2').textContent = 'Bot is running';
+    document.getElementById('bot_state_carousel3').textContent = 'Bot is running';
+    document.getElementById('bot_state_carousel4').textContent = 'Bot is running';
+    document.getElementById('bot_state_carousel5').textContent = 'Bot is running';
+    document.getElementById('bot_state_carousel6').textContent = 'Bot is running';
+    document.getElementById('bot_state_carousel7').textContent = 'Bot is running';
+    document.getElementById('bot_state_carousel8').textContent = 'Bot is running';
+    document.getElementById('bot_state_carousel9').textContent = 'Bot is running';
+    document.getElementById('bot_state_carousel10').textContent = 'Bot is running';
+}
+
+function set_all_bot_stop() {
+    document.getElementById('bot_state').textContent = 'Bot has stopped';
+    document.getElementById('bot_state_carousel2').textContent = 'Bot has stopped';
+    document.getElementById('bot_state_carousel3').textContent = 'Bot has stopped';
+    document.getElementById('bot_state_carousel4').textContent = 'Bot has stopped';
+    document.getElementById('bot_state_carousel5').textContent = 'Bot has stopped';
+    document.getElementById('bot_state_carousel6').textContent = 'Bot has stopped';
+    document.getElementById('bot_state_carousel7').textContent = 'Bot has stopped';
+    document.getElementById('bot_state_carousel8').textContent = 'Bot has stopped';
+    document.getElementById('bot_state_carousel9').textContent = 'Bot has stopped';
+    document.getElementById('bot_state_carousel10').textContent = 'Bot has stopped';
+}
+
+
+let buttonContainer2 = document.querySelector('.click_change2');
+
+// Function to toggle play and pause buttons
+function togglePlayPause2() {
+    var play_button2 = document.getElementById('play_button2');
+    var pause_button2 = document.getElementById('pause_button2');
+
+    if (play_button2) {
+        localStorage.setItem('all_bot_start_stop1', 'stop_bots')
+        set_all_bot_stop()
+        play_button2.parentNode.removeChild(play_button2);
+
+        var pause_button2 = document.createElement('div');
+        pause_button2.id = 'pause_button2';
+        pause_button2.className = 'pause_button2';
+        pause_button2.innerHTML = '&#10074;&#10074;';
+        buttonContainer2.appendChild(pause_button2);
+        document.getElementById('all_bot_text').textContent = 'all Bots has stopped'
+    } else if (pause_button2) {
+        localStorage.setItem('all_bot_start_stop1', 'start_bots')
+        set_all_bot_running()
+        pause_button2.parentNode.removeChild(pause_button2);
+
+        var play_button2 = document.createElement('div');
+        play_button2.id = 'play_button2';
+        play_button2.className = 'play_button2';
+        play_button2.innerHTML = '&#9654;';
+        buttonContainer2.appendChild(play_button2);
+        document.getElementById('all_bot_text').textContent = 'all Bots are running'
+    }
+}
+
+buttonContainer2.addEventListener('click', togglePlayPause2);
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    localStorage.setItem('all_bot_start_stop1', 'stop_bots')
+    localStorage.setItem('all_bot_martingale', 'false')
+
+    localStorage.setItem('martingale', 'false');
+    localStorage.setItem('martingale_carousel2', 'false');
+    localStorage.setItem('martingale_carousel3', 'false');
+    localStorage.setItem('martingale_carousel4', 'false');
+    localStorage.setItem('martingale_carousel5', 'false');
+    localStorage.setItem('martingale_carousel6', 'false');
+    localStorage.setItem('martingale_carousel7', 'false');
+    localStorage.setItem('martingale_carousel8', 'false');
+    localStorage.setItem('martingale_carousel9', 'false');
+    localStorage.setItem('martingale_carousel10', 'false');
+    // Wait for the DOM to be fully loaded before manipulating it
 });
 
 
 
-let jump_count = null
 
-function jump_count_set(){
+let tick_check = document.getElementById('tick_check')
+let tick_check2 = document.getElementById('tick_check2')
+
+let tick_check_carousel2 = document.getElementById('tick_check_carousel2')
+let tick_check2_carousel2 = document.getElementById('tick_check2_carousel2')
+
+let tick_check_carousel3 = document.getElementById('tick_check_carousel3')
+let tick_check2_carousel3 = document.getElementById('tick_check2_carousel3')
+
+let tick_check_carousel4 = document.getElementById('tick_check_carousel4')
+let tick_check2_carousel4 = document.getElementById('tick_check2_carousel4')
+
+let tick_check_carousel5 = document.getElementById('tick_check_carousel5')
+let tick_check2_carousel5 = document.getElementById('tick_check2_carousel5')
+
+let tick_check_carousel6 = document.getElementById('tick_check_carousel6')
+let tick_check2_carousel6 = document.getElementById('tick_check2_carousel6')
+
+let tick_check_carousel7 = document.getElementById('tick_check_carousel7')
+let tick_check2_carousel7 = document.getElementById('tick_check2_carousel7')
+
+let tick_check_carousel8 = document.getElementById('tick_check_carousel8')
+let tick_check2_carousel8 = document.getElementById('tick_check2_carousel8')
+
+let tick_check_carousel9 = document.getElementById('tick_check_carousel9')
+let tick_check2_carousel9 = document.getElementById('tick_check2_carousel9')
+
+let tick_check_carousel10 = document.getElementById('tick_check_carousel10')
+let tick_check2_carousel10 = document.getElementById('tick_check2_carousel10')
+
+
+
+let all_bot_set_count = 0
+
+function bot_set_text() {
+    tick_check.textContent = `${all_bot_set_count}`
+    tick_check2.textContent = `${all_bot_set_count}`
+    tick_check_carousel2.textContent = `${all_bot_set_count}`
+    tick_check2_carousel2.textContent = `${all_bot_set_count}`
+    tick_check_carousel3.textContent = `${all_bot_set_count}`
+    tick_check2_carousel3.textContent = `${all_bot_set_count}`
+    tick_check_carousel4.textContent = `${all_bot_set_count}`
+    tick_check2_carousel4.textContent = `${all_bot_set_count}`
+    tick_check_carousel5.textContent = `${all_bot_set_count}`
+    tick_check2_carousel5.textContent = `${all_bot_set_count}`
+    tick_check_carousel6.textContent = `${all_bot_set_count}`
+    tick_check2_carousel6.textContent = `${all_bot_set_count}`
+    tick_check_carousel7.textContent = `${all_bot_set_count}`
+    tick_check2_carousel7.textContent = `${all_bot_set_count}`
+    tick_check_carousel8.textContent = `${all_bot_set_count}`
+    tick_check2_carousel8.textContent = `${all_bot_set_count}`
+    tick_check_carousel9.textContent = `${all_bot_set_count}`
+    tick_check2_carousel9.textContent = `${all_bot_set_count}`
+    tick_check_carousel10.textContent = `${all_bot_set_count}`
+    tick_check2_carousel10.textContent = `${all_bot_set_count}`
+}
+
+
+
+
+function all_bot_set() {
+    localStorage.setItem('bot_set', `${all_bot_set_count}`)
+    localStorage.setItem('bot_set_carousel2', `${all_bot_set_count}`)
+    localStorage.setItem('bot_set_carousel3', `${all_bot_set_count}`)
+    localStorage.setItem('bot_set_carousel4', `${all_bot_set_count}`)
+    localStorage.setItem('bot_set_carousel5', `${all_bot_set_count}`)
+    localStorage.setItem('bot_set_carousel6', `${all_bot_set_count}`)
+    localStorage.setItem('bot_set_carousel7', `${all_bot_set_count}`)
+    localStorage.setItem('bot_set_carousel8', `${all_bot_set_count}`)
+    localStorage.setItem('bot_set_carousel9', `${all_bot_set_count}`)
+    localStorage.setItem('bot_set_carousel10', `${all_bot_set_count}`)
+}
+
+
+let increase_all_bot_set = document.getElementById('increase_all_bot_set')
+let reduce_all_bot_set = document.getElementById('reduce_all_bot_set')
+
+increase_all_bot_set.addEventListener('click', () => {
+    if (all_bot_set_count < 10) {
+        all_bot_set_count = all_bot_set_count + 1
+        all_bot_set()
+        bot_set_text()
+    }
+})
+
+reduce_all_bot_set.addEventListener('click', () => {
+    if (all_bot_set_count > 1) {
+        all_bot_set_count = all_bot_set_count - 1
+        all_bot_set()
+        bot_set_text()
+    }
+})
+
+
+
+let martingale = document.getElementById('martingale')
+let martingale2 = document.getElementById('martingale2')
+
+let martingale_carousel2 = document.getElementById('martingale_carousel2')
+let martingale2_carousel2 = document.getElementById('martingale2_carousel2')
+
+let martingale_carousel3 = document.getElementById('martingale_carousel3')
+let martingale2_carousel3 = document.getElementById('martingale2_carousel3')
+
+let martingale_carousel4 = document.getElementById('martingale_carousel4')
+let martingale2_carousel4 = document.getElementById('martingale2_carousel4')
+
+let martingale_carousel5 = document.getElementById('martingale_carousel5')
+let martingale2_carousel5 = document.getElementById('martingale2_carousel5')
+
+let martingale_carousel6 = document.getElementById('martingale_carousel6')
+let martingale2_carousel6 = document.getElementById('martingale2_carousel6')
+
+let martingale_carousel7 = document.getElementById('martingale_carousel7')
+let martingale2_carousel7 = document.getElementById('martingale2_carousel7')
+
+let martingale_carousel8 = document.getElementById('martingale_carousel8')
+let martingale2_carousel8 = document.getElementById('martingale2_carousel8')
+
+let martingale_carousel9 = document.getElementById('martingale_carousel9')
+let martingale2_carousel9 = document.getElementById('martingale2_carousel9')
+
+let martingale_carousel10 = document.getElementById('martingale_carousel10')
+let martingale2_carousel10 = document.getElementById('martingale2_carousel10')
+
+
+function set_all_martigale_active() {
+    martingale.classList.add('active_mat');
+    martingale2.classList.add('active_mat');
+
+    martingale_carousel2.classList.add('active_mat');
+    martingale2_carousel2.classList.add('active_mat');
+
+    martingale_carousel3.classList.add('active_mat');
+    martingale2_carousel3.classList.add('active_mat');
+
+    martingale_carousel4.classList.add('active_mat');
+    martingale2_carousel4.classList.add('active_mat');
+
+    martingale_carousel5.classList.add('active_mat');
+    martingale2_carousel5.classList.add('active_mat');
+
+    martingale_carousel6.classList.add('active_mat');
+    martingale2_carousel6.classList.add('active_mat');
+
+    martingale_carousel7.classList.add('active_mat');
+    martingale2_carousel7.classList.add('active_mat');
+
+    martingale_carousel8.classList.add('active_mat');
+    martingale2_carousel8.classList.add('active_mat');
+
+    martingale_carousel9.classList.add('active_mat');
+    martingale2_carousel9.classList.add('active_mat');
+
+    martingale_carousel10.classList.add('active_mat');
+    martingale2_carousel10.classList.add('active_mat');
+}
+
+
+function remove_all_martigale_active() {
+    martingale.classList.remove('active_mat');
+    martingale2.classList.remove('active_mat');
+
+    martingale_carousel2.classList.remove('active_mat');
+    martingale2_carousel2.classList.remove('active_mat');
+
+    martingale_carousel3.classList.remove('active_mat');
+    martingale2_carousel3.classList.remove('active_mat');
+
+    martingale_carousel4.classList.remove('active_mat');
+    martingale2_carousel4.classList.remove('active_mat');
+
+    martingale_carousel5.classList.remove('active_mat');
+    martingale2_carousel5.classList.remove('active_mat');
+
+    martingale_carousel6.classList.remove('active_mat');
+    martingale2_carousel6.classList.remove('active_mat');
+
+    martingale_carousel7.classList.remove('active_mat');
+    martingale2_carousel7.classList.remove('active_mat');
+
+    martingale_carousel8.classList.remove('active_mat');
+    martingale2_carousel8.classList.remove('active_mat');
+
+    martingale_carousel9.classList.remove('active_mat');
+    martingale2_carousel9.classList.remove('active_mat');
+
+    martingale_carousel10.classList.remove('active_mat');
+    martingale2_carousel10.classList.remove('active_mat');
+}
+
+
+
+
+function set_all_martigale() {
+    localStorage.setItem('martingale', 'true');
+    localStorage.setItem('martingale_carousel2', 'true');
+    localStorage.setItem('martingale_carousel3', 'true');
+    localStorage.setItem('martingale_carousel4', 'true');
+    localStorage.setItem('martingale_carousel5', 'true');
+    localStorage.setItem('martingale_carousel6', 'true');
+    localStorage.setItem('martingale_carousel7', 'true');
+    localStorage.setItem('martingale_carousel8', 'true');
+    localStorage.setItem('martingale_carousel9', 'true');
+    localStorage.setItem('martingale_carousel10', 'true');
+}
+function remove_all_martigale() {
+    localStorage.setItem('martingale', 'false');
+    localStorage.setItem('martingale_carousel2', 'false');
+    localStorage.setItem('martingale_carousel3', 'false');
+    localStorage.setItem('martingale_carousel4', 'false');
+    localStorage.setItem('martingale_carousel5', 'false');
+    localStorage.setItem('martingale_carousel6', 'false');
+    localStorage.setItem('martingale_carousel7', 'false');
+    localStorage.setItem('martingale_carousel8', 'false');
+    localStorage.setItem('martingale_carousel9', 'false');
+    localStorage.setItem('martingale_carousel10', 'false');
+}
+
+
+
+let on_all_mat = document.getElementById('on_all_mat')
+
+let all_bot_mat = document.getElementById('all_bot_mat')
+
+all_bot_mat.addEventListener('click', () => {
+    let all_martingale = localStorage.getItem('all_bot_martingale')
+    if (!all_bot_mat.classList.contains('all_mat_active') && (!all_martingale || all_martingale == 'false')) {
+        all_bot_mat.classList.add('all_mat_active')
+        localStorage.setItem('all_bot_martingale', 'true')
+        set_all_martigale()
+        set_all_martigale_active()
+        on_all_mat.textContent = 'all bot martinglae on'
+    } else {
+        all_bot_mat.classList.remove('all_mat_active')
+        localStorage.setItem('all_bot_martingale', 'false')
+        remove_all_martigale()
+        remove_all_martigale_active()
+        on_all_mat.textContent = 'all bot martinglae off'
+    }
+})
+
+
+
+let martingale_jump2 = document.getElementById('martingale_jump2');
+let martingale_jump = document.getElementById('martingale_jump');
+
+let martingale_jump_carousel2 = document.getElementById('martingale_jump_carousel2');
+let martingale_jump2_carousel2 = document.getElementById('martingale_jump2_carousel2');
+
+let martingale_jump_carousel3 = document.getElementById('martingale_jump_carousel3');
+let martingale_jump2_carousel3 = document.getElementById('martingale_jump2_carousel3');
+
+let martingale_jump_carousel4 = document.getElementById('martingale_jump_carousel4');
+let martingale_jump2_carousel4 = document.getElementById('martingale_jump2_carousel4');
+
+let martingale_jump_carousel5 = document.getElementById('martingale_jump_carousel5');
+let martingale_jump2_carousel5 = document.getElementById('martingale_jump2_carousel5');
+
+let martingale_jump_carousel6 = document.getElementById('martingale_jump_carousel6');
+let martingale_jump2_carousel6 = document.getElementById('martingale_jump2_carousel6');
+
+let martingale_jump_carousel7 = document.getElementById('martingale_jump_carousel7');
+let martingale_jump2_carousel7 = document.getElementById('martingale_jump2_carousel7');
+
+let martingale_jump_carousel8 = document.getElementById('martingale_jump_carousel8');
+let martingale_jump2_carousel8 = document.getElementById('martingale_jump2_carousel8');
+
+let martingale_jump_carousel9 = document.getElementById('martingale_jump_carousel9');
+let martingale_jump2_carousel9 = document.getElementById('martingale_jump2_carousel9');
+
+let martingale_jump_carousel10 = document.getElementById('martingale_jump_carousel10');
+let martingale_jump2_carousel10 = document.getElementById('martingale_jump2_carousel10');
+
+let increase_all_bot_jump = document.getElementById('increase_all_bot_jump');
+let reduce_all_bot_jump = document.getElementById('reduce_all_bot_jump');
+
+
+
+
+
+
+let jump_count = 0
+let jump_count2 = 0
+let jump_count3 = 0
+let jump_count4 = 0
+let jump_count5 = 0
+let jump_count6 = 0
+let jump_count7 = 0
+let jump_count8 = 0
+let jump_count9 = 0
+let jump_count10 = 0
+
+function jump_count_set() {
     localStorage.setItem('bot_jump', jump_count)
     setCookie('bot_jump', jump_count)
+
+    localStorage.setItem('bot_jump_carousel2', jump_count2)
+    setCookie('bot_jump_carousel2', jump_count2)
+
+    localStorage.setItem('bot_jump_carousel3', jump_count3)
+    setCookie('bot_jump_carousel3', jump_count3)
+
+    localStorage.setItem('bot_jump_carousel4', jump_count4)
+    setCookie('bot_jump_carousel4', jump_count4)
+
+    localStorage.setItem('bot_jump_carousel5', jump_count5)
+    setCookie('bot_jump_carousel5', jump_count5)
+
+    localStorage.setItem('bot_jump_carousel6', jump_count6)
+    setCookie('bot_jump_carousel6', jump_count6)
+
+    localStorage.setItem('bot_jump_carousel7', jump_count7)
+    setCookie('bot_jump_carousel7', jump_count7)
+
+    localStorage.setItem('bot_jump_carousel8', jump_count8)
+    setCookie('bot_jump_carousel8', jump_count8)
+
+    localStorage.setItem('bot_jump_carousel9', jump_count9)
+    setCookie('bot_jump_carousel9', jump_count9)
+
+    localStorage.setItem('bot_jump_carousel10', jump_count10)
+    setCookie('bot_jump_carousel10', jump_count10)
 }
 
-function jump_count_set2(){
-   jump_count = parseInt(localStorage.getItem('bot_jump'))
-    
-    if (jump_count === null) {
-        setTimeout(jump_count_set2, 100); 
-        return;
+
+function jump_count_set2() {
+    if (isNaN(jump_count)) {
+        jump_count = 0;
+    }
+    if (isNaN(jump_count2)) {
+        jump_count2 = 0;
+    }
+    if (isNaN(jump_count3)) {
+        jump_count3 = 0;
+    }
+    if (isNaN(jump_count4)) {
+        jump_count4 = 0;
+    }
+    if (isNaN(jump_count5)) {
+        jump_count5 = 0;
+    }
+    if (isNaN(jump_count6)) {
+        jump_count6 = 0;
+    }
+    if (isNaN(jump_count7)) {
+        jump_count7 = 0;
+    }
+    if (isNaN(jump_count8)) {
+        jump_count8 = 0;
+    }
+    if (isNaN(jump_count9)) {
+        jump_count9 = 0;
+    }
+    if (isNaN(jump_count10)) {
+        jump_count10 = 0;
     }
 
-    if(jump_count > 0){
+
+    if (jump_count > 0) {
         martingale_jump.textContent = 'j' + jump_count
         martingale_jump2.textContent = 'j' + jump_count
-    }else{
+    } else {
         martingale_jump.textContent = ''
         martingale_jump2.textContent = ''
     }
+    if (jump_count2 > 0) {
+        martingale_jump_carousel2.textContent = 'j' + jump_count2
+        martingale_jump2_carousel2.textContent = 'j' + jump_count2
+    } else {
+        martingale_jump_carousel2.textContent = ''
+        martingale_jump2_carousel2.textContent = ''
+    }
+
+    if (jump_count3 > 0) {
+        martingale_jump_carousel3.textContent = 'j' + jump_count3
+        martingale_jump2_carousel3.textContent = 'j' + jump_count3
+    } else {
+        martingale_jump_carousel3.textContent = ''
+        martingale_jump2_carousel3.textContent = ''
+    }
+
+    if (jump_count4 > 0) {
+        martingale_jump_carousel4.textContent = 'j' + jump_count4
+        martingale_jump2_carousel4.textContent = 'j' + jump_count4
+    } else {
+        martingale_jump_carousel4.textContent = ''
+        martingale_jump2_carousel4.textContent = ''
+    }
+
+    if (jump_count5 > 0) {
+        martingale_jump_carousel5.textContent = 'j' + jump_count5
+        martingale_jump2_carousel5.textContent = 'j' + jump_count5
+    } else {
+        martingale_jump_carousel5.textContent = ''
+        martingale_jump2_carousel5.textContent = ''
+    }
+
+    if (jump_count6 > 0) {
+        martingale_jump_carousel6.textContent = 'j' + jump_count6
+        martingale_jump2_carousel6.textContent = 'j' + jump_count6
+    } else {
+        martingale_jump_carousel6.textContent = ''
+        martingale_jump2_carousel6.textContent = ''
+    }
+
+    if (jump_count7 > 0) {
+        martingale_jump_carousel7.textContent = 'j' + jump_count7
+        martingale_jump2_carousel7.textContent = 'j' + jump_count7
+    } else {
+        martingale_jump_carousel7.textContent = ''
+        martingale_jump2_carousel7.textContent = ''
+    }
+
+    if (jump_count8 > 0) {
+        martingale_jump_carousel8.textContent = 'j' + jump_count8
+        martingale_jump2_carousel8.textContent = 'j' + jump_count8
+    } else {
+        martingale_jump_carousel8.textContent = ''
+        martingale_jump2_carousel8.textContent = ''
+    }
+
+    if (jump_count9 > 0) {
+        martingale_jump_carousel9.textContent = 'j' + jump_count9
+        martingale_jump2_carousel9.textContent = 'j' + jump_count9
+    } else {
+        martingale_jump_carousel9.textContent = ''
+        martingale_jump2_carousel9.textContent = ''
+    }
+
+    if (jump_count10 > 0) {
+        martingale_jump_carousel10.textContent = 'j' + jump_count10
+        martingale_jump2_carousel10.textContent = 'j' + jump_count10
+    } else {
+        martingale_jump_carousel10.textContent = ''
+        martingale_jump2_carousel10.textContent = ''
+    }
 }
 
 
-jump_count_set2()
 
-
-
-increase_jump.addEventListener('click', (event) => {
+increase_all_bot_jump.addEventListener('click', (event) => {
     event.preventDefault()
     jump_count = jump_count + 1
+    jump_count2 = jump_count2 + 1
+    jump_count3 = jump_count3 + 1
+    jump_count4 = jump_count4 + 1
+    jump_count5 = jump_count5 + 1
+    jump_count6 = jump_count6 + 1
+    jump_count7 = jump_count7 + 1
+    jump_count8 = jump_count8 + 1
+    jump_count9 = jump_count9 + 1
+    jump_count10 = jump_count10 + 1
     jump_count_set()
     jump_count_set2()
 })
 
-reduce_jump.addEventListener('click', (event) => {
+reduce_all_bot_jump.addEventListener('click', (event) => {
     event.preventDefault()
-    if(jump_count > 0){
+    if (jump_count > 0) {
         jump_count = jump_count - 1
+        jump_count2 = jump_count2 - 1
+        jump_count3 = jump_count3 - 1
+        jump_count4 = jump_count4 - 1
+        jump_count5 = jump_count5 - 1
+        jump_count6 = jump_count6 - 1
+        jump_count7 = jump_count7 - 1
+        jump_count8 = jump_count8 - 1
+        jump_count9 = jump_count9 - 1
+        jump_count10 = jump_count10 - 1
         jump_count_set()
         jump_count_set2()
     }
 })
-
-
-
-
-
-
-
-bot_settings2.addEventListener('click', function () {
-    if (settings_cont.style.display == 'none') {
-        settings_cont.style.display = 'block'
-    } else {
-        settings_cont.style.display = 'none'
-    }
-});
-
-
-
-
-
-
-
-// Previous button functionality
-prevButton2.addEventListener("click", function () {
-    volumes[currentIndex].classList.remove("active");
-    volumes2[currentIndex].classList.remove("active");
-    volumes_stream[currentIndex].classList.remove("active");
-    currentIndex = (currentIndex - 1 + volumes.length) % volumes.length;
-    localStorage.setItem('bot_current_vol1', currentIndex)
-    localStorage.setItem('bot_current_vol3', currentIndex)
-    setCookie('bot_current_vol1', currentIndex)
-    setCookie('bot_current_vol3', currentIndex)
-    currentIndex2 = (currentIndex2 - 1 + volumes_stream.length) % volumes_stream.length;
-    localStorage.setItem('bot_current_vol2', currentIndex)
-    setCookie('bot_current_vol2', currentIndex)
-    volumes[currentIndex].classList.add("active");
-    volumes2[currentIndex].classList.add("active");
-    volumes_stream[currentIndex2].classList.add("active");
-});
-
-// Next button functionality
-nextButton2.addEventListener("click", function () {
-    volumes[currentIndex].classList.remove("active");
-    volumes2[currentIndex].classList.remove("active");
-    volumes_stream[currentIndex2].classList.remove("active");
-    currentIndex = (currentIndex + 1) % volumes.length;
-    localStorage.setItem('bot_current_vol1', currentIndex)
-    localStorage.setItem('bot_current_vol3', currentIndex)
-    setCookie('bot_current_vol1', currentIndex)
-    setCookie('bot_current_vol3', currentIndex)
-    currentIndex2 = (currentIndex2 + 1) % volumes_stream.length;
-    localStorage.setItem('bot_current_vol2', currentIndex)
-    setCookie('bot_current_vol2', currentIndex)
-    volumes[currentIndex].classList.add("active");
-    volumes2[currentIndex].classList.add("active");
-    volumes_stream[currentIndex2].classList.add("active");
-});
-
-
-
-// Add click event listener
-martingale2.addEventListener('click', function () {
-    if (martingale2.classList.contains('active_mat')) {
-        martingale2.classList.remove('active_mat');
-        martingale.classList.remove('active_mat');
-        setCookie('martingale', 'false')
-        localStorage.setItem('martingale', 'false')
-        flash_info_cont.textContent = 'martigale is not active'
-        tick_check_amount.style.color = '#fff'
-
-    } else {
-        martingale2.classList.add('active_mat');
-        martingale.classList.add('active_mat');
-        setCookie('martingale', 'true')
-        localStorage.setItem('martingale', 'true')
-        flash_info_cont.textContent = 'martigale is active'
-        tick_check_amount.style.color = '#fff'
-    }
-
-    if (flash_info_cont.classList.contains('show_flash_info')) {
-        flash_info_cont.classList.remove('show_flash_info')
-
-        setTimeout(() => {
-            flash_info_cont.classList.remove('show_flash_info')
-        }, 5000)
-
-    } else {
-        flash_info_cont.classList.add('show_flash_info')
-
-        setTimeout(() => {
-            flash_info_cont.classList.remove('show_flash_info')
-        }, 5000)
-    }
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
