@@ -1381,13 +1381,13 @@ window.addEventListener('load', function () {
 
 
     if (!bot_current_vol1_carousel3 && !bot_current_vol12_carousel3_cookie) {
-        localStorage.setItem('bot_current_vol1_carousel3', 1)
-        setCookie('bot_current_vol1_carousel3', 1)
+        localStorage.setItem('bot_current_vol1_carousel3', 2)
+        setCookie('bot_current_vol1_carousel3', 2)
     }
 
     if (!bot_current_vol12_carousel3 && !bot_current_vol12_carousel3_cookie) {
-        localStorage.setItem('bot_current_vol2_carousel3', 1)
-        setCookie('bot_current_vol2_carousel3', 1)
+        localStorage.setItem('bot_current_vol2_carousel3', 2)
+        setCookie('bot_current_vol2_carousel3', 2)
     }
 
     if (!martingale_set_carousel3 && !martingale_set_carousel3_cookie) {
@@ -1413,13 +1413,13 @@ window.addEventListener('load', function () {
 
 
     if (!bot_current_vol1_carousel4 && !bot_current_vol12_carousel4_cookie) {
-        localStorage.setItem('bot_current_vol1_carousel4', 1)
-        setCookie('bot_current_vol1_carousel4', 1)
+        localStorage.setItem('bot_current_vol1_carousel4', 3)
+        setCookie('bot_current_vol1_carousel4', 3)
     }
 
     if (!bot_current_vol12_carousel4 && !bot_current_vol12_carousel4_cookie) {
-        localStorage.setItem('bot_current_vol2_carousel4', 1)
-        setCookie('bot_current_vol2_carousel4', 1)
+        localStorage.setItem('bot_current_vol2_carousel4', 3)
+        setCookie('bot_current_vol2_carousel4', 3)
     }
 
     if (!martingale_set_carousel4 && !martingale_set_carousel4_cookie) {
@@ -1445,13 +1445,13 @@ window.addEventListener('load', function () {
 
 
     if (!bot_current_vol1_carousel5 && !bot_current_vol12_carousel5_cookie) {
-        localStorage.setItem('bot_current_vol1_carousel5', 1)
-        setCookie('bot_current_vol1_carousel5', 1)
+        localStorage.setItem('bot_current_vol1_carousel5', 4)
+        setCookie('bot_current_vol1_carousel5', 4)
     }
 
     if (!bot_current_vol12_carousel5 && !bot_current_vol12_carousel5_cookie) {
-        localStorage.setItem('bot_current_vol2_carousel5', 1)
-        setCookie('bot_current_vol2_carousel5', 1)
+        localStorage.setItem('bot_current_vol2_carousel5', 4)
+        setCookie('bot_current_vol2_carousel5', 4)
     }
 
     if (!martingale_set_carousel5 && !martingale_set_carousel5_cookie) {
@@ -1477,13 +1477,13 @@ window.addEventListener('load', function () {
 
 
     if (!bot_current_vol1_carousel6 && !bot_current_vol12_carousel6_cookie) {
-        localStorage.setItem('bot_current_vol1_carousel6', 1)
-        setCookie('bot_current_vol1_carousel6', 1)
+        localStorage.setItem('bot_current_vol1_carousel6', 5)
+        setCookie('bot_current_vol1_carousel6', 5)
     }
 
     if (!bot_current_vol12_carousel6 && !bot_current_vol12_carousel6_cookie) {
-        localStorage.setItem('bot_current_vol2_carousel6', 1)
-        setCookie('bot_current_vol2_carousel6', 1)
+        localStorage.setItem('bot_current_vol2_carousel6', 5)
+        setCookie('bot_current_vol2_carousel6', 5)
     }
 
     if (!martingale_set_carousel6 && !martingale_set_carousel6_cookie) {
@@ -1510,13 +1510,13 @@ window.addEventListener('load', function () {
 
 
     if (!bot_current_vol1_carousel7 && !bot_current_vol12_carousel7_cookie) {
-        localStorage.setItem('bot_current_vol1_carousel7', 1)
-        setCookie('bot_current_vol1_carousel7', 1)
+        localStorage.setItem('bot_current_vol1_carousel7', 6)
+        setCookie('bot_current_vol1_carousel7', 6)
     }
 
     if (!bot_current_vol12_carousel7 && !bot_current_vol12_carousel7_cookie) {
-        localStorage.setItem('bot_current_vol2_carousel7', 1)
-        setCookie('bot_current_vol2_carousel7', 1)
+        localStorage.setItem('bot_current_vol2_carousel7', 6)
+        setCookie('bot_current_vol2_carousel7', 6)
     }
 
     if (!martingale_set_carousel7 && !martingale_set_carousel7_cookie) {
@@ -1542,13 +1542,13 @@ window.addEventListener('load', function () {
 
 
     if (!bot_current_vol1_carousel8 && !bot_current_vol12_carousel8_cookie) {
-        localStorage.setItem('bot_current_vol1_carousel8', 1)
-        setCookie('bot_current_vol1_carousel8', 1)
+        localStorage.setItem('bot_current_vol1_carousel8', 7)
+        setCookie('bot_current_vol1_carousel8', 7)
     }
 
     if (!bot_current_vol12_carousel8 && !bot_current_vol12_carousel8_cookie) {
-        localStorage.setItem('bot_current_vol2_carousel8', 1)
-        setCookie('bot_current_vol2_carousel8', 1)
+        localStorage.setItem('bot_current_vol2_carousel8', 7)
+        setCookie('bot_current_vol2_carousel8', 7)
     }
 
     if (!martingale_set_carousel8 && !martingale_set_carousel8_cookie) {
@@ -1574,13 +1574,13 @@ window.addEventListener('load', function () {
 
 
     if (!bot_current_vol1_carousel9 && !bot_current_vol12_carousel9_cookie) {
-        localStorage.setItem('bot_current_vol1_carousel9', 1)
-        setCookie('bot_current_vol1_carousel9', 1)
+        localStorage.setItem('bot_current_vol1_carousel9', 8)
+        setCookie('bot_current_vol1_carousel9', 8)
     }
 
     if (!bot_current_vol12_carousel9 && !bot_current_vol12_carousel9_cookie) {
-        localStorage.setItem('bot_current_vol2_carousel9', 1)
-        setCookie('bot_current_vol2_carousel9', 1)
+        localStorage.setItem('bot_current_vol2_carousel9', 8)
+        setCookie('bot_current_vol2_carousel9', 8)
     }
 
     if (!martingale_set_carousel9 && !martingale_set_carousel9_cookie) {
@@ -1606,13 +1606,13 @@ window.addEventListener('load', function () {
 
 
     if (!bot_current_vol1_carousel10 && !bot_current_vol12_carousel10_cookie) {
-        localStorage.setItem('bot_current_vol1_carousel10', 1)
-        setCookie('bot_current_vol1_carousel10', 1)
+        localStorage.setItem('bot_current_vol1_carousel10', 9)
+        setCookie('bot_current_vol1_carousel10', 9)
     }
 
     if (!bot_current_vol12_carousel10 && !bot_current_vol12_carousel10_cookie) {
-        localStorage.setItem('bot_current_vol2_carousel10', 1)
-        setCookie('bot_current_vol2_carousel10', 1)
+        localStorage.setItem('bot_current_vol2_carousel10', 9)
+        setCookie('bot_current_vol2_carousel10', 9)
     }
 
     if (!martingale_set_carousel10 && !martingale_set_carousel10_cookie) {

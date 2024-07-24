@@ -3650,56 +3650,54 @@ const volumes = document.querySelectorAll(".slide_vol_carousel2");
 const volumes_stream = document.querySelectorAll(".slide_vol_stream_carousel2");
 const last_digit_settings = document.querySelectorAll(".last_digit_settings_carousel2");
 
-let currentIndex = localStorage.getItem('bot_current_vol1_carousel2') || 0;
-let currentIndex2 = localStorage.getItem('bot_current_vol2_carousel2') || 0;
-let currentIndex3 = localStorage.getItem('bot_current_vol3_carousel2') || 0;
+let currentIndex = parseInt(localStorage.getItem('bot_current_vol1_carousel2')) || 0;
+let currentIndex2 = parseInt(localStorage.getItem('bot_current_vol2_carousel2')) || 0;
+let currentIndex3 = parseInt(localStorage.getItem('bot_current_vol3_carousel2')) || 0;
 
-let currentIndex_cookie = localStorage.getItem('bot_current_vol1_carousel2') || 0;
-let currentIndex2_cookie = localStorage.getItem('bot_current_vol2_carousel2') || 0;
-let currentIndex3_cookie = localStorage.getItem('bot_current_vol3_carousel2') || 0;
-
+let currentIndex_cookie = parseInt(getCookie('bot_current_vol1_carousel2')) || 0;
+let currentIndex2_cookie = parseInt(getCookie('bot_current_vol2_carousel2')) || 0;
+let currentIndex3_cookie = parseInt(getCookie('bot_current_vol3_carousel2')) || 0;
 
 // Show initial volume
-if ((currentIndex && currentIndex !== null)) {
+if (currentIndex !== null && currentIndex >= 0) {
     volumes[currentIndex].classList.add("active");
     volumes2[currentIndex].classList.add("active");
     volumes_stream[currentIndex].classList.add("active");
-} else if ((currentIndex_cookie && currentIndex_cookie !== null)) {
+} else if (currentIndex_cookie !== null && currentIndex_cookie >= 0) {
     volumes[currentIndex_cookie].classList.add("active");
     volumes2[currentIndex_cookie].classList.add("active");
     volumes_stream[currentIndex_cookie].classList.add("active");
 }
 
-
 // Previous button functionality
 prevButton.addEventListener("click", function () {
-    if (currentIndex && currentIndex !== null) {
+    if (currentIndex !== null && currentIndex >= 0) {
         volumes[currentIndex].classList.remove("active");
         volumes2[currentIndex].classList.remove("active");
-        volumes_stream[currentIndex].classList.remove("active");
+        volumes_stream[currentIndex2].classList.remove("active");
         currentIndex = (currentIndex - 1 + volumes.length) % volumes.length;
-        localStorage.setItem('bot_current_vol1_carousel2', currentIndex)
-        localStorage.setItem('bot_current_vol3_carousel2', currentIndex)
-        setCookie('bot_current_vol1_carousel2', currentIndex)
-        setCookie('bot_current_vol3_carousel2', currentIndex)
+        localStorage.setItem('bot_current_vol1_carousel2', currentIndex);
+        localStorage.setItem('bot_current_vol3_carousel2', currentIndex);
+        setCookie('bot_current_vol1_carousel2', currentIndex);
+        setCookie('bot_current_vol3_carousel2', currentIndex);
         currentIndex2 = (currentIndex2 - 1 + volumes_stream.length) % volumes_stream.length;
-        localStorage.setItem('bot_current_vol2_carousel2', currentIndex)
-        setCookie('bot_current_vol2_carousel2', currentIndex)
+        localStorage.setItem('bot_current_vol2_carousel2', currentIndex2);
+        setCookie('bot_current_vol2_carousel2', currentIndex2);
         volumes[currentIndex].classList.add("active");
         volumes2[currentIndex].classList.add("active");
         volumes_stream[currentIndex2].classList.add("active");
-    } else if (currentIndex_cookie && currentIndex_cookie !== null) {
+    } else if (currentIndex_cookie !== null && currentIndex_cookie >= 0) {
         volumes[currentIndex_cookie].classList.remove("active");
         volumes2[currentIndex_cookie].classList.remove("active");
-        volumes_stream[currentIndex_cookie].classList.remove("active");
+        volumes_stream[currentIndex2_cookie].classList.remove("active");
         currentIndex_cookie = (currentIndex_cookie - 1 + volumes.length) % volumes.length;
-        localStorage.setItem('bot_current_vol1_carousel2', currentIndex_cookie)
-        localStorage.setItem('bot_current_vol3_carousel2', currentIndex_cookie)
-        setCookie('bot_current_vol1_carousel2', currentIndex_cookie)
-        setCookie('bot_current_vol3_carousel2', currentIndex_cookie)
+        localStorage.setItem('bot_current_vol1_carousel2', currentIndex_cookie);
+        localStorage.setItem('bot_current_vol3_carousel2', currentIndex_cookie);
+        setCookie('bot_current_vol1_carousel2', currentIndex_cookie);
+        setCookie('bot_current_vol3_carousel2', currentIndex_cookie);
         currentIndex2_cookie = (currentIndex2_cookie - 1 + volumes_stream.length) % volumes_stream.length;
-        localStorage.setItem('bot_current_vol2_carousel2', currentIndex_cookie)
-        setCookie('bot_current_vol2_carousel2', currentIndex_cookie)
+        localStorage.setItem('bot_current_vol2_carousel2', currentIndex2_cookie);
+        setCookie('bot_current_vol2_carousel2', currentIndex2_cookie);
         volumes[currentIndex_cookie].classList.add("active");
         volumes2[currentIndex_cookie].classList.add("active");
         volumes_stream[currentIndex2_cookie].classList.add("active");
@@ -3708,40 +3706,38 @@ prevButton.addEventListener("click", function () {
 
 // Next button functionality
 nextButton.addEventListener("click", function () {
-    if (currentIndex && currentIndex !== null) {
+    if (currentIndex !== null && currentIndex >= 0) {
         volumes[currentIndex].classList.remove("active");
         volumes2[currentIndex].classList.remove("active");
         volumes_stream[currentIndex2].classList.remove("active");
         currentIndex = (currentIndex + 1) % volumes.length;
-        localStorage.setItem('bot_current_vol1_carousel2', currentIndex)
-        localStorage.setItem('bot_current_vol3_carousel2', currentIndex)
-        setCookie('bot_current_vol1_carousel2', currentIndex)
-        setCookie('bot_current_vol3_carousel2', currentIndex)
+        localStorage.setItem('bot_current_vol1_carousel2', currentIndex);
+        localStorage.setItem('bot_current_vol3_carousel2', currentIndex);
+        setCookie('bot_current_vol1_carousel2', currentIndex);
+        setCookie('bot_current_vol3_carousel2', currentIndex);
         currentIndex2 = (currentIndex2 + 1) % volumes_stream.length;
-        localStorage.setItem('bot_current_vol2_carousel2', currentIndex)
-        setCookie('bot_current_vol2_carousel2', currentIndex)
+        localStorage.setItem('bot_current_vol2_carousel2', currentIndex2);
+        setCookie('bot_current_vol2_carousel2', currentIndex2);
         volumes[currentIndex].classList.add("active");
         volumes2[currentIndex].classList.add("active");
         volumes_stream[currentIndex2].classList.add("active");
-    } else if (currentIndex_cookie && currentIndex_cookie !== null) {
+    } else if (currentIndex_cookie !== null && currentIndex_cookie >= 0) {
         volumes[currentIndex_cookie].classList.remove("active");
         volumes2[currentIndex_cookie].classList.remove("active");
         volumes_stream[currentIndex2_cookie].classList.remove("active");
         currentIndex_cookie = (currentIndex_cookie + 1) % volumes.length;
-        localStorage.setItem('bot_current_vol1_carousel2', currentIndex_cookie)
-        localStorage.setItem('bot_current_vol3_carousel2', currentIndex_cookie)
-        setCookie('bot_current_vol1_carousel2', currentIndex_cookie)
-        setCookie('bot_current_vol3_carousel2', currentIndex_cookie)
+        localStorage.setItem('bot_current_vol1_carousel2', currentIndex_cookie);
+        localStorage.setItem('bot_current_vol3_carousel2', currentIndex_cookie);
+        setCookie('bot_current_vol1_carousel2', currentIndex_cookie);
+        setCookie('bot_current_vol3_carousel2', currentIndex_cookie);
         currentIndex2_cookie = (currentIndex2_cookie + 1) % volumes_stream.length;
-        localStorage.setItem('bot_current_vol2_carousel2', currentIndex_cookie)
-        setCookie('bot_current_vol2_carousel2', currentIndex_cookie)
+        localStorage.setItem('bot_current_vol2_carousel2', currentIndex2_cookie);
+        setCookie('bot_current_vol2_carousel2', currentIndex2_cookie);
         volumes[currentIndex_cookie].classList.add("active");
         volumes2[currentIndex_cookie].classList.add("active");
         volumes_stream[currentIndex2_cookie].classList.add("active");
     }
 });
-
-
 
 
 // Add click event listener
@@ -4053,7 +4049,7 @@ bot_settings2.addEventListener('click', function () {
 
 // Previous button functionality
 prevButton2.addEventListener("click", function () {
-    if (currentIndex && currentIndex !== null) {
+    if (currentIndex !== null && currentIndex >= 0) {
         volumes[currentIndex].classList.remove("active");
         volumes2[currentIndex].classList.remove("active");
         volumes_stream[currentIndex].classList.remove("active");
@@ -4068,7 +4064,7 @@ prevButton2.addEventListener("click", function () {
         volumes[currentIndex].classList.add("active");
         volumes2[currentIndex].classList.add("active");
         volumes_stream[currentIndex2].classList.add("active");
-    } else if (currentIndex_cookie && currentIndex_cookie !== null) {
+    } else if (currentIndex_cookie !== null && currentIndex_cookie >= 0) {
         volumes[currentIndex_cookie].classList.remove("active");
         volumes2[currentIndex_cookie].classList.remove("active");
         volumes_stream[currentIndex_cookie].classList.remove("active");
@@ -4088,7 +4084,7 @@ prevButton2.addEventListener("click", function () {
 
 // Next button functionality
 nextButton2.addEventListener("click", function () {
-    if (currentIndex && currentIndex !== null) {
+    if (currentIndex !== null && currentIndex >= 0) {
         volumes[currentIndex].classList.remove("active");
         volumes2[currentIndex].classList.remove("active");
         volumes_stream[currentIndex2].classList.remove("active");
@@ -4103,7 +4099,7 @@ nextButton2.addEventListener("click", function () {
         volumes[currentIndex].classList.add("active");
         volumes2[currentIndex].classList.add("active");
         volumes_stream[currentIndex2].classList.add("active");
-    } else if (currentIndex_cookie && currentIndex_cookie !== null) {
+    } else if (urrentIndex_cookie !== null && currentIndex_cookie >= 0) {
         volumes[currentIndex].classList.remove("active");
         volumes2[currentIndex].classList.remove("active");
         volumes_stream[currentIndex2].classList.remove("active");
