@@ -6,15 +6,10 @@ import DerivAPIBasic from 'https://cdn.skypack.dev/@deriv/deriv-api/dist/DerivAP
 // const app_id_real = sessionStorage.getItem('app_id_real');
 // const token_real = sessionStorage.getItem('token_real');
 
-
-const app_id_demo = 53334;
-const token_demo = "4FB1rDGbXX6zbKs";
-const app_id_real = 53335;
-const token_real = "Jv4SnlKSnzwkymM";
-
-
-
-
+const app_id_demo = 63261;
+const token_demo = "CgjU4TbJyKTrVHD";
+const app_id_real = 63262;
+const token_real = "6wB5qaAzZ2NVMTS"
 
 
 let logi_id = document.getElementById('curr2')
@@ -227,157 +222,269 @@ let proposal_id = null
 
 let stake_amount_default = null
 
-let bot_current_vol1 = null
-let bot_current_vol12 = null
+let set_vol10_trade = null
 let martingale_set = false
 let bot_set = null
 let bot_set_store = null
 let bot_jump = null
 
 
-let bot_current_vol1_cookie = null
-let bot_current_vol12_cookie = null
+let set_vol10_trade_cookie
 let martingale_set_cookie = false
 let bot_set_cookie = null
 let bot_set_store_cookie = null
 let bot_jump_cookie = null
 
-let bot_current_vol1_carousel2 = null
-let bot_current_vol12_carousel2 = null
+let set_vol25_trade_carousel2 = null
 let martingale_set_carousel2 = false
 let bot_set_carousel2 = null
 let bot_set_store_carousel2 = null
 let bot_jump_carousel2 = null
 
-let bot_current_vol1_carousel2_cookie = null
-let bot_current_vol12_carousel2_cookie = null
+let set_vol25_trade_carousel2_cookie = null
 let martingale_set_carousel2_cookie = false
 let bot_set_carousel2_cookie = null
 let bot_set_store_carousel2_cookie = null
 let bot_jump_carousel2_cookie = null
 
 
-let bot_current_vol1_carousel3 = null
-let bot_current_vol12_carousel3 = null
+let set_vol50_trade_carousel3 = null
 let martingale_set_carousel3 = false
 let bot_set_carousel3 = null
 let bot_set_store_carousel3 = null
 let bot_jump_carousel3 = null
 
-let bot_current_vol1_carousel3_cookie = null
-let bot_current_vol12_carousel3_cookie = null
+let set_vol50_trade_carousel3_cookie = null
 let martingale_set_carousel3_cookie = false
 let bot_set_carousel3_cookie = null
 let bot_set_store_carousel3_cookie = null
 let bot_jump_carousel3_cookie = null
 
 
-let bot_current_vol1_carousel4 = null
-let bot_current_vol12_carousel4 = null
+let set_vol75_trade_carousel4 = null
 let martingale_set_carousel4 = false
 let bot_set_carousel4 = null
 let bot_set_store_carousel4 = null
 let bot_jump_carousel4 = null
 
-let bot_current_vol1_carousel4_cookie = null
-let bot_current_vol12_carousel4_cookie = null
+let set_vol75_trade_carousel4_cookie = null
 let martingale_set_carousel4_cookie = false
 let bot_set_carousel4_cookie = null
 let bot_set_store_carousel4_cookie = null
 let bot_jump_carousel4_cookie = null
 
 
-let bot_current_vol1_carousel5 = null
-let bot_current_vol12_carousel5 = null
+let set_vol100_trade_carousel5 = null
 let martingale_set_carousel5 = false
 let bot_set_carousel5 = null
 let bot_set_store_carousel5 = null
 let bot_jump_carousel5 = null
 
-let bot_current_vol1_carousel5_cookie = null
-let bot_current_vol12_carousel5_cookie = null
+let set_vol100_trade_carousel5_cookie = null
 let martingale_set_carousel5_cookie = false
 let bot_set_carousel5_cookie = null
 let bot_set_store_carousel5_cookie = null
 let bot_jump_carousel5_cookie = null
 
 
-let bot_current_vol1_carousel6 = null
-let bot_current_vol12_carousel6 = null
+let set_vol10_1s_trade_carousel6 = null
 let martingale_set_carousel6 = false
 let bot_set_carousel6 = null
 let bot_set_store_carousel6 = null
 let bot_jump_carousel6 = null
 
 
-let bot_current_vol1_carousel6_cookie = null
-let bot_current_vol12_carousel6_cookie = null
+let set_vol10_1s_trade_carousel6_cookie = null
 let martingale_set_carousel6_cookie = false
 let bot_set_carousel6_cookie = null
 let bot_set_store_carousel6_cookie = null
 let bot_jump_carousel6_cookie = null
 
-let bot_current_vol1_carousel7 = null
-let bot_current_vol12_carousel7 = null
+
+let set_vol25_1s_trade_carousel7 = null
 let martingale_set_carousel7 = false
 let bot_set_carousel7 = null
 let bot_set_store_carousel7 = null
 let bot_jump_carousel7 = null
 
 
-let bot_current_vol1_carousel7_cookie = null
-let bot_current_vol12_carousel7_cookie = null
+let set_vol25_1s_trade_carousel7_cookie = null
 let martingale_set_carousel7_cookie = false
 let bot_set_carousel7_cookie = null
 let bot_set_store_carousel7_cookie = null
 let bot_jump_carousel7_cookie = null
 
 
-let bot_current_vol1_carousel8 = null
-let bot_current_vol12_carousel8 = null
+let set_vol50_1s_trade_carousel8 = null
 let martingale_set_carousel8 = false
 let bot_set_carousel8 = null
 let bot_set_store_carousel8 = null
 let bot_jump_carousel8 = null
 
 
-let bot_current_vol1_carousel8_cookie = null
-let bot_current_vol12_carousel8_cookie = null
+let set_vol50_1s_trade_carousel8_cookie = null
 let martingale_set_carousel8_cookie = false
 let bot_set_carousel8_cookie = null
 let bot_set_store_carousel8_cookie = null
 let bot_jump_carousel8_cookie = null
 
 
-let bot_current_vol1_carousel9 = null
-let bot_current_vol12_carousel9 = null
+let set_vol75_1s_trade_carousel9 = null
 let martingale_set_carousel9 = false
 let bot_set_carousel9 = null
 let bot_set_store_carousel9 = null
 let bot_jump_carousel9 = null
 
 
-let bot_current_vol1_carousel9_cookie = null
-let bot_current_vol12_carousel9_cookie = null
+let set_vol75_1s_trade_carousel9_cookie = null
 let martingale_set_carousel9_cookie = false
 let bot_set_carousel9_cookie = null
 let bot_set_store_carousel9_cookie = null
 let bot_jump_carousel9_cookie = null
 
 
-let bot_current_vol1_carousel10 = null
-let bot_current_vol12_carousel10 = null
+let set_vol100_1s_trade_carousel10 = null
 let martingale_set_carousel10 = false
 let bot_set_carousel10 = null
 let bot_set_store_carousel10 = null
 let bot_jump_carousel10 = null
 
-let bot_current_vol1_carousel10_cookie = null
-let bot_current_vol12_carousel10_cookie = null
+let set_vol100_1s_trade_carousel10_cookie = null
 let martingale_set_carousel10_cookie = false
 let bot_set_carousel10_cookie = null
 let bot_set_store_carousel10_cookie = null
 let bot_jump_carousel10_cookie = null
+
+
+
+let set_vol10_jump_trade_carousel11 = null
+let martingale_set_carousel11 = false
+let bot_set_carousel11 = null
+let bot_set_store_carousel11 = null
+let bot_jump_carousel11 = null
+
+let set_vol10_jump_trade_carousel11_cookie = null
+let martingale_set_carousel11_cookie = false
+let bot_set_carousel11_cookie = null
+let bot_set_store_carousel11_cookie = null
+let bot_jump_carousel11_cookie = null
+
+
+let set_vol25_jump_trade_carousel12 = null
+let martingale_set_carousel12 = false
+let bot_set_carousel12 = null
+let bot_set_store_carousel12 = null
+let bot_jump_carousel12 = null
+
+let set_vol25_jump_trade_carousel12_cookie = null
+let martingale_set_carousel12_cookie = false
+let bot_set_carousel12_cookie = null
+let bot_set_store_carousel12_cookie = null
+let bot_jump_carousel12_cookie = null
+
+
+
+let set_vol50_jump_trade_carousel13 = null
+let martingale_set_carousel13 = false
+let bot_set_carousel13 = null
+let bot_set_store_carousel13 = null
+let bot_jump_carousel13 = null
+
+let set_vol50_jump_trade_carousel13_cookie = null
+let martingale_set_carousel13_cookie = false
+let bot_set_carousel13_cookie = null
+let bot_set_store_carousel13_cookie = null
+let bot_jump_carousel13_cookie = null
+
+
+let set_vol75_jump_trade_carousel14 = null
+let martingale_set_carousel14 = false
+let bot_set_carousel14 = null
+let bot_set_store_carousel14 = null
+let bot_jump_carousel14 = null
+
+let set_vol75_jump_trade_carousel14_cookie = null
+let martingale_set_carousel14_cookie = false
+let bot_set_carousel14_cookie = null
+let bot_set_store_carousel14_cookie = null
+let bot_jump_carousel14_cookie = null
+
+
+let set_vol100_jump_trade_carousel15 = null
+let martingale_set_carousel15 = false
+let bot_set_carousel15 = null
+let bot_set_store_carousel15 = null
+let bot_jump_carousel15 = null
+
+let set_vol100_jump_trade_carousel15_cookie = null
+let martingale_set_carousel15_cookie = false
+let bot_set_carousel15_cookie = null
+let bot_set_store_carousel15_cookie = null
+let bot_jump_carousel15_cookie = null
+
+let set_vol_bear_trade_carousel16 = null
+let martingale_set_carousel16 = false
+let bot_set_carousel16 = null
+let bot_set_store_carousel16 = null
+let bot_jump_carousel16 = null
+
+let set_vol_bear_trade_carousel16_cookie = null
+let martingale_set_carousel16_cookie = false
+let bot_set_carousel16_cookie = null
+let bot_set_store_carousel16_cookie = null
+let bot_jump_carousel16_cookie = null
+
+
+let set_vol_bull_trade_carousel17 = null
+let martingale_set_carousel17 = false
+let bot_set_carousel17 = null
+let bot_set_store_carousel17 = null
+let bot_jump_carousel17 = null
+
+let set_vol_bull_trade_carousel17_cookie = null
+let martingale_set_carousel17_cookie = false
+let bot_set_carousel17_cookie = null
+let bot_set_store_carousel17_cookie = null
+let bot_jump_carousel17_cookie = null
+
+
+let set_comp18_trade_carousel18 = null
+let martingale_set_carousel18 = false;
+let bot_set_carousel18 = null;
+let bot_set_store_carousel18 = null;
+let bot_jump_carousel18 = null;
+
+let set_comp18_trade_carousel18_cookie = null
+let martingale_set_carousel18_cookie = false;
+let bot_set_carousel18_cookie = null;
+let bot_set_store_carousel18_cookie = null;
+let bot_jump_carousel18_cookie = null;
+
+
+let set_comp19_trade_carousel19 = null
+let martingale_set_carousel19 = false;
+let bot_set_carousel19 = null;
+let bot_set_store_carousel19 = null;
+let bot_jump_carousel19 = null;
+
+let set_comp19_trade_carousel19_cookie = null
+let martingale_set_carousel19_cookie = false;
+let bot_set_carousel19_cookie = null;
+let bot_set_store_carousel19_cookie = null;
+let bot_jump_carousel19_cookie = null;
+
+
+let set_comp20_trade_carousel20 = null
+let martingale_set_carousel20 = false;
+let bot_set_carousel20 = null;
+let bot_set_store_carousel20 = null;
+let bot_jump_carousel20 = null;
+
+let set_comp20_trade_carousel20_cookie = null
+let martingale_set_carousel20_cookie = false;
+let bot_set_carousel20_cookie = null;
+let bot_set_store_carousel20_cookie = null;
+let bot_jump_carousel20_cookie = null;
 
 
 let message1_local_st = localStorage.getItem('message1')
@@ -775,6 +882,8 @@ const balanceResponse = async (res) => {
     }
 
     if (data.msg_type === 'balance') {
+        setCookie('updating_balance', data.balance.balance)
+        localStorage.setItem('updating_balance', data.balance.balance)
         if (balance_amount) {
             balance_amount.textContent = data.balance.balance;
         }
@@ -936,12 +1045,14 @@ async function initializeApi(message1) {
 
             if (authorize_response.authorize.loginid.startsWith("CR")) {
 
+                setCookie('initial_balance', authorize_response.authorize.balance)
 
                 setCookie('real_balance', authorize_response.authorize.balance)
                 setCookie("real_id", authorize_response.authorize.loginid)
                 setCookie("real_icon_usd", true)
                 setCookie("demo_icon_usd", false)
 
+                localStorage.setItem('initial_balance', authorize_response.authorize.balance)
 
                 localStorage.setItem('real_balance', authorize_response.authorize.balance)
                 localStorage.setItem("real_id", authorize_response.authorize.loginid)
@@ -973,11 +1084,15 @@ async function initializeApi(message1) {
 
 
             } else {
+                setCookie('initial_balance', authorize_response.authorize.balance)
+
                 setCookie('demo_balance', authorize_response.authorize.balance)
                 setCookie('demo_id', authorize_response.authorize.loginid)
                 setCookie("real_icon_usd", false)
                 setCookie("demo_icon_usd", true)
 
+
+                localStorage.setItem('initial_balance', authorize_response.authorize.balance)
 
                 localStorage.setItem('demo_balance', authorize_response.authorize.balance)
                 localStorage.setItem('demo_id', authorize_response.authorize.loginid)
@@ -1228,71 +1343,174 @@ window.addEventListener('load', function () {
     bot_set_store_carousel10 = getCookie('bot_set_store_carousel10')
     bot_jump_carousel10 = getCookie('bot_jump_carousel10')
 
+    martingale_set_carousel11 = localStorage.getItem('martingale_carousel11')
+    bot_set_carousel11 = localStorage.getItem('bot_set_carousel11')
+    bot_set_store_carousel11 = localStorage.getItem('bot_set_store_carousel11')
+    bot_jump_carousel11 = localStorage.getItem('bot_jump_carousel11')
+
+    martingale_set_carousel11 = getCookie('martingale_carousel11')
+    bot_set_carousel11 = getCookie('bot_set_carousel11')
+    bot_set_store_carousel11 = getCookie('bot_set_store_carousel11')
+    bot_jump_carousel11 = getCookie('bot_jump_carousel11')
+
+    martingale_set_carousel12 = localStorage.getItem('martingale_carousel12')
+    bot_set_carousel12 = localStorage.getItem('bot_set_carousel12')
+    bot_set_store_carousel12 = localStorage.getItem('bot_set_store_carousel12')
+    bot_jump_carousel12 = localStorage.getItem('bot_jump_carousel12')
+
+    martingale_set_carousel12 = getCookie('martingale_carousel12')
+    bot_set_carousel12 = getCookie('bot_set_carousel12')
+    bot_set_store_carousel12 = getCookie('bot_set_store_carousel12')
+    bot_jump_carousel12 = getCookie('bot_jump_carousel12')
+
+    martingale_set_carousel13 = localStorage.getItem('martingale_carousel13')
+    bot_set_carousel13 = localStorage.getItem('bot_set_carousel13')
+    bot_set_store_carousel13 = localStorage.getItem('bot_set_store_carousel13')
+    bot_jump_carousel13 = localStorage.getItem('bot_jump_carousel13')
+
+    martingale_set_carousel13 = getCookie('martingale_carousel13')
+    bot_set_carousel13 = getCookie('bot_set_carousel13')
+    bot_set_store_carousel13 = getCookie('bot_set_store_carousel13')
+    bot_jump_carousel13 = getCookie('bot_jump_carousel13')
+
+
+    martingale_set_carousel14 = localStorage.getItem('martingale_carousel14')
+    bot_set_carousel14 = localStorage.getItem('bot_set_carousel14')
+    bot_set_store_carousel14 = localStorage.getItem('bot_set_store_carousel14')
+    bot_jump_carousel14 = localStorage.getItem('bot_jump_carousel14')
+
+    martingale_set_carousel14 = getCookie('martingale_carousel14')
+    bot_set_carousel14 = getCookie('bot_set_carousel14')
+    bot_set_store_carousel14 = getCookie('bot_set_store_carousel14')
+    bot_jump_carousel14 = getCookie('bot_jump_carousel14')
+
+    martingale_set_carousel15 = localStorage.getItem('martingale_carousel15')
+    bot_set_carousel15 = localStorage.getItem('bot_set_carousel15')
+    bot_set_store_carousel15 = localStorage.getItem('bot_set_store_carousel15')
+    bot_jump_carousel15 = localStorage.getItem('bot_jump_carousel15')
+
+    martingale_set_carousel15 = getCookie('martingale_carousel15')
+    bot_set_carousel15 = getCookie('bot_set_carousel15')
+    bot_set_store_carousel15 = getCookie('bot_set_store_carousel15')
+    bot_jump_carousel15 = getCookie('bot_jump_carousel15')
+
+
+    martingale_set_carousel16 = localStorage.getItem('martingale_carousel16')
+    bot_set_carousel16 = localStorage.getItem('bot_set_carousel16')
+    bot_set_store_carousel16 = localStorage.getItem('bot_set_store_carousel16')
+    bot_jump_carousel16 = localStorage.getItem('bot_jump_carousel16')
+
+    martingale_set_carousel16 = getCookie('martingale_carousel16')
+    bot_set_carousel16 = getCookie('bot_set_carousel16')
+    bot_set_store_carousel16 = getCookie('bot_set_store_carousel16')
+    bot_jump_carousel16 = getCookie('bot_jump_carousel16')
+
+    martingale_set_carousel17 = localStorage.getItem('martingale_carousel17');
+    bot_set_carousel17 = localStorage.getItem('bot_set_carousel17');
+    bot_set_store_carousel17 = localStorage.getItem('bot_set_store_carousel17');
+    bot_jump_carousel17 = localStorage.getItem('bot_jump_carousel17');
+
+    martingale_set_carousel17 = getCookie('martingale_carousel17');
+    bot_set_carousel17 = getCookie('bot_set_carousel17');
+    bot_set_store_carousel17 = getCookie('bot_set_store_carousel17');
+    bot_jump_carousel17 = getCookie('bot_jump_carousel17');
+
+    martingale_set_carousel18 = localStorage.getItem('martingale_carousel18');
+    bot_set_carousel18 = localStorage.getItem('bot_set_carousel18');
+    bot_set_store_carousel18 = localStorage.getItem('bot_set_store_carousel18');
+    bot_jump_carousel18 = localStorage.getItem('bot_jump_carousel18');
+
+    martingale_set_carousel18 = getCookie('martingale_carousel18');
+    bot_set_carousel18 = getCookie('bot_set_carousel18');
+    bot_set_store_carousel18 = getCookie('bot_set_store_carousel18');
+    bot_jump_carousel18 = getCookie('bot_jump_carousel18');
+
+    martingale_set_carousel19 = localStorage.getItem('martingale_carousel19');
+    bot_set_carousel19 = localStorage.getItem('bot_set_carousel19');
+    bot_set_store_carousel19 = localStorage.getItem('bot_set_store_carousel19');
+    bot_jump_carousel19 = localStorage.getItem('bot_jump_carousel19');
+
+    martingale_set_carousel19 = getCookie('martingale_carousel19');
+    bot_set_carousel19 = getCookie('bot_set_carousel19');
+    bot_set_store_carousel19 = getCookie('bot_set_store_carousel19');
+    bot_jump_carousel19 = getCookie('bot_jump_carousel19');
+
+    martingale_set_carousel20 = localStorage.getItem('martingale_carousel20');
+    bot_set_carousel20 = localStorage.getItem('bot_set_carousel20');
+    bot_set_store_carousel20 = localStorage.getItem('bot_set_store_carousel20');
+    bot_jump_carousel20 = localStorage.getItem('bot_jump_carousel20');
+
+    martingale_set_carousel20 = getCookie('martingale_carousel20');
+    bot_set_carousel20 = getCookie('bot_set_carousel20');
+    bot_set_store_carousel20 = getCookie('bot_set_store_carousel20');
+    bot_jump_carousel20 = getCookie('bot_jump_carousel20');
+
     // Get the existing values of the cookies and local storage items
 
     let symbol_vol_text_cookie = getCookie('symbol_vol_text_cookie');
     let contract_text_local_st = localStorage.getItem('contract_text_local_st');
     let symbol_vol_text_local_st = localStorage.getItem('symbol_vol_text_local_st');
 
-    bot_current_vol1 = localStorage.getItem('bot_current_vol1')
-    bot_current_vol12 = localStorage.getItem('bot_current_vol2')
+    set_vol10_trade = localStorage.getItem("set_vol10_trade")
+    set_vol10_trade_cookie = getCookie("set_vol10_trade")
 
-    bot_current_vol1 = getCookie('bot_current_vol1')
-    bot_current_vol12 = getCookie('bot_current_vol2')
+    set_vol25_trade_carousel2 = localStorage.getItem("set_vol25_trade")
+    set_vol25_trade_carousel2_cookie = getCookie("set_vol25_trade")
 
-    bot_current_vol1_carousel2 = localStorage.getItem('bot_current_vol1_carousel2')
-    bot_current_vol12_carousel2 = localStorage.getItem('bot_current_vol2_carousel2')
+    set_vol50_trade_carousel3 = localStorage.getItem("set_vol50_trade")
+    set_vol50_trade_carousel3_cookie = getCookie("set_vol50_trade")
 
-    bot_current_vol1_carousel2 = getCookie('bot_current_vol1_carousel2')
-    bot_current_vol12_carousel2 = getCookie('bot_current_vol2_carousel2')
+    set_vol75_trade_carousel4 = localStorage.getItem("set_vol75_trade")
+    set_vol75_trade_carousel4_cookie = getCookie("set_vol75_trade")
 
-    bot_current_vol1_carousel3 = localStorage.getItem('bot_current_vol1_carousel3')
-    bot_current_vol12_carousel3 = localStorage.getItem('bot_current_vol2_carousel3')
+    set_vol100_trade_carousel5 = localStorage.getItem("set_vol100_trade")
+    set_vol100_trade_carousel5_cookie = getCookie("set_vol100_trade")
 
-    bot_current_vol1_carousel3 = getCookie('bot_current_vol1_carousel3')
-    bot_current_vol12_carousel3 = getCookie('bot_current_vol2_carousel3')
+    set_vol10_1s_trade_carousel6 = localStorage.getItem("set_vol10_1s_trade")
+    set_vol10_1s_trade_carousel6_cookie = getCookie("set_vol10_1s_trade")
 
-    bot_current_vol1_carousel4 = localStorage.getItem('bot_current_vol1_carousel4')
-    bot_current_vol12_carousel4 = localStorage.getItem('bot_current_vol2_carousel4')
+    set_vol25_1s_trade_carousel7 = localStorage.getItem("set_vol25_1s_trade")
+    set_vol25_1s_trade_carousel7_cookie = getCookie("set_vol25_1s_trade")
 
-    bot_current_vol1_carousel4 = getCookie('bot_current_vol1_carousel4')
-    bot_current_vol12_carousel4 = getCookie('bot_current_vol2_carousel4')
+    set_vol50_1s_trade_carousel8 = localStorage.getItem("set_vol50_1s_trade")
+    set_vol50_1s_trade_carousel8_cookie = getCookie("set_vol50_1s_trade")
 
-    bot_current_vol1_carousel5 = localStorage.getItem('bot_current_vol1_carousel5')
-    bot_current_vol12_carousel5 = localStorage.getItem('bot_current_vol2_carousel5')
+    set_vol75_1s_trade_carousel9 = localStorage.getItem("set_vol75_1s_trade")
+    set_vol75_1s_trade_carousel9_cookie = getCookie("set_vol75_1s_trade")
 
-    bot_current_vol1_carousel5 = getCookie('bot_current_vol1_carousel5')
-    bot_current_vol12_carousel5 = getCookie('bot_current_vol2_carousel5')
+    set_vol100_1s_trade_carousel10 = localStorage.getItem("set_vol100_1s_trade")
+    set_vol100_1s_trade_carousel10_cookie = getCookie("set_vol100_1s_trade")
 
-    bot_current_vol1_carousel6 = localStorage.getItem('bot_current_vol1_carousel6')
-    bot_current_vol12_carousel6 = localStorage.getItem('bot_current_vol2_carousel6')
+    set_vol10_jump_trade_carousel11 = localStorage.getItem("set_vol10_jump_trade")
+    set_vol10_jump_trade_carousel11_cookie = getCookie("set_vol10_jump_trade")
 
-    bot_current_vol1_carousel6 = getCookie('bot_current_vol1_carousel6')
-    bot_current_vol12_carousel6 = getCookie('bot_current_vol2_carousel6')
+    set_vol25_jump_trade_carousel12 = localStorage.getItem("set_vol25_jump_trade")
+    set_vol25_jump_trade_carousel12_cookie = getCookie("set_vol25_jump_trade")
 
-    bot_current_vol1_carousel7 = localStorage.getItem('bot_current_vol1_carousel7')
-    bot_current_vol12_carousel7 = localStorage.getItem('bot_current_vol2_carousel7')
+    set_vol50_jump_trade_carousel13 = localStorage.getItem("set_vol50_jump_trade")
+    set_vol50_jump_trade_carousel13_cookie = getCookie("set_vol50_jump_trade")
 
-    bot_current_vol1_carousel7 = getCookie('bot_current_vol1_carousel7')
-    bot_current_vol12_carousel7 = getCookie('bot_current_vol2_carousel7')
+    set_vol75_jump_trade_carousel14 = localStorage.getItem("set_vol75_jump_trade")
+    set_vol75_jump_trade_carousel14_cookie = getCookie("set_vol75_jump_trade")
 
-    bot_current_vol1_carousel8 = localStorage.getItem('bot_current_vol1_carousel8')
-    bot_current_vol12_carousel8 = localStorage.getItem('bot_current_vol2_carousel8')
+    set_vol100_jump_trade_carousel15 = localStorage.getItem("set_vol100_jump_trade")
+    set_vol100_jump_trade_carousel15_cookie = getCookie("set_vol100_jump_trade")
 
-    bot_current_vol1_carousel8 = getCookie('bot_current_vol1_carousel8')
-    bot_current_vol12_carousel8 = getCookie('bot_current_vol2_carousel8')
+    set_vol_bear_trade_carousel16 = localStorage.getItem("set_vol_bear_trade")
+    set_vol_bear_trade_carousel16_cookie = getCookie("set_vol_bear_trade")
 
-    bot_current_vol1_carousel9 = localStorage.getItem('bot_current_vol1_carousel9')
-    bot_current_vol12_carousel9 = localStorage.getItem('bot_current_vol2_carousel9')
+    set_vol_bull_trade_carousel17 = localStorage.getItem("set_vol_bull_trade")
+    set_vol_bull_trade_carousel17_cookie = getCookie("set_vol_bull_trade")
 
-    bot_current_vol1_carousel9 = getCookie('bot_current_vol1_carousel9')
-    bot_current_vol12_carousel9 = getCookie('bot_current_vol2_carousel9')
+    set_comp18_trade_carousel18 = localStorage.getItem('set_comp18_trade')
+    set_comp18_trade_carousel18_cookie = localStorage.getItem('set_com18_trade')
 
-    bot_current_vol1_carousel10 = localStorage.getItem('bot_current_vol1_carousel10')
-    bot_current_vol12_carousel10 = localStorage.getItem('bot_current_vol2_carousel10')
+    set_comp19_trade_carousel19 = localStorage.getItem('set_comp19_trade')
+    set_comp19_trade_carousel19_cookie = localStorage.getItem('set_comp19_trade')
 
-    bot_current_vol1_carousel10 = getCookie('bot_current_vol1_carousel10')
-    bot_current_vol12_carousel10 = getCookie('bot_current_vol2_carousel10')
+    set_comp20_trade_carousel20 = localStorage.getItem('set_comp20_trade')
+    set_comp20_trade_carousel20_cookie = localStorage.getItem('set_comp20_trade')
+
 
     // Set the cookies and local storage items if they don't already exist
     if (!contract_text_cookie) {
@@ -1316,14 +1534,10 @@ window.addEventListener('load', function () {
         setCookie('stake_amount_default', document.getElementById('stake_amount_input').value);
     }
 
-    if (!bot_current_vol1 && !bot_current_vol1_cookie) {
-        localStorage.setItem('bot_current_vol1', 0)
-        setCookie('bot_current_vol1', 0)
-    }
 
-    if (!bot_current_vol12 && !bot_current_vol12_cookie) {
-        localStorage.setItem('bot_current_vol2', 0)
-        setCookie('bot_current_vol2', 0)
+    if (!set_vol10_trade && !set_vol10_trade_cookie) {
+        localStorage.setItem('set_vol10_trade', 'vol10_trade')
+        setCookie('set_vol10_trade', 'vol10_trade')
     }
 
     if (!martingale_set && !martingale_set_cookie) {
@@ -1347,14 +1561,9 @@ window.addEventListener('load', function () {
     }
 
 
-    if (!bot_current_vol1_carousel2 && !bot_current_vol12_carousel2_cookie) {
-        localStorage.setItem('bot_current_vol1_carousel2', 1)
-        setCookie('bot_current_vol1_carousel2', 1)
-    }
-
-    if (!bot_current_vol12_carousel2 && !bot_current_vol12_carousel2_cookie) {
-        localStorage.setItem('bot_current_vol2_carousel2', 1)
-        setCookie('bot_current_vol2_carousel2', 1)
+    if (!set_vol25_trade_carousel2 && !set_vol25_trade_carousel2_cookie) {
+        localStorage.setItem('set_vol25_trade', 'vol25_trade')
+        setCookie('set_vol25_trade', 'vol25_trade')
     }
 
     if (!martingale_set_carousel2 && !martingale_set_carousel2_cookie) {
@@ -1380,14 +1589,9 @@ window.addEventListener('load', function () {
 
 
 
-    if (!bot_current_vol1_carousel3 && !bot_current_vol12_carousel3_cookie) {
-        localStorage.setItem('bot_current_vol1_carousel3', 2)
-        setCookie('bot_current_vol1_carousel3', 2)
-    }
-
-    if (!bot_current_vol12_carousel3 && !bot_current_vol12_carousel3_cookie) {
-        localStorage.setItem('bot_current_vol2_carousel3', 2)
-        setCookie('bot_current_vol2_carousel3', 2)
+    if (!set_vol50_trade_carousel3 && !set_vol50_trade_carousel3_cookie) {
+        localStorage.setItem('set_vol50_trade', 'vol50_trade')
+        setCookie('set_vol50_trade', 'vol50_trade')
     }
 
     if (!martingale_set_carousel3 && !martingale_set_carousel3_cookie) {
@@ -1412,14 +1616,9 @@ window.addEventListener('load', function () {
 
 
 
-    if (!bot_current_vol1_carousel4 && !bot_current_vol12_carousel4_cookie) {
-        localStorage.setItem('bot_current_vol1_carousel4', 3)
-        setCookie('bot_current_vol1_carousel4', 3)
-    }
-
-    if (!bot_current_vol12_carousel4 && !bot_current_vol12_carousel4_cookie) {
-        localStorage.setItem('bot_current_vol2_carousel4', 3)
-        setCookie('bot_current_vol2_carousel4', 3)
+    if (!set_vol75_trade_carousel4 && !set_vol75_trade_carousel4_cookie) {
+        localStorage.setItem('set_vol75_trade', 'vol75_trade')
+        setCookie('set_vol75_trade', 'vol75_trade')
     }
 
     if (!martingale_set_carousel4 && !martingale_set_carousel4_cookie) {
@@ -1444,14 +1643,9 @@ window.addEventListener('load', function () {
 
 
 
-    if (!bot_current_vol1_carousel5 && !bot_current_vol12_carousel5_cookie) {
-        localStorage.setItem('bot_current_vol1_carousel5', 4)
-        setCookie('bot_current_vol1_carousel5', 4)
-    }
-
-    if (!bot_current_vol12_carousel5 && !bot_current_vol12_carousel5_cookie) {
-        localStorage.setItem('bot_current_vol2_carousel5', 4)
-        setCookie('bot_current_vol2_carousel5', 4)
+    if (!set_vol100_trade_carousel5 && !set_vol100_trade_carousel5_cookie) {
+        localStorage.setItem('set_vol100_trade', 'vol100_trade')
+        setCookie('set_vol100_trade', 'vol100_trade')
     }
 
     if (!martingale_set_carousel5 && !martingale_set_carousel5_cookie) {
@@ -1476,14 +1670,9 @@ window.addEventListener('load', function () {
 
 
 
-    if (!bot_current_vol1_carousel6 && !bot_current_vol12_carousel6_cookie) {
-        localStorage.setItem('bot_current_vol1_carousel6', 5)
-        setCookie('bot_current_vol1_carousel6', 5)
-    }
-
-    if (!bot_current_vol12_carousel6 && !bot_current_vol12_carousel6_cookie) {
-        localStorage.setItem('bot_current_vol2_carousel6', 5)
-        setCookie('bot_current_vol2_carousel6', 5)
+    if (!set_vol10_1s_trade_carousel6 && !set_vol10_1s_trade_carousel6_cookie) {
+        localStorage.setItem('set_vol10_1s_trade', 'vol10_1s_trade')
+        setCookie('set_vol10_1s_trade', 'vol10_1s_trade')
     }
 
     if (!martingale_set_carousel6 && !martingale_set_carousel6_cookie) {
@@ -1509,14 +1698,9 @@ window.addEventListener('load', function () {
 
 
 
-    if (!bot_current_vol1_carousel7 && !bot_current_vol12_carousel7_cookie) {
-        localStorage.setItem('bot_current_vol1_carousel7', 6)
-        setCookie('bot_current_vol1_carousel7', 6)
-    }
-
-    if (!bot_current_vol12_carousel7 && !bot_current_vol12_carousel7_cookie) {
-        localStorage.setItem('bot_current_vol2_carousel7', 6)
-        setCookie('bot_current_vol2_carousel7', 6)
+    if (!set_vol25_1s_trade_carousel7 && !set_vol25_1s_trade_carousel7_cookie) {
+        localStorage.setItem('set_vol25_1s_trade', 'vol25_1s_trade')
+        setCookie('set_vol25_1s_trade', 'vol25_1s_trade')
     }
 
     if (!martingale_set_carousel7 && !martingale_set_carousel7_cookie) {
@@ -1541,14 +1725,9 @@ window.addEventListener('load', function () {
 
 
 
-    if (!bot_current_vol1_carousel8 && !bot_current_vol12_carousel8_cookie) {
-        localStorage.setItem('bot_current_vol1_carousel8', 7)
-        setCookie('bot_current_vol1_carousel8', 7)
-    }
-
-    if (!bot_current_vol12_carousel8 && !bot_current_vol12_carousel8_cookie) {
-        localStorage.setItem('bot_current_vol2_carousel8', 7)
-        setCookie('bot_current_vol2_carousel8', 7)
+    if (!set_vol50_1s_trade_carousel8 && !set_vol50_1s_trade_carousel8_cookie) {
+        localStorage.setItem('set_vol50_1s_trade', 'vol50_1s_trade')
+        setCookie('set_vol50_1s_trade', 'vol50_1s_trade')
     }
 
     if (!martingale_set_carousel8 && !martingale_set_carousel8_cookie) {
@@ -1573,14 +1752,9 @@ window.addEventListener('load', function () {
 
 
 
-    if (!bot_current_vol1_carousel9 && !bot_current_vol12_carousel9_cookie) {
-        localStorage.setItem('bot_current_vol1_carousel9', 8)
-        setCookie('bot_current_vol1_carousel9', 8)
-    }
-
-    if (!bot_current_vol12_carousel9 && !bot_current_vol12_carousel9_cookie) {
-        localStorage.setItem('bot_current_vol2_carousel9', 8)
-        setCookie('bot_current_vol2_carousel9', 8)
+    if (!set_vol75_1s_trade_carousel9 && !set_vol75_1s_trade_carousel9_cookie) {
+        localStorage.setItem('set_vol75_1s_trade', 'vol75_1s_trade')
+        setCookie('set_vol75_1s_trade', 'vol75_1s_trade')
     }
 
     if (!martingale_set_carousel9 && !martingale_set_carousel9_cookie) {
@@ -1604,15 +1778,9 @@ window.addEventListener('load', function () {
     }
 
 
-
-    if (!bot_current_vol1_carousel10 && !bot_current_vol12_carousel10_cookie) {
-        localStorage.setItem('bot_current_vol1_carousel10', 9)
-        setCookie('bot_current_vol1_carousel10', 9)
-    }
-
-    if (!bot_current_vol12_carousel10 && !bot_current_vol12_carousel10_cookie) {
-        localStorage.setItem('bot_current_vol2_carousel10', 9)
-        setCookie('bot_current_vol2_carousel10', 9)
+    if (!set_vol100_1s_trade_carousel10 && !set_vol100_1s_trade_carousel10_cookie) {
+        localStorage.setItem('set_vol100_1s_trade', 'vol100_1s_trade')
+        setCookie('set_vol100_1s_trade', 'vol100_1s_trade')
     }
 
     if (!martingale_set_carousel10 && !martingale_set_carousel10_cookie) {
@@ -1635,6 +1803,399 @@ window.addEventListener('load', function () {
         localStorage.setItem('bot_jump_carousel10', 0)
     }
 
+
+
+    if (!set_vol10_jump_trade_carousel11 && !set_vol10_jump_trade_carousel11_cookie) {
+        localStorage.setItem('set_vol10_jump_trade', 'vol10_jump_trade')
+        setCookie('set_vol10_jump_trade', 'vol10_jump_trade')
+    }
+
+    if (!martingale_set_carousel11 && !martingale_set_carousel11_cookie) {
+        setCookie('martingale_carousel11', 'false')
+        localStorage.setItem('martingale_carousel11', 'false')
+    }
+
+    if (!bot_set_carousel11 && !bot_set_carousel11_cookie) {
+        setCookie('bot_set_carousel11', '2')
+        localStorage.setItem('bot_set_carousel11', '2')
+    }
+
+    if (!bot_set_store_carousel11 && !bot_set_store_carousel11_cookie) {
+        setCookie('bot_set_store_carousel11', '2')
+        localStorage.setItem('bot_set_store_carousel11', '2')
+    }
+
+    if (!bot_jump_carousel11 && !bot_jump_carousel11_cookie) {
+        setCookie('bot_jump_carousel11', 0)
+        localStorage.setItem('bot_jump_carousel11', 0)
+    }
+
+
+
+    if (!set_vol25_jump_trade_carousel12 && !set_vol25_jump_trade_carousel12_cookie) {
+        localStorage.setItem('set_vol25_jump_trade', 'vol25_jump_trade')
+        setCookie('set_vol25_jump_trade', 'vol25_jump_trade')
+    }
+
+    if (!martingale_set_carousel12 && !martingale_set_carousel12_cookie) {
+        setCookie('martingale_carousel12', 'false')
+        localStorage.setItem('martingale_carousel12', 'false')
+    }
+
+    if (!bot_set_carousel12 && !bot_set_carousel12_cookie) {
+        setCookie('bot_set_carousel12', '2')
+        localStorage.setItem('bot_set_carousel12', '2')
+    }
+
+    if (!bot_set_store_carousel12 && !bot_set_store_carousel12_cookie) {
+        setCookie('bot_set_store_carousel12', '2')
+        localStorage.setItem('bot_set_store_carousel12', '2')
+    }
+
+    if (!bot_jump_carousel12 && !bot_jump_carousel12_cookie) {
+        setCookie('bot_jump_carousel12', 0)
+        localStorage.setItem('bot_jump_carousel12', 0)
+    }
+
+
+
+    if (!set_vol50_jump_trade_carousel13 && !set_vol50_jump_trade_carousel13_cookie) {
+        localStorage.setItem('set_vol50_jump_trade', 'vol50_jump_trade')
+        setCookie('set_vol50_jump_trade', 'vol50_jump_trade')
+    }
+
+    if (!martingale_set_carousel13 && !martingale_set_carousel13_cookie) {
+        setCookie('martingale_carousel13', 'false')
+        localStorage.setItem('martingale_carousel13', 'false')
+    }
+
+    if (!bot_set_carousel13 && !bot_set_carousel13_cookie) {
+        setCookie('bot_set_carousel13', '2')
+        localStorage.setItem('bot_set_carousel13', '2')
+    }
+
+    if (!bot_set_store_carousel13 && !bot_set_store_carousel13_cookie) {
+        setCookie('bot_set_store_carousel13', '2')
+        localStorage.setItem('bot_set_store_carousel13', '2')
+    }
+
+    if (!bot_jump_carousel13 && !bot_jump_carousel13_cookie) {
+        setCookie('bot_jump_carousel13', 0)
+        localStorage.setItem('bot_jump_carousel13', 0)
+    }
+
+
+
+    if (!set_vol75_jump_trade_carousel14 && !set_vol75_jump_trade_carousel14_cookie) {
+        localStorage.setItem('set_vol75_jump_trade', 'vol75_jump_trade')
+        setCookie('set_vol75_jump_trade', 'vol75_jump_trade')
+    }
+
+    if (!martingale_set_carousel14 && !martingale_set_carousel14_cookie) {
+        setCookie('martingale_carousel14', 'false')
+        localStorage.setItem('martingale_carousel14', 'false')
+    }
+
+    if (!bot_set_carousel14 && !bot_set_carousel14_cookie) {
+        setCookie('bot_set_carousel14', '2')
+        localStorage.setItem('bot_set_carousel14', '2')
+    }
+
+    if (!bot_set_store_carousel14 && !bot_set_store_carousel14_cookie) {
+        setCookie('bot_set_store_carousel14', '2')
+        localStorage.setItem('bot_set_store_carousel14', '2')
+    }
+
+    if (!bot_jump_carousel14 && !bot_jump_carousel14_cookie) {
+        setCookie('bot_jump_carousel14', 0)
+        localStorage.setItem('bot_jump_carousel14', 0)
+    }
+
+
+
+
+    if (!set_vol100_jump_trade_carousel15 && !set_vol100_jump_trade_carousel15_cookie) {
+        localStorage.setItem('set_vol100_jump_trade', 'vol100_jump_trade')
+        setCookie('set_vol100_jump_trade', 'vol100_jump_trade')
+    }
+
+    if (!martingale_set_carousel15 && !martingale_set_carousel15_cookie) {
+        setCookie('martingale_carousel15', 'false')
+        localStorage.setItem('martingale_carousel15', 'false')
+    }
+
+    if (!bot_set_carousel15 && !bot_set_carousel15_cookie) {
+        setCookie('bot_set_carousel15', '2')
+        localStorage.setItem('bot_set_carousel15', '2')
+    }
+
+    if (!bot_set_store_carousel15 && !bot_set_store_carousel15_cookie) {
+        setCookie('bot_set_store_carousel15', '2')
+        localStorage.setItem('bot_set_store_carousel15', '2')
+    }
+
+    if (!bot_jump_carousel15 && !bot_jump_carousel15_cookie) {
+        setCookie('bot_jump_carousel15', 0)
+        localStorage.setItem('bot_jump_carousel15', 0)
+    }
+
+
+
+
+    if (!set_vol_bear_trade_carousel16 && !set_vol_bear_trade_carousel16_cookie) {
+        localStorage.setItem('set_vol_bear_trade', 'vol_bear_trade')
+        setCookie('set_vol_bear_trade', 'vol_bear_trade')
+    }
+
+    if (!martingale_set_carousel16 && !martingale_set_carousel16_cookie) {
+        setCookie('martingale_carousel16', 'false')
+        localStorage.setItem('martingale_carousel16', 'false')
+    }
+
+    if (!bot_set_carousel16 && !bot_set_carousel16_cookie) {
+        setCookie('bot_set_carousel16', '2')
+        localStorage.setItem('bot_set_carousel16', '2')
+    }
+
+    if (!bot_set_store_carousel16 && !bot_set_store_carousel16_cookie) {
+        setCookie('bot_set_store_carousel16', '2')
+        localStorage.setItem('bot_set_store_carousel16', '2')
+    }
+
+    if (!bot_jump_carousel16 && !bot_jump_carousel16_cookie) {
+        setCookie('bot_jump_carousel16', 0)
+        localStorage.setItem('bot_jump_carousel16', 0)
+    }
+
+
+
+    if (!set_vol_bull_trade_carousel17 && !set_vol_bull_trade_carousel17_cookie) {
+        localStorage.setItem('set_vol_bull_trade', 'vol_bull_trade')
+        setCookie('set_vol_bull_trade', 'vol_bull_trade')
+    }
+
+    if (!martingale_set_carousel17 && !martingale_set_carousel17_cookie) {
+        setCookie('martingale_carousel17', 'false');
+        localStorage.setItem('martingale_carousel17', 'false');
+    }
+
+    if (!bot_set_carousel17 && !bot_set_carousel17_cookie) {
+        setCookie('bot_set_carousel17', '2');
+        localStorage.setItem('bot_set_carousel17', '2');
+    }
+
+    if (!bot_set_store_carousel17 && !bot_set_store_carousel17_cookie) {
+        setCookie('bot_set_store_carousel17', '2');
+        localStorage.setItem('bot_set_store_carousel17', '2');
+    }
+
+    if (!bot_jump_carousel17 && !bot_jump_carousel17_cookie) {
+        setCookie('bot_jump_carousel17', 0);
+        localStorage.setItem('bot_jump_carousel17', 0);
+    }
+
+
+
+    // Carousel 18
+
+    if (!set_comp18_trade_carousel18 && !set_comp18_trade_carousel18_cookie) {
+        setCookie('set_vol_comp18_trade', 'vol_comp18_trade')
+        localStorage.setItem('set_vol_comp18_trade', 'vol_comp18_trade')
+    }
+
+    if (!martingale_set_carousel18 && !martingale_set_carousel18_cookie) {
+        setCookie('martingale_carousel18', 'false');
+        localStorage.setItem('martingale_carousel18', 'false');
+    }
+
+    if (!bot_set_carousel18 && !bot_set_carousel18_cookie) {
+        setCookie('bot_set_carousel18', '2');
+        localStorage.setItem('bot_set_carousel18', '2');
+    }
+
+    if (!bot_set_store_carousel18 && !bot_set_store_carousel18_cookie) {
+        setCookie('bot_set_store_carousel18', '2');
+        localStorage.setItem('bot_set_store_carousel18', '2');
+    }
+
+    if (!bot_jump_carousel18 && !bot_jump_carousel18_cookie) {
+        setCookie('bot_jump_carousel18', 0);
+        localStorage.setItem('bot_jump_carousel18', 0);
+    }
+
+
+
+    // Carousel 19
+    if (!set_comp19_trade_carousel19 && !set_comp19_trade_carousel19_cookie) {
+        setCookie('set_vol_comp19_trade', 'vol_comp19_trade')
+        localStorage.setItem('set_vol_comp19_trade', 'vol_comp19_trade')
+    }
+
+    if (!martingale_set_carousel19 && !martingale_set_carousel19_cookie) {
+        setCookie('martingale_carousel19', 'false');
+        localStorage.setItem('martingale_carousel19', 'false');
+    }
+
+    if (!bot_set_carousel19 && !bot_set_carousel19_cookie) {
+        setCookie('bot_set_carousel19', '2');
+        localStorage.setItem('bot_set_carousel19', '2');
+    }
+
+    if (!bot_set_store_carousel19 && !bot_set_store_carousel19_cookie) {
+        setCookie('bot_set_store_carousel19', '2');
+        localStorage.setItem('bot_set_store_carousel19', '2');
+    }
+
+    if (!bot_jump_carousel19 && !bot_jump_carousel19_cookie) {
+        setCookie('bot_jump_carousel19', 0);
+        localStorage.setItem('bot_jump_carousel19', 0);
+    }
+
+    // Carousel 20
+    if (!set_comp20_trade_carousel20 && !set_comp20_trade_carousel20_cookie) {
+        setCookie('set_vol_comp20_trade', 'vol_comp20_trade')
+        localStorage.setItem('set_vol_comp20_trade', 'vol_comp20_trade')
+    }
+
+    if (!martingale_set_carousel20 && !martingale_set_carousel20_cookie) {
+        setCookie('martingale_carousel20', 'false');
+        localStorage.setItem('martingale_carousel20', 'false');
+    }
+
+    if (!bot_set_carousel20 && !bot_set_carousel20_cookie) {
+        setCookie('bot_set_carousel20', '2');
+        localStorage.setItem('bot_set_carousel20', '2');
+    }
+
+    if (!bot_set_store_carousel20 && !bot_set_store_carousel20_cookie) {
+        setCookie('bot_set_store_carousel20', '2');
+        localStorage.setItem('bot_set_store_carousel20', '2');
+    }
+
+    if (!bot_jump_carousel20 && !bot_jump_carousel20_cookie) {
+        setCookie('bot_jump_carousel20', 0);
+        localStorage.setItem('bot_jump_carousel20', 0);
+    }
+
+    localStorage.setItem('bot_state', 'stop_bot');
+    setCookie('bot_state', 'stop_bot');
+
+    localStorage.setItem('bots_state', 'stop_bots');
+    setCookie('bots_state', 'stop_bots');
+
+    localStorage.setItem('bot_state_carousel2', 'stop_bot');
+    setCookie('bot_state_carousel2', 'stop_bot');
+
+    localStorage.setItem('bots_state_carousel2', 'stop_bots');
+    setCookie('bots_state_carousel2', 'stop_bots');
+
+    localStorage.setItem('bot_state_carousel3', 'stop_bot');
+    setCookie('bot_state_carousel3', 'stop_bot');
+
+    localStorage.setItem('bots_state_carousel3', 'stop_bots');
+    setCookie('bots_state_carousel3', 'stop_bots');
+
+    localStorage.setItem('bot_state_carousel4', 'stop_bot');
+    setCookie('bot_state_carousel4', 'stop_bot');
+
+    localStorage.setItem('bots_state_carousel4', 'stop_bots');
+    setCookie('bots_state_carousel4', 'stop_bots');
+
+    localStorage.setItem('bot_state_carousel5', 'stop_bot');
+    setCookie('bot_state_carousel5', 'stop_bot');
+
+    localStorage.setItem('bots_state_carousel5', 'stop_bots');
+    setCookie('bots_state_carousel5', 'stop_bots');
+
+    localStorage.setItem('bot_state_carousel6', 'stop_bot');
+    setCookie('bot_state_carousel6', 'stop_bot');
+
+    localStorage.setItem('bots_state_carousel6', 'stop_bots');
+    setCookie('bots_state_carousel6', 'stop_bots');
+
+    localStorage.setItem('bot_state_carousel7', 'stop_bot');
+    setCookie('bot_state_carousel7', 'stop_bot');
+
+    localStorage.setItem('bots_state_carousel7', 'stop_bots');
+    setCookie('bots_state_carousel7', 'stop_bots');
+
+    localStorage.setItem('bot_state_carousel8', 'stop_bot');
+    setCookie('bot_state_carousel8', 'stop_bot');
+
+    localStorage.setItem('bots_state_carousel8', 'stop_bots');
+    setCookie('bots_state_carousel8', 'stop_bots');
+
+    localStorage.setItem('bot_state_carousel9', 'stop_bot');
+    setCookie('bot_state_carousel9', 'stop_bot');
+
+    localStorage.setItem('bots_state_carousel9', 'stop_bots');
+    setCookie('bots_state_carousel9', 'stop_bots');
+
+    localStorage.setItem('bot_state_carousel10', 'stop_bot');
+    setCookie('bot_state_carousel10', 'stop_bot');
+
+    localStorage.setItem('bots_state_carousel10', 'stop_bots');
+    setCookie('bots_state_carousel10', 'stop_bots');
+
+    localStorage.setItem('bot_state_carousel11', 'stop_bot');
+    setCookie('bot_state_carousel11', 'stop_bot');
+
+    localStorage.setItem('bots_state_carousel11', 'stop_bots');
+    setCookie('bots_state_carousel11', 'stop_bots');
+
+    localStorage.setItem('bot_state_carousel12', 'stop_bot');
+    setCookie('bot_state_carousel12', 'stop_bot');
+
+    localStorage.setItem('bots_state_carousel12', 'stop_bots');
+    setCookie('bots_state_carousel12', 'stop_bots');
+
+    localStorage.setItem('bot_state_carousel13', 'stop_bot');
+    setCookie('bot_state_carousel13', 'stop_bot');
+
+    localStorage.setItem('bots_state_carousel13', 'stop_bots');
+    setCookie('bots_state_carousel13', 'stop_bots');
+
+    localStorage.setItem('bot_state_carousel14', 'stop_bot');
+    setCookie('bot_state_carousel14', 'stop_bot');
+
+    localStorage.setItem('bots_state_carousel14', 'stop_bots');
+    setCookie('bots_state_carousel14', 'stop_bots');
+
+    localStorage.setItem('bot_state_carousel15', 'stop_bot');
+    setCookie('bot_state_carousel15', 'stop_bot');
+
+    localStorage.setItem('bots_state_carousel15', 'stop_bots');
+    setCookie('bots_state_carousel15', 'stop_bots');
+
+    localStorage.setItem('bot_state_carousel16', 'stop_bot');
+    setCookie('bot_state_carousel16', 'stop_bot');
+
+    localStorage.setItem('bots_state_carousel16', 'stop_bots');
+    setCookie('bots_state_carousel16', 'stop_bots');
+
+    localStorage.setItem('bot_state_carousel17', 'stop_bot');
+    setCookie('bot_state_carousel17', 'stop_bot');
+
+    localStorage.setItem('bots_state_carousel17', 'stop_bots');
+    setCookie('bots_state_carousel17', 'stop_bots');
+
+    localStorage.setItem('bot_state_carousel18', 'stop_bot');
+    setCookie('bot_state_carousel18', 'stop_bot');
+
+    localStorage.setItem('bots_state_carousel18', 'stop_bots');
+    setCookie('bots_state_carousel18', 'stop_bots');
+
+    localStorage.setItem('bot_state_carousel19', 'stop_bot');
+    setCookie('bot_state_carousel19', 'stop_bot');
+
+    localStorage.setItem('bots_state_carousel19', 'stop_bots');
+    setCookie('bots_state_carousel19', 'stop_bots');
+
+    localStorage.setItem('bot_state_carousel20', 'stop_bot');
+    setCookie('bot_state_carousel20', 'stop_bot');
+
+    localStorage.setItem('bots_state_carousel20', 'stop_bots');
+    setCookie('bots_state_carousel20', 'stop_bots');
 
 
     if (symbol_vol_cookie) {
@@ -4010,11 +4571,971 @@ draggable.addEventListener('touchstart', startDrag);
 
 
 
-// let sidebar = document.getElementById('sidebar');
-// let bot_section = document.getElementById('bot_section');
-// let bot1 = document.getElementById('bot1');
-// let overlay2 = document.getElementById('overlay2');
-// let close_summary = document.getElementById('close_summary');
+
+
+
+
+
+
+
+
+
+
+
+
+let bot_settings = document.getElementById('bot_settings');
+let bot_settings2 = document.getElementById('bot_settings2');
+
+let bot_settings_2 = document.getElementById('bot_settings_2');
+let bot_settings2_2 = document.getElementById('bot_settings2_2');
+
+let bot_settings_3 = document.getElementById('bot_settings_3');
+let bot_settings2_3 = document.getElementById('bot_settings2_3');
+
+let bot_settings_4 = document.getElementById('bot_settings_4');
+let bot_settings2_4 = document.getElementById('bot_settings2_4');
+
+let bot_settings_5 = document.getElementById('bot_settings_5');
+let bot_settings2_5 = document.getElementById('bot_settings2_5');
+
+let bot_settings_6 = document.getElementById('bot_settings_6');
+let bot_settings2_6 = document.getElementById('bot_settings2_6');
+
+let bot_settings_7 = document.getElementById('bot_settings_7');
+let bot_settings2_7 = document.getElementById('bot_settings2_7');
+
+
+
+
+
+
+let bot_settings_carousel6 = document.getElementById('bot_settings_carousel6');
+let bot_settings2_carousel6 = document.getElementById('bot_settings2_carousel6');
+
+let bot_settings_2_carousel6 = document.getElementById('bot_settings_2_carousel6');
+let bot_settings2_2_carousel6 = document.getElementById('bot_settings2_2_carousel6');
+
+let bot_settings_3_carousel6 = document.getElementById('bot_settings_3_carousel6');
+let bot_settings2_3_carousel6 = document.getElementById('bot_settings2_3_carousel6');
+
+let bot_settings_4_carousel6 = document.getElementById('bot_settings_4_carousel6');
+let bot_settings2_4_carousel6 = document.getElementById('bot_settings2_4_carousel6');
+
+let bot_settings_5_carousel6 = document.getElementById('bot_settings_5_carousel6');
+let bot_settings2_5_carousel6 = document.getElementById('bot_settings2_5_carousel6');
+
+let bot_settings_6_carousel6 = document.getElementById('bot_settings_6_carousel6');
+let bot_settings2_6_carousel6 = document.getElementById('bot_settings2_6_carousel6');
+
+let bot_settings_7_carousel6 = document.getElementById('bot_settings_7_carousel6');
+let bot_settings2_7_carousel6 = document.getElementById('bot_settings2_7_carousel6');
+
+
+
+
+let bot_settings_carousel2 = document.getElementById('bot_settings_carousel2');
+let bot_settings2_carousel2 = document.getElementById('bot_settings2_carousel2');
+
+let bot_settings_2_carousel2 = document.getElementById('bot_settings_2_carousel2');
+let bot_settings2_2_carousel2 = document.getElementById('bot_settings2_2_carousel2');
+
+let bot_settings_3_carousel2 = document.getElementById('bot_settings_3_carousel2');
+let bot_settings2_3_carousel2 = document.getElementById('bot_settings2_3_carousel2')
+
+let bot_settings_4_carousel2 = document.getElementById('bot_settings_4_carousel2');
+let bot_settings2_4_carousel2 = document.getElementById('bot_settings2_4_carousel2');
+
+let bot_settings_5_carousel2 = document.getElementById('bot_settings_5_carousel2');
+let bot_settings2_5_carousel2 = document.getElementById('bot_settings2_5_carousel2');
+
+let bot_settings_6_carousel2 = document.getElementById('bot_settings_6_carousel2');
+let bot_settings2_6_carousel2 = document.getElementById('bot_settings2_6_carousel2');
+
+let bot_settings_7_carousel2 = document.getElementById('bot_settings_7_carousel2');
+let bot_settings2_7_carousel2 = document.getElementById('bot_settings2_7_carousel2');
+
+
+let bot_settings_carousel7 = document.getElementById('bot_settings_carousel7');
+let bot_settings2_carousel7 = document.getElementById('bot_settings2_carousel7');
+
+let bot_settings_2_carousel7 = document.getElementById('bot_settings_2_carousel7');
+let bot_settings2_2_carousel7 = document.getElementById('bot_settings2_2_carousel7');
+
+let bot_settings_3_carousel7 = document.getElementById('bot_settings_3_carousel7');
+let bot_settings2_3_carousel7 = document.getElementById('bot_settings2_3_carousel7')
+
+let bot_settings_4_carousel7 = document.getElementById('bot_settings_4_carousel7');
+let bot_settings2_4_carousel7 = document.getElementById('bot_settings2_4_carousel7');
+
+let bot_settings_5_carousel7 = document.getElementById('bot_settings_5_carousel7');
+let bot_settings2_5_carousel7 = document.getElementById('bot_settings2_5_carousel7');
+
+let bot_settings_6_carousel7 = document.getElementById('bot_settings_6_carousel7');
+let bot_settings2_6_carousel7 = document.getElementById('bot_settings2_6_carousel7');
+
+let bot_settings_7_carousel7 = document.getElementById('bot_settings_7_carousel7');
+let bot_settings2_7_carousel7 = document.getElementById('bot_settings2_7_carousel7');
+
+
+let bot_settings_carousel3 = document.getElementById('bot_settings_carousel3');
+let bot_settings2_carousel3 = document.getElementById('bot_settings2_carousel3');
+
+let bot_settings_2_carousel3 = document.getElementById('bot_settings_2_carousel3');
+let bot_settings2_2_carousel3 = document.getElementById('bot_settings2_2_carousel3');
+
+let bot_settings_3_carousel3 = document.getElementById('bot_settings_3_carousel3');
+let bot_settings2_3_carousel3 = document.getElementById('bot_settings2_3_carousel3')
+
+let bot_settings_4_carousel3 = document.getElementById('bot_settings_4_carousel3');
+let bot_settings2_4_carousel3 = document.getElementById('bot_settings2_4_carousel3');
+
+let bot_settings_5_carousel3 = document.getElementById('bot_settings_5_carousel3');
+let bot_settings2_5_carousel3 = document.getElementById('bot_settings2_5_carousel3');
+
+let bot_settings_6_carousel3 = document.getElementById('bot_settings_6_carousel3');
+let bot_settings2_6_carousel3 = document.getElementById('bot_settings2_6_carousel3');
+
+let bot_settings_7_carousel3 = document.getElementById('bot_settings_7_carousel3');
+let bot_settings2_7_carousel3 = document.getElementById('bot_settings2_7_carousel3');
+
+
+let bot_settings_carousel8 = document.getElementById('bot_settings_carousel8');
+let bot_settings2_carousel8 = document.getElementById('bot_settings2_carousel8');
+
+let bot_settings_2_carousel8 = document.getElementById('bot_settings_2_carousel8');
+let bot_settings2_2_carousel8 = document.getElementById('bot_settings2_2_carousel8');
+
+let bot_settings_3_carousel8 = document.getElementById('bot_settings_3_carousel8');
+let bot_settings2_3_carousel8 = document.getElementById('bot_settings2_3_carousel8')
+
+let bot_settings_4_carousel8 = document.getElementById('bot_settings_4_carousel8');
+let bot_settings2_4_carousel8 = document.getElementById('bot_settings2_4_carousel8');
+
+let bot_settings_5_carousel8 = document.getElementById('bot_settings_5_carousel8');
+let bot_settings2_5_carousel8 = document.getElementById('bot_settings2_5_carousel8');
+
+let bot_settings_6_carousel8 = document.getElementById('bot_settings_6_carousel8');
+let bot_settings2_6_carousel8 = document.getElementById('bot_settings2_6_carousel8');
+
+let bot_settings_7_carousel8 = document.getElementById('bot_settings_7_carousel8');
+let bot_settings2_7_carousel8 = document.getElementById('bot_settings2_7_carousel8');
+
+
+let bot_settings_carousel4 = document.getElementById('bot_settings_carousel4');
+let bot_settings2_carousel4 = document.getElementById('bot_settings2_carousel4');
+
+let bot_settings_2_carousel4 = document.getElementById('bot_settings_2_carousel4');
+let bot_settings2_2_carousel4 = document.getElementById('bot_settings2_2_carousel4');
+
+let bot_settings_3_carousel4 = document.getElementById('bot_settings_3_carousel4');
+let bot_settings2_3_carousel4 = document.getElementById('bot_settings2_3_carousel4')
+
+let bot_settings_4_carousel4 = document.getElementById('bot_settings_4_carousel4');
+let bot_settings2_4_carousel4 = document.getElementById('bot_settings2_4_carousel4');
+
+let bot_settings_5_carousel4 = document.getElementById('bot_settings_5_carousel4');
+let bot_settings2_5_carousel4 = document.getElementById('bot_settings2_5_carousel4');
+
+let bot_settings_6_carousel4 = document.getElementById('bot_settings_6_carousel4');
+let bot_settings2_6_carousel4 = document.getElementById('bot_settings2_6_carousel4');
+
+let bot_settings_7_carousel4 = document.getElementById('bot_settings_7_carousel4');
+let bot_settings2_7_carousel4 = document.getElementById('bot_settings2_7_carousel4');
+
+
+let bot_settings_carousel9 = document.getElementById('bot_settings_carousel9');
+let bot_settings2_carousel9 = document.getElementById('bot_settings2_carousel9');
+
+let bot_settings_2_carousel9 = document.getElementById('bot_settings_2_carousel9');
+let bot_settings2_2_carousel9 = document.getElementById('bot_settings2_2_carousel9');
+
+let bot_settings_3_carousel9 = document.getElementById('bot_settings_3_carousel9');
+let bot_settings2_3_carousel9 = document.getElementById('bot_settings2_3_carousel9')
+
+let bot_settings_4_carousel9 = document.getElementById('bot_settings_4_carousel9');
+let bot_settings2_4_carousel9 = document.getElementById('bot_settings2_4_carousel9');
+
+let bot_settings_5_carousel9 = document.getElementById('bot_settings_5_carousel9');
+let bot_settings2_5_carousel9 = document.getElementById('bot_settings2_5_carousel9');
+
+let bot_settings_6_carousel9 = document.getElementById('bot_settings_6_carousel9');
+let bot_settings2_6_carousel9 = document.getElementById('bot_settings2_6_carousel9');
+
+let bot_settings_7_carousel9 = document.getElementById('bot_settings_7_carousel9');
+let bot_settings2_7_carousel9 = document.getElementById('bot_settings2_7_carousel9');
+
+
+let bot_settings_carousel5 = document.getElementById('bot_settings_carousel5');
+let bot_settings2_carousel5 = document.getElementById('bot_settings2_carousel5');
+
+let bot_settings_2_carousel5 = document.getElementById('bot_settings_2_carousel5');
+let bot_settings2_2_carousel5 = document.getElementById('bot_settings2_2_carousel5');
+
+let bot_settings_3_carousel5 = document.getElementById('bot_settings_3_carousel5');
+let bot_settings2_3_carousel5 = document.getElementById('bot_settings2_3_carousel5')
+
+let bot_settings_4_carousel5 = document.getElementById('bot_settings_4_carousel5');
+let bot_settings2_4_carousel5 = document.getElementById('bot_settings2_4_carousel5');
+
+let bot_settings_5_carousel5 = document.getElementById('bot_settings_5_carousel5');
+let bot_settings2_5_carousel5 = document.getElementById('bot_settings2_5_carousel5');
+
+let bot_settings_6_carousel5 = document.getElementById('bot_settings_6_carousel5');
+let bot_settings2_6_carousel5 = document.getElementById('bot_settings2_6_carousel5');
+
+let bot_settings_7_carousel5 = document.getElementById('bot_settings_7_carousel5');
+let bot_settings2_7_carousel5 = document.getElementById('bot_settings2_7_carousel5');
+
+
+
+let bot_settings_carousel10 = document.getElementById('bot_settings_carousel10');
+let bot_settings2_carousel10 = document.getElementById('bot_settings2_carousel10');
+
+let bot_settings_2_carousel10 = document.getElementById('bot_settings_2_carousel10');
+let bot_settings2_2_carousel10 = document.getElementById('bot_settings2_2_carousel10');
+
+let bot_settings_3_carousel10 = document.getElementById('bot_settings_3_carousel10');
+let bot_settings2_3_carousel10 = document.getElementById('bot_settings2_3_carousel10')
+
+let bot_settings_4_carousel10 = document.getElementById('bot_settings_4_carousel10');
+let bot_settings2_4_carousel10 = document.getElementById('bot_settings2_4_carousel10');
+
+let bot_settings_5_carousel10 = document.getElementById('bot_settings_5_carousel10');
+let bot_settings2_5_carousel10 = document.getElementById('bot_settings2_5_carousel10');
+
+let bot_settings_6_carousel10 = document.getElementById('bot_settings_6_carousel10');
+let bot_settings2_6_carousel10 = document.getElementById('bot_settings2_6_carousel10');
+
+let bot_settings_7_carousel10 = document.getElementById('bot_settings_7_carousel10');
+let bot_settings2_7_carousel10 = document.getElementById('bot_settings2_7_carousel10');
+
+
+
+let bot_settings_set = null
+
+function set_bot_setting_icon() {
+    bot_settings.style.display = 'none'
+    bot_settings2.style.display = 'none'
+    bot_settings_2.style.display = 'none'
+    bot_settings2_2.style.display = 'none'
+    bot_settings_3.style.display = 'none'
+    bot_settings2_3.style.display = 'none'
+    bot_settings_4.style.display = 'none'
+    bot_settings2_4.style.display = 'none'
+    bot_settings_5.style.display = 'none'
+    bot_settings2_5.style.display = 'none'
+    bot_settings_6.style.display = 'none'
+    bot_settings2_6.style.display = 'none'
+    bot_settings_7.style.display = 'none'
+    bot_settings2_7.style.display = 'none'
+    bot_settings_carousel6.style.display = 'none'
+    bot_settings2_carousel6.style.display = 'none'
+    bot_settings_2_carousel6.style.display = 'none'
+    bot_settings2_2_carousel6.style.display = 'none'
+    bot_settings_3_carousel6.style.display = 'none'
+    bot_settings2_3_carousel6.style.display = 'none'
+    bot_settings_4_carousel6.style.display = 'none'
+    bot_settings2_4_carousel6.style.display = 'none'
+    bot_settings_5_carousel6.style.display = 'none'
+    bot_settings2_5_carousel6.style.display = 'none'
+    bot_settings_6_carousel6.style.display = 'none'
+    bot_settings2_6_carousel6.style.display = 'none'
+    bot_settings_7_carousel6.style.display = 'none'
+    bot_settings2_7_carousel6.style.display = 'none'
+    bot_settings_carousel2.style.display = 'none'
+    bot_settings2_carousel2.style.display = 'none'
+    bot_settings_2_carousel2.style.display = 'none'
+    bot_settings2_2_carousel2.style.display = 'none'
+    bot_settings_3_carousel2.style.display = 'none'
+    bot_settings2_3_carousel2.style.display = 'none'
+    bot_settings_4_carousel2.style.display = 'none'
+    bot_settings2_4_carousel2.style.display = 'none'
+    bot_settings_5_carousel2.style.display = 'none'
+    bot_settings2_5_carousel2.style.display = 'none'
+    bot_settings_6_carousel2.style.display = 'none'
+    bot_settings2_6_carousel2.style.display = 'none'
+    bot_settings_7_carousel2.style.display = 'none'
+    bot_settings2_7_carousel2.style.display = 'none'
+    bot_settings_carousel7.style.display = 'none'
+    bot_settings2_carousel7.style.display = 'none'
+    bot_settings_2_carousel7.style.display = 'none'
+    bot_settings2_2_carousel7.style.display = 'none'
+    bot_settings_3_carousel7.style.display = 'none'
+    bot_settings2_3_carousel7.style.display = 'none'
+    bot_settings_4_carousel7.style.display = 'none'
+    bot_settings2_4_carousel7.style.display = 'none'
+    bot_settings_5_carousel7.style.display = 'none'
+    bot_settings2_5_carousel7.style.display = 'none'
+    bot_settings_6_carousel7.style.display = 'none'
+    bot_settings2_6_carousel7.style.display = 'none'
+    bot_settings_7_carousel7.style.display = 'none'
+    bot_settings2_7_carousel7.style.display = 'none'
+    bot_settings_carousel3.style.display = 'none'
+    bot_settings2_carousel3.style.display = 'none'
+    bot_settings_2_carousel3.style.display = 'none'
+    bot_settings2_2_carousel3.style.display = 'none'
+    bot_settings_3_carousel3.style.display = 'none'
+    bot_settings2_3_carousel3.style.display = 'none'
+    bot_settings_4_carousel3.style.display = 'none'
+    bot_settings2_4_carousel3.style.display = 'none'
+    bot_settings_5_carousel3.style.display = 'none'
+    bot_settings2_5_carousel3.style.display = 'none'
+    bot_settings_6_carousel3.style.display = 'none'
+    bot_settings2_6_carousel3.style.display = 'none'
+    bot_settings_7_carousel3.style.display = 'none'
+    bot_settings2_7_carousel3.style.display = 'none'
+    bot_settings_carousel8.style.display = 'none'
+    bot_settings2_carousel8.style.display = 'none'
+    bot_settings_2_carousel8.style.display = 'none'
+    bot_settings2_2_carousel8.style.display = 'none'
+    bot_settings_3_carousel8.style.display = 'none'
+    bot_settings2_3_carousel8.style.display = 'none'
+    bot_settings_4_carousel8.style.display = 'none'
+    bot_settings2_4_carousel8.style.display = 'none'
+    bot_settings_5_carousel8.style.display = 'none'
+    bot_settings2_5_carousel8.style.display = 'none'
+    bot_settings_6_carousel8.style.display = 'none'
+    bot_settings2_6_carousel8.style.display = 'none'
+    bot_settings_7_carousel8.style.display = 'none'
+    bot_settings2_7_carousel8.style.display = 'none'
+    bot_settings_carousel4.style.display = 'none'
+    bot_settings2_carousel4.style.display = 'none'
+    bot_settings_2_carousel4.style.display = 'none'
+    bot_settings2_2_carousel4.style.display = 'none'
+    bot_settings_3_carousel4.style.display = 'none'
+    bot_settings2_3_carousel4.style.display = 'none'
+    bot_settings_4_carousel4.style.display = 'none'
+    bot_settings2_4_carousel4.style.display = 'none'
+    bot_settings_5_carousel4.style.display = 'none'
+    bot_settings2_5_carousel4.style.display = 'none'
+    bot_settings_6_carousel4.style.display = 'none'
+    bot_settings2_6_carousel4.style.display = 'none'
+    bot_settings_7_carousel4.style.display = 'none'
+    bot_settings2_7_carousel4.style.display = 'none'
+    bot_settings_carousel9.style.display = 'none'
+    bot_settings2_carousel9.style.display = 'none'
+    bot_settings_2_carousel9.style.display = 'none'
+    bot_settings2_2_carousel9.style.display = 'none'
+    bot_settings_3_carousel9.style.display = 'none'
+    bot_settings2_3_carousel9.style.display = 'none'
+    bot_settings_4_carousel9.style.display = 'none'
+    bot_settings2_4_carousel9.style.display = 'none'
+    bot_settings_5_carousel9.style.display = 'none'
+    bot_settings2_5_carousel9.style.display = 'none'
+    bot_settings_6_carousel9.style.display = 'none'
+    bot_settings2_6_carousel9.style.display = 'none'
+    bot_settings_7_carousel9.style.display = 'none'
+    bot_settings2_7_carousel9.style.display = 'none'
+    bot_settings_carousel5.style.display = 'none'
+    bot_settings2_carousel5.style.display = 'none'
+    bot_settings_2_carousel5.style.display = 'none'
+    bot_settings2_2_carousel5.style.display = 'none'
+    bot_settings_3_carousel5.style.display = 'none'
+    bot_settings2_3_carousel5.style.display = 'none'
+    bot_settings_4_carousel5.style.display = 'none'
+    bot_settings2_4_carousel5.style.display = 'none'
+    bot_settings_5_carousel5.style.display = 'none'
+    bot_settings2_5_carousel5.style.display = 'none'
+    bot_settings_6_carousel5.style.display = 'none'
+    bot_settings2_6_carousel5.style.display = 'none'
+    bot_settings_7_carousel5.style.display = 'none'
+    bot_settings2_7_carousel5.style.display = 'none'
+    bot_settings_carousel10.style.display = 'none'
+    bot_settings2_carousel10.style.display = 'none'
+    bot_settings_2_carousel10.style.display = 'none'
+    bot_settings2_2_carousel10.style.display = 'none'
+    bot_settings_3_carousel10.style.display = 'none'
+    bot_settings2_3_carousel10.style.display = 'none'
+    bot_settings_4_carousel10.style.display = 'none'
+    bot_settings2_4_carousel10.style.display = 'none'
+    bot_settings_5_carousel10.style.display = 'none'
+    bot_settings2_5_carousel10.style.display = 'none'
+    bot_settings_6_carousel10.style.display = 'none'
+    bot_settings2_6_carousel10.style.display = 'none'
+    bot_settings_7_carousel10.style.display = 'none'
+    bot_settings2_7_carousel10.style.display = 'none'
+
+    let bot_settings_cookie = getCookie('bot_settings_cookie')
+    let bot_settings_local_st = localStorage.getItem('bot_settings_local_st')
+
+    if (bot_settings_cookie == 'bot1' || bot_settings_local_st == 'bot1' || bot_settings_set == 'bot1') {
+        bot_settings.style.display = 'block'
+        bot_settings.style.color = ''
+        bot_settings.style.color = 'gold'
+        bot_settings.style.colorRadius = ''
+        bot_settings2.style.display = 'block'
+        bot_settings2.style.color = ''
+        bot_settings2.style.color = 'gold'
+        bot_settings2.style.colorRadius = ''
+        bot_settings_carousel6.style.display = 'block'
+        bot_settings_carousel6.style.color = ''
+        bot_settings_carousel6.style.color = 'gold'
+        bot_settings_carousel6.style.colorRadius = ''
+        bot_settings2_carousel6.style.display = 'block'
+        bot_settings2_carousel6.style.color = ''
+        bot_settings2_carousel6.style.color = 'gold'
+        bot_settings2_carousel6.style.colorRadius = ''
+        bot_settings_carousel2.style.display = 'block'
+        bot_settings_carousel2.style.color = ''
+        bot_settings_carousel2.style.color = 'gold'
+        bot_settings_carousel2.style.colorRadius = ''
+        bot_settings2_carousel2.style.display = 'block'
+        bot_settings2_carousel2.style.color = ''
+        bot_settings2_carousel2.style.color = 'gold'
+        bot_settings2_carousel2.style.colorRadius = ''
+        bot_settings_carousel7.style.display = 'block'
+        bot_settings_carousel7.style.color = ''
+        bot_settings_carousel7.style.color = 'gold'
+        bot_settings_carousel7.style.colorRadius = ''
+        bot_settings2_carousel7.style.display = 'block'
+        bot_settings2_carousel7.style.color = ''
+        bot_settings2_carousel7.style.color = 'gold'
+        bot_settings2_carousel7.style.colorRadius = ''
+        bot_settings_carousel3.style.display = 'block'
+        bot_settings_carousel3.style.color = ''
+        bot_settings_carousel3.style.color = 'gold'
+        bot_settings_carousel3.style.colorRadius = ''
+        bot_settings2_carousel3.style.display = 'block'
+        bot_settings2_carousel3.style.color = ''
+        bot_settings2_carousel3.style.color = 'gold'
+        bot_settings2_carousel3.style.colorRadius = ''
+        bot_settings_carousel8.style.display = 'block'
+        bot_settings_carousel8.style.color = ''
+        bot_settings_carousel8.style.color = 'gold'
+        bot_settings_carousel8.style.colorRadius = ''
+        bot_settings2_carousel8.style.display = 'block'
+        bot_settings2_carousel8.style.color = ''
+        bot_settings2_carousel8.style.color = 'gold'
+        bot_settings2_carousel8.style.colorRadius = ''
+        bot_settings_carousel4.style.display = 'block'
+        bot_settings_carousel4.style.color = ''
+        bot_settings_carousel4.style.color = 'gold'
+        bot_settings_carousel4.style.colorRadius = ''
+        bot_settings2_carousel4.style.display = 'block'
+        bot_settings2_carousel4.style.color = ''
+        bot_settings2_carousel4.style.color = 'gold'
+        bot_settings2_carousel4.style.colorRadius = ''
+        bot_settings_carousel9.style.display = 'block'
+        bot_settings_carousel9.style.color = ''
+        bot_settings_carousel9.style.color = 'gold'
+        bot_settings_carousel9.style.colorRadius = ''
+        bot_settings2_carousel9.style.display = 'block'
+        bot_settings2_carousel9.style.color = ''
+        bot_settings2_carousel9.style.color = 'gold'
+        bot_settings2_carousel9.style.colorRadius = ''
+        bot_settings_carousel5.style.display = 'block'
+        bot_settings_carousel5.style.color = ''
+        bot_settings_carousel5.style.color = 'gold'
+        bot_settings_carousel5.style.colorRadius = ''
+        bot_settings2_carousel5.style.display = 'block'
+        bot_settings2_carousel5.style.color = ''
+        bot_settings2_carousel5.style.color = 'gold'
+        bot_settings2_carousel5.style.colorRadius = ''
+        bot_settings_carousel10.style.display = 'block'
+        bot_settings_carousel10.style.color = ''
+        bot_settings_carousel10.style.color = 'gold'
+        bot_settings_carousel10.style.colorRadius = ''
+        bot_settings2_carousel10.style.display = 'block'
+        bot_settings2_carousel10.style.color = ''
+        bot_settings2_carousel10.style.color = 'gold'
+        bot_settings2_carousel10.style.colorRadius = ''
+    }
+    if (bot_settings_cookie == 'bot2' || bot_settings_local_st == 'bot2' || bot_settings_set == 'bot2') {
+        bot_settings_2.style.display = 'block'
+        bot_settings_2.style.color = ''
+        bot_settings_2.style.color = 'red'
+        bot_settings_2.style.colorRadius = ''
+        bot_settings2_2.style.display = 'block'
+        bot_settings2_2.style.color = ''
+        bot_settings2_2.style.color = 'red'
+        bot_settings2_2.style.colorRadius = ''
+        bot_settings_2_carousel6.style.display = 'block'
+        bot_settings_2_carousel6.style.color = ''
+        bot_settings_2_carousel6.style.color = 'red'
+        bot_settings_2_carousel6.style.colorRadius = ''
+        bot_settings2_2_carousel6.style.display = 'block'
+        bot_settings2_2_carousel6.style.color = ''
+        bot_settings2_2_carousel6.style.color = 'red'
+        bot_settings2_2_carousel6.style.colorRadius = ''
+        bot_settings_2_carousel2.style.display = 'block'
+        bot_settings_2_carousel2.style.color = ''
+        bot_settings_2_carousel2.style.color = 'red'
+        bot_settings_2_carousel2.style.colorRadius = ''
+        bot_settings2_2_carousel2.style.display = 'block'
+        bot_settings2_2_carousel2.style.color = ''
+        bot_settings2_2_carousel2.style.color = 'red'
+        bot_settings2_2_carousel2.style.colorRadius = ''
+        bot_settings_2_carousel7.style.display = 'block'
+        bot_settings_2_carousel7.style.color = ''
+        bot_settings_2_carousel7.style.color = 'red'
+        bot_settings_2_carousel7.style.colorRadius = ''
+        bot_settings2_2_carousel7.style.display = 'block'
+        bot_settings2_2_carousel7.style.color = ''
+        bot_settings2_2_carousel7.style.color = 'red'
+        bot_settings2_2_carousel7.style.colorRadius = ''
+        bot_settings_2_carousel3.style.display = 'block'
+        bot_settings_2_carousel3.style.color = ''
+        bot_settings_2_carousel3.style.color = 'red'
+        bot_settings_2_carousel3.style.colorRadius = ''
+        bot_settings2_2_carousel3.style.display = 'block'
+        bot_settings2_2_carousel3.style.color = ''
+        bot_settings2_2_carousel3.style.color = 'red'
+        bot_settings2_2_carousel3.style.colorRadius = ''
+        bot_settings_2_carousel8.style.display = 'block'
+        bot_settings_2_carousel8.style.color = ''
+        bot_settings_2_carousel8.style.color = 'red'
+        bot_settings_2_carousel8.style.colorRadius = ''
+        bot_settings2_2_carousel8.style.display = 'block'
+        bot_settings2_2_carousel8.style.color = ''
+        bot_settings2_2_carousel8.style.color = 'red'
+        bot_settings2_2_carousel8.style.colorRadius = ''
+        bot_settings_2_carousel4.style.display = 'block'
+        bot_settings_2_carousel4.style.color = ''
+        bot_settings_2_carousel4.style.color = 'red'
+        bot_settings_2_carousel4.style.colorRadius = ''
+        bot_settings2_2_carousel4.style.display = 'block'
+        bot_settings2_2_carousel4.style.color = ''
+        bot_settings2_2_carousel4.style.color = 'red'
+        bot_settings2_2_carousel4.style.colorRadius = ''
+        bot_settings_2_carousel9.style.display = 'block'
+        bot_settings_2_carousel9.style.color = ''
+        bot_settings_2_carousel9.style.color = 'red'
+        bot_settings_2_carousel9.style.colorRadius = ''
+        bot_settings2_2_carousel9.style.display = 'block'
+        bot_settings2_2_carousel9.style.color = ''
+        bot_settings2_2_carousel9.style.color = 'red'
+        bot_settings2_2_carousel9.style.colorRadius = ''
+        bot_settings_2_carousel5.style.display = 'block'
+        bot_settings_2_carousel5.style.color = ''
+        bot_settings_2_carousel5.style.color = 'red'
+        bot_settings_2_carousel5.style.colorRadius = ''
+        bot_settings2_2_carousel5.style.display = 'block'
+        bot_settings2_2_carousel5.style.color = ''
+        bot_settings2_2_carousel5.style.color = 'red'
+        bot_settings2_2_carousel5.style.colorRadius = ''
+        bot_settings_2_carousel10.style.display = 'block'
+        bot_settings_2_carousel10.style.color = ''
+        bot_settings_2_carousel10.style.color = 'red'
+        bot_settings_2_carousel10.style.colorRadius = ''
+        bot_settings2_2_carousel10.style.display = 'block'
+        bot_settings2_2_carousel10.style.color = ''
+        bot_settings2_2_carousel10.style.color = 'red'
+        bot_settings2_2_carousel10.style.colorRadius = ''
+    }
+    if (bot_settings_cookie == 'bot3' || bot_settings_local_st == 'bot3' || bot_settings_set == 'bot3') {
+        bot_settings_3.style.display = 'block'
+        bot_settings_3.style.color = ''
+        bot_settings_3.style.color = 'yellow'
+        bot_settings_3.style.colorRadius = ''
+        bot_settings2_3.style.display = 'block'
+        bot_settings2_3.style.color = ''
+        bot_settings2_3.style.color = 'yellow'
+        bot_settings2_3.style.colorRadius = ''
+        bot_settings_3_carousel6.style.display = 'block'
+        bot_settings_3_carousel6.style.color = ''
+        bot_settings_3_carousel6.style.color = 'yellow'
+        bot_settings_3_carousel6.style.colorRadius = ''
+        bot_settings2_3_carousel6.style.display = 'block'
+        bot_settings2_3_carousel6.style.color = ''
+        bot_settings2_3_carousel6.style.color = 'yellow'
+        bot_settings2_3_carousel6.style.colorRadius = ''
+        bot_settings_3_carousel2.style.display = 'block'
+        bot_settings_3_carousel2.style.color = ''
+        bot_settings_3_carousel2.style.color = 'yellow'
+        bot_settings_3_carousel2.style.colorRadius = ''
+        bot_settings2_3_carousel2.style.display = 'block'
+        bot_settings2_3_carousel2.style.color = ''
+        bot_settings2_3_carousel2.style.color = 'yellow'
+        bot_settings2_3_carousel2.style.colorRadius = ''
+        bot_settings_3_carousel7.style.display = 'block'
+        bot_settings_3_carousel7.style.color = ''
+        bot_settings_3_carousel7.style.color = 'yellow'
+        bot_settings_3_carousel7.style.colorRadius = ''
+        bot_settings2_3_carousel7.style.display = 'block'
+        bot_settings2_3_carousel7.style.color = ''
+        bot_settings2_3_carousel7.style.color = 'yellow'
+        bot_settings2_3_carousel7.style.colorRadius = ''
+        bot_settings_3_carousel3.style.display = 'block'
+        bot_settings_3_carousel3.style.color = ''
+        bot_settings_3_carousel3.style.color = 'yellow'
+        bot_settings_3_carousel3.style.colorRadius = ''
+        bot_settings2_3_carousel3.style.display = 'block'
+        bot_settings2_3_carousel3.style.color = ''
+        bot_settings2_3_carousel3.style.color = 'yellow'
+        bot_settings2_3_carousel3.style.colorRadius = ''
+        bot_settings_3_carousel8.style.display = 'block'
+        bot_settings_3_carousel8.style.color = ''
+        bot_settings_3_carousel8.style.color = 'yellow'
+        bot_settings_3_carousel8.style.colorRadius = ''
+        bot_settings2_3_carousel8.style.display = 'block'
+        bot_settings2_3_carousel8.style.color = ''
+        bot_settings2_3_carousel8.style.color = 'yellow'
+        bot_settings2_3_carousel8.style.colorRadius = ''
+        bot_settings_3_carousel4.style.display = 'block'
+        bot_settings_3_carousel4.style.color = ''
+        bot_settings_3_carousel4.style.color = 'yellow'
+        bot_settings_3_carousel4.style.colorRadius = ''
+        bot_settings2_3_carousel4.style.display = 'block'
+        bot_settings2_3_carousel4.style.color = ''
+        bot_settings2_3_carousel4.style.color = 'yellow'
+        bot_settings2_3_carousel4.style.colorRadius = ''
+        bot_settings_3_carousel9.style.display = 'block'
+        bot_settings_3_carousel9.style.color = ''
+        bot_settings_3_carousel9.style.color = 'yellow'
+        bot_settings_3_carousel9.style.colorRadius = ''
+        bot_settings2_3_carousel9.style.display = 'block'
+        bot_settings2_3_carousel9.style.color = ''
+        bot_settings2_3_carousel9.style.color = 'yellow'
+        bot_settings2_3_carousel9.style.colorRadius = ''
+        bot_settings_3_carousel5.style.display = 'block'
+        bot_settings_3_carousel5.style.color = ''
+        bot_settings_3_carousel5.style.color = 'yellow'
+        bot_settings_3_carousel5.style.colorRadius = ''
+        bot_settings2_3_carousel5.style.display = 'block'
+        bot_settings2_3_carousel5.style.color = ''
+        bot_settings2_3_carousel5.style.color = 'yellow'
+        bot_settings2_3_carousel5.style.colorRadius = ''
+        bot_settings_3_carousel10.style.display = 'block'
+        bot_settings_3_carousel10.style.color = ''
+        bot_settings_3_carousel10.style.color = 'yellow'
+        bot_settings_3_carousel10.style.colorRadius = ''
+        bot_settings2_3_carousel10.style.display = 'block'
+        bot_settings2_3_carousel10.style.color = ''
+        bot_settings2_3_carousel10.style.color = 'yellow'
+        bot_settings2_3_carousel10.style.colorRadius = ''
+    }
+    if (bot_settings_cookie == 'bot4' || bot_settings_local_st == 'bot4' || bot_settings_set == 'bot4') {
+        bot_settings_4.style.display = 'block'
+        bot_settings_4.style.color = ''
+        bot_settings_4.style.color = 'cyan'
+        bot_settings_4.style.colorRadius = ''
+        bot_settings2_4.style.display = 'block'
+        bot_settings2_4.style.color = ''
+        bot_settings2_4.style.color = 'cyan'
+        bot_settings2_4.style.colorRadius = ''
+        bot_settings_4_carousel6.style.display = 'block'
+        bot_settings_4_carousel6.style.color = ''
+        bot_settings_4_carousel6.style.color = 'cyan'
+        bot_settings_4_carousel6.style.colorRadius = ''
+        bot_settings2_4_carousel6.style.display = 'block'
+        bot_settings2_4_carousel6.style.color = ''
+        bot_settings2_4_carousel6.style.color = 'cyan'
+        bot_settings2_4_carousel6.style.colorRadius = ''
+        bot_settings_4_carousel2.style.display = 'block'
+        bot_settings_4_carousel2.style.color = ''
+        bot_settings_4_carousel2.style.color = 'cyan'
+        bot_settings_4_carousel2.style.colorRadius = ''
+        bot_settings2_4_carousel2.style.display = 'block'
+        bot_settings2_4_carousel2.style.color = ''
+        bot_settings2_4_carousel2.style.color = 'cyan'
+        bot_settings2_4_carousel2.style.colorRadius = ''
+        bot_settings_4_carousel7.style.display = 'block'
+        bot_settings_4_carousel7.style.color = ''
+        bot_settings_4_carousel7.style.color = 'cyan'
+        bot_settings_4_carousel7.style.colorRadius = ''
+        bot_settings2_4_carousel7.style.display = 'block'
+        bot_settings2_4_carousel7.style.color = ''
+        bot_settings2_4_carousel7.style.color = 'cyan'
+        bot_settings2_4_carousel7.style.colorRadius = ''
+        bot_settings_4_carousel3.style.display = 'block'
+        bot_settings_4_carousel3.style.color = ''
+        bot_settings_4_carousel3.style.color = 'cyan'
+        bot_settings_4_carousel3.style.colorRadius = ''
+        bot_settings2_4_carousel3.style.display = 'block'
+        bot_settings2_4_carousel3.style.color = ''
+        bot_settings2_4_carousel3.style.color = 'cyan'
+        bot_settings2_4_carousel3.style.colorRadius = ''
+        bot_settings_4_carousel8.style.display = 'block'
+        bot_settings_4_carousel8.style.color = ''
+        bot_settings_4_carousel8.style.color = 'cyan'
+        bot_settings_4_carousel8.style.colorRadius = ''
+        bot_settings2_4_carousel8.style.display = 'block'
+        bot_settings2_4_carousel8.style.color = ''
+        bot_settings2_4_carousel8.style.color = 'cyan'
+        bot_settings2_4_carousel8.style.colorRadius = ''
+        bot_settings_4_carousel4.style.display = 'block'
+        bot_settings_4_carousel4.style.color = ''
+        bot_settings_4_carousel4.style.color = 'cyan'
+        bot_settings_4_carousel4.style.colorRadius = ''
+        bot_settings2_4_carousel4.style.display = 'block'
+        bot_settings2_4_carousel4.style.color = ''
+        bot_settings2_4_carousel4.style.color = 'cyan'
+        bot_settings2_4_carousel4.style.colorRadius = ''
+        bot_settings_4_carousel9.style.display = 'block'
+        bot_settings_4_carousel9.style.color = ''
+        bot_settings_4_carousel9.style.color = 'cyan'
+        bot_settings_4_carousel9.style.colorRadius = ''
+        bot_settings2_4_carousel9.style.display = 'block'
+        bot_settings2_4_carousel9.style.color = ''
+        bot_settings2_4_carousel9.style.color = 'cyan'
+        bot_settings2_4_carousel9.style.colorRadius = ''
+        bot_settings_4_carousel5.style.display = 'block'
+        bot_settings_4_carousel5.style.color = ''
+        bot_settings_4_carousel5.style.color = 'cyan'
+        bot_settings_4_carousel5.style.colorRadius = ''
+        bot_settings2_4_carousel5.style.display = 'block'
+        bot_settings2_4_carousel5.style.color = ''
+        bot_settings2_4_carousel5.style.color = 'cyan'
+        bot_settings2_4_carousel5.style.colorRadius = ''
+        bot_settings_4_carousel10.style.display = 'block'
+        bot_settings_4_carousel10.style.color = ''
+        bot_settings_4_carousel10.style.color = 'cyan'
+        bot_settings_4_carousel10.style.colorRadius = ''
+        bot_settings2_4_carousel10.style.display = 'block'
+        bot_settings2_4_carousel10.style.color = ''
+        bot_settings2_4_carousel10.style.color = 'cyan'
+        bot_settings2_4_carousel10.style.colorRadius = ''
+    }
+    if (bot_settings_cookie == 'bot5' || bot_settings_local_st == 'bot5' || bot_settings_set == 'bot5') {
+        bot_settings_5.style.display = 'block'
+        bot_settings_5.style.color = ''
+        bot_settings_5.style.color = 'lemon'
+        bot_settings_5.style.colorRadius = ''
+        bot_settings2_5.style.display = 'block'
+        bot_settings2_5.style.color = ''
+        bot_settings2_5.style.color = 'lemon'
+        bot_settings2_5.style.colorRadius = ''
+        bot_settings_5_carousel6.style.display = 'block'
+        bot_settings_5_carousel6.style.color = ''
+        bot_settings_5_carousel6.style.color = 'lemon'
+        bot_settings_5_carousel6.style.colorRadius = ''
+        bot_settings2_5_carousel6.style.display = 'block'
+        bot_settings2_5_carousel6.style.color = ''
+        bot_settings2_5_carousel6.style.color = 'lemon'
+        bot_settings2_5_carousel6.style.colorRadius = ''
+        bot_settings_5_carousel2.style.display = 'block'
+        bot_settings_5_carousel2.style.color = ''
+        bot_settings_5_carousel2.style.color = 'lemon'
+        bot_settings_5_carousel2.style.colorRadius = ''
+        bot_settings2_5_carousel2.style.display = 'block'
+        bot_settings2_5_carousel2.style.color = ''
+        bot_settings2_5_carousel2.style.color = 'lemon'
+        bot_settings2_5_carousel2.style.colorRadius = ''
+        bot_settings_5_carousel7.style.display = 'block'
+        bot_settings_5_carousel7.style.color = ''
+        bot_settings_5_carousel7.style.color = 'lemon'
+        bot_settings_5_carousel7.style.colorRadius = ''
+        bot_settings2_5_carousel7.style.display = 'block'
+        bot_settings2_5_carousel7.style.color = ''
+        bot_settings2_5_carousel7.style.color = 'lemon'
+        bot_settings2_5_carousel7.style.colorRadius = ''
+        bot_settings_5_carousel3.style.display = 'block'
+        bot_settings_5_carousel3.style.color = ''
+        bot_settings_5_carousel3.style.color = 'lemon'
+        bot_settings_5_carousel3.style.colorRadius = ''
+        bot_settings2_5_carousel3.style.display = 'block'
+        bot_settings2_5_carousel3.style.color = ''
+        bot_settings2_5_carousel3.style.color = 'lemon'
+        bot_settings2_5_carousel3.style.colorRadius = ''
+        bot_settings_5_carousel8.style.display = 'block'
+        bot_settings_5_carousel8.style.color = ''
+        bot_settings_5_carousel8.style.color = 'lemon'
+        bot_settings_5_carousel8.style.colorRadius = ''
+        bot_settings2_5_carousel8.style.display = 'block'
+        bot_settings2_5_carousel8.style.color = ''
+        bot_settings2_5_carousel8.style.color = 'lemon'
+        bot_settings2_5_carousel8.style.colorRadius = ''
+        bot_settings_5_carousel4.style.display = 'block'
+        bot_settings_5_carousel4.style.color = ''
+        bot_settings_5_carousel4.style.color = 'lemon'
+        bot_settings_5_carousel4.style.colorRadius = ''
+        bot_settings2_5_carousel4.style.display = 'block'
+        bot_settings2_5_carousel4.style.color = ''
+        bot_settings2_5_carousel4.style.color = 'lemon'
+        bot_settings2_5_carousel4.style.colorRadius = ''
+        bot_settings_5_carousel9.style.display = 'block'
+        bot_settings_5_carousel9.style.color = ''
+        bot_settings_5_carousel9.style.color = 'lemon'
+        bot_settings_5_carousel9.style.colorRadius = ''
+        bot_settings2_5_carousel9.style.display = 'block'
+        bot_settings2_5_carousel9.style.color = ''
+        bot_settings2_5_carousel9.style.color = 'lemon'
+        bot_settings2_5_carousel9.style.colorRadius = ''
+        bot_settings_5_carousel5.style.display = 'block'
+        bot_settings_5_carousel5.style.color = ''
+        bot_settings_5_carousel5.style.color = 'lemon'
+        bot_settings_5_carousel5.style.colorRadius = ''
+        bot_settings2_5_carousel5.style.display = 'block'
+        bot_settings2_5_carousel5.style.color = ''
+        bot_settings2_5_carousel5.style.color = 'lemon'
+        bot_settings2_5_carousel5.style.colorRadius = ''
+        bot_settings_5_carousel10.style.display = 'block'
+        bot_settings_5_carousel10.style.color = ''
+        bot_settings_5_carousel10.style.color = 'lemon'
+        bot_settings_5_carousel10.style.colorRadius = ''
+        bot_settings2_5_carousel10.style.display = 'block'
+        bot_settings2_5_carousel10.style.color = ''
+        bot_settings2_5_carousel10.style.color = 'lemon'
+        bot_settings2_5_carousel10.style.colorRadius = ''
+    }
+    if (bot_settings_cookie == 'bot6' || bot_settings_local_st == 'bot6' || bot_settings_set == 'bot6') {
+        bot_settings_6.style.display = 'block'
+        bot_settings_6.style.color = ''
+        bot_settings_6.style.color = 'pink'
+        bot_settings_6.style.colorRadius = ''
+        bot_settings2_6.style.display = 'block'
+        bot_settings2_6.style.color = ''
+        bot_settings2_6.style.color = 'pink'
+        bot_settings2_6.style.colorRadius = ''
+        bot_settings_6_carousel6.style.display = 'block'
+        bot_settings_6_carousel6.style.color = ''
+        bot_settings_6_carousel6.style.color = 'pink'
+        bot_settings_6_carousel6.style.colorRadius = ''
+        bot_settings2_6_carousel6.style.display = 'block'
+        bot_settings2_6_carousel6.style.color = ''
+        bot_settings2_6_carousel6.style.color = 'pink'
+        bot_settings2_6_carousel6.style.colorRadius = ''
+        bot_settings_6_carousel2.style.display = 'block'
+        bot_settings_6_carousel2.style.color = ''
+        bot_settings_6_carousel2.style.color = 'pink'
+        bot_settings_6_carousel2.style.colorRadius = ''
+        bot_settings2_6_carousel2.style.display = 'block'
+        bot_settings2_6_carousel2.style.color = ''
+        bot_settings2_6_carousel2.style.color = 'pink'
+        bot_settings2_6_carousel2.style.colorRadius = ''
+        bot_settings_6_carousel7.style.display = 'block'
+        bot_settings_6_carousel7.style.color = ''
+        bot_settings_6_carousel7.style.color = 'pink'
+        bot_settings_6_carousel7.style.colorRadius = ''
+        bot_settings2_6_carousel7.style.display = 'block'
+        bot_settings2_6_carousel7.style.color = ''
+        bot_settings2_6_carousel7.style.color = 'pink'
+        bot_settings2_6_carousel7.style.colorRadius = ''
+        bot_settings_6_carousel3.style.display = 'block'
+        bot_settings_6_carousel3.style.color = ''
+        bot_settings_6_carousel3.style.color = 'pink'
+        bot_settings_6_carousel3.style.colorRadius = ''
+        bot_settings2_6_carousel3.style.display = 'block'
+        bot_settings2_6_carousel3.style.color = ''
+        bot_settings2_6_carousel3.style.color = 'pink'
+        bot_settings2_6_carousel3.style.colorRadius = ''
+        bot_settings_6_carousel8.style.display = 'block'
+        bot_settings_6_carousel8.style.color = ''
+        bot_settings_6_carousel8.style.color = 'pink'
+        bot_settings_6_carousel8.style.colorRadius = ''
+        bot_settings2_6_carousel8.style.display = 'block'
+        bot_settings2_6_carousel8.style.color = ''
+        bot_settings2_6_carousel8.style.color = 'pink'
+        bot_settings2_6_carousel8.style.colorRadius = ''
+        bot_settings_6_carousel4.style.display = 'block'
+        bot_settings_6_carousel4.style.color = ''
+        bot_settings_6_carousel4.style.color = 'pink'
+        bot_settings_6_carousel4.style.colorRadius = ''
+        bot_settings2_6_carousel4.style.display = 'block'
+        bot_settings2_6_carousel4.style.color = ''
+        bot_settings2_6_carousel4.style.color = 'pink'
+        bot_settings2_6_carousel4.style.colorRadius = ''
+        bot_settings_6_carousel9.style.display = 'block'
+        bot_settings_6_carousel9.style.color = ''
+        bot_settings_6_carousel9.style.color = 'pink'
+        bot_settings_6_carousel9.style.colorRadius = ''
+        bot_settings2_6_carousel9.style.display = 'block'
+        bot_settings2_6_carousel9.style.color = ''
+        bot_settings2_6_carousel9.style.color = 'pink'
+        bot_settings2_6_carousel9.style.colorRadius = ''
+        bot_settings_6_carousel5.style.display = 'block'
+        bot_settings_6_carousel5.style.color = ''
+        bot_settings_6_carousel5.style.color = 'pink'
+        bot_settings_6_carousel5.style.colorRadius = ''
+        bot_settings2_6_carousel5.style.display = 'block'
+        bot_settings2_6_carousel5.style.color = ''
+        bot_settings2_6_carousel5.style.color = 'pink'
+        bot_settings2_6_carousel5.style.colorRadius = ''
+        bot_settings_6_carousel10.style.display = 'block'
+        bot_settings_6_carousel10.style.color = ''
+        bot_settings_6_carousel10.style.color = 'pink'
+        bot_settings_6_carousel10.style.colorRadius = ''
+        bot_settings2_6_carousel10.style.display = 'block'
+        bot_settings2_6_carousel10.style.color = ''
+        bot_settings2_6_carousel10.style.color = 'pink'
+        bot_settings2_6_carousel10.style.colorRadius = ''
+    }
+    if (bot_settings_cookie == 'bot7' || bot_settings_local_st == 'bot7' || bot_settings_set == 'bot7') {
+        bot_settings_7.style.display = 'block'
+        bot_settings_7.style.color = ''
+        bot_settings_7.style.color = 'silver'
+        bot_settings_7.style.colorRadius = ''
+        bot_settings2_7.style.display = 'block'
+        bot_settings2_7.style.color = ''
+        bot_settings2_7.style.color = 'silver'
+        bot_settings2_7.style.colorRadius = ''
+        bot_settings_7_carousel6.style.display = 'block'
+        bot_settings_7_carousel6.style.color = ''
+        bot_settings_7_carousel6.style.color = 'silver'
+        bot_settings_7_carousel6.style.colorRadius = ''
+        bot_settings2_7_carousel6.style.display = 'block'
+        bot_settings2_7_carousel6.style.color = ''
+        bot_settings2_7_carousel6.style.color = 'silver'
+        bot_settings2_7_carousel6.style.colorRadius = ''
+        bot_settings_7_carousel2.style.display = 'block'
+        bot_settings_7_carousel2.style.color = ''
+        bot_settings_7_carousel2.style.color = 'silver'
+        bot_settings_7_carousel2.style.colorRadius = ''
+        bot_settings2_7_carousel2.style.display = 'block'
+        bot_settings2_7_carousel2.style.color = ''
+        bot_settings2_7_carousel2.style.color = 'silver'
+        bot_settings2_7_carousel2.style.colorRadius = ''
+        bot_settings_7_carousel7.style.display = 'block'
+        bot_settings_7_carousel7.style.color = ''
+        bot_settings_7_carousel7.style.color = 'silver'
+        bot_settings_7_carousel7.style.colorRadius = ''
+        bot_settings2_7_carousel7.style.display = 'block'
+        bot_settings2_7_carousel7.style.color = ''
+        bot_settings2_7_carousel7.style.color = 'silver'
+        bot_settings2_7_carousel7.style.colorRadius = ''
+        bot_settings_7_carousel3.style.display = 'block'
+        bot_settings_7_carousel3.style.color = ''
+        bot_settings_7_carousel3.style.color = 'silver'
+        bot_settings_7_carousel3.style.colorRadius = ''
+        bot_settings2_7_carousel3.style.display = 'block'
+        bot_settings2_7_carousel3.style.color = ''
+        bot_settings2_7_carousel3.style.color = 'silver'
+        bot_settings2_7_carousel3.style.colorRadius = ''
+        bot_settings_7_carousel8.style.display = 'block'
+        bot_settings_7_carousel8.style.color = ''
+        bot_settings_7_carousel8.style.color = 'silver'
+        bot_settings_7_carousel8.style.colorRadius = ''
+        bot_settings2_7_carousel8.style.display = 'block'
+        bot_settings2_7_carousel8.style.color = ''
+        bot_settings2_7_carousel8.style.color = 'silver'
+        bot_settings2_7_carousel8.style.colorRadius = ''
+        bot_settings_7_carousel4.style.display = 'block'
+        bot_settings_7_carousel4.style.color = ''
+        bot_settings_7_carousel4.style.color = 'silver'
+        bot_settings_7_carousel4.style.colorRadius = ''
+        bot_settings2_7_carousel4.style.display = 'block'
+        bot_settings2_7_carousel4.style.color = ''
+        bot_settings2_7_carousel4.style.color = 'silver'
+        bot_settings2_7_carousel4.style.colorRadius = ''
+        bot_settings_7_carousel9.style.display = 'block'
+        bot_settings_7_carousel9.style.color = ''
+        bot_settings_7_carousel9.style.color = 'silver'
+        bot_settings_7_carousel9.style.colorRadius = ''
+        bot_settings2_7_carousel9.style.display = 'block'
+        bot_settings2_7_carousel9.style.color = ''
+        bot_settings2_7_carousel9.style.color = 'silver'
+        bot_settings2_7_carousel9.style.colorRadius = ''
+        bot_settings_7_carousel5.style.display = 'block'
+        bot_settings_7_carousel5.style.color = ''
+        bot_settings_7_carousel5.style.color = 'silver'
+        bot_settings_7_carousel5.style.colorRadius = ''
+        bot_settings2_7_carousel5.style.display = 'block'
+        bot_settings2_7_carousel5.style.color = ''
+        bot_settings2_7_carousel5.style.color = 'silver'
+        bot_settings2_7_carousel5.style.colorRadius = ''
+        bot_settings_7_carousel10.style.display = 'block'
+        bot_settings_7_carousel10.style.color = ''
+        bot_settings_7_carousel10.style.color = 'silver'
+        bot_settings_7_carousel10.style.colorRadius = ''
+        bot_settings2_7_carousel10.style.display = 'block'
+        bot_settings2_7_carousel10.style.color = ''
+        bot_settings2_7_carousel10.style.color = 'silver'
+        bot_settings2_7_carousel10.style.colorRadius = ''
+    }
+}
+
+set_bot_setting_icon()
+
 
 let toggleDropdown = document.getElementById('toggle_dropdown');
 let dropdownContent = document.getElementById('dropdown_content');
@@ -4027,24 +5548,71 @@ toggleDropdown.addEventListener('click', function (event) {
     dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
 });
 
-if (bot_section && bot1) {
-    bot1.addEventListener('click', (event) => {
-        let bot_section = document.getElementById('bot_section');
-        event.stopPropagation(); // Prevent the event from propagating to the document
-        if (bot_section.style.display === 'none') {
-            console.log('bot section block')
-            bot_section.style.display = 'block';
-            if (sidebar.style.left === '0px' && overlay2.style.display === 'block') {
-                sidebar.style.left = '-250px';
-                overlay2.style.display = 'none';
+const bots = document.querySelectorAll('a[class^="bot"]');
+
+if (bot_section && bots.length > 0) {
+    bots.forEach(bot => {
+        bot.addEventListener('click', function (event) {
+            event.stopPropagation(); // Prevent the event from propagating to the document
+            const botTextContent = this.textContent.trim();
+            console.log(botTextContent); // Perform functionality based on textContent
+
+            // Perform functionality based on the text content
+            if (botTextContent === 'Trading Bot 1') {
+                bot_settings_set = 'bot1'
+                setCookie('bot_settings_cookie', 'bot1')
+                localStorage.setItem('bot_settings_local_st', 'bot1')
+                set_bot_setting_icon()
+            } else if (botTextContent === 'Trading Bot 2') {
+                bot_settings_set = 'bot2'
+                setCookie('bot_settings_cookie', 'bot2')
+                localStorage.setItem('bot_settings_local_st', 'bot2')
+                set_bot_setting_icon()
+            } else if (botTextContent === 'Trading Bot 3') {
+                bot_settings_set = 'bot3'
+                setCookie('bot_settings_cookie', 'bot3')
+                localStorage.setItem('bot_settings_local_st', 'bot3')
+                set_bot_setting_icon()
+            } else if (botTextContent === 'Trading Bot 4') {
+                bot_settings_set = 'bot4'
+                setCookie('bot_settings_cookie', 'bot4')
+                localStorage.setItem('bot_settings_local_st', 'bot4')
+                set_bot_setting_icon()
+            } else if (botTextContent === 'Trading Bot 5') {
+                bot_settings_set = 'bot5'
+                setCookie('bot_settings_cookie', 'bot5')
+                localStorage.setItem('bot_settings_local_st', 'bot5')
+                set_bot_setting_icon()
+            } else if (botTextContent === 'Trading Bot 6') {
+                bot_settings_set = 'bot6'
+                setCookie('bot_settings_cookie', 'bot6')
+                localStorage.setItem('bot_settings_local_st', 'bot6')
+                set_bot_setting_icon()
+            } else if (botTextContent === 'Trading Bot 7') {
+                bot_settings_set = 'bot7'
+                setCookie('bot_settings_cookie', 'bot7')
+                localStorage.setItem('bot_settings_local_st', 'bot7')
+                set_bot_setting_icon()
+            } else {
+                console.log('Unknown bot');
+                // Add your functionality for unknown bots here
             }
-        } else {
-            bot_section.style.display = 'none';
-        }
+
+            if (bot_section.style.display === 'none') {
+                console.log('bot section block');
+                bot_section.style.display = 'block';
+                if (sidebar.style.left === '0px' && overlay2.style.display === 'block') {
+                    sidebar.style.left = '-250px';
+                    overlay2.style.display = 'none';
+                }
+            } else {
+                bot_section.style.display = 'none';
+            }
+        });
     });
 
     close_summary_all.forEach(close => {
-        close.addEventListener('click', (event) => {
+        close.addEventListener('click', function (event) {
             event.stopPropagation();
             if (bot_section.style.display === 'block') {
                 bot_section.style.display = 'none';
@@ -4104,29 +5672,656 @@ if ((sumary_for_bots && overlay4)) {
 
 
 function set_all_bot_running() {
-    document.getElementById('bot_state').textContent = 'Bot is running';
-    document.getElementById('bot_state_carousel2').textContent = 'Bot is running';
-    document.getElementById('bot_state_carousel3').textContent = 'Bot is running';
-    document.getElementById('bot_state_carousel4').textContent = 'Bot is running';
-    document.getElementById('bot_state_carousel5').textContent = 'Bot is running';
-    document.getElementById('bot_state_carousel6').textContent = 'Bot is running';
-    document.getElementById('bot_state_carousel7').textContent = 'Bot is running';
-    document.getElementById('bot_state_carousel8').textContent = 'Bot is running';
-    document.getElementById('bot_state_carousel9').textContent = 'Bot is running';
-    document.getElementById('bot_state_carousel10').textContent = 'Bot is running';
+    // Set bot states for carousels in localStorage and cookies
+    localStorage.setItem('bot_state', 'start_bot');
+    setCookie('bot_state', 'start_bot');
+
+    localStorage.setItem('bots_state', 'start_bots');
+    setCookie('bots_state', 'start_bots');
+
+    localStorage.setItem('bot_state_carousel2', 'start_bot');
+    setCookie('bot_state_carousel2', 'start_bot');
+
+    localStorage.setItem('bots_state_carousel2', 'start_bots');
+    setCookie('bots_state_carousel2', 'start_bots');
+
+    localStorage.setItem('bot_state_carousel3', 'start_bot');
+    setCookie('bot_state_carousel3', 'start_bot');
+
+    localStorage.setItem('bots_state_carousel3', 'start_bots');
+    setCookie('bots_state_carousel3', 'start_bots');
+
+    localStorage.setItem('bot_state_carousel4', 'start_bot');
+    setCookie('bot_state_carousel4', 'start_bot');
+
+    localStorage.setItem('bots_state_carousel4', 'start_bots');
+    setCookie('bots_state_carousel4', 'start_bots');
+
+    localStorage.setItem('bot_state_carousel5', 'start_bot');
+    setCookie('bot_state_carousel5', 'start_bot');
+
+    localStorage.setItem('bots_state_carousel5', 'start_bots');
+    setCookie('bots_state_carousel5', 'start_bots');
+
+    localStorage.setItem('bot_state_carousel6', 'start_bot');
+    setCookie('bot_state_carousel6', 'start_bot');
+
+    localStorage.setItem('bots_state_carousel6', 'start_bots');
+    setCookie('bots_state_carousel6', 'start_bots');
+
+    localStorage.setItem('bot_state_carousel7', 'start_bot');
+    setCookie('bot_state_carousel7', 'start_bot');
+
+    localStorage.setItem('bots_state_carousel7', 'start_bots');
+    setCookie('bots_state_carousel7', 'start_bots');
+
+    localStorage.setItem('bot_state_carousel8', 'start_bot');
+    setCookie('bot_state_carousel8', 'start_bot');
+
+    localStorage.setItem('bots_state_carousel8', 'start_bots');
+    setCookie('bots_state_carousel8', 'start_bots');
+
+    localStorage.setItem('bot_state_carousel9', 'start_bot');
+    setCookie('bot_state_carousel9', 'start_bot');
+
+    localStorage.setItem('bots_state_carousel9', 'start_bots');
+    setCookie('bots_state_carousel9', 'start_bots');
+
+    localStorage.setItem('bot_state_carousel10', 'start_bot');
+    setCookie('bot_state_carousel10', 'start_bot');
+
+    localStorage.setItem('bots_state_carousel10', 'start_bots');
+    setCookie('bots_state_carousel10', 'start_bots');
+
+    localStorage.setItem('bot_state_carousel11', 'start_bot');
+    setCookie('bot_state_carousel11', 'start_bot');
+
+    localStorage.setItem('bots_state_carousel11', 'start_bots');
+    setCookie('bots_state_carousel11', 'start_bots');
+
+    localStorage.setItem('bot_state_carousel12', 'start_bot');
+    setCookie('bot_state_carousel12', 'start_bot');
+
+    localStorage.setItem('bots_state_carousel12', 'start_bots');
+    setCookie('bots_state_carousel12', 'start_bots');
+
+    localStorage.setItem('bot_state_carousel13', 'start_bot');
+    setCookie('bot_state_carousel13', 'start_bot');
+
+    localStorage.setItem('bots_state_carousel13', 'start_bots');
+    setCookie('bots_state_carousel13', 'start_bots');
+
+    localStorage.setItem('bot_state_carousel14', 'start_bot');
+    setCookie('bot_state_carousel14', 'start_bot');
+
+    localStorage.setItem('bots_state_carousel14', 'start_bots');
+    setCookie('bots_state_carousel14', 'start_bots');
+
+    localStorage.setItem('bot_state_carousel15', 'start_bot');
+    setCookie('bot_state_carousel15', 'start_bot');
+
+    localStorage.setItem('bots_state_carousel15', 'start_bots');
+    setCookie('bots_state_carousel15', 'start_bots');
+
+    localStorage.setItem('bot_state_carousel16', 'start_bot');
+    setCookie('bot_state_carousel16', 'start_bot');
+
+    localStorage.setItem('bots_state_carousel16', 'start_bots');
+    setCookie('bots_state_carousel16', 'start_bots');
+
+    localStorage.setItem('bot_state_carousel17', 'start_bot');
+    setCookie('bot_state_carousel17', 'start_bot');
+
+    localStorage.setItem('bots_state_carousel17', 'start_bots');
+    setCookie('bots_state_carousel17', 'start_bots');
+
+    localStorage.setItem('bot_state_carousel18', 'start_bot');
+    setCookie('bot_state_carousel18', 'start_bot');
+
+    localStorage.setItem('bots_state_carousel18', 'start_bots');
+    setCookie('bots_state_carousel18', 'start_bots');
+
+    localStorage.setItem('bot_state_carousel19', 'start_bot');
+    setCookie('bot_state_carousel19', 'start_bot');
+
+    localStorage.setItem('bots_state_carousel19', 'start_bots');
+    setCookie('bots_state_carousel19', 'start_bots');
+
+    localStorage.setItem('bot_state_carousel20', 'start_bot');
+    setCookie('bot_state_carousel20', 'start_bot');
+
+    localStorage.setItem('bots_state_carousel20', 'start_bots');
+    setCookie('bots_state_carousel20', 'start_bots');
+
+    // Retrieve bot state for carousel items from localStorage and cookies
+    // Get bot states for carousels from localStorage and cookies
+    let bot_state = localStorage.getItem('bot_state');
+    let bot_state_cookie = getCookie('bot_state');
+
+    let bots_state = localStorage.getItem('bots_state');
+    let bots_state_cookie = getCookie('bots_state');
+
+    let bot_state_carousel2 = localStorage.getItem('bot_state_carousel2');
+    let bot_state_carousel2_cookie = getCookie('bot_state_carousel2');
+
+    let bots_state_carousel2 = localStorage.getItem('bots_state_carousel2');
+    let bots_state_carousel2_cookie = getCookie('bots_state_carousel2');
+
+    let bot_state_carousel3 = localStorage.getItem('bot_state_carousel3');
+    let bot_state_carousel3_cookie = getCookie('bot_state_carousel3');
+
+    let bots_state_carousel3 = localStorage.getItem('bots_state_carousel3');
+    let bots_state_carousel3_cookie = getCookie('bots_state_carousel3');
+
+    let bot_state_carousel4 = localStorage.getItem('bot_state_carousel4');
+    let bot_state_carousel4_cookie = getCookie('bot_state_carousel4');
+
+    let bots_state_carousel4 = localStorage.getItem('bots_state_carousel4');
+    let bots_state_carousel4_cookie = getCookie('bots_state_carousel4');
+
+    let bot_state_carousel5 = localStorage.getItem('bot_state_carousel5');
+    let bot_state_carousel5_cookie = getCookie('bot_state_carousel5');
+
+    let bots_state_carousel5 = localStorage.getItem('bots_state_carousel5');
+    let bots_state_carousel5_cookie = getCookie('bots_state_carousel5');
+
+    let bot_state_carousel6 = localStorage.getItem('bot_state_carousel6');
+    let bot_state_carousel6_cookie = getCookie('bot_state_carousel6');
+
+    let bots_state_carousel6 = localStorage.getItem('bots_state_carousel6');
+    let bots_state_carousel6_cookie = getCookie('bots_state_carousel6');
+
+    let bot_state_carousel7 = localStorage.getItem('bot_state_carousel7');
+    let bot_state_carousel7_cookie = getCookie('bot_state_carousel7');
+
+    let bots_state_carousel7 = localStorage.getItem('bots_state_carousel7');
+    let bots_state_carousel7_cookie = getCookie('bots_state_carousel7');
+
+    let bot_state_carousel8 = localStorage.getItem('bot_state_carousel8');
+    let bot_state_carousel8_cookie = getCookie('bot_state_carousel8');
+
+    let bots_state_carousel8 = localStorage.getItem('bots_state_carousel8');
+    let bots_state_carousel8_cookie = getCookie('bots_state_carousel8');
+
+    let bot_state_carousel9 = localStorage.getItem('bot_state_carousel9');
+    let bot_state_carousel9_cookie = getCookie('bot_state_carousel9');
+
+    let bots_state_carousel9 = localStorage.getItem('bots_state_carousel9');
+    let bots_state_carousel9_cookie = getCookie('bots_state_carousel9');
+
+    let bot_state_carousel10 = localStorage.getItem('bot_state_carousel10');
+    let bot_state_carousel10_cookie = getCookie('bot_state_carousel10');
+
+    let bots_state_carousel10 = localStorage.getItem('bots_state_carousel10');
+    let bots_state_carousel10_cookie = getCookie('bots_state_carousel10');
+
+    let bot_state_carousel11 = localStorage.getItem('bot_state_carousel11');
+    let bot_state_carousel11_cookie = getCookie('bot_state_carousel11');
+
+    let bots_state_carousel11 = localStorage.getItem('bots_state_carousel11');
+    let bots_state_carousel11_cookie = getCookie('bots_state_carousel11');
+
+    let bot_state_carousel12 = localStorage.getItem('bot_state_carousel12');
+    let bot_state_carousel12_cookie = getCookie('bot_state_carousel12');
+
+    let bots_state_carousel12 = localStorage.getItem('bots_state_carousel12');
+    let bots_state_carousel12_cookie = getCookie('bots_state_carousel12');
+
+    let bot_state_carousel13 = localStorage.getItem('bot_state_carousel13');
+    let bot_state_carousel13_cookie = getCookie('bot_state_carousel13');
+
+    let bots_state_carousel13 = localStorage.getItem('bots_state_carousel13');
+    let bots_state_carousel13_cookie = getCookie('bots_state_carousel13');
+
+    let bot_state_carousel14 = localStorage.getItem('bot_state_carousel14');
+    let bot_state_carousel14_cookie = getCookie('bot_state_carousel14');
+
+    let bots_state_carousel14 = localStorage.getItem('bots_state_carousel14');
+    let bots_state_carousel14_cookie = getCookie('bots_state_carousel14');
+
+    let bot_state_carousel15 = localStorage.getItem('bot_state_carousel15');
+    let bot_state_carousel15_cookie = getCookie('bot_state_carousel15');
+
+    let bots_state_carousel15 = localStorage.getItem('bots_state_carousel15');
+    let bots_state_carousel15_cookie = getCookie('bots_state_carousel15');
+
+    let bot_state_carousel16 = localStorage.getItem('bot_state_carousel16');
+    let bot_state_carousel16_cookie = getCookie('bot_state_carousel16');
+
+    let bots_state_carousel16 = localStorage.getItem('bots_state_carousel16');
+    let bots_state_carousel16_cookie = getCookie('bots_state_carousel16');
+
+    let bot_state_carousel17 = localStorage.getItem('bot_state_carousel17');
+    let bot_state_carousel17_cookie = getCookie('bot_state_carousel17');
+
+    let bots_state_carousel17 = localStorage.getItem('bots_state_carousel17');
+    let bots_state_carousel17_cookie = getCookie('bots_state_carousel17');
+
+    let bot_state_carousel18 = localStorage.getItem('bot_state_carousel18');
+    let bot_state_carousel18_cookie = getCookie('bot_state_carousel18');
+
+    let bots_state_carousel18 = localStorage.getItem('bots_state_carousel18');
+    let bots_state_carousel18_cookie = getCookie('bots_state_carousel18');
+
+    let bot_state_carousel19 = localStorage.getItem('bot_state_carousel19');
+    let bot_state_carousel19_cookie = getCookie('bot_state_carousel19');
+
+    let bots_state_carousel19 = localStorage.getItem('bots_state_carousel19');
+    let bots_state_carousel19_cookie = getCookie('bots_state_carousel19');
+
+    let bot_state_carousel20 = localStorage.getItem('bot_state_carousel20');
+    let bot_state_carousel20_cookie = getCookie('bot_state_carousel20');
+
+    let bots_state_carousel20 = localStorage.getItem('bots_state_carousel20');
+    let bots_state_carousel20_cookie = getCookie('bots_state_carousel20');
+
+    if ((bot_state == "start_bot" || bot_state_cookie == 'start_bot') && (bots_state == 'start_bots' || bots_state_cookie == 'start_bots')) {
+        document.getElementById('bot_state').textContent = 'Bot is running';
+    }
+    
+    if ((bot_state_carousel2 == 'start_bot' || bot_state_carousel2_cookie == 'start_bot') && (bots_state_carousel2 == 'start_bots' || bots_state_carousel2_cookie == 'start_bots')) {
+        document.getElementById('bot_state_carousel2').textContent = 'Bot is running';
+    }
+    
+    if ((bot_state_carousel3 == 'start_bot' || bot_state_carousel3_cookie == 'start_bot') && (bots_state_carousel3 == 'start_bots' || bots_state_carousel3_cookie == 'start_bots')) {
+        document.getElementById('bot_state_carousel3').textContent = 'Bot is running';
+    }
+    
+    if ((bot_state_carousel4 == 'start_bot' || bot_state_carousel4_cookie == 'start_bot') && (bots_state_carousel4 == 'start_bots' || bots_state_carousel4_cookie == 'start_bots')) {
+        document.getElementById('bot_state_carousel4').textContent = 'Bot is running';
+    }
+    
+    if ((bot_state_carousel5 == 'start_bot' || bot_state_carousel5_cookie == 'start_bot') && (bots_state_carousel5 == 'start_bots' || bots_state_carousel5_cookie == 'start_bots')) {
+        document.getElementById('bot_state_carousel5').textContent = 'Bot is running';
+    }
+    
+    if ((bot_state_carousel6 == 'start_bot' || bot_state_carousel6_cookie == 'start_bot') && (bots_state_carousel6 == 'start_bots' || bots_state_carousel6_cookie == 'start_bots')) {
+        document.getElementById('bot_state_carousel6').textContent = 'Bot is running';
+    }
+    
+    if ((bot_state_carousel7 == 'start_bot' || bot_state_carousel7_cookie == 'start_bot') && (bots_state_carousel7 == 'start_bots' || bots_state_carousel7_cookie == 'start_bots')) {
+        document.getElementById('bot_state_carousel7').textContent = 'Bot is running';
+    }
+    
+    if ((bot_state_carousel8 == 'start_bot' || bot_state_carousel8_cookie == 'start_bot') && (bots_state_carousel8 == 'start_bots' || bots_state_carousel8_cookie == 'start_bots')) {
+        document.getElementById('bot_state_carousel8').textContent = 'Bot is running';
+    }
+    
+    if ((bot_state_carousel9 == 'start_bot' || bot_state_carousel9_cookie == 'start_bot') && (bots_state_carousel9 == 'start_bots' || bots_state_carousel9_cookie == 'start_bots')) {
+        document.getElementById('bot_state_carousel9').textContent = 'Bot is running';
+    }
+    
+    if ((bot_state_carousel10 == 'start_bot' || bot_state_carousel10_cookie == 'start_bot') && (bots_state_carousel10 == 'start_bots' || bots_state_carousel10_cookie == 'start_bots')) {
+        document.getElementById('bot_state_carousel10').textContent = 'Bot is running';
+    }
+    
+    if ((bot_state_carousel11 == 'start_bot' || bot_state_carousel11_cookie == 'start_bot') && (bots_state_carousel11 == 'start_bots' || bots_state_carousel11_cookie == 'start_bots')) {
+        document.getElementById('bot_state_carousel11').textContent = 'Bot is running';
+    }
+    
+    if ((bot_state_carousel12 == 'start_bot' || bot_state_carousel12_cookie == 'start_bot') && (bots_state_carousel12 == 'start_bots' || bots_state_carousel12_cookie == 'start_bots')) {
+        document.getElementById('bot_state_carousel12').textContent = 'Bot is running';
+    }
+    
+    if ((bot_state_carousel13 == 'start_bot' || bot_state_carousel13_cookie == 'start_bot') && (bots_state_carousel13 == 'start_bots' || bots_state_carousel13_cookie == 'start_bots')) {
+        document.getElementById('bot_state_carousel13').textContent = 'Bot is running';
+    }
+    
+    if ((bot_state_carousel14 == 'start_bot' || bot_state_carousel14_cookie == 'start_bot') && (bots_state_carousel14 == 'start_bots' || bots_state_carousel14_cookie == 'start_bots')) {
+        document.getElementById('bot_state_carousel14').textContent = 'Bot is running';
+    }
+    
+    if ((bot_state_carousel15 == 'start_bot' || bot_state_carousel15_cookie == 'start_bot') && (bots_state_carousel15 == 'start_bots' || bots_state_carousel15_cookie == 'start_bots')) {
+        document.getElementById('bot_state_carousel15').textContent = 'Bot is running';
+    }
+    
+    if ((bot_state_carousel16 == 'start_bot' || bot_state_carousel16_cookie == 'start_bot') && (bots_state_carousel16 == 'start_bots' || bots_state_carousel16_cookie == 'start_bots')) {
+        document.getElementById('bot_state_carousel16').textContent = 'Bot is running';
+    }
+    
+    if ((bot_state_carousel17 == 'start_bot' || bot_state_carousel17_cookie == 'start_bot') && (bots_state_carousel17 == 'start_bots' || bots_state_carousel17_cookie == 'start_bots')) {
+        document.getElementById('bot_state_carousel17').textContent = 'Bot is running';
+    }
+    
+    if ((bot_state_carousel18 == 'start_bot' || bot_state_carousel18_cookie == 'start_bot') && (bots_state_carousel18 == 'start_bots' || bots_state_carousel18_cookie == 'start_bots')) {
+        document.getElementById('bot_state_carousel18').textContent = 'Bot is running';
+    }
+    
+    if ((bot_state_carousel19 == 'start_bot' || bot_state_carousel19_cookie == 'start_bot') && (bots_state_carousel19 == 'start_bots' || bots_state_carousel19_cookie == 'start_bots')) {
+        document.getElementById('bot_state_carousel19').textContent = 'Bot is running';
+    }
+    
+    if ((bot_state_carousel20 == 'start_bot' || bot_state_carousel20_cookie == 'start_bot') && (bots_state_carousel20 == 'start_bots' || bots_state_carousel20_cookie == 'start_bots')) {
+        document.getElementById('bot_state_carousel20').textContent = 'Bot is running';
+    }
+    
+   
+    
 }
 
+
+
 function set_all_bot_stop() {
-    document.getElementById('bot_state').textContent = 'Bot has stopped';
-    document.getElementById('bot_state_carousel2').textContent = 'Bot has stopped';
-    document.getElementById('bot_state_carousel3').textContent = 'Bot has stopped';
-    document.getElementById('bot_state_carousel4').textContent = 'Bot has stopped';
-    document.getElementById('bot_state_carousel5').textContent = 'Bot has stopped';
-    document.getElementById('bot_state_carousel6').textContent = 'Bot has stopped';
-    document.getElementById('bot_state_carousel7').textContent = 'Bot has stopped';
-    document.getElementById('bot_state_carousel8').textContent = 'Bot has stopped';
-    document.getElementById('bot_state_carousel9').textContent = 'Bot has stopped';
-    document.getElementById('bot_state_carousel10').textContent = 'Bot has stopped';
+    // Set bot states for carousels in localStorage and cookies
+    localStorage.setItem('bot_state', 'stop_bot');
+    setCookie('bot_state', 'stop_bot');
+
+    localStorage.setItem('bots_state', 'stop_bots');
+    setCookie('bots_state', 'stop_bots');
+
+    localStorage.setItem('bot_state_carousel2', 'stop_bot');
+    setCookie('bot_state_carousel2', 'stop_bot');
+
+    localStorage.setItem('bots_state_carousel2', 'stop_bots');
+    setCookie('bots_state_carousel2', 'stop_bots');
+
+    localStorage.setItem('bot_state_carousel3', 'stop_bot');
+    setCookie('bot_state_carousel3', 'stop_bot');
+
+    localStorage.setItem('bots_state_carousel3', 'stop_bots');
+    setCookie('bots_state_carousel3', 'stop_bots');
+
+    localStorage.setItem('bot_state_carousel4', 'stop_bot');
+    setCookie('bot_state_carousel4', 'stop_bot');
+
+    localStorage.setItem('bots_state_carousel4', 'stop_bots');
+    setCookie('bots_state_carousel4', 'stop_bots');
+
+    localStorage.setItem('bot_state_carousel5', 'stop_bot');
+    setCookie('bot_state_carousel5', 'stop_bot');
+
+    localStorage.setItem('bots_state_carousel5', 'stop_bots');
+    setCookie('bots_state_carousel5', 'stop_bots');
+
+    localStorage.setItem('bot_state_carousel6', 'stop_bot');
+    setCookie('bot_state_carousel6', 'stop_bot');
+
+    localStorage.setItem('bots_state_carousel6', 'stop_bots');
+    setCookie('bots_state_carousel6', 'stop_bots');
+
+    localStorage.setItem('bot_state_carousel7', 'stop_bot');
+    setCookie('bot_state_carousel7', 'stop_bot');
+
+    localStorage.setItem('bots_state_carousel7', 'stop_bots');
+    setCookie('bots_state_carousel7', 'stop_bots');
+
+    localStorage.setItem('bot_state_carousel8', 'stop_bot');
+    setCookie('bot_state_carousel8', 'stop_bot');
+
+    localStorage.setItem('bots_state_carousel8', 'stop_bots');
+    setCookie('bots_state_carousel8', 'stop_bots');
+
+    localStorage.setItem('bot_state_carousel9', 'stop_bot');
+    setCookie('bot_state_carousel9', 'stop_bot');
+
+    localStorage.setItem('bots_state_carousel9', 'stop_bots');
+    setCookie('bots_state_carousel9', 'stop_bots');
+
+    localStorage.setItem('bot_state_carousel10', 'stop_bot');
+    setCookie('bot_state_carousel10', 'stop_bot');
+
+    localStorage.setItem('bots_state_carousel10', 'stop_bots');
+    setCookie('bots_state_carousel10', 'stop_bots');
+
+    localStorage.setItem('bot_state_carousel11', 'stop_bot');
+    setCookie('bot_state_carousel11', 'stop_bot');
+
+    localStorage.setItem('bots_state_carousel11', 'stop_bots');
+    setCookie('bots_state_carousel11', 'stop_bots');
+
+    localStorage.setItem('bot_state_carousel12', 'stop_bot');
+    setCookie('bot_state_carousel12', 'stop_bot');
+
+    localStorage.setItem('bots_state_carousel12', 'stop_bots');
+    setCookie('bots_state_carousel12', 'stop_bots');
+
+    localStorage.setItem('bot_state_carousel13', 'stop_bot');
+    setCookie('bot_state_carousel13', 'stop_bot');
+
+    localStorage.setItem('bots_state_carousel13', 'stop_bots');
+    setCookie('bots_state_carousel13', 'stop_bots');
+
+    localStorage.setItem('bot_state_carousel14', 'stop_bot');
+    setCookie('bot_state_carousel14', 'stop_bot');
+
+    localStorage.setItem('bots_state_carousel14', 'stop_bots');
+    setCookie('bots_state_carousel14', 'stop_bots');
+
+    localStorage.setItem('bot_state_carousel15', 'stop_bot');
+    setCookie('bot_state_carousel15', 'stop_bot');
+
+    localStorage.setItem('bots_state_carousel15', 'stop_bots');
+    setCookie('bots_state_carousel15', 'stop_bots');
+
+    localStorage.setItem('bot_state_carousel16', 'stop_bot');
+    setCookie('bot_state_carousel16', 'stop_bot');
+
+    localStorage.setItem('bots_state_carousel16', 'stop_bots');
+    setCookie('bots_state_carousel16', 'stop_bots');
+
+    localStorage.setItem('bot_state_carousel17', 'stop_bot');
+    setCookie('bot_state_carousel17', 'stop_bot');
+
+    localStorage.setItem('bots_state_carousel17', 'stop_bots');
+    setCookie('bots_state_carousel17', 'stop_bots');
+
+    localStorage.setItem('bot_state_carousel18', 'stop_bot');
+    setCookie('bot_state_carousel18', 'stop_bot');
+
+    localStorage.setItem('bots_state_carousel18', 'stop_bots');
+    setCookie('bots_state_carousel18', 'stop_bots');
+
+    localStorage.setItem('bot_state_carousel19', 'stop_bot');
+    setCookie('bot_state_carousel19', 'stop_bot');
+
+    localStorage.setItem('bots_state_carousel19', 'stop_bots');
+    setCookie('bots_state_carousel19', 'stop_bots');
+
+    localStorage.setItem('bot_state_carousel20', 'stop_bot');
+    setCookie('bot_state_carousel20', 'stop_bot');
+
+    localStorage.setItem('bots_state_carousel20', 'stop_bots');
+    setCookie('bots_state_carousel20', 'stop_bots');
+
+    let bot_state = localStorage.getItem('bot_state');
+    let bot_state_cookie = getCookie('bot_state');
+
+    let bots_state = localStorage.getItem('bots_state');
+    let bots_state_cookie = getCookie('bots_state');
+
+    let bot_state_carousel2 = localStorage.getItem('bot_state_carousel2');
+    let bot_state_carousel2_cookie = getCookie('bot_state_carousel2');
+
+    let bots_state_carousel2 = localStorage.getItem('bots_state_carousel2');
+    let bots_state_carousel2_cookie = getCookie('bots_state_carousel2');
+
+    let bot_state_carousel3 = localStorage.getItem('bot_state_carousel3');
+    let bot_state_carousel3_cookie = getCookie('bot_state_carousel3');
+
+    let bots_state_carousel3 = localStorage.getItem('bots_state_carousel3');
+    let bots_state_carousel3_cookie = getCookie('bots_state_carousel3');
+
+    let bot_state_carousel4 = localStorage.getItem('bot_state_carousel4');
+    let bot_state_carousel4_cookie = getCookie('bot_state_carousel4');
+
+    let bots_state_carousel4 = localStorage.getItem('bots_state_carousel4');
+    let bots_state_carousel4_cookie = getCookie('bots_state_carousel4');
+
+    let bot_state_carousel5 = localStorage.getItem('bot_state_carousel5');
+    let bot_state_carousel5_cookie = getCookie('bot_state_carousel5');
+
+    let bots_state_carousel5 = localStorage.getItem('bots_state_carousel5');
+    let bots_state_carousel5_cookie = getCookie('bots_state_carousel5');
+
+    let bot_state_carousel6 = localStorage.getItem('bot_state_carousel6');
+    let bot_state_carousel6_cookie = getCookie('bot_state_carousel6');
+
+    let bots_state_carousel6 = localStorage.getItem('bots_state_carousel6');
+    let bots_state_carousel6_cookie = getCookie('bots_state_carousel6');
+
+    let bot_state_carousel7 = localStorage.getItem('bot_state_carousel7');
+    let bot_state_carousel7_cookie = getCookie('bot_state_carousel7');
+
+    let bots_state_carousel7 = localStorage.getItem('bots_state_carousel7');
+    let bots_state_carousel7_cookie = getCookie('bots_state_carousel7');
+
+    let bot_state_carousel8 = localStorage.getItem('bot_state_carousel8');
+    let bot_state_carousel8_cookie = getCookie('bot_state_carousel8');
+
+    let bots_state_carousel8 = localStorage.getItem('bots_state_carousel8');
+    let bots_state_carousel8_cookie = getCookie('bots_state_carousel8');
+
+    let bot_state_carousel9 = localStorage.getItem('bot_state_carousel9');
+    let bot_state_carousel9_cookie = getCookie('bot_state_carousel9');
+
+    let bots_state_carousel9 = localStorage.getItem('bots_state_carousel9');
+    let bots_state_carousel9_cookie = getCookie('bots_state_carousel9');
+
+    let bot_state_carousel10 = localStorage.getItem('bot_state_carousel10');
+    let bot_state_carousel10_cookie = getCookie('bot_state_carousel10');
+
+    let bots_state_carousel10 = localStorage.getItem('bots_state_carousel10');
+    let bots_state_carousel10_cookie = getCookie('bots_state_carousel10');
+
+    let bot_state_carousel11 = localStorage.getItem('bot_state_carousel11');
+    let bot_state_carousel11_cookie = getCookie('bot_state_carousel11');
+
+    let bots_state_carousel11 = localStorage.getItem('bots_state_carousel11');
+    let bots_state_carousel11_cookie = getCookie('bots_state_carousel11');
+
+    let bot_state_carousel12 = localStorage.getItem('bot_state_carousel12');
+    let bot_state_carousel12_cookie = getCookie('bot_state_carousel12');
+
+    let bots_state_carousel12 = localStorage.getItem('bots_state_carousel12');
+    let bots_state_carousel12_cookie = getCookie('bots_state_carousel12');
+
+    let bot_state_carousel13 = localStorage.getItem('bot_state_carousel13');
+    let bot_state_carousel13_cookie = getCookie('bot_state_carousel13');
+
+    let bots_state_carousel13 = localStorage.getItem('bots_state_carousel13');
+    let bots_state_carousel13_cookie = getCookie('bots_state_carousel13');
+
+    let bot_state_carousel14 = localStorage.getItem('bot_state_carousel14');
+    let bot_state_carousel14_cookie = getCookie('bot_state_carousel14');
+
+    let bots_state_carousel14 = localStorage.getItem('bots_state_carousel14');
+    let bots_state_carousel14_cookie = getCookie('bots_state_carousel14');
+
+    let bot_state_carousel15 = localStorage.getItem('bot_state_carousel15');
+    let bot_state_carousel15_cookie = getCookie('bot_state_carousel15');
+
+    let bots_state_carousel15 = localStorage.getItem('bots_state_carousel15');
+    let bots_state_carousel15_cookie = getCookie('bots_state_carousel15');
+
+    let bot_state_carousel16 = localStorage.getItem('bot_state_carousel16');
+    let bot_state_carousel16_cookie = getCookie('bot_state_carousel16');
+
+    let bots_state_carousel16 = localStorage.getItem('bots_state_carousel16');
+    let bots_state_carousel16_cookie = getCookie('bots_state_carousel16');
+
+    let bot_state_carousel17 = localStorage.getItem('bot_state_carousel17');
+    let bot_state_carousel17_cookie = getCookie('bot_state_carousel17');
+
+    let bots_state_carousel17 = localStorage.getItem('bots_state_carousel17');
+    let bots_state_carousel17_cookie = getCookie('bots_state_carousel17');
+
+    let bot_state_carousel18 = localStorage.getItem('bot_state_carousel18');
+    let bot_state_carousel18_cookie = getCookie('bot_state_carousel18');
+
+    let bots_state_carousel18 = localStorage.getItem('bots_state_carousel18');
+    let bots_state_carousel18_cookie = getCookie('bots_state_carousel18');
+
+    let bot_state_carousel19 = localStorage.getItem('bot_state_carousel19');
+    let bot_state_carousel19_cookie = getCookie('bot_state_carousel19');
+
+    let bots_state_carousel19 = localStorage.getItem('bots_state_carousel19');
+    let bots_state_carousel19_cookie = getCookie('bots_state_carousel19');
+
+    let bot_state_carousel20 = localStorage.getItem('bot_state_carousel20');
+    let bot_state_carousel20_cookie = getCookie('bot_state_carousel20');
+
+    let bots_state_carousel20 = localStorage.getItem('bots_state_carousel20');
+    let bots_state_carousel20_cookie = getCookie('bots_state_carousel20');
+
+    if ((bot_state == "stop_bot" || bot_state_cookie == 'stop_bot') && (bots_state == 'stop_bots' || bots_state_cookie == 'stop_bots')) {
+        document.getElementById('bot_state').textContent = 'Bot is stopped';
+    }
+    
+    if ((bot_state_carousel2 == 'stop_bot' || bot_state_carousel2_cookie == 'stop_bot') && (bots_state_carousel2 == 'stop_bots' || bots_state_carousel2_cookie == 'stop_bots')) {
+        document.getElementById('bot_state_carousel2').textContent = 'Bot is stopped';
+    }
+    
+    if ((bot_state_carousel3 == 'stop_bot' || bot_state_carousel3_cookie == 'stop_bot') && (bots_state_carousel3 == 'stop_bots' || bots_state_carousel3_cookie == 'stop_bots')) {
+        document.getElementById('bot_state_carousel3').textContent = 'Bot is stopped';
+    }
+    
+    if ((bot_state_carousel4 == 'stop_bot' || bot_state_carousel4_cookie == 'stop_bot') && (bots_state_carousel4 == 'stop_bots' || bots_state_carousel4_cookie == 'stop_bots')) {
+        document.getElementById('bot_state_carousel4').textContent = 'Bot is stopped';
+    }
+    
+    if ((bot_state_carousel5 == 'stop_bot' || bot_state_carousel5_cookie == 'stop_bot') && (bots_state_carousel5 == 'stop_bots' || bots_state_carousel5_cookie == 'stop_bots')) {
+        document.getElementById('bot_state_carousel5').textContent = 'Bot is stopped';
+    }
+    
+    if ((bot_state_carousel6 == 'stop_bot' || bot_state_carousel6_cookie == 'stop_bot') && (bots_state_carousel6 == 'stop_bots' || bots_state_carousel6_cookie == 'stop_bots')) {
+        document.getElementById('bot_state_carousel6').textContent = 'Bot is stopped';
+    }
+    
+    if ((bot_state_carousel7 == 'stop_bot' || bot_state_carousel7_cookie == 'stop_bot') && (bots_state_carousel7 == 'stop_bots' || bots_state_carousel7_cookie == 'stop_bots')) {
+        document.getElementById('bot_state_carousel7').textContent = 'Bot is stopped';
+    }
+    
+    if ((bot_state_carousel8 == 'stop_bot' || bot_state_carousel8_cookie == 'stop_bot') && (bots_state_carousel8 == 'stop_bots' || bots_state_carousel8_cookie == 'stop_bots')) {
+        document.getElementById('bot_state_carousel8').textContent = 'Bot is stopped';
+    }
+    
+    if ((bot_state_carousel9 == 'stop_bot' || bot_state_carousel9_cookie == 'stop_bot') && (bots_state_carousel9 == 'stop_bots' || bots_state_carousel9_cookie == 'stop_bots')) {
+        document.getElementById('bot_state_carousel9').textContent = 'Bot is stopped';
+    }
+    
+    if ((bot_state_carousel10 == 'stop_bot' || bot_state_carousel10_cookie == 'stop_bot') && (bots_state_carousel10 == 'stop_bots' || bots_state_carousel10_cookie == 'stop_bots')) {
+        document.getElementById('bot_state_carousel10').textContent = 'Bot is stopped';
+    }
+    
+    if ((bot_state_carousel11 == 'stop_bot' || bot_state_carousel11_cookie == 'stop_bot') && (bots_state_carousel11 == 'stop_bots' || bots_state_carousel11_cookie == 'stop_bots')) {
+        document.getElementById('bot_state_carousel11').textContent = 'Bot is stopped';
+    }
+    
+    if ((bot_state_carousel12 == 'stop_bot' || bot_state_carousel12_cookie == 'stop_bot') && (bots_state_carousel12 == 'stop_bots' || bots_state_carousel12_cookie == 'stop_bots')) {
+        document.getElementById('bot_state_carousel12').textContent = 'Bot is stopped';
+    }
+    
+    if ((bot_state_carousel13 == 'stop_bot' || bot_state_carousel13_cookie == 'stop_bot') && (bots_state_carousel13 == 'stop_bots' || bots_state_carousel13_cookie == 'stop_bots')) {
+        document.getElementById('bot_state_carousel13').textContent = 'Bot is stopped';
+    }
+    
+    if ((bot_state_carousel14 == 'stop_bot' || bot_state_carousel14_cookie == 'stop_bot') && (bots_state_carousel14 == 'stop_bots' || bots_state_carousel14_cookie == 'stop_bots')) {
+        document.getElementById('bot_state_carousel14').textContent = 'Bot is stopped';
+    }
+    
+    if ((bot_state_carousel15 == 'stop_bot' || bot_state_carousel15_cookie == 'stop_bot') && (bots_state_carousel15 == 'stop_bots' || bots_state_carousel15_cookie == 'stop_bots')) {
+        document.getElementById('bot_state_carousel15').textContent = 'Bot is stopped';
+    }
+    
+    if ((bot_state_carousel16 == 'stop_bot' || bot_state_carousel16_cookie == 'stop_bot') && (bots_state_carousel16 == 'stop_bots' || bots_state_carousel16_cookie == 'stop_bots')) {
+        document.getElementById('bot_state_carousel16').textContent = 'Bot is stopped';
+    }
+    
+    if ((bot_state_carousel17 == 'stop_bot' || bot_state_carousel17_cookie == 'stop_bot') && (bots_state_carousel17 == 'stop_bots' || bots_state_carousel17_cookie == 'stop_bots')) {
+        document.getElementById('bot_state_carousel17').textContent = 'Bot is stopped';
+    }
+    
+    if ((bot_state_carousel18 == 'stop_bot' || bot_state_carousel18_cookie == 'stop_bot') && (bots_state_carousel18 == 'stop_bots' || bots_state_carousel18_cookie == 'stop_bots')) {
+        document.getElementById('bot_state_carousel18').textContent = 'Bot is stopped';
+    }
+    
+    if ((bot_state_carousel19 == 'stop_bot' || bot_state_carousel19_cookie == 'stop_bot') && (bots_state_carousel19 == 'stop_bots' || bots_state_carousel19_cookie == 'stop_bots')) {
+        document.getElementById('bot_state_carousel19').textContent = 'Bot is stopped';
+    }
+    
+    if ((bot_state_carousel20 == 'stop_bot' || bot_state_carousel20_cookie == 'stop_bot') && (bots_state_carousel20 == 'stop_bots' || bots_state_carousel20_cookie == 'stop_bots')) {
+        document.getElementById('bot_state_carousel20').textContent = 'Bot is stopped';
+    }
 }
 
 
@@ -4181,6 +6376,16 @@ document.addEventListener('DOMContentLoaded', function () {
     localStorage.setItem('martingale_carousel8', 'false');
     localStorage.setItem('martingale_carousel9', 'false');
     localStorage.setItem('martingale_carousel10', 'false');
+    localStorage.setItem('martingale_carousel11', 'false');
+    localStorage.setItem('martingale_carousel12', 'false');
+    localStorage.setItem('martingale_carousel13', 'false');
+    localStorage.setItem('martingale_carousel14', 'false');
+    localStorage.setItem('martingale_carousel15', 'false');
+    localStorage.setItem('martingale_carousel16', 'false');
+    localStorage.setItem('martingale_carousel17', 'false');
+    localStorage.setItem('martingale_carousel18', 'false');
+    localStorage.setItem('martingale_carousel19', 'false');
+    localStorage.setItem('martingale_carousel20', 'false');
     // Wait for the DOM to be fully loaded before manipulating it
 
     setCookie('all_bot_start_stop1', 'stop_bots')
@@ -4196,6 +6401,16 @@ document.addEventListener('DOMContentLoaded', function () {
     setCookie('martingale_carousel8', 'false');
     setCookie('martingale_carousel9', 'false');
     setCookie('martingale_carousel10', 'false');
+    setCookie('martingale_carousel11', 'false');
+    setCookie('martingale_carousel12', 'false');
+    setCookie('martingale_carousel13', 'false');
+    setCookie('martingale_carousel14', 'false');
+    setCookie('martingale_carousel15', 'false');
+    setCookie('martingale_carousel16', 'false');
+    setCookie('martingale_carousel17', 'false');
+    setCookie('martingale_carousel18', 'false');
+    setCookie('martingale_carousel19', 'false');
+    setCookie('martingale_carousel20', 'false');
 });
 
 
@@ -4231,6 +6446,37 @@ let tick_check2_carousel9 = document.getElementById('tick_check2_carousel9')
 let tick_check_carousel10 = document.getElementById('tick_check_carousel10')
 let tick_check2_carousel10 = document.getElementById('tick_check2_carousel10')
 
+let tick_check_carousel11 = document.getElementById('tick_check_carousel11')
+let tick_check2_carousel11 = document.getElementById('tick_check2_carousel11')
+
+let tick_check_carousel12 = document.getElementById('tick_check_carousel12')
+let tick_check2_carousel12 = document.getElementById('tick_check2_carousel12')
+
+let tick_check_carousel13 = document.getElementById('tick_check_carousel13')
+let tick_check2_carousel13 = document.getElementById('tick_check2_carousel13')
+
+let tick_check_carousel14 = document.getElementById('tick_check_carousel14')
+let tick_check2_carousel14 = document.getElementById('tick_check2_carousel14')
+
+let tick_check_carousel15 = document.getElementById('tick_check_carousel15')
+let tick_check2_carousel15 = document.getElementById('tick_check2_carousel15')
+
+let tick_check_carousel16 = document.getElementById('tick_check_carousel16')
+let tick_check2_carousel16 = document.getElementById('tick_check2_carousel16')
+
+let tick_check_carousel17 = document.getElementById('tick_check_carousel17')
+let tick_check2_carousel17 = document.getElementById('tick_check2_carousel17')
+
+let tick_check_carousel18 = document.getElementById('tick_check_carousel18')
+let tick_check2_carousel18 = document.getElementById('tick_check2_carousel18')
+
+let tick_check_carousel19 = document.getElementById('tick_check_carousel19')
+let tick_check2_carousel19 = document.getElementById('tick_check2_carousel19')
+
+let tick_check_carousel20 = document.getElementById('tick_check_carousel20')
+let tick_check2_carousel20 = document.getElementById('tick_check2_carousel20')
+
+
 
 
 let all_bot_set_count = 0
@@ -4256,6 +6502,27 @@ function bot_set_text() {
     tick_check2_carousel9.textContent = `${all_bot_set_count}`
     tick_check_carousel10.textContent = `${all_bot_set_count}`
     tick_check2_carousel10.textContent = `${all_bot_set_count}`
+    tick_check_carousel11.textContent = `${all_bot_set_count}`
+    tick_check2_carousel11.textContent = `${all_bot_set_count}`
+    tick_check_carousel12.textContent = `${all_bot_set_count}`
+    tick_check2_carousel12.textContent = `${all_bot_set_count}`
+    tick_check_carousel13.textContent = `${all_bot_set_count}`
+    tick_check2_carousel13.textContent = `${all_bot_set_count}`
+    tick_check_carousel14.textContent = `${all_bot_set_count}`
+    tick_check2_carousel14.textContent = `${all_bot_set_count}`
+    tick_check_carousel15.textContent = `${all_bot_set_count}`
+    tick_check2_carousel15.textContent = `${all_bot_set_count}`
+    tick_check_carousel16.textContent = `${all_bot_set_count}`
+    tick_check2_carousel16.textContent = `${all_bot_set_count}`
+    tick_check_carousel17.textContent = `${all_bot_set_count}`
+    tick_check2_carousel17.textContent = `${all_bot_set_count}`
+    tick_check_carousel18.textContent = `${all_bot_set_count}`
+    tick_check2_carousel18.textContent = `${all_bot_set_count}`
+    tick_check_carousel19.textContent = `${all_bot_set_count}`
+    tick_check2_carousel19.textContent = `${all_bot_set_count}`
+    tick_check_carousel20.textContent = `${all_bot_set_count}`
+    tick_check2_carousel20.textContent = `${all_bot_set_count}`
+
 }
 
 
@@ -4272,6 +6539,16 @@ function all_bot_set() {
     localStorage.setItem('bot_set_carousel8', `${all_bot_set_count}`)
     localStorage.setItem('bot_set_carousel9', `${all_bot_set_count}`)
     localStorage.setItem('bot_set_carousel10', `${all_bot_set_count}`)
+    localStorage.setItem('bot_set_carousel11', `${all_bot_set_count}`)
+    localStorage.setItem('bot_set_carousel12', `${all_bot_set_count}`)
+    localStorage.setItem('bot_set_carousel13', `${all_bot_set_count}`)
+    localStorage.setItem('bot_set_carousel14', `${all_bot_set_count}`)
+    localStorage.setItem('bot_set_carousel15', `${all_bot_set_count}`)
+    localStorage.setItem('bot_set_carousel16', `${all_bot_set_count}`)
+    localStorage.setItem('bot_set_carousel17', `${all_bot_set_count}`)
+    localStorage.setItem('bot_set_carousel18', `${all_bot_set_count}`)
+    localStorage.setItem('bot_set_carousel19', `${all_bot_set_count}`)
+    localStorage.setItem('bot_set_carousel20', `${all_bot_set_count}`)
 
     setCookie('bot_set', `${all_bot_set_count}`)
     setCookie('bot_set_carousel2', `${all_bot_set_count}`)
@@ -4283,6 +6560,17 @@ function all_bot_set() {
     setCookie('bot_set_carousel8', `${all_bot_set_count}`)
     setCookie('bot_set_carousel9', `${all_bot_set_count}`)
     setCookie('bot_set_carousel10', `${all_bot_set_count}`)
+    setCookie('bot_set_carousel11', `${all_bot_set_count}`)
+    setCookie('bot_set_carousel12', `${all_bot_set_count}`)
+    setCookie('bot_set_carousel13', `${all_bot_set_count}`)
+    setCookie('bot_set_carousel14', `${all_bot_set_count}`)
+    setCookie('bot_set_carousel15', `${all_bot_set_count}`)
+    setCookie('bot_set_carousel16', `${all_bot_set_count}`)
+    setCookie('bot_set_carousel17', `${all_bot_set_count}`)
+    setCookie('bot_set_carousel18', `${all_bot_set_count}`)
+    setCookie('bot_set_carousel19', `${all_bot_set_count}`)
+    setCookie('bot_set_carousel20', `${all_bot_set_count}`)
+
 }
 
 
@@ -4337,6 +6625,35 @@ let martingale2_carousel9 = document.getElementById('martingale2_carousel9')
 let martingale_carousel10 = document.getElementById('martingale_carousel10')
 let martingale2_carousel10 = document.getElementById('martingale2_carousel10')
 
+let martingale_carousel11 = document.getElementById('martingale_carousel11')
+let martingale2_carousel11 = document.getElementById('martingale2_carousel11')
+
+let martingale_carousel12 = document.getElementById('martingale_carousel12')
+let martingale2_carousel12 = document.getElementById('martingale2_carousel12')
+
+let martingale_carousel13 = document.getElementById('martingale_carousel13')
+let martingale2_carousel13 = document.getElementById('martingale2_carousel13')
+
+let martingale_carousel14 = document.getElementById('martingale_carousel14')
+let martingale2_carousel14 = document.getElementById('martingale2_carousel14')
+
+let martingale_carousel15 = document.getElementById('martingale_carousel15')
+let martingale2_carousel15 = document.getElementById('martingale2_carousel15')
+
+let martingale_carousel16 = document.getElementById('martingale_carousel16')
+let martingale2_carousel16 = document.getElementById('martingale2_carousel16')
+
+let martingale_carousel17 = document.getElementById('martingale_carousel17')
+let martingale2_carousel17 = document.getElementById('martingale2_carousel17')
+
+let martingale_carousel18 = document.getElementById('martingale_carousel18')
+let martingale2_carousel18 = document.getElementById('martingale2_carousel18')
+
+let martingale_carousel19 = document.getElementById('martingale_carousel19')
+let martingale2_carousel19 = document.getElementById('martingale2_carousel19')
+
+let martingale_carousel20 = document.getElementById('martingale_carousel20')
+let martingale2_carousel20 = document.getElementById('martingale2_carousel20')
 
 function set_all_martigale_active() {
     martingale.classList.add('active_mat');
@@ -4368,6 +6685,37 @@ function set_all_martigale_active() {
 
     martingale_carousel10.classList.add('active_mat');
     martingale2_carousel10.classList.add('active_mat');
+
+    martingale_carousel11.classList.add('active_mat');
+    martingale2_carousel11.classList.add('active_mat');
+
+    martingale_carousel12.classList.add('active_mat');
+    martingale2_carousel12.classList.add('active_mat');
+
+    martingale_carousel13.classList.add('active_mat');
+    martingale2_carousel13.classList.add('active_mat');
+
+    martingale_carousel14.classList.add('active_mat');
+    martingale2_carousel14.classList.add('active_mat');
+
+    martingale_carousel15.classList.add('active_mat');
+    martingale2_carousel15.classList.add('active_mat');
+
+    martingale_carousel16.classList.add('active_mat');
+    martingale2_carousel16.classList.add('active_mat');
+
+    martingale_carousel17.classList.add('active_mat');
+    martingale2_carousel17.classList.add('active_mat');
+
+    martingale_carousel18.classList.add('active_mat');
+    martingale2_carousel18.classList.add('active_mat');
+
+    martingale_carousel19.classList.add('active_mat');
+    martingale2_carousel19.classList.add('active_mat');
+
+    martingale_carousel20.classList.add('active_mat');
+    martingale2_carousel20.classList.add('active_mat');
+
 }
 
 
@@ -4401,6 +6749,37 @@ function remove_all_martigale_active() {
 
     martingale_carousel10.classList.remove('active_mat');
     martingale2_carousel10.classList.remove('active_mat');
+
+    martingale_carousel11.classList.remove('active_mat');
+    martingale2_carousel11.classList.remove('active_mat');
+
+    martingale_carousel12.classList.remove('active_mat');
+    martingale2_carousel12.classList.remove('active_mat');
+
+    martingale_carousel13.classList.remove('active_mat');
+    martingale2_carousel13.classList.remove('active_mat');
+
+    martingale_carousel14.classList.remove('active_mat');
+    martingale2_carousel14.classList.remove('active_mat');
+
+    martingale_carousel15.classList.remove('active_mat');
+    martingale2_carousel15.classList.remove('active_mat');
+
+    martingale_carousel16.classList.remove('active_mat');
+    martingale2_carousel16.classList.remove('active_mat');
+
+    martingale_carousel17.classList.remove('active_mat');
+    martingale2_carousel17.classList.remove('active_mat');
+
+    martingale_carousel18.classList.remove('active_mat');
+    martingale2_carousel18.classList.remove('active_mat');
+
+    martingale_carousel19.classList.remove('active_mat');
+    martingale2_carousel19.classList.remove('active_mat');
+
+    martingale_carousel20.classList.remove('active_mat');
+    martingale2_carousel20.classList.remove('active_mat');
+
 }
 
 
@@ -4417,6 +6796,16 @@ function set_all_martigale() {
     localStorage.setItem('martingale_carousel8', 'true');
     localStorage.setItem('martingale_carousel9', 'true');
     localStorage.setItem('martingale_carousel10', 'true');
+    localStorage.setItem('martingale_carousel11', 'true');
+    localStorage.setItem('martingale_carousel12', 'true');
+    localStorage.setItem('martingale_carousel13', 'true');
+    localStorage.setItem('martingale_carousel14', 'true');
+    localStorage.setItem('martingale_carousel15', 'true');
+    localStorage.setItem('martingale_carousel16', 'true');
+    localStorage.setItem('martingale_carousel17', 'true');
+    localStorage.setItem('martingale_carousel18', 'true');
+    localStorage.setItem('martingale_carousel19', 'true');
+    localStorage.setItem('martingale_carousel20', 'true');
 
     setCookie('martingale', 'true');
     setCookie('martingale_carousel2', 'true');
@@ -4428,6 +6817,17 @@ function set_all_martigale() {
     setCookie('martingale_carousel8', 'true');
     setCookie('martingale_carousel9', 'true');
     setCookie('martingale_carousel10', 'true');
+    setCookie('martingale_carousel11', 'true');
+    setCookie('martingale_carousel12', 'true');
+    setCookie('martingale_carousel13', 'true');
+    setCookie('martingale_carousel14', 'true');
+    setCookie('martingale_carousel15', 'true');
+    setCookie('martingale_carousel16', 'true');
+    setCookie('martingale_carousel17', 'true');
+    setCookie('martingale_carousel18', 'true');
+    setCookie('martingale_carousel19', 'true');
+    setCookie('martingale_carousel20', 'true');
+
 }
 function remove_all_martigale() {
     localStorage.setItem('martingale', 'false');
@@ -4440,6 +6840,16 @@ function remove_all_martigale() {
     localStorage.setItem('martingale_carousel8', 'false');
     localStorage.setItem('martingale_carousel9', 'false');
     localStorage.setItem('martingale_carousel10', 'false');
+    localStorage.setItem('martingale_carousel11', 'false');
+    localStorage.setItem('martingale_carousel12', 'false');
+    localStorage.setItem('martingale_carousel13', 'false');
+    localStorage.setItem('martingale_carousel14', 'false');
+    localStorage.setItem('martingale_carousel15', 'false');
+    localStorage.setItem('martingale_carousel16', 'false');
+    localStorage.setItem('martingale_carousel17', 'false');
+    localStorage.setItem('martingale_carousel18', 'false');
+    localStorage.setItem('martingale_carousel19', 'false');
+    localStorage.setItem('martingale_carousel20', 'false');
 
     setCookie('martingale', 'false');
     setCookie('martingale_carousel2', 'false');
@@ -4451,6 +6861,17 @@ function remove_all_martigale() {
     setCookie('martingale_carousel8', 'false');
     setCookie('martingale_carousel9', 'false');
     setCookie('martingale_carousel10', 'false');
+    setCookie('martingale_carousel11', 'false');
+    setCookie('martingale_carousel12', 'false');
+    setCookie('martingale_carousel13', 'false');
+    setCookie('martingale_carousel14', 'false');
+    setCookie('martingale_carousel15', 'false');
+    setCookie('martingale_carousel16', 'false');
+    setCookie('martingale_carousel17', 'false');
+    setCookie('martingale_carousel18', 'false');
+    setCookie('martingale_carousel19', 'false');
+    setCookie('martingale_carousel20', 'false');
+
 }
 
 
@@ -4510,55 +6931,122 @@ let martingale_jump2_carousel9 = document.getElementById('martingale_jump2_carou
 let martingale_jump_carousel10 = document.getElementById('martingale_jump_carousel10');
 let martingale_jump2_carousel10 = document.getElementById('martingale_jump2_carousel10');
 
+let martingale_jump_carousel11 = document.getElementById('martingale_jump_carousel11');
+let martingale_jump2_carousel11 = document.getElementById('martingale_jump2_carousel11');
+
+let martingale_jump_carousel12 = document.getElementById('martingale_jump_carousel12');
+let martingale_jump2_carousel12 = document.getElementById('martingale_jump2_carousel12');
+
+let martingale_jump_carousel13 = document.getElementById('martingale_jump_carousel13');
+let martingale_jump2_carousel13 = document.getElementById('martingale_jump2_carousel13');
+
+let martingale_jump_carousel14 = document.getElementById('martingale_jump_carousel14');
+let martingale_jump2_carousel14 = document.getElementById('martingale_jump2_carousel14');
+
+let martingale_jump_carousel15 = document.getElementById('martingale_jump_carousel15');
+let martingale_jump2_carousel15 = document.getElementById('martingale_jump2_carousel15');
+
+let martingale_jump_carousel16 = document.getElementById('martingale_jump_carousel16');
+let martingale_jump2_carousel16 = document.getElementById('martingale_jump2_carousel16');
+
+let martingale_jump_carousel17 = document.getElementById('martingale_jump_carousel17');
+let martingale_jump2_carousel17 = document.getElementById('martingale_jump2_carousel17');
+
+let martingale_jump_carousel18 = document.getElementById('martingale_jump_carousel18');
+let martingale_jump2_carousel18 = document.getElementById('martingale_jump2_carousel18');
+
+let martingale_jump_carousel19 = document.getElementById('martingale_jump_carousel19');
+let martingale_jump2_carousel19 = document.getElementById('martingale_jump2_carousel19');
+
+let martingale_jump_carousel20 = document.getElementById('martingale_jump_carousel20');
+let martingale_jump2_carousel20 = document.getElementById('martingale_jump2_carousel20');
+
 let increase_all_bot_jump = document.getElementById('increase_all_bot_jump');
 let reduce_all_bot_jump = document.getElementById('reduce_all_bot_jump');
 
+let jump_count = 0;
+let jump_count2 = 0;
+let jump_count3 = 0;
+let jump_count4 = 0;
+let jump_count5 = 0;
+let jump_count6 = 0;
+let jump_count7 = 0;
+let jump_count8 = 0;
+let jump_count9 = 0;
+let jump_count10 = 0;
+let jump_count11 = 0;
+let jump_count12 = 0;
+let jump_count13 = 0;
+let jump_count14 = 0;
+let jump_count15 = 0;
+let jump_count16 = 0;
+let jump_count17 = 0;
+let jump_count18 = 0;
+let jump_count19 = 0;
+let jump_count20 = 0;
 
-
-
-
-
-let jump_count = 0
-let jump_count2 = 0
-let jump_count3 = 0
-let jump_count4 = 0
-let jump_count5 = 0
-let jump_count6 = 0
-let jump_count7 = 0
-let jump_count8 = 0
-let jump_count9 = 0
-let jump_count10 = 0
 
 function jump_count_set() {
-    localStorage.setItem('bot_jump', jump_count)
-    setCookie('bot_jump', jump_count)
+    localStorage.setItem('bot_jump', jump_count);
+    setCookie('bot_jump', jump_count);
 
-    localStorage.setItem('bot_jump_carousel2', jump_count2)
-    setCookie('bot_jump_carousel2', jump_count2)
+    localStorage.setItem('bot_jump_carousel2', jump_count2);
+    setCookie('bot_jump_carousel2', jump_count2);
 
-    localStorage.setItem('bot_jump_carousel3', jump_count3)
-    setCookie('bot_jump_carousel3', jump_count3)
+    localStorage.setItem('bot_jump_carousel3', jump_count3);
+    setCookie('bot_jump_carousel3', jump_count3);
 
-    localStorage.setItem('bot_jump_carousel4', jump_count4)
-    setCookie('bot_jump_carousel4', jump_count4)
+    localStorage.setItem('bot_jump_carousel4', jump_count4);
+    setCookie('bot_jump_carousel4', jump_count4);
 
-    localStorage.setItem('bot_jump_carousel5', jump_count5)
-    setCookie('bot_jump_carousel5', jump_count5)
+    localStorage.setItem('bot_jump_carousel5', jump_count5);
+    setCookie('bot_jump_carousel5', jump_count5);
 
-    localStorage.setItem('bot_jump_carousel6', jump_count6)
-    setCookie('bot_jump_carousel6', jump_count6)
+    localStorage.setItem('bot_jump_carousel6', jump_count6);
+    setCookie('bot_jump_carousel6', jump_count6);
 
-    localStorage.setItem('bot_jump_carousel7', jump_count7)
-    setCookie('bot_jump_carousel7', jump_count7)
+    localStorage.setItem('bot_jump_carousel7', jump_count7);
+    setCookie('bot_jump_carousel7', jump_count7);
 
-    localStorage.setItem('bot_jump_carousel8', jump_count8)
-    setCookie('bot_jump_carousel8', jump_count8)
+    localStorage.setItem('bot_jump_carousel8', jump_count8);
+    setCookie('bot_jump_carousel8', jump_count8);
 
-    localStorage.setItem('bot_jump_carousel9', jump_count9)
-    setCookie('bot_jump_carousel9', jump_count9)
+    localStorage.setItem('bot_jump_carousel9', jump_count9);
+    setCookie('bot_jump_carousel9', jump_count9);
 
-    localStorage.setItem('bot_jump_carousel10', jump_count10)
-    setCookie('bot_jump_carousel10', jump_count10)
+    localStorage.setItem('bot_jump_carousel10', jump_count10);
+    setCookie('bot_jump_carousel10', jump_count10);
+
+    localStorage.setItem('bot_jump_carousel11', jump_count11);
+    setCookie('bot_jump_carousel11', jump_count11);
+
+    localStorage.setItem('bot_jump_carousel12', jump_count12);
+    setCookie('bot_jump_carousel12', jump_count12);
+
+    localStorage.setItem('bot_jump_carousel13', jump_count13);
+    setCookie('bot_jump_carousel13', jump_count13);
+
+    localStorage.setItem('bot_jump_carousel14', jump_count14);
+    setCookie('bot_jump_carousel14', jump_count14);
+
+    localStorage.setItem('bot_jump_carousel15', jump_count15);
+    setCookie('bot_jump_carousel15', jump_count15);
+
+    localStorage.setItem('bot_jump_carousel16', jump_count16);
+    setCookie('bot_jump_carousel16', jump_count16);
+
+    localStorage.setItem('bot_jump_carousel17', jump_count17);
+    setCookie('bot_jump_carousel17', jump_count17);
+
+    localStorage.setItem('bot_jump_carousel18', jump_count18);
+    setCookie('bot_jump_carousel18', jump_count18);
+
+    localStorage.setItem('bot_jump_carousel19', jump_count19);
+    setCookie('bot_jump_carousel19', jump_count19);
+
+    localStorage.setItem('bot_jump_carousel20', jump_count20);
+    setCookie('bot_jump_carousel20', jump_count20);
+
 }
 
 
@@ -4593,102 +7081,226 @@ function jump_count_set2() {
     if (isNaN(jump_count10)) {
         jump_count10 = 0;
     }
+    if (isNaN(jump_count11)) {
+        jump_count11 = 0;
+    }
+    if (isNaN(jump_count12)) {
+        jump_count12 = 0;
+    }
+    if (isNaN(jump_count13)) {
+        jump_count13 = 0;
+    }
+    if (isNaN(jump_count14)) {
+        jump_count14 = 0;
+    }
+    if (isNaN(jump_count15)) {
+        jump_count15 = 0;
+    }
+    if (isNaN(jump_count16)) {
+        jump_count16 = 0;
+    }
+    if (isNaN(jump_count17)) {
+        jump_count17 = 0;
+    }
+    if (isNaN(jump_count18)) {
+        jump_count18 = 0;
+    }
+    if (isNaN(jump_count19)) {
+        jump_count19 = 0;
+    }
+    if (isNaN(jump_count20)) {
+        jump_count20 = 0;
+    }
 
 
     if (jump_count > 0) {
-        martingale_jump.textContent = 'j' + jump_count
-        martingale_jump2.textContent = 'j' + jump_count
+        martingale_jump.textContent = 'j' + jump_count;
+        martingale_jump2.textContent = 'j' + jump_count;
     } else {
-        martingale_jump.textContent = ''
-        martingale_jump2.textContent = ''
+        martingale_jump.textContent = '';
+        martingale_jump2.textContent = '';
     }
+
     if (jump_count2 > 0) {
-        martingale_jump_carousel2.textContent = 'j' + jump_count2
-        martingale_jump2_carousel2.textContent = 'j' + jump_count2
+        martingale_jump_carousel2.textContent = 'j' + jump_count2;
+        martingale_jump2_carousel2.textContent = 'j' + jump_count2;
     } else {
-        martingale_jump_carousel2.textContent = ''
-        martingale_jump2_carousel2.textContent = ''
+        martingale_jump_carousel2.textContent = '';
+        martingale_jump2_carousel2.textContent = '';
     }
 
     if (jump_count3 > 0) {
-        martingale_jump_carousel3.textContent = 'j' + jump_count3
-        martingale_jump2_carousel3.textContent = 'j' + jump_count3
+        martingale_jump_carousel3.textContent = 'j' + jump_count3;
+        martingale_jump2_carousel3.textContent = 'j' + jump_count3;
     } else {
-        martingale_jump_carousel3.textContent = ''
-        martingale_jump2_carousel3.textContent = ''
+        martingale_jump_carousel3.textContent = '';
+        martingale_jump2_carousel3.textContent = '';
     }
 
     if (jump_count4 > 0) {
-        martingale_jump_carousel4.textContent = 'j' + jump_count4
-        martingale_jump2_carousel4.textContent = 'j' + jump_count4
+        martingale_jump_carousel4.textContent = 'j' + jump_count4;
+        martingale_jump2_carousel4.textContent = 'j' + jump_count4;
     } else {
-        martingale_jump_carousel4.textContent = ''
-        martingale_jump2_carousel4.textContent = ''
+        martingale_jump_carousel4.textContent = '';
+        martingale_jump2_carousel4.textContent = '';
     }
 
     if (jump_count5 > 0) {
-        martingale_jump_carousel5.textContent = 'j' + jump_count5
-        martingale_jump2_carousel5.textContent = 'j' + jump_count5
+        martingale_jump_carousel5.textContent = 'j' + jump_count5;
+        martingale_jump2_carousel5.textContent = 'j' + jump_count5;
     } else {
-        martingale_jump_carousel5.textContent = ''
-        martingale_jump2_carousel5.textContent = ''
+        martingale_jump_carousel5.textContent = '';
+        martingale_jump2_carousel5.textContent = '';
     }
 
     if (jump_count6 > 0) {
-        martingale_jump_carousel6.textContent = 'j' + jump_count6
-        martingale_jump2_carousel6.textContent = 'j' + jump_count6
+        martingale_jump_carousel6.textContent = 'j' + jump_count6;
+        martingale_jump2_carousel6.textContent = 'j' + jump_count6;
     } else {
-        martingale_jump_carousel6.textContent = ''
-        martingale_jump2_carousel6.textContent = ''
+        martingale_jump_carousel6.textContent = '';
+        martingale_jump2_carousel6.textContent = '';
     }
 
     if (jump_count7 > 0) {
-        martingale_jump_carousel7.textContent = 'j' + jump_count7
-        martingale_jump2_carousel7.textContent = 'j' + jump_count7
+        martingale_jump_carousel7.textContent = 'j' + jump_count7;
+        martingale_jump2_carousel7.textContent = 'j' + jump_count7;
     } else {
-        martingale_jump_carousel7.textContent = ''
-        martingale_jump2_carousel7.textContent = ''
+        martingale_jump_carousel7.textContent = '';
+        martingale_jump2_carousel7.textContent = '';
     }
 
     if (jump_count8 > 0) {
-        martingale_jump_carousel8.textContent = 'j' + jump_count8
-        martingale_jump2_carousel8.textContent = 'j' + jump_count8
+        martingale_jump_carousel8.textContent = 'j' + jump_count8;
+        martingale_jump2_carousel8.textContent = 'j' + jump_count8;
     } else {
-        martingale_jump_carousel8.textContent = ''
-        martingale_jump2_carousel8.textContent = ''
+        martingale_jump_carousel8.textContent = '';
+        martingale_jump2_carousel8.textContent = '';
     }
 
     if (jump_count9 > 0) {
-        martingale_jump_carousel9.textContent = 'j' + jump_count9
-        martingale_jump2_carousel9.textContent = 'j' + jump_count9
+        martingale_jump_carousel9.textContent = 'j' + jump_count9;
+        martingale_jump2_carousel9.textContent = 'j' + jump_count9;
     } else {
-        martingale_jump_carousel9.textContent = ''
-        martingale_jump2_carousel9.textContent = ''
+        martingale_jump_carousel9.textContent = '';
+        martingale_jump2_carousel9.textContent = '';
     }
 
     if (jump_count10 > 0) {
-        martingale_jump_carousel10.textContent = 'j' + jump_count10
-        martingale_jump2_carousel10.textContent = 'j' + jump_count10
+        martingale_jump_carousel10.textContent = 'j' + jump_count10;
+        martingale_jump2_carousel10.textContent = 'j' + jump_count10;
     } else {
-        martingale_jump_carousel10.textContent = ''
-        martingale_jump2_carousel10.textContent = ''
+        martingale_jump_carousel10.textContent = '';
+        martingale_jump2_carousel10.textContent = '';
     }
+
+    if (jump_count11 > 0) {
+        martingale_jump_carousel11.textContent = 'j' + jump_count11;
+        martingale_jump2_carousel11.textContent = 'j' + jump_count11;
+    } else {
+        martingale_jump_carousel11.textContent = '';
+        martingale_jump2_carousel11.textContent = '';
+    }
+
+    if (jump_count12 > 0) {
+        martingale_jump_carousel12.textContent = 'j' + jump_count12;
+        martingale_jump2_carousel12.textContent = 'j' + jump_count12;
+    } else {
+        martingale_jump_carousel12.textContent = '';
+        martingale_jump2_carousel12.textContent = '';
+    }
+
+    if (jump_count13 > 0) {
+        martingale_jump_carousel13.textContent = 'j' + jump_count13;
+        martingale_jump2_carousel13.textContent = 'j' + jump_count13;
+    } else {
+        martingale_jump_carousel13.textContent = '';
+        martingale_jump2_carousel13.textContent = '';
+    }
+
+    if (jump_count14 > 0) {
+        martingale_jump_carousel14.textContent = 'j' + jump_count14;
+        martingale_jump2_carousel14.textContent = 'j' + jump_count14;
+    } else {
+        martingale_jump_carousel14.textContent = '';
+        martingale_jump2_carousel14.textContent = '';
+    }
+
+    if (jump_count15 > 0) {
+        martingale_jump_carousel15.textContent = 'j' + jump_count15;
+        martingale_jump2_carousel15.textContent = 'j' + jump_count15;
+    } else {
+        martingale_jump_carousel15.textContent = '';
+        martingale_jump2_carousel15.textContent = '';
+    }
+
+    if (jump_count16 > 0) {
+        martingale_jump_carousel16.textContent = 'j' + jump_count16;
+        martingale_jump2_carousel16.textContent = 'j' + jump_count16;
+    } else {
+        martingale_jump_carousel16.textContent = '';
+        martingale_jump2_carousel16.textContent = '';
+    }
+
+    if (jump_count17 > 0) {
+        martingale_jump_carousel17.textContent = 'j' + jump_count17;
+        martingale_jump2_carousel17.textContent = 'j' + jump_count17;
+    } else {
+        martingale_jump_carousel17.textContent = '';
+        martingale_jump2_carousel17.textContent = '';
+    }
+
+    if (jump_count18 > 0) {
+        martingale_jump_carousel18.textContent = 'j' + jump_count18;
+        martingale_jump2_carousel18.textContent = 'j' + jump_count18;
+    } else {
+        martingale_jump_carousel18.textContent = '';
+        martingale_jump2_carousel18.textContent = '';
+    }
+
+    if (jump_count19 > 0) {
+        martingale_jump_carousel19.textContent = 'j' + jump_count19;
+        martingale_jump2_carousel19.textContent = 'j' + jump_count19;
+    } else {
+        martingale_jump_carousel19.textContent = '';
+        martingale_jump2_carousel19.textContent = '';
+    }
+
+    if (jump_count20 > 0) {
+        martingale_jump_carousel20.textContent = 'j' + jump_count20;
+        martingale_jump2_carousel20.textContent = 'j' + jump_count20;
+    } else {
+        martingale_jump_carousel20.textContent = '';
+        martingale_jump2_carousel20.textContent = '';
+    }
+
 }
 
 
 
 increase_all_bot_jump.addEventListener('click', (event) => {
     event.preventDefault()
-    jump_count = jump_count + 1
-    jump_count2 = jump_count2 + 1
-    jump_count3 = jump_count3 + 1
-    jump_count4 = jump_count4 + 1
-    jump_count5 = jump_count5 + 1
-    jump_count6 = jump_count6 + 1
-    jump_count7 = jump_count7 + 1
-    jump_count8 = jump_count8 + 1
-    jump_count9 = jump_count9 + 1
-    jump_count10 = jump_count10 + 1
+    jump_count = jump_count + 1;
+    jump_count2 = jump_count2 + 1;
+    jump_count3 = jump_count3 + 1;
+    jump_count4 = jump_count4 + 1;
+    jump_count5 = jump_count5 + 1;
+    jump_count6 = jump_count6 + 1;
+    jump_count7 = jump_count7 + 1;
+    jump_count8 = jump_count8 + 1;
+    jump_count9 = jump_count9 + 1;
+    jump_count10 = jump_count10 + 1;
+
+    jump_count11 = jump_count11 + 1;
+    jump_count12 = jump_count12 + 1;
+    jump_count13 = jump_count13 + 1;
+    jump_count14 = jump_count14 + 1;
+    jump_count15 = jump_count15 + 1;
+    jump_count16 = jump_count16 + 1;
+    jump_count17 = jump_count17 + 1;
+    jump_count18 = jump_count18 + 1;
+    jump_count19 = jump_count19 + 1;
+    jump_count20 = jump_count20 + 1;
+
     jump_count_set()
     jump_count_set2()
 })
@@ -4696,16 +7308,28 @@ increase_all_bot_jump.addEventListener('click', (event) => {
 reduce_all_bot_jump.addEventListener('click', (event) => {
     event.preventDefault()
     if (jump_count > 0) {
-        jump_count = jump_count - 1
-        jump_count2 = jump_count2 - 1
-        jump_count3 = jump_count3 - 1
-        jump_count4 = jump_count4 - 1
-        jump_count5 = jump_count5 - 1
-        jump_count6 = jump_count6 - 1
-        jump_count7 = jump_count7 - 1
-        jump_count8 = jump_count8 - 1
-        jump_count9 = jump_count9 - 1
-        jump_count10 = jump_count10 - 1
+        jump_count = jump_count - 1;
+        jump_count2 = jump_count2 - 1;
+        jump_count3 = jump_count3 - 1;
+        jump_count4 = jump_count4 - 1;
+        jump_count5 = jump_count5 - 1;
+        jump_count6 = jump_count6 - 1;
+        jump_count7 = jump_count7 - 1;
+        jump_count8 = jump_count8 - 1;
+        jump_count9 = jump_count9 - 1;
+        jump_count10 = jump_count10 - 1;
+
+        jump_count11 = jump_count11 - 1;
+        jump_count12 = jump_count12 - 1;
+        jump_count13 = jump_count13 - 1;
+        jump_count14 = jump_count14 - 1;
+        jump_count15 = jump_count15 - 1;
+        jump_count16 = jump_count16 - 1;
+        jump_count17 = jump_count17 - 1;
+        jump_count18 = jump_count18 - 1;
+        jump_count19 = jump_count19 - 1;
+        jump_count20 = jump_count20 - 1;
+
         jump_count_set()
         jump_count_set2()
     }
@@ -4716,6 +7340,60 @@ reduce_all_bot_jump.addEventListener('click', (event) => {
 
 
 
+// Assuming initial values from cookies or local storage
+let take_profit = parseInt(getCookie('take_profit')) || parseInt(localStorage.getItem('take_profit')) || 0;
+let stop_loss = parseInt(getCookie('stop_loss')) || parseInt(localStorage.getItem('stop_loss')) || 0;
+
+// Function to update display and save values
+function updateDisplayAndSave(type, value) {
+    document.getElementById(`${type}_show`).textContent = value;
+
+    // Save the updated values in both cookie and local storage
+    setCookie(type, value); // Assuming setCookie function is already in place
+    localStorage.setItem(type, value);
+}
+
+// Increase and decrease functions
+function increaseValue(type) {
+    if (type === 'take_profit') {
+        take_profit += 1;
+        updateDisplayAndSave('take_profit', take_profit);
+    } else if (type === 'stop_loss') {
+        stop_loss += 1;
+        updateDisplayAndSave('stop_loss', stop_loss);
+    }
+}
+
+function decreaseValue(type) {
+    if (type === 'take_profit' && take_profit > 0) {
+        take_profit -= 1;
+        updateDisplayAndSave('take_profit', take_profit);
+    } else if (type === 'stop_loss' && stop_loss > 0) {
+        stop_loss -= 1;
+        updateDisplayAndSave('stop_loss', stop_loss);
+    }
+}
+
+// Event listeners for clicks
+document.getElementById('increase_take_profit').addEventListener('click', function() {
+    increaseValue('take_profit');
+});
+
+document.getElementById('reduce_take_profit').addEventListener('click', function() {
+    decreaseValue('take_profit');
+});
+
+document.getElementById('increase_stop_loss').addEventListener('click', function() {
+    increaseValue('stop_loss');
+});
+
+document.getElementById('reduce_stop_loss').addEventListener('click', function() {
+    decreaseValue('stop_loss');
+});
+
+// Initialize display with the current values
+updateDisplayAndSave('take_profit', take_profit);
+updateDisplayAndSave('stop_loss', stop_loss);
 
 
 

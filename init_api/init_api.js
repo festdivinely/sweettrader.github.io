@@ -37,12 +37,10 @@ let authorize_response = null
 // let token_demo = "FzGC9R7m6hALMDL";
 // let token_real = "odstx4WwG5M9Kbi";
 
-
-
-const app_id_demo = 53334;
-const token_demo = "4FB1rDGbXX6zbKs";
-const app_id_real = 53335;
-const token_real = "Jv4SnlKSnzwkymM";
+const app_id_demo = 63261;
+const token_demo = "CgjU4TbJyKTrVHD";
+const app_id_real = 63262;
+const token_real = "6wB5qaAzZ2NVMTS"
 
 
 let api_id = null

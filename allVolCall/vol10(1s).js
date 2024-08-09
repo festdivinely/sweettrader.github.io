@@ -1,189 +1,90 @@
 import DerivAPIBasic from 'https://cdn.skypack.dev/@deriv/deriv-api/dist/DerivAPIBasic';
 
-const app_id_demo = 53334;
-const token_demo = "4FB1rDGbXX6zbKs";
-const app_id_real = 53335;
-const token_real = "Jv4SnlKSnzwkymM";
-
-
-let last_digit_input = document.getElementById('last_digit_input')
-let close_contract_result_container = document.getElementById('close_contract_result_container_carousel6')
-let buy_sell_two = document.getElementById('buy_sell_two')
-
-
-let trade_type_secound = document.getElementById("trade_type_secound")
-
-
-
-let attempting_buy2_carousel6 = document.getElementById("attempting_buy2_carousel6")//change to 25
-let buy_succeded2_carousel6 = document.getElementById("buy_succeded2_carousel6")//change to 25
-let contract_close2_carousel6 = document.getElementById("contract_close2_carousel6")//change to 25
-
-let stream10_1s_carousel6 = document.getElementById('stream10_1s_carousel6')//change to 25
-
-
-
-
+const app_id_demo = 63261;
+const token_demo = "CgjU4TbJyKTrVHD";
+const app_id_real = 63262;
+const token_real = "6wB5qaAzZ2NVMTS"
 
 let api = null
-
 let connection = null
-
+let authorize_response_symbol_General = null
 let apiAndAuthData = null
-
-
-let last_digit_prediction_local_st = null
-
-let barrier_local_st = null
-
-let symbol_vol_text_local_st = null
-
-let contract_text_local_st = null
-
-let duration_amount_local_st = null
-
-let stake_amount_local_st = null
-
-let symbol_vol_local_st = null
-
-let duration_unit_local_st = null
-
-let last_digit_prediction_or_barrier_local_st = null
-
-let currency_local_st = null
-
-let stake_or_payout_local_st = null
-
-let proposal_id_local_st = null
-
-
-
-
-
-let last_digit_prediction_cookie = null
-
-let barrier_cookie = null
-
-
-
-let symbol_vol_text_cookie = null
-
-let contract_text_cookie = null
-
-let duration_amount_cookie = null
-
-let stake_amount_cookie = null
-
-let symbol_vol_cookie = null
-
-let duration_unit_cookie = null
-
-let last_digit_prediction_or_barrier_cookie = null
-
-let currency_cookie = null
-
-let stake_or_payout_cookie = null
-
-let proposal_id_cookie = null
-
-let stake_amount_default = localStorage.getItem('stake_amount_default') || document.getElementById('stake_amount_input').value
-
-
-
-
-
-
-
-let duration_unit = null
-
-let symbol_vol = null
-
-let duration_amount = null
-
-let stake_amount = null
-
-let last_digit_prediction_or_barrier = null
-
-let currency = null
-
-let contract = null
-
-let stake_or_payout = null
-
-let proposal_id = null
-
-
-
-let td2_account_id_carousel6 = document.getElementById('td2_account_id_carousel6') // change to 25
-let td2_no_of_runs_carousel6 = document.getElementById('td2_no_of_runs_carousel6') // change to 25
-let td2_total_stake_carousel6 = document.getElementById('td2_total_stake_carousel6') // change to 25
-let td2_total_payout_carousel6 = document.getElementById('td2_total_payout_carousel6') // change to 25
-let td2_total_wins_carousel6 = document.getElementById('td2_total_wins_carousel6') // change to 25
-let td2_total_loss_carousel6 = document.getElementById('td2_total_loss_carousel6') // change to 25
-let td2_total_profit_loss_carousel6 = document.getElementById('td2_total_profit_loss_carousel6') // change to 25
-
-
-
-
-
-
-
-let bot_total_runs = 0
-let bot_total_stake = 0
-let bot_total_payout = 0
-let bot_total_wins = 0
-let bot_total_loss = 0
-let bot_total_profit_loss = 0
-
-
-
-let message1 = localStorage.getItem('message1') ? localStorage.getItem('message1') : getCookie('message1')
-
-
-let randomNumber = null;
-
-
-let strNumber = null;
-
-
-let authorize_response = null
-
-
-let subscriptionId = null
-
-
-
-let randomNumber2 = null
-
-
-
-
-let buy_contract_id = null
-
-
 let api_id = null;
 let api_token = null;
+let message1 = localStorage.getItem('message1') ? localStorage.getItem('message1') : getCookie('message1')
 
+let last_digit_input_symbol_vol10_1s = document.getElementById('last_digit_input')
+let close_contract_result_container_symbol_vol10_1s = document.getElementById('close_contract_result_container_carousel6')
+let buy_sell_two_symbol_vol10_1s = document.getElementById('buy_sell_two')
+let trade_type_secound_symbol_vol10_1s = document.getElementById("trade_type_secound")
+let attempting_buy2_carousel6_symbol_vol10_1s = document.getElementById("attempting_buy2_carousel6")
+let buy_succeded2_carousel6_symbol_vol10_1s = document.getElementById("buy_succeded2_carousel6")
+let contract_close2_carousel6_symbol_vol10_1s = document.getElementById("contract_close2_carousel6")
+let stream10_1s_carousel6_symbol_vol10_1s = document.getElementById('stream10_1s_carousel6')
 
+let last_digit_prediction_local_st_symbol_vol10_1s = null
+let barrier_local_st_symbol_vol10_1s = null
+let symbol_vol_text_local_st_symbol_vol10_1s = null
+let contract_text_local_st_symbol_vol10_1s = null
+let duration_amount_local_st_symbol_vol10_1s = null
+let stake_amount_local_st_symbol_vol10_1s = null
+let symbol_vol_local_st_symbol_vol10_1s = null
+let duration_unit_local_st_symbol_vol10_1s = null
+let last_digit_prediction_or_barrier_local_st_symbol_vol10_1s = null
+let currency_local_st_symbol_vol10_1s = null
+let stake_or_payout_local_st_symbol_vol10_1s = null
+let proposal_id_local_st_symbol_vol10_1s = null
+let last_digit_prediction_cookie_symbol_vol10_1s = null
+let barrier_cookie_symbol_vol10_1s = null
+let symbol_vol_text_cookie_symbol_vol10_1s = null
+let contract_text_cookie_symbol_vol10_1s = null
+let duration_amount_cookie_symbol_vol10_1s = null
+let stake_amount_cookie_symbol_vol10_1s = null
+let symbol_vol_cookie_symbol_vol10_1s = null
+let duration_unit_cookie_symbol_vol10_1s = null
+let last_digit_prediction_or_barrier_cookie_symbol_vol10_1s = null
+let currency_cookie_symbol_vol10_1s = null
+let stake_or_payout_cookie_symbol_vol10_1s = null
+let proposal_id_cookie_symbol_vol10_1s = null
+let stake_amount_default_symbol_vol10_1s = localStorage.getItem('stake_amount_default') || document.getElementById('stake_amount_input').value
+let duration_unit_symbol_vol10_1s = null
+let symbol_vol_symbol_vol10_1s = null
+let duration_amount_symbol_vol10_1s = null
+let stake_amount_symbol_vol10_1s = null
+let last_digit_prediction_or_barrier_symbol_vol10_1s = null
+let currency_symbol_vol10_1s = null
+let contract_symbol_vol10_1s = null
+let stake_or_payout_symbol_vol10_1s = null
+let proposal_id_symbol_vol10_1s = null
+let td2_account_id_carousel6_sysmbol_vol10_1s = document.getElementById('td2_account_id_carousel6')
+let td2_no_of_runs_carousel6_sysmbol_vol10_1s = document.getElementById('td2_no_of_runs_carousel6')
+let td2_total_stake_carousel6_sysmbol_vol10_1s = document.getElementById('td2_total_stake_carousel6')
+let td2_total_payout_carousel6_sysmbol_vol10_1s = document.getElementById('td2_total_payout_carousel6')
+let td2_total_wins_carousel6_sysmbol_vol10_1s = document.getElementById('td2_total_wins_carousel6')
+let td2_total_loss_carousel6_sysmbol_vol10_1s = document.getElementById('td2_total_loss_carousel6')
+let td2_total_profit_loss_carousel6_sysmbol_vol10_1s = document.getElementById('td2_total_profit_loss_carousel6')
+let bot_total_runs_symbol_vol10_1s = 0
+let bot_total_stake_symbol_vol10_1s = 0
+let bot_total_payout_symbol_vol10_1s = 0
+let bot_total_wins_symbol_vol10_1s = 0
+let bot_total_loss_symbol_vol10_1s = 0
+let bot_total_profit_loss_symbol_vol10_1s = 0
+let randomNumber_symbol_vol10_1s = null;
+let strNumber_symbol_vol10_1s = null;
+let authorize_response_symbol_vol10_1s = null
+let subscriptionId_symbol_vol10_1s = null
+let randomNumber2_symbol_vol10_1s = null
+let buy_contract_id_symbol_vol10_1s = null
+let api_id_symbol_vol10_1s = null;
+let api_token_symbol_vol10_1s = null;
+let def_price_up_symbol_vol10_1s = null
+let def_payout_up_symbol_vol10_1s = null
+let def_profit_up_symbol_vol10_1s = null
+let website_status_info_symbol_vol10_1s = 'initial'
+let symbol10_1s_symbol_vol10_1s = null
+let symbol10_1s_cookie_symbol_vol10_1s = null
+let subscription_to_open_contract_symbol_vol10_1s = true
 
-
-let def_price_up = null
-let def_payout_up = null
-let def_profit_up = null
-
-
-let website_status_info = 'initial'
-
-let symbol10_1s = null
-let symbol10_1s_cookie = null
-
-
-let subscription_to_open_contract = true
-
-
-
-
-// Function to set a cookie
 function setCookie(name, value, days) {
     const date = new Date();
     date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
@@ -191,7 +92,6 @@ function setCookie(name, value, days) {
     document.cookie = name + "=" + value + ";" + expires + ";path=/";
 }
 
-// Function to get a cookie
 function getCookie(name) {
     const nameEQ = name + "=";
     const ca = document.cookie.split(';');
@@ -203,86 +103,18 @@ function getCookie(name) {
     return null;
 }
 
-
-
 function deleteCookie(name) {
     document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 }
-
-
-
 
 document.addEventListener('DOMContentLoaded', function () {
     setCookie('symbol10_1s', '1HZ10V')
     localStorage.setItem('symbol10_1s', '1HZ10V')
 
-    symbol10_1s = localStorage.getItem('symbol10_1s')
-    symbol10_1s_cookie = getCookie('symbol10_1s')
+    symbol10_1s_symbol_vol10_1s = localStorage.getItem('symbol10_1s')
+    symbol10_1s_cookie_symbol_vol10_1s = getCookie('symbol10_1s')
 
 });
-
-console.log('message1', message1)
-
-/**
-* Calculate the net profit and return percentage
-* @param {number} stake - The amount staked
-* @param {number} payout - The payout amount
-* @returns {Object} An object containing netProfit and returnPercentage
-*/
-function calculateNetProfitAndReturn1(stake, payout) {
-    // Calculate Net Profit
-    const netProfit = payout - stake;
-
-    // Calculate Return as a percentage
-    const returnPercentage = (netProfit / stake) * 100;
-
-    return {
-        netProfit: netProfit.toFixed(2), // Format to 2 decimal places
-        returnPercentage: returnPercentage.toFixed(1) // Format to 1 decimal place
-    };
-}
-
-
-
-function displayProposalResult2(data, stake1, payout1) {
-    const result1 = calculateNetProfitAndReturn1(stake1, payout1);
-    return {
-        netProPerc: `Net Profit: ${result1.netProfit} USD | Return: ${result1.returnPercentage}%`,
-        NetProfit: result1.netProfit,
-        percentage: result1.returnPercentage
-    };
-}
-
-
-
-
-
-let website_status = () => api.websiteStatus({ "website_status": 1, "subscribe": 1 });
-
-
-const websiteStatusResponse = async (res) => {
-    const data = JSON.parse(res.data);
-
-    if (data.error !== undefined) {
-        console.log('Error : ', data.error?.message);
-        connection.removeEventListener('message', websiteStatusResponse, false);
-        await api.disconnect();
-    }
-
-    if (data.msg_type === 'website_status') {
-        let siteStatus = data.website_status.site_status;
-        website_status_info = siteStatus
-    }
-
-};
-
-
-const getWebsiteStatus = async () => {
-    connection.addEventListener('message', websiteStatusResponse);
-    await website_status()
-};
-
-
 
 
 const ping = () => {
@@ -293,15 +125,12 @@ const ping = () => {
 
 const websitePingResponse = async (res) => {
     const data = JSON.parse(res.data);
-
     if (data.error !== undefined) {
-        console.log('Error : ', data.error?.message);
+
         connection.removeEventListener('message', websitePingResponse, false);
         await api.disconnect();
     }
-
     if (data.msg_type === 'ping') {
-
     }
 };
 
@@ -310,60 +139,46 @@ const getWebsitePing = async () => {
     ping();
 };
 
+let bot_id_symbol_vol10_1s = 0
+let bot_buy_start_time_symbol_vol10_1s = null
+let bot_buy_transaction_id_symbol_vol10_1s = null
+let bot_trade_type_symbol_vol10_1s = null
+let bot_buy_price_symbol_vol10_1s = null
+let bot_entry_spot_symbol_vol10_1s = null
+let bot_exit_spot_symbol_vol10_1s = null
+let bot_profit_loss_symbol_vol10_1s = null
+let bot_status_symbol_vol10_1s = null
+let firstContractReceived_symbol_vol10_1s = false;
+let bot_is_running_or_stopped_symbol_vol10_1s = false
+let end_slide_symbol_vol10_1s = true
+let bot_contract_id_symbol_vol10_1s = null
+let bot_unique_code_symbol_vol10_1s = null
 
-
-let bot_id = 0
-let bot_buy_start_time = null
-let bot_buy_transaction_id = null
-let bot_trade_type = null
-let bot_buy_price = null
-let bot_entry_spot = null
-let bot_exit_spot = null
-let bot_profit_loss = null
-let bot_status = null
-let firstContractReceived = false;
-let bot_is_running_or_stopped = false
-let end_slide = true
-let bot_contract_id = null
-let bot_unique_code = null
-
-
-
-
-
-
-async function add_after_trade(bot_id, botuniqueCode, allContracts, entry_spot, exit_spot, profit_loss, status, bot_total_runs, bot_total_stake, bot_total_payout, bot_total_wins, bot_total_loss, bot_total_profit_loss) {
-    const tbody1_carousel6 = document.getElementById('tbody1_carousel6'); // change to 25
-
+async function add_after_trade_symbol_vol10_1s(bot_id, botuniqueCode, allContracts, entry_spot, exit_spot, profit_loss, status, bot_total_runs, bot_total_stake, bot_total_payout, bot_total_wins, bot_total_loss, bot_total_profit_loss) {
+    const tbody1_carousel6 = document.getElementById('tbody1_carousel6');
 
     if (botuniqueCode == allContracts) {
-
-        console.log('yes', botuniqueCode, allContracts)
-        let row_carousel6 = document.getElementById(`bot_carousel6${bot_id}`); // change to 25
-
+        let row_carousel6 = document.getElementById(`bot_carousel6${bot_id}`);
         if (!row_carousel6) {
             console.error(`Row with data-unique-code "bot_carousel6${bot_id}" not found.`);
             return;
         }
 
-        const entry_spot_html_carousel6 = document.getElementById(`td5_carousel6${bot_id}`); // change to 25
-        const exit_spot_html_carousel6 = document.getElementById(`td6_carousel6${bot_id}`); // change to 25
-        const profit_loss_html_carousel6 = document.getElementById(`td8_carousel6${bot_id}`); // change to 25
-        const status_html_carousel6 = document.getElementById(`td9_carousel6${bot_id}`); // change to 25
-
+        const entry_spot_html_carousel6 = document.getElementById(`td5_carousel6${bot_id}`);
+        const exit_spot_html_carousel6 = document.getElementById(`td6_carousel6${bot_id}`);
+        const profit_loss_html_carousel6 = document.getElementById(`td8_carousel6${bot_id}`);
+        const status_html_carousel6 = document.getElementById(`td9_carousel6${bot_id}`);
 
         if (entry_spot_html_carousel6) {
             entry_spot_html_carousel6.textContent = entry_spot
         } else {
-            console.log('child 5 not found')
-        }
 
+        }
         if (exit_spot_html_carousel6) {
             exit_spot_html_carousel6.textContent = exit_spot
         } else {
-            console.log('child 6 not found')
-        }
 
+        }
         if (profit_loss_html_carousel6) {
             profit_loss_html_carousel6.textContent = profit_loss
             let profitLossNumber = parseFloat(profit_loss);
@@ -373,9 +188,8 @@ async function add_after_trade(bot_id, botuniqueCode, allContracts, entry_spot, 
                 profit_loss_html_carousel6.style.color = 'green';
             }
         } else {
-            console.log('child 8 not found')
-        }
 
+        }
         if (status_html_carousel6) {
             status_html_carousel6.textContent = status
             if (status == 'won') {
@@ -384,55 +198,36 @@ async function add_after_trade(bot_id, botuniqueCode, allContracts, entry_spot, 
                 status_html_carousel6.style.color = 'red'
             }
         } else {
-            console.log('child 9 not found')
+
         }
-
-        // uniqueCodes.splice(i, 1); // Remove 1 element at index i
-        // i--; // Adjust index to account for removed element
-
-
-
-        td2_no_of_runs_carousel6.textContent = bot_total_runs
-        td2_total_stake_carousel6.textContent = bot_total_stake
-        td2_total_payout_carousel6.textContent = Number(bot_total_payout.toFixed(2));
-        td2_total_wins_carousel6.textContent = bot_total_wins
-        td2_total_wins_carousel6.style.color = 'green'
-        td2_total_loss_carousel6.textContent = bot_total_loss
-        td2_total_loss_carousel6.style.color = 'red'
-        td2_total_profit_loss_carousel6.textContent = Number(bot_total_profit_loss.toFixed(2));
-        if (parseFloat(Number(bot_total_profit_loss.toFixed(2))) < 0) {
-            td2_total_profit_loss_carousel6.style.color = 'red'
+        td2_no_of_runs_carousel6_sysmbol_vol10_1s.textContent = bot_total_runs_symbol_vol10_1s
+        td2_total_stake_carousel6_sysmbol_vol10_1s.textContent = bot_total_stake_symbol_vol10_1s
+        td2_total_payout_carousel6_sysmbol_vol10_1s.textContent = Number(bot_total_payout_symbol_vol10_1s.toFixed(2));
+        td2_total_wins_carousel6_sysmbol_vol10_1s.textContent = bot_total_wins_symbol_vol10_1s
+        td2_total_wins_carousel6_sysmbol_vol10_1s.style.color = 'green'
+        td2_total_loss_carousel6_sysmbol_vol10_1s.textContent = bot_total_loss_symbol_vol10_1s
+        td2_total_loss_carousel6_sysmbol_vol10_1s.style.color = 'red'
+        td2_total_profit_loss_carousel6_sysmbol_vol10_1s.textContent = Number(bot_total_profit_loss_symbol_vol10_1s.toFixed(2));
+        if (parseFloat(Number(bot_total_profit_loss_symbol_vol10_1s.toFixed(2))) < 0) {
+            td2_total_profit_loss_carousel6_sysmbol_vol10_1s.style.color = 'red'
         } else {
-            td2_total_profit_loss_carousel6.style.color = 'green'
+            td2_total_profit_loss_carousel6_sysmbol_vol10_1s.style.color = 'green'
         }
     }
 
 }
 
-
-
-
-
-
-
-
-
-// Simulate progress filling from 0% to 100%
-const progressBar1_carousel6 = document.querySelector('.progress1_carousel6'); //change to 25
-
-function fillProgressBar1() {
-    progressBar1_carousel6.classList.add('prog1_carousel6') //change to 25
+const progressBar1_carousel6_symbol_vol10_1s = document.querySelector('.progress1_carousel6');
+function fillProgressBar1_symbol_vol10_1s() {
+    progressBar1_carousel6_symbol_vol10_1s.classList.add('prog1_carousel6')
 }
 
-const progressBar2_carousel6 = document.querySelector('.progress2_carousel6'); //change to 25
-
-function fillProgressBar2() {
-    progressBar2_carousel6.classList.add('prog2_carousel6') //change to 25
+const progressBar2_carousel6_symbol_vol10_1s = document.querySelector('.progress2_carousel6');
+function fillProgressBar2_symbol_vol10_1s() {
+    progressBar2_carousel6_symbol_vol10_1s.classList.add('prog2_carousel6')
 }
 
-
-
-function set_start_trade1(bot_is_running_or_stopped) {
+function set_start_trade1_symbol_vol10_1s(bot_is_running_or_stopped) {
     let bot_state_carousel6 = document.getElementById('bot_state_carousel6')
     let circle1_carousel6 = document.getElementById('circle1_carousel6')
     let circle2_carousel6 = document.getElementById('circle2_carousel6')
@@ -441,31 +236,25 @@ function set_start_trade1(bot_is_running_or_stopped) {
     if (circle1_carousel6.classList.contains("buy_signal_carousel6")) {
         circle1_carousel6.classList.remove('buy_signal_carousel6')
     }
-
     if (circle2_carousel6.classList.contains('circle_shadow_carousel6')) {
         circle2_carousel6.classList.remove('circle_shadow_carousel6')
     }
-
     if (circle2_carousel6.classList.contains('add_color_carousel6')) {
         circle2_carousel6.classList.remove('add_color_carousel6')
     }
-
     if (circle3_carousel6.classList.contains('add_color_carousel6')) {
         circle3_carousel6.classList.remove('add_color_carousel6')
     }
-
-    if (progressBar1_carousel6.classList.contains("prog1_carousel6")) {
-        progressBar1_carousel6.classList.remove('prog1_carousel6')
+    if (progressBar1_carousel6_symbol_vol10_1s.classList.contains("prog1_carousel6")) {
+        progressBar1_carousel6_symbol_vol10_1s.classList.remove('prog1_carousel6')
     }
-
-    if (progressBar2_carousel6.classList.contains("prog2_carousel6")) {
-        progressBar2_carousel6.classList.remove('prog2_carousel6')
+    if (progressBar2_carousel6_symbol_vol10_1s.classList.contains("prog2_carousel6")) {
+        progressBar2_carousel6_symbol_vol10_1s.classList.remove('prog2_carousel6')
     }
-
     if (bot_is_running_or_stopped == true) {
         bot_state_carousel6.textContent = 'Bot is running'
         circle1_carousel6.classList.add('buy_signal_carousel6')
-        setTimeout(fillProgressBar1, 1000);
+        setTimeout(fillProgressBar1_symbol_vol10_1s, 1000);
     } else {
         bot_state_carousel6.textContent = 'Bot has stopped'
         circle1_carousel6.classList.remove('buy_signal_carousel6')
@@ -473,22 +262,22 @@ function set_start_trade1(bot_is_running_or_stopped) {
 
 }
 
-function start_trade_ref(buy_price_ref) {
-    if (attempting_buy2_carousel6.classList.contains("attempting_buy2_show_carousel6")) {
-        attempting_buy2_carousel6.classList.remove("attempting_buy2_show_carousel6")
+function start_trade_ref_symbol_vol10_1s(buy_price_ref) {
+    if (attempting_buy2_carousel6_symbol_vol10_1s.classList.contains("attempting_buy2_show_carousel6")) {
+        attempting_buy2_carousel6_symbol_vol10_1s.classList.remove("attempting_buy2_show_carousel6")
     }
-    if (buy_succeded2_carousel6.classList.contains("buy_succeded2_show_carousel6")) {
-        buy_succeded2_carousel6.classList.remove("buy_succeded2_show_carousel6")
+    if (buy_succeded2_carousel6_symbol_vol10_1s.classList.contains("buy_succeded2_show_carousel6")) {
+        buy_succeded2_carousel6_symbol_vol10_1s.classList.remove("buy_succeded2_show_carousel6")
     }
-    if (contract_close2_carousel6.classList.contains("contract_close2_show_carousel6")) {
-        contract_close2_carousel6.classList.remove("contract_close2_show_carousel6")
+    if (contract_close2_carousel6_symbol_vol10_1s.classList.contains("contract_close2_show_carousel6")) {
+        contract_close2_carousel6_symbol_vol10_1s.classList.remove("contract_close2_show_carousel6")
     }
-    attempting_buy2_carousel6.textContent = `Buy amount: ${buy_price_ref}`
-    attempting_buy2_carousel6.classList.add('attempting_buy2_show_carousel6')
+    attempting_buy2_carousel6_symbol_vol10_1s.textContent = `Buy amount: ${buy_price_ref}`
+    attempting_buy2_carousel6_symbol_vol10_1s.classList.add('attempting_buy2_show_carousel6')
 }
 
 
-function set_middle_trade1(bot_is_running_or_stopped) {
+function set_middle_trade1_symbol_vol10_1s(bot_is_running_or_stopped) {
     let bot_state_carousel6 = document.getElementById('bot_state_carousel6')
     let circle1_carousel6 = document.getElementById('circle1_carousel6')
     let circle2_carousel6 = document.getElementById('circle2_carousel6')
@@ -498,7 +287,6 @@ function set_middle_trade1(bot_is_running_or_stopped) {
     function timmimg_shadow() {
         circle2_carousel6.classList.add('circle_shadow_carousel6')
     }
-
     if (bot_is_running_or_stopped == true) {
         bot_state_carousel6.textContent = 'Bot is running'
         circle2_carousel6.classList.add('add_color_carousel6')
@@ -510,270 +298,139 @@ function set_middle_trade1(bot_is_running_or_stopped) {
     }
 }
 
-function middle_trade_ref(buy_ref) {
-    buy_succeded2_carousel6.textContent = `ID: ${buy_ref}`
-    buy_succeded2_carousel6.classList.add('buy_succeded2_show_carousel6')
+function middle_trade_ref_symbol_vol10_1s(buy_ref) {
+    buy_succeded2_carousel6_symbol_vol10_1s.textContent = `ID: ${buy_ref}`
+    buy_succeded2_carousel6_symbol_vol10_1s.classList.add('buy_succeded2_show_carousel6')
 }
 
-
-
-function set_end_trade1(bot_is_running_or_stopped) {
+function set_end_trade1_symbol_vol10_1s(bot_is_running_or_stopped) {
     let bot_state_carousel6 = document.getElementById('bot_state_carousel6')
     let circle2_carousel6 = document.getElementById('circle2_carousel6')
     let circle3_carousel6 = document.getElementById('circle3_carousel6')
 
-
     function timmimg_color() {
         circle3_carousel6.classList.add('add_color_carousel6')
     }
-
     if (circle2_carousel6.classList.contains('circle_shadow_carousel6')) {
         circle2_carousel6.classList.remove('circle_shadow_carousel6')
     }
-
     if (bot_is_running_or_stopped == true) {
         bot_state_carousel6.textContent = 'Bot is running'
-        setTimeout(fillProgressBar2, 1000);
+        setTimeout(fillProgressBar2_symbol_vol10_1s, 1000);
         setTimeout(timmimg_color, 1500);
     } else {
         bot_state_carousel6.textContent = 'Bot has stopped'
         circle3_carousel6.classList.remove('add_color_carousel6')
     }
 }
-
-
-function end_trade_ref(sell_ref) {
-    contract_close2_carousel6.textContent = `ID: ${sell_ref}`
-    contract_close2_carousel6.classList.add('contract_close2_show_carousel6')
+function end_trade_ref_symbol_vol10_1s(sell_ref) {
+    contract_close2_carousel6_symbol_vol10_1s.textContent = `ID: ${sell_ref}`
+    contract_close2_carousel6_symbol_vol10_1s.classList.add('contract_close2_show_carousel6')
 }
 
-
-
-
-
-
-
-
-let proposal_open_contract = () => api.proposalOpenContract({
+let proposal_open_contract2_symbol_vol10_1s = () => api.proposalOpenContract({
     "proposal_open_contract": 1,
     "subscribe": 1
 })
 
-
-let proposal_open_contract2 = () => api.proposalOpenContract({
-    "proposal_open_contract": 1,
-    "subscribe": 1
-})
-
-const proposalOpenContractResponse = async (res) => {
+const proposalOpenContractResponse2_symbol_vol10_1s = async (res) => {
     const data = JSON.parse(res.data);
     if (data.error !== undefined) {
-        console.log('Error: %s ', data.error.message);
-        connection.removeEventListener('message', proposalOpenContractResponse, false);
+
+        connection.removeEventListener('message', proposalOpenContractResponse2_symbol_vol10_1s, false);
         await api.disconnect();
 
     } else if (data.msg_type === 'proposal_open_contract') {
-        console.log(data)
-        open_proposal_actions(data)
+
+        open_proposal_actions2_symbol_vol10_1s(data)
     }
 };
 
-const proposalOpenContractResponse2 = async (res) => {
-    const data = JSON.parse(res.data);
-    if (data.error !== undefined) {
-        console.log('Error: %s ', data.error.message);
-        connection.removeEventListener('message', proposalOpenContractResponse2, false);
-        await api.disconnect();
-
-    } else if (data.msg_type === 'proposal_open_contract') {
-        console.log(data)
-        open_proposal_actions2(data)
-    }
+const getProposalOpenContract12_symbol_vol10_1s = async (contract_id) => {
+    connection.addEventListener('message', proposalOpenContractResponse2_symbol_vol10_1s);
+    proposal_open_contract2_symbol_vol10_1s()
 };
 
-const getProposalOpenContract = async (contract_id) => {
-    connection.addEventListener('message', proposalOpenContractResponse);
-    proposal_open_contract()
+const getProposalOpenContract22_symbol_vol10_1s = async (contract_id) => {
+    connection.addEventListener('message', proposalOpenContractResponse2_symbol_vol10_1s);
 };
 
-const getProposalOpenContract2 = async (contract_id) => {
-    connection.addEventListener('message', proposalOpenContractResponse);
+const unsubscribeProposalOpenContract2_symbol_vol10_1s = () => {
+    connection.removeEventListener('message', proposalOpenContractResponse2_symbol_vol10_1s, false);
 };
 
-
-const getProposalOpenContract12 = async (contract_id) => {
-    connection.addEventListener('message', proposalOpenContractResponse2);
-    proposal_open_contract2()
-};
-
-const getProposalOpenContract22 = async (contract_id) => {
-    connection.addEventListener('message', proposalOpenContractResponse2);
-};
-
-
-
-
-const unsubscribeProposalOpenContract = () => {
-    connection.removeEventListener('message', proposalOpenContractResponse, false);
-};
-
-const unsubscribeProposalOpenContract2 = () => {
-    connection.removeEventListener('message', proposalOpenContractResponse2, false);
-};
-
-
-
-function run_open_contract_proposal() {
-
-    if (subscription_to_open_contract == true) {
-        getProposalOpenContract()
+function run_open_contract_proposal2_symbol_vol10_1s() {
+    if (subscription_to_open_contract_symbol_vol10_1s == true) {
+        getProposalOpenContract12_symbol_vol10_1s()
     } else {
-        getProposalOpenContract2()
+        getProposalOpenContract22_symbol_vol10_1s()
     }
-
-    subscription_to_open_contract = false
+    subscription_to_open_contract_symbol_vol10_1s = false
 }
 
-
-function run_open_contract_proposal2() {
-
-    if (subscription_to_open_contract == true) {
-        getProposalOpenContract12()
-    } else {
-        getProposalOpenContract22()
-    }
-
-    subscription_to_open_contract = false
-}
-
-
-
-
-
-function generateUniqueCode(buy) {
+function generateUniqueCode_symbol_vol10_1s(buy) {
     return buy.buy.contract_id;
 }
 
-let martingale_store = [1.1, 11.1, 123.4, 1371.1, 15593.5]
-let martingale_count = 0
-let initial_stake = true
+let martingale_store_symbol_vol10_1s = [0.35, 3.5, 38.9, 432.3]
+let martingale_count_symbol_vol10_1s = 0
+let initial_stake_symbol_vol10_1s = true
+let contract_id2_symbol_vol10_1s = null
+let wonEncountered_symbol_vol10_1s = false;
 
-let contract_id2 = null
-let wonEncountered = false;
-
-async function buy_bot(martingale, current_number) {
-
+async function buy_bot_symbol_vol10_1s(martingale, current_number) {
     const slider = document.getElementById('slide_trade_result_carousel6').style.display = 'flex';
 
-    last_digit_prediction_or_barrier = parseInt(current_number);
-
+    last_digit_prediction_or_barrier_symbol_vol10_1s = parseInt(current_number);
     let contract_text_local_st = localStorage.getItem('contract_text_local_st')
-
     let contract_text_cookie = getCookie('contract_text_cookie')
 
-    if (martingale == 'true' && contract_status2 == 'lost') {
+    if (martingale == 'true' && contract_status2_symbol_vol10_1s == 'lost') {
         if (contract_text_local_st && contract_text_local_st == 'Matches/Differs' || contract_text_cookie && contract_text_cookie == 'Matches/Differs') {
-            martingale_count += 1
-            stake_amount = martingale_store[martingale_count]
+            martingale_count_symbol_vol10_1s += 1
+            stake_amount_symbol_vol10_1s = martingale_store_symbol_vol10_1s[martingale_count_symbol_vol10_1s]
         } else {
-            stake_amount = stake_amount * 10.1
+            stake_amount_symbol_vol10_1s = stake_amount_symbol_vol10_1s * 10.1
         }
-    } else if (initial_stake = true || (martingale == 'true' && contract_status2 == 'won')) {
+    } else if (initial_stake_symbol_vol10_1s = true || (martingale == 'true' && contract_status2_symbol_vol10_1s == 'won')) {
         if (contract_text_local_st && contract_text_local_st == 'Matches/Differs' || contract_text_cookie && contract_text_cookie == 'Matches/Differs') {
-            martingale_count = 0
-            stake_amount = martingale_store[martingale_count]
+            martingale_count_symbol_vol10_1s = 0
+            stake_amount_symbol_vol10_1s = martingale_store_symbol_vol10_1s[martingale_count_symbol_vol10_1s]
         } else {
-            stake_amount = stake_amount_default
+            stake_amount_symbol_vol10_1s = stake_amount_default_symbol_vol10_1s
         }
     } else {
-        stake_amount = stake_amount_default
+        stake_amount_symbol_vol10_1s = stake_amount_default_symbol_vol10_1s
     }
 
 
-    wonEncountered = false
-    before_trade();
-    allProposalOpenContract2.length = 0;
-    unsubscribeProposalOpenContract2()
+    wonEncountered_symbol_vol10_1s = false
+    before_trade_symbol_vol10_1s();
+    allProposalOpenContract2_symbol_vol10_1s.length = 0;
+    unsubscribeProposalOpenContract2_symbol_vol10_1s()
 
     try {
-        // Await the completion of order_propose
-        await order_propose(api, stake_amount, last_digit_prediction_or_barrier, stake_or_payout, contract, currency, duration_amount, duration_unit, symbol10_1s);
+        await order_propose_symbol_vol10_1s(api, stake_amount_symbol_vol10_1s, last_digit_prediction_or_barrier_symbol_vol10_1s, stake_or_payout_symbol_vol10_1s, contract_symbol_vol10_1s, currency_symbol_vol10_1s, duration_amount_symbol_vol10_1s, duration_unit_symbol_vol10_1s, symbol10_1s_symbol_vol10_1s);
 
         let buy = await api.buy({
-            "buy": String(proposal_id),
-            "price": parseFloat(stake_amount)
+            "buy": String(proposal_id_symbol_vol10_1s),
+            "price": parseFloat(stake_amount_symbol_vol10_1s)
         });
 
-        contract_id2 = generateUniqueCode(buy)
+        contract_id2_symbol_vol10_1s = generateUniqueCode_symbol_vol10_1s(buy)
 
-        run_open_contract_proposal2()
-        initial_stake = false
+        run_open_contract_proposal2_symbol_vol10_1s()
+        initial_stake_symbol_vol10_1s = false
 
     } catch (error) {
         console.error('Error during trade:', error);
-        // Handle errors or rollback operations if needed
+        setTimeout(() => {
+            initializeApi(message1)
+        }, 5000);
     }
 }
 
-
-
-
-// Function to toggle flash and fadeout effect
-function flashAndFadeout(random, show_for_two, flash_color, fadeout_color) {
-
-    let alert_box = null
-
-    if (random == 0) {
-        alert_box = 'zero'
-    }
-    if (random == 1) {
-        alert_box = 'one'
-    }
-    if (random == 2) {
-        alert_box = 'two'
-    }
-    if (random == 3) {
-        alert_box = 'three'
-    }
-    if (random == 4) {
-        alert_box = 'four'
-    }
-    if (random == 5) {
-        alert_box = 'five'
-    }
-    if (random == 6) {
-        alert_box = 'six'
-    }
-    if (random == 7) {
-        alert_box = 'seven'
-    }
-    if (random == 8) {
-        alert_box = 'eight'
-    }
-    if (random == 9) {
-        alert_box = 'nine'
-    }
-
-    var textElement = document.querySelector(`.first_alert_${alert_box}`);
-    if (textElement) {
-        textElement.textContent = show_for_two
-        textElement.classList.add(`${flash_color}`);
-
-        setTimeout(function () {
-            textElement.classList.remove(`${flash_color}`);
-            textElement.classList.add(`${fadeout_color}`);
-            setTimeout(function () {
-                textElement.classList.remove(`${fadeout_color}`);
-            }, 500); // Adjust as needed
-        }, 1000); // Adjust as needed
-    } else {
-        console.error(`Element with class '.first_alert_${alert_box}' not found.`);
-    }
-}
-
-
-
-async function append_result(bot_id, bot_buy_start_time, bot_buy_transaction_id, bot_trade_type, bot_buy_price, bot_status) {
+async function append_result_symbol_vol10_1s(bot_id, bot_buy_start_time, bot_buy_transaction_id, bot_trade_type, bot_buy_price, bot_status) {
 
     const backendData = [
         {
@@ -787,18 +444,15 @@ async function append_result(bot_id, bot_buy_start_time, bot_buy_transaction_id,
             profitLoss: '',
             status: bot_status
         },
-        // Add more objects as per your backend data structure
     ];
 
     const tbody_carousel6 = document.getElementById('tbody1_carousel6');
 
     function appendRows(data) {
         data.forEach(item => {
-            // Create <tr> element
             const row_carousel6 = document.createElement('tr');
             row_carousel6.id = `bot_carousel6${item.id}`;
 
-            // Create <td> elements and append to <tr>
             const td1_carousel6 = document.createElement('td');
             td1_carousel6.textContent = item.id;
             td1_carousel6.id = `td1_carousel6${item.id}`;
@@ -844,82 +498,67 @@ async function append_result(bot_id, bot_buy_start_time, bot_buy_transaction_id,
             td9_carousel6.id = `td9_carousel6${item.id}`;
             row_carousel6.appendChild(td9_carousel6);
 
-            // Prepend <tr> to <tbody> (insert before the first child of tbody)
             if (tbody_carousel6.firstChild) {
                 tbody_carousel6.insertBefore(row_carousel6, tbody_carousel6.firstChild);
             } else {
-                tbody_carousel6.appendChild(row_carousel6); // If tbody is empty, just append
+                tbody_carousel6.appendChild(row_carousel6);
             }
         });
     }
     appendRows(backendData)
 }
 
+let log_timestamp_current_symbol_vol10_1s = null
+let log_buy_timestamp_bot_symbol_vol10_1s = null
+let log_sell_timestamp_bot_symbol_vol10_1s = null
+let log_message10_symbol_vol10_1s = null
+let log_message9_symbol_vol10_1s = null
+let log_message8_symbol_vol10_1s = null
+let log_message7_symbol_vol10_1s = null
+let log_message6_symbol_vol10_1s = null
+let log_message5_symbol_vol10_1s = null
+let log_message4_symbol_vol10_1s = null
+let log_message3_symbol_vol10_1s = null
+let log_message2_symbol_vol10_1s = null
+let log_message1_symbol_vol10_1s = null
+let log_message_curr_symbol_vol10_1s = null
+let log_message_curr_tick_symbol_vol10_1s = null
+let log_message_last_digit_symbol_vol10_1s = null
+let log_message_entry_tick_symbol_vol10_1s = null
+let appended_symbol_vol10_1s = true
+let log_id_symbol_vol10_1s = 0
 
-
-
-
-
-let log_timestamp_current = null
-let log_buy_timestamp_bot = null
-let log_sell_timestamp_bot = null
-let log_message10 = null
-let log_message9 = null
-let log_message8 = null
-let log_message7 = null
-let log_message6 = null
-let log_message5 = null
-let log_message4 = null
-let log_message3 = null
-let log_message2 = null
-let log_message1 = null
-let log_message_curr = null
-let log_message_curr_tick = null
-let log_message_last_digit = null
-let log_message_entry_tick = null
-let appended = true
-let log_id = 0
-
-
-function format_log_current_time() {
-    // Get current Unix timestamp in seconds (divide by 1000 because Date.now() returns milliseconds)
+function format_log_current_time_symbol_vol10_1s() {
     const unixTimestamp = Date.now() / 1000;
-
-    // Create a Date object from the timestamp 
     const date = new Date(unixTimestamp * 1000);
-
-    // Get individual date components in UTC
     const year = date.getUTCFullYear();
-    const month = date.getUTCMonth() + 1; // Months are zero-indexed, so we add 1
+    const month = date.getUTCMonth() + 1;
     const day = date.getUTCDate();
     const hours = date.getUTCHours();
     const minutes = date.getUTCMinutes();
     const seconds = date.getUTCSeconds();
-
-    // Format the date string
     const formattedDate = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')} ` +
         `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')} GMT`;
 
     return formattedDate;
 }
 
-
-async function bot_log(last_ten_tick, last_nine_tick, last_eight_tick, last_seven_tick, last_six_tick, last_five_tick, last_four_tick, last_three_tick, last_two_tick, last_one_tick, current_tick, current_tick_full) {
+async function bot_log_symbol_vol10_1s(last_ten_tick, last_nine_tick, last_eight_tick, last_seven_tick, last_six_tick, last_five_tick, last_four_tick, last_three_tick, last_two_tick, last_one_tick, current_tick, current_tick_full) {
 
     const backendData = [
         {
-            log_message10: last_ten_tick,
-            log_message9: last_nine_tick,
-            log_message8: last_eight_tick,
-            log_message7: last_seven_tick,
-            log_message6: last_six_tick,
-            log_message5: last_five_tick,
-            log_message4: last_four_tick,
-            log_message3: last_three_tick,
-            log_message2: last_two_tick,
-            log_message1: last_one_tick,
-            log_message_curr: current_tick,
-            log_message_curr_tick: current_tick_full,
+            log_message10_symbol_vol10_1s: last_ten_tick,
+            log_message9_symbol_vol10_1s: last_nine_tick,
+            log_message8_symbol_vol10_1s: last_eight_tick,
+            log_message7_symbol_vol10_1s: last_seven_tick,
+            log_message6_symbol_vol10_1s: last_six_tick,
+            log_message5_symbol_vol10_1s: last_five_tick,
+            log_message4_symbol_vol10_1s: last_four_tick,
+            log_message3_symbol_vol10_1s: last_three_tick,
+            log_message2_symbol_vol10_1s: last_two_tick,
+            log_message1_symbol_vol10_1s: last_one_tick,
+            log_message_curr_symbol_vol10_1s: current_tick,
+            log_message_curr_tick_symbol_vol10_1s: current_tick_full,
         },
     ];
 
@@ -927,266 +566,283 @@ async function bot_log(last_ten_tick, last_nine_tick, last_eight_tick, last_seve
 
     function appendRows(data) {
         data.forEach(item => {
-            // Create <tr> element
             const row_carousel6 = document.createElement('tr');
-            row_carousel6.id = `log_bot_carousel6${log_id}`;
+            row_carousel6.id = `log_bot_carousel6${log_id_symbol_vol10_1s}`;
 
             const td1_carousel6 = document.createElement('td');
-            td1_carousel6.textContent = log_timestamp_current;
-            td1_carousel6.id = `log_td1_carousel6${log_id}`;
+            td1_carousel6.textContent = log_timestamp_current_symbol_vol10_1s;
+            td1_carousel6.id = `log_td1_carousel6${log_id_symbol_vol10_1s}`;
             td1_carousel6.classList.add('lod_td1_carousel6')
             row_carousel6.appendChild(td1_carousel6);
 
-            // Create <td> elements and append to <tr>
             const td2_carousel6 = document.createElement('td');
 
-            if (log_message10 == null) {
-                log_message10 = ''
+            if (log_message10_symbol_vol10_1s == null) {
+                log_message10_symbol_vol10_1s = ''
+            }
+            if (log_message9_symbol_vol10_1s == null) {
+                log_message9_symbol_vol10_1s = ''
+            }
+            if (log_message8_symbol_vol10_1s == null) {
+                log_message8_symbol_vol10_1s = ''
+            }
+            if (log_message7_symbol_vol10_1s == null) {
+                log_message7_symbol_vol10_1s = ''
+            }
+            if (log_message6_symbol_vol10_1s == null) {
+                log_message6_symbol_vol10_1s = ''
+            }
+            if (log_message5_symbol_vol10_1s == null) {
+                log_message5_symbol_vol10_1s = ''
             }
 
-            if (log_message9 == null) {
-                log_message9 = ''
+            if (log_message4_symbol_vol10_1s == null) {
+                log_message4_symbol_vol10_1s = ''
             }
 
-            if (log_message8 == null) {
-                log_message8 = ''
+            if (log_message3_symbol_vol10_1s == null) {
+                log_message3_symbol_vol10_1s = ''
             }
 
-            if (log_message7 == null) {
-                log_message7 = ''
+            if (log_message2_symbol_vol10_1s == null) {
+                log_message2_symbol_vol10_1s = ''
             }
 
-            if (log_message6 == null) {
-                log_message6 = ''
+            if (log_message1_symbol_vol10_1s == null) {
+                log_message1_symbol_vol10_1s = ''
             }
 
-            if (log_message5 == null) {
-                log_message5 = ''
+            if (log_message_curr_symbol_vol10_1s == null) {
+                log_message_curr_symbol_vol10_1s = ''
             }
 
-            if (log_message4 == null) {
-                log_message4 = ''
-            }
-
-            if (log_message3 == null) {
-                log_message3 = ''
-            }
-
-            if (log_message2 == null) {
-                log_message2 = ''
-            }
-
-            if (log_message1 == null) {
-                log_message1 = ''
-            }
-
-            if (log_message_curr == null) {
-                log_message_curr = ''
-            }
-
-            td2_carousel6.textContent = `last ten ticks:  ${item.log_message10} ${item.log_message9} ${item.log_message8} ${item.log_message7} ${item.log_message6} ${item.log_message5} ${item.log_message4} ${item.log_message3} ${item.log_message2} ${item.log_message1}          current tick ${item.log_message_curr}    ${item.log_message_curr_tick}`;
+            td2_carousel6.textContent = `last ten ticks:  ${item.log_message10_symbol_vol10_1s} ${item.log_message9_symbol_vol10_1s} ${item.log_message8_symbol_vol10_1s} ${item.log_message7_symbol_vol10_1s} ${item.log_message6_symbol_vol10_1s} ${item.log_message5_symbol_vol10_1s} ${item.log_message4_symbol_vol10_1s} ${item.log_message3_symbol_vol10_1s} ${item.log_message2_symbol_vol10_1s} ${item.log_message1_symbol_vol10_1s}          current tick ${item.log_message_curr_symbol_vol10_1s}    ${item.log_message_curr_tick_symbol_vol10_1s}`;
 
             td2_carousel6.style.whiteSpace = 'pre'
-            td2_carousel6.id = `log_td2_carousel6${log_id}`;
+            td2_carousel6.id = `log_td2_carousel6${log_id_symbol_vol10_1s}`;
             td2_carousel6.classList.add('lod_td2_carousel6')
             row_carousel6.appendChild(td2_carousel6);
 
             const td3_carousel6 = document.createElement('td');
             td3_carousel6.textContent = 'this is the text'
             td3_carousel6.style.whiteSpace = 'pre'
-            td3_carousel6.id = `log_td3_carousel6${log_id}`;
+            td3_carousel6.id = `log_td3_carousel6${log_id_symbol_vol10_1s}`;
             td3_carousel6.classList.add('lod_td3_carousel6')
             row_carousel6.appendChild(td3_carousel6);
 
-            // Prepend <tr> to <tbody> (insert before the first child of tbody)
             if (log_tbody_carousel6.firstChild) {
                 log_tbody_carousel6.insertBefore(row_carousel6, log_tbody_carousel6.firstChild);
-                appended = true
+                appended_symbol_vol10_1s = true
             } else {
-                log_tbody_carousel6.appendChild(row_carousel6); // If tbody is empty, just append
-                appended = true
+                log_tbody_carousel6.appendChild(row_carousel6);
+                appended_symbol_vol10_1s = true
             }
         });
     }
-
     appendRows(backendData)
 }
 
-
-
-async function bot_log_end(bot_buy_time_stamp, bot_sell_time_stamp, newValueForEntryTick, newValueForLastDigit) {
-    let target_td_carousel6 = document.getElementById(`log_td3_carousel6${log_id}`)
+async function bot_log_end_symbol_vol10_1s(bot_buy_time_stamp, bot_sell_time_stamp, newValueForEntryTick, newValueForLastDigit) {
+    let target_td_carousel6 = document.getElementById(`log_td3_carousel6${log_id_symbol_vol10_1s}`)
 
     function formate_log_date(datein) {
-        // Unix timestamp in seconds
         const unixTimestamp = datein;
-
-        // Create a Date object from the timestamp (multiply by 1000 because the Date constructor expects milliseconds)
         const date = new Date(unixTimestamp * 1000);
-
-        // Get individual date components
         const year = date.getUTCFullYear();
-        const month = date.getUTCMonth() + 1; // Months are zero-indexed, so we add 1
+        const month = date.getUTCMonth() + 1;
         const day = date.getUTCDate();
         const hours = date.getUTCHours();
         const minutes = date.getUTCMinutes();
         const seconds = date.getUTCSeconds();
-
-        // Format the date string
         const formattedDate = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')} ` +
             `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')} GMT`;
 
         return formattedDate
     }
 
-    log_buy_timestamp_bot = formate_log_date(bot_buy_time_stamp)
-    log_sell_timestamp_bot = formate_log_date(bot_sell_time_stamp)
+    log_buy_timestamp_bot_symbol_vol10_1s = formate_log_date(bot_buy_time_stamp)
+    log_sell_timestamp_bot_symbol_vol10_1s = formate_log_date(bot_sell_time_stamp)
 
     if (target_td_carousel6) {
-        target_td_carousel6.textContent = `buy_time:  ${log_buy_timestamp_bot}        sell_time:  ${log_sell_timestamp_bot}    entry tick:  ${newValueForEntryTick}     last digit:  ${newValueForLastDigit}`
+        target_td_carousel6.textContent = `buy_time:  ${log_buy_timestamp_bot_symbol_vol10_1s}        sell_time:  ${log_sell_timestamp_bot_symbol_vol10_1s}    entry tick:  ${newValueForEntryTick}     last digit:  ${newValueForLastDigit}`
 
-        log_id += 1
+        log_id_symbol_vol10_1s += 1
     } else {
-        console.log('td not found')
+
     }
 }
 
+let first_instance_symbol_vol10_1s = true
 
-
-
-
-let first_instance = true
-
-async function startBot(martingale, lastNumber10, lastNumber9, lastNumber8, lastNumber7, lastNumber6, lastNumber5, lastNumber4, lastNumber3, lastNumber2, lastNumber1, currentRandom, strNumber) {
-
-    bot_is_running_or_stopped = true;
-    log_timestamp_current = format_log_current_time()
-    set_start_trade1(bot_is_running_or_stopped);
-    bot_id += 1;
-    firstContractReceived = false;
-    end_slide = true;
-    bot_entry_spot = '';
-    bot_exit_spot = '';
-    bot_profit_loss = '';
-    bot_status = 'pending';
-    bot_log(lastNumber10, lastNumber9, lastNumber8, lastNumber7, lastNumber6, lastNumber5, lastNumber4, lastNumber3, lastNumber2, lastNumber1, currentRandom, strNumber)
-    await buy_bot(martingale, currentRandom);
-    first_instance = false
+async function startBot_symbol_vol10_1s(martingale, lastNumber10, lastNumber9, lastNumber8, lastNumber7, lastNumber6, lastNumber5, lastNumber4, lastNumber3, lastNumber2, lastNumber1, currentRandom, strNumber) {
+    if (first_instance_symbol_vol10_1s == true) {
+        bot_id_symbol_vol10_1s = 0
+    }
+    bot_is_running_or_stopped_symbol_vol10_1s = true;
+    log_timestamp_current_symbol_vol10_1s = format_log_current_time_symbol_vol10_1s()
+    set_start_trade1_symbol_vol10_1s(bot_is_running_or_stopped_symbol_vol10_1s);
+    bot_id_symbol_vol10_1s += 1;
+    firstContractReceived_symbol_vol10_1s = false;
+    end_slide_symbol_vol10_1s = true;
+    bot_entry_spot_symbol_vol10_1s = '';
+    bot_exit_spot_symbol_vol10_1s = '';
+    bot_profit_loss_symbol_vol10_1s = '';
+    bot_status_symbol_vol10_1s = 'pending';
+    bot_log_symbol_vol10_1s(lastNumber10, lastNumber9, lastNumber8, lastNumber7, lastNumber6, lastNumber5, lastNumber4, lastNumber3, lastNumber2, lastNumber1, currentRandom, strNumber)
+    await buy_bot_symbol_vol10_1s(martingale, currentRandom);
+    first_instance_symbol_vol10_1s = false
 }
 
+let bot_state_carousel6_symbol_vol10_1s = null
+let bot_state_carousel6_cookie_symbol_vol10_1s = null
+let all_bot_start_stop1_symbol_vol10_1s = null
+let all_bot_start_stop1_cookie_symbol_vol10_1s = null
+let buttonContainer_carousel6_symbol_vol10_1s = document.querySelector('.click_change_carousel6');
 
-
-
-let bot_state_carousel6 = "stop_bot"
-let all_bot_start_stop1 = null
-let all_bot_start_stop1_cookie = null
-
-let buttonContainer_carousel6 = document.querySelector('.click_change_carousel6');
-
-function togglePlayPause() {
+function togglePlayPause_symbol_vol10_1s() {
     var play_button_carousel6 = document.getElementById('play_button_carousel6');
     var pause_button_carousel6 = document.getElementById('pause_button_carousel6');
 
     if (play_button_carousel6) {
-        bot_state_carousel6 = "stop_bot"
+        localStorage.setItem('bot_state_carousel6', 'stop_bot');
+        setCookie('bot_state_carousel6', 'stop_bot');
+        localStorage.setItem('bots_state_carousel6', 'stop_bots');
+        setCookie('bots_state_carousel6', 'stop_bots');
+
+        let bot_state_carousel6 = localStorage.getItem('bot_state_carousel6');
+        let bot_state_carousel6_cookie = getCookie('bot_state_carousel6');
+        let bots_state_carousel6 = localStorage.getItem('bots_state_carousel6');
+        let bots_state_carousel6_cookie = getCookie('bots_state_carousel6');
+
         play_button_carousel6.parentNode.removeChild(play_button_carousel6);
 
         var pause_button_carousel6 = document.createElement('div');
         pause_button_carousel6.id = 'pause_button_carousel6';
         pause_button_carousel6.className = 'pause_button_carousel6';
         pause_button_carousel6.innerHTML = '&#10074;&#10074;';
-        buttonContainer_carousel6.appendChild(pause_button_carousel6);
-        document.getElementById('bot_state_carousel6').textContent = 'Bot has stopped';
+        buttonContainer_carousel6_symbol_vol10_1s.appendChild(pause_button_carousel6);
+
+        if ((bot_state_carousel6 == 'stop_bot' || bot_state_carousel6_cookie == 'stop_bot') && (bots_state_carousel6 == 'stop_bots' || bots_state_carousel6_cookie == 'stop_bots')) {
+            bot_is_running_or_stopped_symbol_vol10_1s = false;
+            document.getElementById('bot_state_carousel6').textContent = 'Bot has stopped';
+        }
+
     } else if (pause_button_carousel6) {
-        bot_state_carousel6 = "start_bot"
+
+        localStorage.setItem('bot_state_carousel6', 'start_bot');
+        setCookie('bot_state_carousel6', 'start_bot');
+        localStorage.setItem('bots_state_carousel6', 'start_bots');
+        setCookie('bots_state_carousel6', 'start_bots');
+
+        let bot_state_carousel6 = localStorage.getItem('bot_state_carousel6');
+        let bot_state_carousel6_cookie = getCookie('bot_state_carousel6');
+        let bots_state_carousel6 = localStorage.getItem('bots_state_carousel6');
+        let bots_state_carousel6_cookie = getCookie('bots_state_carousel6');
+
         pause_button_carousel6.parentNode.removeChild(pause_button_carousel6);
 
         var play_button_carousel6 = document.createElement('div');
         play_button_carousel6.id = 'play_button_carousel6';
         play_button_carousel6.className = 'play_button_carousel6';
         play_button_carousel6.innerHTML = '&#9654;';
-        buttonContainer_carousel6.appendChild(play_button_carousel6);
-        document.getElementById('bot_state_carousel6').textContent = 'Bot is running';
+        buttonContainer_carousel6_symbol_vol10_1s.appendChild(play_button_carousel6);
+
+        if ((bot_state_carousel6 == 'start_bot' || bot_state_carousel6_cookie == 'start_bot') && (bots_state_carousel6 == 'start_bots' || bots_state_carousel6_cookie == 'start_bots')) {
+            bot_is_running_or_stopped_symbol_vol10_1s = true;
+            document.getElementById('bot_state_carousel6').textContent = 'Bot is running';
+        }
     }
 }
 
-buttonContainer_carousel6.addEventListener('click', togglePlayPause);
-
-
-
-
-
-function getRandom(strNumber) {
-    return randomNumber = strNumber.charAt(strNumber.length - 1);
+buttonContainer_carousel6_symbol_vol10_1s.addEventListener('click', togglePlayPause_symbol_vol10_1s);
+function getRandom_symbol_vol10_1s(strNumber) {
+    return randomNumber_symbol_vol10_1s = strNumber.charAt(strNumber.length - 1);
 }
 
+let set_vol10_1s_trade_carousel6_symbol_vol10_1s = null
+let martingale_active_carousel6_symbol_vol10_1s = null
+let bot_set_carousel6_symbol_vol10_1s = null
+let set_bot_jump_carousel6_symbol_vol10_1s = null
+let initial_set_jump_symbol_vol10_1s = true
 
-let currentvol_carousel6 = null
-let currentvol2_carousel6 = null
-let martingale_active_carousel6 = null
-let bot_set_carousel6 = null
-let set_bot_jump_carousel6 = null
-let initial_set_jump = true
+let set_vol10_1s_trade_carousel6_cookie_symbol_vol10_1s = null
+let martingale_active_carousel6_cookie_symbol_vol10_1s = null
+let bot_set_carousel6_cookie_symbol_vol10_1s = null
+let set_bot_jump_carousel6_cookie_symbol_vol10_1s = null
+let initial_set_jump_cookie_symbol_vol10_1s = true
 
+let checkCount_symbol_vol10_1s = 0
 
-let currentvol_carousel6_cookie = null
-let currentvol2_carousel6_cookie = null
-let martingale_active_carousel6_cookie = null
-let bot_set_carousel6_cookie = null
-let set_bot_jump_carousel6_cookie = null
-let initial_set_jump_cookie = true
+let currentRandom_symbol_vol10_1s = null
+let lastNumber1_symbol_vol10_1s = currentRandom_symbol_vol10_1s;
+let lastNumber2_symbol_vol10_1s = lastNumber1_symbol_vol10_1s;
+let lastNumber3_symbol_vol10_1s = lastNumber2_symbol_vol10_1s;
+let lastNumber4_symbol_vol10_1s = lastNumber3_symbol_vol10_1s;
+let lastNumber5_symbol_vol10_1s = lastNumber4_symbol_vol10_1s;
+let lastNumber6_symbol_vol10_1s = lastNumber5_symbol_vol10_1s;
+let lastNumber7_symbol_vol10_1s = lastNumber6_symbol_vol10_1s;
+let lastNumber8_symbol_vol10_1s = lastNumber7_symbol_vol10_1s;
+let lastNumber9_symbol_vol10_1s = lastNumber8_symbol_vol10_1s;
+let lastNumber10_symbol_vol10_1s = lastNumber9_symbol_vol10_1s;
 
+let previousNumber1 = null;
+let previousNumber2 = null;
+let previousNumber3 = null;
+let resultValue = null;
 
+function processNumber(number) {
+    if (previousNumber1 !== null && previousNumber2 !== null && previousNumber1 === previousNumber2 && number !== previousNumber1) {
+        resultValue = previousNumber1
+    }
 
-let currentRandom = null
+    // Update previous numbers
+    previousNumber3 = previousNumber2;
+    previousNumber2 = previousNumber1;
+    previousNumber1 = number;
 
-let lastNumber1 = currentRandom;
-let lastNumber2 = lastNumber1;
-let lastNumber3 = lastNumber2;
-let lastNumber4 = lastNumber3;
-let lastNumber5 = lastNumber4;
-let lastNumber6 = lastNumber5;
-let lastNumber7 = lastNumber6;
-let lastNumber8 = lastNumber7;
-let lastNumber9 = lastNumber8;
-let lastNumber10 = lastNumber9;
+}
 
+let updating_balance = null
+let initial_balance = getCookie('initial_balance') !== null && getCookie('initial_balance') !== ''
+    ? getCookie('initial_balance')
+    : localStorage.getItem('initial_balance');
 
+let take_profit = getCookie('take_profit') !== null && getCookie('take_profit') !== ''
+    ? getCookie('take_profit')
+    : localStorage.getItem('take_profit');
 
-const tickStream = () => api.subscribe({ "ticks": '1HZ10V' });
+let stop_loss = getCookie('stop_loss') !== null && getCookie('stop_loss') !== ''
+    ? getCookie('stop_loss')
+    : localStorage.getItem('stop_loss');
 
+const tickStream_symbol_vol10_1s = () => api.subscribe({ "ticks": '1HZ10V' });
 
-const tickResponse = async (res) => {
+const tickResponse_symbol_vol10_1s = async (res) => {
     const data = JSON.parse(res.data);
     if (data.error !== undefined) {
-        console.log('Error : ', data.error.message);
-        connection.removeEventListener('message', tickResponse, false);
+
+        connection.removeEventListener('message', tickResponse_symbol_vol10_1s, false);
         await api.disconnect();
     }
 
-
-
     function getRandom1(strNumber1) {
-        return randomNumber = strNumber1.charAt(strNumber1.length - 1);
+        return randomNumber_symbol_vol10_1s = strNumber1.charAt(strNumber1.length - 1);
     }
 
-
-
-    lastNumber10 = lastNumber9
-    lastNumber9 = lastNumber8
-    lastNumber8 = lastNumber7
-    lastNumber7 = lastNumber6
-    lastNumber6 = lastNumber5
-    lastNumber5 = lastNumber4
-    lastNumber4 = lastNumber3
-    lastNumber3 = lastNumber2
-    lastNumber2 = lastNumber1
-    lastNumber1 = currentRandom
+    lastNumber10_symbol_vol10_1s = lastNumber9_symbol_vol10_1s
+    lastNumber9_symbol_vol10_1s = lastNumber8_symbol_vol10_1s
+    lastNumber8_symbol_vol10_1s = lastNumber7_symbol_vol10_1s
+    lastNumber7_symbol_vol10_1s = lastNumber6_symbol_vol10_1s
+    lastNumber6_symbol_vol10_1s = lastNumber5_symbol_vol10_1s
+    lastNumber5_symbol_vol10_1s = lastNumber4_symbol_vol10_1s
+    lastNumber4_symbol_vol10_1s = lastNumber3_symbol_vol10_1s
+    lastNumber3_symbol_vol10_1s = lastNumber2_symbol_vol10_1s
+    lastNumber2_symbol_vol10_1s = lastNumber1_symbol_vol10_1s
+    lastNumber1_symbol_vol10_1s = currentRandom_symbol_vol10_1s
 
     if (data.msg_type === 'tick') {
-        let bot_start_stop = bot_state_carousel6
 
-        subscriptionId = data.subscription.id;
+        subscriptionId_symbol_vol10_1s = data.subscription.id;
         let tickStreamQuote = data.tick.quote;
 
         function formatToFourDecimalPlaces(tickStreamQuote) {
@@ -1225,273 +881,314 @@ const tickResponse = async (res) => {
             return parts.join('.');
         }
 
-
-
-        if (data.echo_req.ticks === "R_50" || data.echo_req.ticks === "R_75") {
-            strNumber = formatToFourDecimalPlaces(tickStreamQuote).toString();
-            currentRandom = getRandom1(strNumber);
-        } else if (data.echo_req.ticks === "R_100" || data.echo_req.ticks === "1HZ10V" || data.echo_req.ticks === "1HZ25V" || data.echo_req.ticks === "1HZ50V" || data.echo_req.ticks === "1HZ75V" || data.echo_req.ticks === "1HZ100V") {
-            strNumber = formatToTwoDecimalPlaces(tickStreamQuote).toString();
-            currentRandom = getRandom1(strNumber);
-        } else {
-            strNumber = formatToThreeDecimalPlaces(tickStreamQuote).toString();
-            currentRandom = getRandom1(strNumber);
+        if (data.echo_req.ticks === "1HZ10V") {
+            strNumber_symbol_vol10_1s = formatToTwoDecimalPlaces(tickStreamQuote).toString();
+            currentRandom_symbol_vol10_1s = getRandom1(strNumber_symbol_vol10_1s);
         }
 
-        stream10_1s_carousel6.textContent = strNumber
+        stream10_1s_carousel6_symbol_vol10_1s.textContent = strNumber_symbol_vol10_1s
 
-        all_bot_start_stop1 = localStorage.getItem('all_bot_start_stop1')
-        all_bot_start_stop1_cookie = getCookie('all_bot_start_stop1')
+        all_bot_start_stop1_symbol_vol10_1s = localStorage.getItem('bots_state_carousel6')
+        all_bot_start_stop1_cookie_symbol_vol10_1s = getCookie('bots_state_carousel6')
 
-        currentvol_carousel6 = localStorage.getItem('bot_current_vol1_carousel6');
-        currentvol2_carousel6 = localStorage.getItem('bot_current_vol2_carousel6');
-        martingale_active_carousel6 = localStorage.getItem('martingale_carousel6');
-        bot_set_carousel6 = localStorage.getItem('bot_set_carousel6');
-        set_bot_jump_carousel6 = localStorage.getItem('bot_jump_carousel6')
+        bot_state_carousel6_symbol_vol10_1s = localStorage.getItem('bot_state_carousel6')
+        bot_state_carousel6_cookie_symbol_vol10_1s = getCookie('bot_state_carousel6')
 
+        set_vol10_1s_trade_carousel6_symbol_vol10_1s = localStorage.getItem('set_vol10_1s_trade')
+        martingale_active_carousel6_symbol_vol10_1s = localStorage.getItem('martingale_carousel6');
+        bot_set_carousel6_symbol_vol10_1s = localStorage.getItem('bot_set_carousel6');
+        set_bot_jump_carousel6_symbol_vol10_1s = localStorage.getItem('bot_jump_carousel6')
 
-        currentvol_carousel6_cookie = getCookie('bot_current_vol1_carousel6');
-        currentvol2_carousel6_cookie = getCookie('bot_current_vol2_carousel6');
-        martingale_active_carousel6_cookie = getCookie('martingale_carousel6');
-        bot_set_carousel6_cookie = getCookie('bot_set_carousel6');
-        set_bot_jump_carousel6_cookie = getCookie('bot_jump_carousel6')
+        set_vol10_1s_trade_carousel6_cookie_symbol_vol10_1s = localStorage.getItem('set_vol10_1s_trade')
+        martingale_active_carousel6_cookie_symbol_vol10_1s = getCookie('martingale_carousel6');
+        bot_set_carousel6_cookie_symbol_vol10_1s = getCookie('bot_set_carousel6');
+        set_bot_jump_carousel6_cookie_symbol_vol10_1s = getCookie('bot_jump_carousel6')
 
-        if (((set_bot_jump_carousel6 && set_bot_jump_carousel6 > 0) && contract_status2 == 'lost') || ((set_bot_jump_carousel6_cookie && set_bot_jump_carousel6_cookie > 0) && contract_status2 == 'lost')) {
-            bot_set_carousel6 = (parseInt(bot_set_carousel6) + parseInt(set_bot_jump_carousel6)) !== null ? (parseInt(bot_set_carousel6) + parseInt(set_bot_jump_carousel6)) : (parseInt(bot_set_carousel6_cookie) + parseInt(set_bot_jump_carousel6_cookie))
-            contract_status2 == 'reset'
-        } else if ((initial_set_jump == true || (contract_status2 == 'won' && (set_bot_jump_carousel6 && set_bot_jump_carousel6 > 0))) || (initial_set_jump_cookie == true || (contract_status2 == 'won' && (set_bot_jump_carousel6_cookie && set_bot_jump_carousel6_cookie > 0)))) {
-            bot_set_carousel6 = localStorage.getItem('bot_set_carousel6') ? localStorage.getItem('bot_set_carousel6') : getCookie('bot_set_carousel6');
-            initial_set_jump = false
-            initial_set_jump_cookie = false
+        if (((set_bot_jump_carousel6_symbol_vol10_1s && set_bot_jump_carousel6_symbol_vol10_1s > 0) && contract_status2_symbol_vol10_1s == 'lost') || ((set_bot_jump_carousel6_cookie_symbol_vol10_1s && set_bot_jump_carousel6_cookie_symbol_vol10_1s > 0) && contract_status2_symbol_vol10_1s == 'lost')) {
+            bot_set_carousel6_symbol_vol10_1s = (parseInt(bot_set_carousel6_symbol_vol10_1s) + parseInt(set_bot_jump_carousel6_symbol_vol10_1s)) !== null ? (parseInt(bot_set_carousel6_symbol_vol10_1s) + parseInt(set_bot_jump_carousel6_symbol_vol10_1s)) : (parseInt(bot_set_carousel6_cookie_symbol_vol10_1s) + parseInt(set_bot_jump_carousel6_cookie_symbol_vol10_1s))
+            contract_status2_symbol_vol10_1s == 'reset'
+        } else if ((initial_set_jump_symbol_vol10_1s == true || (contract_status2_symbol_vol10_1s == 'won' && (set_bot_jump_carousel6_symbol_vol10_1s && set_bot_jump_carousel6_symbol_vol10_1s > 0))) || (initial_set_jump_cookie_symbol_vol10_1s == true || (contract_status2_symbol_vol10_1s == 'won' && (set_bot_jump_carousel6_cookie_symbol_vol10_1s && set_bot_jump_carousel6_cookie_symbol_vol10_1s > 0)))) {
+            bot_set_carousel6_symbol_vol10_1s = localStorage.getItem('bot_set_carousel6') ? localStorage.getItem('bot_set_carousel6') : getCookie('bot_set_carousel6');
+            initial_set_jump_symbol_vol10_1s = false
+            initial_set_jump_cookie_symbol_vol10_1s = false
         } else {
-            bot_set_carousel6 = localStorage.getItem('bot_set_carousel6') ? localStorage.getItem('bot_set_carousel6') : getCookie("bot_set_carousel6");
+            bot_set_carousel6_symbol_vol10_1s = localStorage.getItem('bot_set_carousel6') ? localStorage.getItem('bot_set_carousel6') : getCookie("bot_set_carousel6");
         }
-
-        let bot_count = bot_id
+        let bot_count = bot_id_symbol_vol10_1s
 
         const tag5_carousel6 = document.getElementById(`td5_carousel6${bot_count}`);
         const tag6_carousel6 = document.getElementById(`td6_carousel6${bot_count}`);
         const tag8_carousel6 = document.getElementById(`td8_carousel6${bot_count}`);
         const tag9_carousel6 = document.getElementById(`td9_carousel6${bot_count}`);
 
+        processNumber(currentRandom_symbol_vol10_1s);
 
-
-        if (currentRandom !== null && lastNumber1 !== null && lastNumber2 !== null) {
-            if ((tag5_carousel6 && tag6_carousel6 && tag8_carousel6 && tag9_carousel6) || first_instance == true) {
-                if (currentRandom && (first_instance == true || (tag5_carousel6.textContent.trim() !== '' && tag6_carousel6.textContent.trim() !== '' && tag8_carousel6.textContent.trim() !== '' && tag9_carousel6.textContent.trim() !== '')) && (bot_set_carousel6 == 1)) {
-                    if (bot_start_stop == 'start_bot' || all_bot_start_stop1 == 'start_bots' && ((currentvol_carousel6 == 5 && currentvol2_carousel6 == 5))) {
-                        startBot(martingale_active_carousel6, lastNumber10, lastNumber9, lastNumber8, lastNumber7, lastNumber6, lastNumber5, lastNumber4, lastNumber3, lastNumber2, lastNumber1, currentRandom, strNumber)
-                    } else if (bot_start_stop == 'stop_bot') {
-                        console.log('bot has stopped running')
+        if (currentRandom_symbol_vol10_1s !== null && lastNumber1_symbol_vol10_1s !== null && lastNumber2_symbol_vol10_1s !== null) {
+            if ((tag5_carousel6 && tag6_carousel6 && tag8_carousel6 && tag9_carousel6) || first_instance_symbol_vol10_1s == true) {
+                if (currentRandom_symbol_vol10_1s && (first_instance_symbol_vol10_1s == true || (tag5_carousel6.textContent.trim() !== '' && tag6_carousel6.textContent.trim() !== '' && tag8_carousel6.textContent.trim() !== '' && tag9_carousel6.textContent.trim() !== '')) && (bot_set_carousel6_symbol_vol10_1s == 1 || bot_set_carousel6_cookie_symbol_vol10_1s == 1)) {
+                    if (((bot_state_carousel6_symbol_vol10_1s == 'start_bot' || bot_state_carousel6_cookie_symbol_vol10_1s == 'start_bot') && (all_bot_start_stop1_symbol_vol10_1s == 'start_bots' || all_bot_start_stop1_cookie_symbol_vol10_1s == 'start_bots')) && ((set_vol10_1s_trade_carousel6_symbol_vol10_1s == 'vol10_1s_trade') || (set_vol10_1s_trade_carousel6_cookie_symbol_vol10_1s == 'vol10_1s_trade'))) {
+                        startBot_symbol_vol10_1s(martingale_active_carousel6_cookie_symbol_vol10_1s, lastNumber10_symbol_vol10_1s, lastNumber9_symbol_vol10_1s, lastNumber8_symbol_vol10_1s, lastNumber7_symbol_vol10_1s, lastNumber6_symbol_vol10_1s, lastNumber5_symbol_vol10_1s, lastNumber4_symbol_vol10_1s, lastNumber3_symbol_vol10_1s, lastNumber2_symbol_vol10_1s, lastNumber1_symbol_vol10_1s, currentRandom_symbol_vol10_1s, strNumber_symbol_vol10_1s)
                     } else {
-                        console.log('bot is running')
+
                     }
                 } else {
 
                 }
             } else {
-                console.log('elements not found')
+
             }
         }
 
-
-
-        if (currentRandom !== null && lastNumber1 !== null && lastNumber2 !== null) {
-            if ((tag5_carousel6 && tag6_carousel6 && tag8_carousel6 && tag9_carousel6) || first_instance == true) {
-                if (lastNumber1 == currentRandom && (first_instance == true || (tag5_carousel6.textContent.trim() !== '' && tag6_carousel6.textContent.trim() !== '' && tag8_carousel6.textContent.trim() !== '' && tag9_carousel6.textContent.trim() !== '')) && (bot_set_carousel6 == 2)) {
-                    if (bot_start_stop == 'start_bot' || all_bot_start_stop1 == 'start_bots' && ((currentvol_carousel6 == 5 && currentvol2_carousel6 == 5))) {
-                        startBot(martingale_active_carousel6, lastNumber10, lastNumber9, lastNumber8, lastNumber7, lastNumber6, lastNumber5, lastNumber4, lastNumber3, lastNumber2, lastNumber1, currentRandom, strNumber)
-                    } else if (bot_start_stop == 'stop_bot') {
-                        console.log('bot has stopped running')
+        if (currentRandom_symbol_vol10_1s !== null && lastNumber1_symbol_vol10_1s !== null && lastNumber2_symbol_vol10_1s !== null) {
+            if ((tag5_carousel6 && tag6_carousel6 && tag8_carousel6 && tag9_carousel6) || first_instance_symbol_vol10_1s == true) {
+                if ((lastNumber2_symbol_vol10_1s == lastNumber1_symbol_vol10_1s) && (lastNumber1_symbol_vol10_1s !== currentRandom_symbol_vol10_1s) && (first_instance_symbol_vol10_1s == true || (tag5_carousel6.textContent.trim() !== '' && tag6_carousel6.textContent.trim() !== '' && tag8_carousel6.textContent.trim() !== '' && tag9_carousel6.textContent.trim() !== '')) && (bot_set_carousel6_symbol_vol10_1s == 2 || bot_set_carousel6_cookie_symbol_vol10_1s == 2)) {
+                    if (((bot_state_carousel6_symbol_vol10_1s == 'start_bot' || bot_state_carousel6_cookie_symbol_vol10_1s == 'start_bot') && (all_bot_start_stop1_symbol_vol10_1s == 'start_bots' || all_bot_start_stop1_cookie_symbol_vol10_1s == 'start_bots')) && ((set_vol10_1s_trade_carousel6_symbol_vol10_1s == 'vol10_1s_trade') || (set_vol10_1s_trade_carousel6_cookie_symbol_vol10_1s == 'vol10_1s_trade'))) {
+                        startBot_symbol_vol10_1s(martingale_active_carousel6_cookie_symbol_vol10_1s, lastNumber10_symbol_vol10_1s, lastNumber9_symbol_vol10_1s, lastNumber8_symbol_vol10_1s, lastNumber7_symbol_vol10_1s, lastNumber6_symbol_vol10_1s, lastNumber5_symbol_vol10_1s, lastNumber4_symbol_vol10_1s, lastNumber3_symbol_vol10_1s, lastNumber2_symbol_vol10_1s, lastNumber1_symbol_vol10_1s, currentRandom_symbol_vol10_1s, strNumber_symbol_vol10_1s)
                     } else {
-                        console.log('bot is running')
+
+                    }
+                } else {
+                }
+            } else {
+
+            }
+        }
+
+        if (currentRandom_symbol_vol10_1s !== null && lastNumber1_symbol_vol10_1s !== null && lastNumber2_symbol_vol10_1s !== null) {
+            if ((tag5_carousel6 && tag6_carousel6 && tag8_carousel6 && tag9_carousel6) || first_instance_symbol_vol10_1s == true) {
+                if ((resultValue !== null) && (first_instance_symbol_vol10_1s == true || (tag5_carousel6.textContent.trim() !== '' && tag6_carousel6.textContent.trim() !== '' && tag8_carousel6.textContent.trim() !== '' && tag9_carousel6.textContent.trim() !== '')) && (bot_set_carousel6_symbol_vol10_1s == 3 || bot_set_carousel6_cookie_symbol_vol10_1s == 3)) {
+                    if (((bot_state_carousel6_symbol_vol10_1s == 'start_bot' || bot_state_carousel6_cookie_symbol_vol10_1s == 'start_bot') && (all_bot_start_stop1_symbol_vol10_1s == 'start_bots' || all_bot_start_stop1_cookie_symbol_vol10_1s == 'start_bots')) && ((set_vol10_1s_trade_carousel6_symbol_vol10_1s == 'vol10_1s_trade') || (set_vol10_1s_trade_carousel6_cookie_symbol_vol10_1s == 'vol10_1s_trade'))) {
+                        startBot_symbol_vol10_1s(martingale_active_carousel6_cookie_symbol_vol10_1s, lastNumber10_symbol_vol10_1s, lastNumber9_symbol_vol10_1s, lastNumber8_symbol_vol10_1s, lastNumber7_symbol_vol10_1s, lastNumber6_symbol_vol10_1s, lastNumber5_symbol_vol10_1s, lastNumber4_symbol_vol10_1s, lastNumber3_symbol_vol10_1s, lastNumber2_symbol_vol10_1s, lastNumber1_symbol_vol10_1s, currentRandom_symbol_vol10_1s, strNumber_symbol_vol10_1s)
+                        resultValue = null
+                    } else {
+
+                    }
+                } else {
+                }
+            } else {
+
+            }
+        }
+
+        if (currentRandom_symbol_vol10_1s !== null && lastNumber1_symbol_vol10_1s !== null && lastNumber2_symbol_vol10_1s !== null) {
+            if ((tag5_carousel6 && tag6_carousel6 && tag8_carousel6 && tag9_carousel6) || first_instance_symbol_vol10_1s == true) {
+                if (lastNumber3_symbol_vol10_1s == currentRandom_symbol_vol10_1s && lastNumber2_symbol_vol10_1s == currentRandom_symbol_vol10_1s && lastNumber1_symbol_vol10_1s == currentRandom_symbol_vol10_1s && (first_instance_symbol_vol10_1s == true || (tag5_carousel6.textContent.trim() !== '' && tag6_carousel6.textContent.trim() !== '' && tag8_carousel6.textContent.trim() !== '' && tag9_carousel6.textContent.trim() !== '')) && (bot_set_carousel6_symbol_vol10_1s == 4 || bot_set_carousel6_cookie_symbol_vol10_1s == 4)) {
+                    if (((bot_state_carousel6_symbol_vol10_1s == 'start_bot' || bot_state_carousel6_cookie_symbol_vol10_1s == 'start_bot') && (all_bot_start_stop1_symbol_vol10_1s == 'start_bots' || all_bot_start_stop1_cookie_symbol_vol10_1s == 'start_bots')) && ((set_vol10_1s_trade_carousel6_symbol_vol10_1s == 'vol10_1s_trade') || (set_vol10_1s_trade_carousel6_cookie_symbol_vol10_1s == 'vol10_1s_trade'))) {
+                        startBot_symbol_vol10_1s(martingale_active_carousel6_cookie_symbol_vol10_1s, lastNumber10_symbol_vol10_1s, lastNumber9_symbol_vol10_1s, lastNumber8_symbol_vol10_1s, lastNumber7_symbol_vol10_1s, lastNumber6_symbol_vol10_1s, lastNumber5_symbol_vol10_1s, lastNumber4_symbol_vol10_1s, lastNumber3_symbol_vol10_1s, lastNumber2_symbol_vol10_1s, lastNumber1_symbol_vol10_1s, currentRandom_symbol_vol10_1s, strNumber_symbol_vol10_1s)
+                    } else {
+
                     }
                 } else {
 
                 }
             } else {
-                console.log('elements not found')
+
             }
         }
 
-        if (currentRandom !== null && lastNumber1 !== null && lastNumber2 !== null) {
-            if ((tag5_carousel6 && tag6_carousel6 && tag8_carousel6 && tag9_carousel6) || first_instance == true) {
-                if (lastNumber2 == currentRandom && lastNumber1 == currentRandom && (first_instance == true || (tag5_carousel6.textContent.trim() !== '' && tag6_carousel6.textContent.trim() !== '' && tag8_carousel6.textContent.trim() !== '' && tag9_carousel6.textContent.trim() !== '')) && (bot_set_carousel6 == 3)) {
-                    if (bot_start_stop == 'start_bot' || all_bot_start_stop1 == 'start_bots' && ((currentvol_carousel6 == 5 && currentvol2_carousel6 == 5))) {
-                        startBot(martingale_active_carousel6, lastNumber10, lastNumber9, lastNumber8, lastNumber7, lastNumber6, lastNumber5, lastNumber4, lastNumber3, lastNumber2, lastNumber1, currentRandom, strNumber)
-                    } else if (bot_start_stop == 'stop_bot') {
-                        console.log('bot has stopped running')
+        if (currentRandom_symbol_vol10_1s !== null && lastNumber1_symbol_vol10_1s !== null && lastNumber2_symbol_vol10_1s !== null) {
+            if ((tag5_carousel6 && tag6_carousel6 && tag8_carousel6 && tag9_carousel6) || first_instance_symbol_vol10_1s == true) {
+                if (lastNumber4_symbol_vol10_1s == currentRandom_symbol_vol10_1s && lastNumber3_symbol_vol10_1s == currentRandom_symbol_vol10_1s && lastNumber2_symbol_vol10_1s == currentRandom_symbol_vol10_1s && lastNumber1_symbol_vol10_1s == currentRandom_symbol_vol10_1s && (first_instance_symbol_vol10_1s == true || (tag5_carousel6.textContent.trim() !== '' && tag6_carousel6.textContent.trim() !== '' && tag8_carousel6.textContent.trim() !== '' && tag9_carousel6.textContent.trim() !== '')) && (bot_set_carousel6_symbol_vol10_1s == 5 || bot_set_carousel6_cookie_symbol_vol10_1s == 5)) {
+                    if (((bot_state_carousel6_symbol_vol10_1s == 'start_bot' || bot_state_carousel6_cookie_symbol_vol10_1s == 'start_bot') && (all_bot_start_stop1_symbol_vol10_1s == 'start_bots' || all_bot_start_stop1_cookie_symbol_vol10_1s == 'start_bots')) && ((set_vol10_1s_trade_carousel6_symbol_vol10_1s == 'vol10_1s_trade') || (set_vol10_1s_trade_carousel6_cookie_symbol_vol10_1s == 'vol10_1s_trade'))) {
+                        startBot_symbol_vol10_1s(martingale_active_carousel6_cookie_symbol_vol10_1s, lastNumber10_symbol_vol10_1s, lastNumber9_symbol_vol10_1s, lastNumber8_symbol_vol10_1s, lastNumber7_symbol_vol10_1s, lastNumber6_symbol_vol10_1s, lastNumber5_symbol_vol10_1s, lastNumber4_symbol_vol10_1s, lastNumber3_symbol_vol10_1s, lastNumber2_symbol_vol10_1s, lastNumber1_symbol_vol10_1s, currentRandom_symbol_vol10_1s, strNumber_symbol_vol10_1s)
                     } else {
-                        console.log('bot is running')
+
                     }
-                } else {
+                } else{
 
                 }
             } else {
-                console.log('elements not found')
+
             }
         }
 
-        if (currentRandom !== null && lastNumber1 !== null && lastNumber2 !== null) {
-            if ((tag5_carousel6 && tag6_carousel6 && tag8_carousel6 && tag9_carousel6) || first_instance == true) {
-                if (lastNumber3 == currentRandom && lastNumber2 == currentRandom && lastNumber1 == currentRandom && (first_instance == true || (tag5_carousel6.textContent.trim() !== '' && tag6_carousel6.textContent.trim() !== '' && tag8_carousel6.textContent.trim() !== '' && tag9_carousel6.textContent.trim() !== '')) && (bot_set_carousel6 == 4)) {
-                    if (bot_start_stop == 'start_bot' || all_bot_start_stop1 == 'start_bots' && ((currentvol_carousel6 == 5 && currentvol2_carousel6 == 5))) {
-                        startBot(martingale_active_carousel6, lastNumber10, lastNumber9, lastNumber8, lastNumber7, lastNumber6, lastNumber5, lastNumber4, lastNumber3, lastNumber2, lastNumber1, currentRandom, strNumber)
-                    } else if (bot_start_stop == 'stop_bot') {
-                        console.log('bot has stopped running')
-                    } else {
-                        console.log('bot is running')
-                    }
-                } else {
+        if (tag5_carousel6 && tag5_carousel6 && tag8_carousel6 && tag9_carousel6) {
+            if (tag5_carousel6.textContent.trim() === '' && tag6_carousel6.textContent.trim() === '' && tag8_carousel6.textContent.trim() === '' && tag9_carousel6.textContent.trim() === '') {
+                console.log('Tags are empty:', tag5_carousel6.textContent, tag5_carousel6.textContent, tag8_carousel6.textContent, tag9_carousel6.textContent);
+                checkCount_symbol_vol10_1s += 1;
+                console.log('checkCount', checkCount_symbol_vol10_1s);
 
+                if (checkCount_symbol_vol10_1s == 500) {
+                    console.log('hanged');
+                    initializeApi(message1);
                 }
-            } else {
-                console.log('elements not found')
             }
         }
 
-        if (currentRandom !== null && lastNumber1 !== null && lastNumber2 !== null) {
-            if ((tag5_carousel6 && tag6_carousel6 && tag8_carousel6 && tag9_carousel6) || first_instance == true) {
-                if (lastNumber4 == currentRandom && lastNumber3 == currentRandom && lastNumber2 == currentRandom && lastNumber1 == currentRandom && (first_instance == true || (tag5_carousel6.textContent.trim() !== '' && tag6_carousel6.textContent.trim() !== '' && tag8_carousel6.textContent.trim() !== '' && tag9_carousel6.textContent.trim() !== '')) && (bot_set_carousel6 == 5)) {
-                    if (bot_start_stop == 'start_bot' || all_bot_start_stop1 == 'start_bots' && ((currentvol_carousel6 == 5 && currentvol2_carousel6 == 5))) {
-                        startBot(martingale_active_carousel6, lastNumber10, lastNumber9, lastNumber8, lastNumber7, lastNumber6, lastNumber5, lastNumber4, lastNumber3, lastNumber2, lastNumber1, currentRandom, strNumber)
-                    } else if (bot_start_stop == 'stop_bot') {
-                        console.log('bot has stopped running')
-                    } else {
-                        console.log('bot is running')
-                    }
-                } else {
+        // if (currentRandom_symbol_vol10_1s !== null && lastNumber1_symbol_vol10_1s !== null && lastNumber2_symbol_vol10_1s !== null) {
+        //     if ((tag5_carousel6 && tag6_carousel6 && tag8_carousel6 && tag9_carousel6) || first_instance_symbol_vol10_1s == true) {
+        //         if (lastNumber2_symbol_vol10_1s == currentRandom_symbol_vol10_1s && lastNumber1_symbol_vol10_1s == currentRandom_symbol_vol10_1s && (first_instance_symbol_vol10_1s == true || (tag5_carousel6.textContent.trim() !== '' && tag6_carousel6.textContent.trim() !== '' && tag8_carousel6.textContent.trim() !== '' && tag9_carousel6.textContent.trim() !== '')) && (bot_set_carousel6_symbol_vol10_1s == 3 || bot_set_carousel6_cookie_symbol_vol10_1s == 3)) {
+        //             if (((bot_state_carousel6_symbol_vol10_1s == 'start_bot' || bot_state_carousel6_cookie_symbol_vol10_1s == 'start_bot') && (all_bot_start_stop1_symbol_vol10_1s == 'start_bots' || all_bot_start_stop1_cookie_symbol_vol10_1s == 'start_bots')) && ((set_vol10_1s_trade_carousel6_symbol_vol10_1s == 'vol10_1s_trade') || (set_vol10_1s_trade_carousel6_cookie_symbol_vol10_1s == 'vol10_1s_trade'))) {
+        //                 startBot_symbol_vol10_1s(martingale_active_carousel6_cookie_symbol_vol10_1s, lastNumber10_symbol_vol10_1s, lastNumber9_symbol_vol10_1s, lastNumber8_symbol_vol10_1s, lastNumber7_symbol_vol10_1s, lastNumber6_symbol_vol10_1s, lastNumber5_symbol_vol10_1s, lastNumber4_symbol_vol10_1s, lastNumber3_symbol_vol10_1s, lastNumber2_symbol_vol10_1s, lastNumber1_symbol_vol10_1s, currentRandom_symbol_vol10_1s, strNumber_symbol_vol10_1s)
+        //             } else {
 
-                }
-            } else {
-                console.log('elements not found')
-            }
-        }
+        //             }
+        //         }else if (tag5_carousel6.textContent.trim() == '' && tag6_carousel6.textContent.trim() == '' && tag8_carousel6.textContent.trim() == '' && tag9_carousel6.textContent.trim() == '') {
+        //             checkCount_symbol_vol10_1s += 1
+        //            if ((tag5_carousel6.textContent.trim() == '' && tag6_carousel6.textContent.trim() == '' && tag8_carousel6.textContent.trim() == '' && tag9_carousel6.textContent.trim() == '') && checkCount_symbol_vol10_1s == 500){
+        //             console.log('hanged')
+        //             initializeApi(message1)
+        //            }
+        //         }
+        //     } else {
 
-        if (currentRandom !== null && lastNumber1 !== null && lastNumber2 !== null) {
-            if ((tag5_carousel6 && tag6_carousel6 && tag8_carousel6 && tag9_carousel6) || first_instance == true) {
-                if (lastNumber5 == currentRandom && lastNumber4 == currentRandom && lastNumber3 == currentRandom && lastNumber2 == currentRandom && lastNumber1 == currentRandom && (first_instance == true || (tag5_carousel6.textContent.trim() !== '' && tag6_carousel6.textContent.trim() !== '' && tag8_carousel6.textContent.trim() !== '' && tag9_carousel6.textContent.trim() !== '')) && (bot_set_carousel6 == 6)) {
-                    if (bot_start_stop == 'start_bot' || all_bot_start_stop1 == 'start_bots' && ((currentvol_carousel6 == 5 && currentvol2_carousel6 == 5))) {
-                        startBot(martingale_active_carousel6, lastNumber10, lastNumber9, lastNumber8, lastNumber7, lastNumber6, lastNumber5, lastNumber4, lastNumber3, lastNumber2, lastNumber1, currentRandom, strNumber)
-                    } else if (bot_start_stop == 'stop_bot') {
-                        console.log('bot has stopped running')
-                    } else {
-                        console.log('bot is running')
-                    }
-                } else {
+        //     }
+        // }
 
-                }
-            } else {
-                console.log('elements not found')
-            }
-        }
+        // if (currentRandom_symbol_vol10_1s !== null && lastNumber1_symbol_vol10_1s !== null && lastNumber2_symbol_vol10_1s !== null) {
+        //     if ((tag5_carousel6 && tag6_carousel6 && tag8_carousel6 && tag9_carousel6) || first_instance_symbol_vol10_1s == true) {
+        //         if (lastNumber3_symbol_vol10_1s == currentRandom_symbol_vol10_1s && lastNumber2_symbol_vol10_1s == currentRandom_symbol_vol10_1s && lastNumber1_symbol_vol10_1s == currentRandom_symbol_vol10_1s && (first_instance_symbol_vol10_1s == true || (tag5_carousel6.textContent.trim() !== '' && tag6_carousel6.textContent.trim() !== '' && tag8_carousel6.textContent.trim() !== '' && tag9_carousel6.textContent.trim() !== '')) && (bot_set_carousel6_symbol_vol10_1s == 4 || bot_set_carousel6_cookie_symbol_vol10_1s == 4)) {
+        //             if (((bot_state_carousel6_symbol_vol10_1s == 'start_bot' || bot_state_carousel6_cookie_symbol_vol10_1s == 'start_bot') && (all_bot_start_stop1_symbol_vol10_1s == 'start_bots' || all_bot_start_stop1_cookie_symbol_vol10_1s == 'start_bots')) && ((set_vol10_1s_trade_carousel6_symbol_vol10_1s == 'vol10_1s_trade') || (set_vol10_1s_trade_carousel6_cookie_symbol_vol10_1s == 'vol10_1s_trade'))) {
+        //                 startBot_symbol_vol10_1s(martingale_active_carousel6_cookie_symbol_vol10_1s, lastNumber10_symbol_vol10_1s, lastNumber9_symbol_vol10_1s, lastNumber8_symbol_vol10_1s, lastNumber7_symbol_vol10_1s, lastNumber6_symbol_vol10_1s, lastNumber5_symbol_vol10_1s, lastNumber4_symbol_vol10_1s, lastNumber3_symbol_vol10_1s, lastNumber2_symbol_vol10_1s, lastNumber1_symbol_vol10_1s, currentRandom_symbol_vol10_1s, strNumber_symbol_vol10_1s)
+        //             } else {
 
-        if (currentRandom !== null && lastNumber1 !== null && lastNumber2 !== null) {
-            if ((tag5_carousel6 && tag6_carousel6 && tag8_carousel6 && tag9_carousel6) || first_instance == true) {
-                if (lastNumber6 == currentRandom && lastNumber5 == currentRandom && lastNumber4 == currentRandom && lastNumber3 == currentRandom && lastNumber2 == currentRandom && lastNumber1 == currentRandom && (first_instance == true || (tag5_carousel6.textContent.trim() !== '' && tag6_carousel6.textContent.trim() !== '' && tag8_carousel6.textContent.trim() !== '' && tag9_carousel6.textContent.trim() !== '')) && (bot_set_carousel6 == 7)) {
-                    if (bot_start_stop == 'start_bot' || all_bot_start_stop1 == 'start_bots' && ((currentvol_carousel6 == 5 && currentvol2_carousel6 == 5))) {
-                        startBot(martingale_active_carousel6, lastNumber10, lastNumber9, lastNumber8, lastNumber7, lastNumber6, lastNumber5, lastNumber4, lastNumber3, lastNumber2, lastNumber1, currentRandom, strNumber)
-                    } else if (bot_start_stop == 'stop_bot') {
-                        console.log('bot has stopped running')
-                    } else {
-                        console.log('bot is running')
-                    }
-                } else {
+        //             }
+        //         }else if (tag5_carousel6.textContent.trim() == '' && tag6_carousel6.textContent.trim() == '' && tag8_carousel6.textContent.trim() == '' && tag9_carousel6.textContent.trim() == '') {
+        //             checkCount_symbol_vol10_1s += 1
+        //            if ((tag5_carousel6.textContent.trim() == '' && tag6_carousel6.textContent.trim() == '' && tag8_carousel6.textContent.trim() == '' && tag9_carousel6.textContent.trim() == '') && checkCount_symbol_vol10_1s == 500){
+        //             console.log('hanged')
+        //             initializeApi(message1)
+        //            }
+        //         }
+        //     } else {
 
-                }
-            } else {
-                console.log('elements not found')
-            }
-        }
+        //     }
+        // }
 
-        if (currentRandom !== null && lastNumber1 !== null && lastNumber2 !== null) {
-            if ((tag5_carousel6 && tag6_carousel6 && tag8_carousel6 && tag9_carousel6) || first_instance == true) {
-                if (lastNumber7 == currentRandom && lastNumber6 == currentRandom && lastNumber5 == currentRandom && lastNumber4 == currentRandom && lastNumber3 == currentRandom && lastNumber2 == currentRandom && lastNumber1 == currentRandom && (first_instance == true || (tag5_carousel6.textContent.trim() !== '' && tag6_carousel6.textContent.trim() !== '' && tag8_carousel6.textContent.trim() !== '' && tag9_carousel6.textContent.trim() !== '')) && (bot_set_carousel6 == 8)) {
-                    if (bot_start_stop == 'start_bot' || all_bot_start_stop1 == 'start_bots' && ((currentvol_carousel6 == 5 && currentvol2_carousel6 == 5))) {
-                        startBot(martingale_active_carousel6, lastNumber10, lastNumber9, lastNumber8, lastNumber7, lastNumber6, lastNumber5, lastNumber4, lastNumber3, lastNumber2, lastNumber1, currentRandom, strNumber)
-                    } else if (bot_start_stop == 'stop_bot') {
-                        console.log('bot has stopped running')
-                    } else {
-                        console.log('bot is running')
-                    }
-                } else {
+        // if (currentRandom_symbol_vol10_1s !== null && lastNumber1_symbol_vol10_1s !== null && lastNumber2_symbol_vol10_1s !== null) {
+        //     if ((tag5_carousel6 && tag6_carousel6 && tag8_carousel6 && tag9_carousel6) || first_instance_symbol_vol10_1s == true) {
+        //         if (lastNumber4_symbol_vol10_1s == currentRandom_symbol_vol10_1s && lastNumber3_symbol_vol10_1s == currentRandom_symbol_vol10_1s && lastNumber2_symbol_vol10_1s == currentRandom_symbol_vol10_1s && lastNumber1_symbol_vol10_1s == currentRandom_symbol_vol10_1s && (first_instance_symbol_vol10_1s == true || (tag5_carousel6.textContent.trim() !== '' && tag6_carousel6.textContent.trim() !== '' && tag8_carousel6.textContent.trim() !== '' && tag9_carousel6.textContent.trim() !== '')) && (bot_set_carousel6_symbol_vol10_1s == 5 || bot_set_carousel6_cookie_symbol_vol10_1s == 5)) {
+        //             if (((bot_state_carousel6_symbol_vol10_1s == 'start_bot' || bot_state_carousel6_cookie_symbol_vol10_1s == 'start_bot') && (all_bot_start_stop1_symbol_vol10_1s == 'start_bots' || all_bot_start_stop1_cookie_symbol_vol10_1s == 'start_bots')) && ((set_vol10_1s_trade_carousel6_symbol_vol10_1s == 'vol10_1s_trade') || (set_vol10_1s_trade_carousel6_cookie_symbol_vol10_1s == 'vol10_1s_trade'))) {
+        //                 startBot_symbol_vol10_1s(martingale_active_carousel6_cookie_symbol_vol10_1s, lastNumber10_symbol_vol10_1s, lastNumber9_symbol_vol10_1s, lastNumber8_symbol_vol10_1s, lastNumber7_symbol_vol10_1s, lastNumber6_symbol_vol10_1s, lastNumber5_symbol_vol10_1s, lastNumber4_symbol_vol10_1s, lastNumber3_symbol_vol10_1s, lastNumber2_symbol_vol10_1s, lastNumber1_symbol_vol10_1s, currentRandom_symbol_vol10_1s, strNumber_symbol_vol10_1s)
+        //             } else {
 
-                }
-            } else {
-                console.log('elements not found')
-            }
-        }
+        //             }
+        //         }else if (tag5_carousel6.textContent.trim() == '' && tag6_carousel6.textContent.trim() == '' && tag8_carousel6.textContent.trim() == '' && tag9_carousel6.textContent.trim() == '') {
+        //             checkCount_symbol_vol10_1s += 1
+        //            if ((tag5_carousel6.textContent.trim() == '' && tag6_carousel6.textContent.trim() == '' && tag8_carousel6.textContent.trim() == '' && tag9_carousel6.textContent.trim() == '') && checkCount_symbol_vol10_1s == 500){
+        //             console.log('hanged')
+        //             initializeApi(message1)
+        //            }
+        //         }
+        //     } else {
 
-        if (currentRandom !== null && lastNumber1 !== null && lastNumber2 !== null) {
-            if ((tag5_carousel6 && tag6_carousel6 && tag8_carousel6 && tag9_carousel6) || first_instance == true) {
-                if (lastNumber8 == currentRandom && lastNumber7 == currentRandom && lastNumber6 == currentRandom && lastNumber5 == currentRandom && lastNumber4 == currentRandom && lastNumber3 == currentRandom && lastNumber2 == currentRandom && lastNumber1 == currentRandom && (first_instance == true || (tag5_carousel6.textContent.trim() !== '' && tag6_carousel6.textContent.trim() !== '' && tag8_carousel6.textContent.trim() !== '' && tag9_carousel6.textContent.trim() !== '')) && (bot_set_carousel6 == 9)) {
-                    if (bot_start_stop == 'start_bot' || all_bot_start_stop1 == 'start_bots' && ((currentvol_carousel6 == 5 && currentvol2_carousel6 == 5))) {
-                        startBot(martingale_active_carousel6, lastNumber10, lastNumber9, lastNumber8, lastNumber7, lastNumber6, lastNumber5, lastNumber4, lastNumber3, lastNumber2, lastNumber1, currentRandom, strNumber)
-                    } else if (bot_start_stop == 'stop_bot') {
-                        console.log('bot has stopped running')
-                    } else {
-                        console.log('bot is running')
-                    }
-                } else {
+        //     }
+        // }
 
-                }
-            } else {
-                console.log('elements not found')
-            }
-        }
+        // if (currentRandom_symbol_vol10_1s !== null && lastNumber1_symbol_vol10_1s !== null && lastNumber2_symbol_vol10_1s !== null) {
+        //     if ((tag5_carousel6 && tag6_carousel6 && tag8_carousel6 && tag9_carousel6) || first_instance_symbol_vol10_1s == true) {
+        //         if (lastNumber5_symbol_vol10_1s == currentRandom_symbol_vol10_1s && lastNumber4_symbol_vol10_1s == currentRandom_symbol_vol10_1s && lastNumber3_symbol_vol10_1s == currentRandom_symbol_vol10_1s && lastNumber2_symbol_vol10_1s == currentRandom_symbol_vol10_1s && lastNumber1_symbol_vol10_1s == currentRandom_symbol_vol10_1s && (first_instance_symbol_vol10_1s == true || (tag5_carousel6.textContent.trim() !== '' && tag6_carousel6.textContent.trim() !== '' && tag8_carousel6.textContent.trim() !== '' && tag9_carousel6.textContent.trim() !== '')) && (bot_set_carousel6_symbol_vol10_1s == 6 || bot_set_carousel6_cookie_symbol_vol10_1s == 6)) {
+        //             if (((bot_state_carousel6_symbol_vol10_1s == 'start_bot' || bot_state_carousel6_cookie_symbol_vol10_1s == 'start_bot') && (all_bot_start_stop1_symbol_vol10_1s == 'start_bots' || all_bot_start_stop1_cookie_symbol_vol10_1s == 'start_bots')) && ((set_vol10_1s_trade_carousel6_symbol_vol10_1s == 'vol10_1s_trade') || (set_vol10_1s_trade_carousel6_cookie_symbol_vol10_1s == 'vol10_1s_trade'))) {
+        //                 startBot_symbol_vol10_1s(martingale_active_carousel6_cookie_symbol_vol10_1s, lastNumber10_symbol_vol10_1s, lastNumber9_symbol_vol10_1s, lastNumber8_symbol_vol10_1s, lastNumber7_symbol_vol10_1s, lastNumber6_symbol_vol10_1s, lastNumber5_symbol_vol10_1s, lastNumber4_symbol_vol10_1s, lastNumber3_symbol_vol10_1s, lastNumber2_symbol_vol10_1s, lastNumber1_symbol_vol10_1s, currentRandom_symbol_vol10_1s, strNumber_symbol_vol10_1s)
+        //             } else {
+
+        //             }
+        //         }else if (tag5_carousel6.textContent.trim() == '' && tag6_carousel6.textContent.trim() == '' && tag8_carousel6.textContent.trim() == '' && tag9_carousel6.textContent.trim() == '') {
+        //             checkCount_symbol_vol10_1s += 1
+        //            if ((tag5_carousel6.textContent.trim() == '' && tag6_carousel6.textContent.trim() == '' && tag8_carousel6.textContent.trim() == '' && tag9_carousel6.textContent.trim() == '') && checkCount_symbol_vol10_1s == 500){
+        //             console.log('hanged')
+        //             initializeApi(message1)
+        //            }
+        //         }
+        //     } else {
+
+        //     }
+        // }
 
 
-        if (currentRandom !== null && lastNumber1 !== null && lastNumber2 !== null) {
-            if ((tag5_carousel6 && tag6_carousel6 && tag8_carousel6 && tag9_carousel6) || first_instance == true) {
-                if (lastNumber9 == currentRandom && lastNumber8 == currentRandom && lastNumber7 == currentRandom && lastNumber6 == currentRandom && lastNumber5 == currentRandom && lastNumber4 == currentRandom && lastNumber3 == currentRandom && lastNumber2 == currentRandom && lastNumber1 == currentRandom && (first_instance == true || (tag5_carousel6.textContent.trim() !== '' && tag6_carousel6.textContent.trim() !== '' && tag8_carousel6.textContent.trim() !== '' && tag9_carousel6.textContent.trim() !== '')) && (bot_set_carousel6 == 10)) {
-                    if (bot_start_stop == 'start_bot' || all_bot_start_stop1 == 'start_bots' && ((currentvol_carousel6 == 5 && currentvol2_carousel6 == 5))) {
-                        startBot(martingale_active_carousel6, lastNumber10, lastNumber9, lastNumber8, lastNumber7, lastNumber6, lastNumber5, lastNumber4, lastNumber3, lastNumber2, lastNumber1, currentRandom, strNumber)
-                    } else if (bot_start_stop == 'stop_bot') {
-                        console.log('bot has stopped running')
-                    } else {
-                        console.log('bot is running')
-                    }
-                } else {
+        // if (currentRandom_symbol_vol10_1s !== null && lastNumber1_symbol_vol10_1s !== null && lastNumber2_symbol_vol10_1s !== null) {
+        //     if ((tag5_carousel6 && tag6_carousel6 && tag8_carousel6 && tag9_carousel6) || first_instance_symbol_vol10_1s == true) {
+        //         if (lastNumber6_symbol_vol10_1s == currentRandom_symbol_vol10_1s && lastNumber5_symbol_vol10_1s == currentRandom_symbol_vol10_1s && lastNumber4_symbol_vol10_1s == currentRandom_symbol_vol10_1s && lastNumber3_symbol_vol10_1s == currentRandom_symbol_vol10_1s && lastNumber2_symbol_vol10_1s == currentRandom_symbol_vol10_1s && lastNumber1_symbol_vol10_1s == currentRandom_symbol_vol10_1s && (first_instance_symbol_vol10_1s == true || (tag5_carousel6.textContent.trim() !== '' && tag6_carousel6.textContent.trim() !== '' && tag8_carousel6.textContent.trim() !== '' && tag9_carousel6.textContent.trim() !== '')) && (bot_set_carousel6_symbol_vol10_1s == 7 || bot_set_carousel6_cookie_symbol_vol10_1s == 7)) {
+        //             if (((bot_state_carousel6_symbol_vol10_1s == 'start_bot' || bot_state_carousel6_cookie_symbol_vol10_1s == 'start_bot') && (all_bot_start_stop1_symbol_vol10_1s == 'start_bots' || all_bot_start_stop1_cookie_symbol_vol10_1s == 'start_bots')) && ((set_vol10_1s_trade_carousel6_symbol_vol10_1s == 'vol10_1s_trade') || (set_vol10_1s_trade_carousel6_cookie_symbol_vol10_1s == 'vol10_1s_trade'))) {
+        //                 startBot_symbol_vol10_1s(martingale_active_carousel6_cookie_symbol_vol10_1s, lastNumber10_symbol_vol10_1s, lastNumber9_symbol_vol10_1s, lastNumber8_symbol_vol10_1s, lastNumber7_symbol_vol10_1s, lastNumber6_symbol_vol10_1s, lastNumber5_symbol_vol10_1s, lastNumber4_symbol_vol10_1s, lastNumber3_symbol_vol10_1s, lastNumber2_symbol_vol10_1s, lastNumber1_symbol_vol10_1s, currentRandom_symbol_vol10_1s, strNumber_symbol_vol10_1s)
+        //             } else {
 
-                }
-            } else {
-                console.log('elements not found')
-            }
-        }
+        //             }
+        //         }else if (tag5_carousel6.textContent.trim() == '' && tag6_carousel6.textContent.trim() == '' && tag8_carousel6.textContent.trim() == '' && tag9_carousel6.textContent.trim() == '') {
+        //             checkCount_symbol_vol10_1s += 1
+        //            if ((tag5_carousel6.textContent.trim() == '' && tag6_carousel6.textContent.trim() == '' && tag8_carousel6.textContent.trim() == '' && tag9_carousel6.textContent.trim() == '') && checkCount_symbol_vol10_1s == 500){
+        //             console.log('hanged')
+        //             initializeApi(message1)
+        //            }
+        //         }
+        //     } else {
 
+        //     }
+        // }
 
+        // if (currentRandom_symbol_vol10_1s !== null && lastNumber1_symbol_vol10_1s !== null && lastNumber2_symbol_vol10_1s !== null) {
+        //     if ((tag5_carousel6 && tag6_carousel6 && tag8_carousel6 && tag9_carousel6) || first_instance_symbol_vol10_1s == true) {
+        //         if (lastNumber7_symbol_vol10_1s == currentRandom_symbol_vol10_1s && lastNumber6_symbol_vol10_1s == currentRandom_symbol_vol10_1s && lastNumber5_symbol_vol10_1s == currentRandom_symbol_vol10_1s && lastNumber4_symbol_vol10_1s == currentRandom_symbol_vol10_1s && lastNumber3_symbol_vol10_1s == currentRandom_symbol_vol10_1s && lastNumber2_symbol_vol10_1s == currentRandom_symbol_vol10_1s && lastNumber1_symbol_vol10_1s == currentRandom_symbol_vol10_1s && (first_instance_symbol_vol10_1s == true || (tag5_carousel6.textContent.trim() !== '' && tag6_carousel6.textContent.trim() !== '' && tag8_carousel6.textContent.trim() !== '' && tag9_carousel6.textContent.trim() !== '')) && (bot_set_carousel6_symbol_vol10_1s == 8 || bot_set_carousel6_cookie_symbol_vol10_1s == 8)) {
+        //             if (((bot_state_carousel6_symbol_vol10_1s == 'start_bot' || bot_state_carousel6_cookie_symbol_vol10_1s == 'start_bot') && (all_bot_start_stop1_symbol_vol10_1s == 'start_bots' || all_bot_start_stop1_cookie_symbol_vol10_1s == 'start_bots')) && ((set_vol10_1s_trade_carousel6_symbol_vol10_1s == 'vol10_1s_trade') || (set_vol10_1s_trade_carousel6_cookie_symbol_vol10_1s == 'vol10_1s_trade'))) {
+        //                 startBot_symbol_vol10_1s(martingale_active_carousel6_cookie_symbol_vol10_1s, lastNumber10_symbol_vol10_1s, lastNumber9_symbol_vol10_1s, lastNumber8_symbol_vol10_1s, lastNumber7_symbol_vol10_1s, lastNumber6_symbol_vol10_1s, lastNumber5_symbol_vol10_1s, lastNumber4_symbol_vol10_1s, lastNumber3_symbol_vol10_1s, lastNumber2_symbol_vol10_1s, lastNumber1_symbol_vol10_1s, currentRandom_symbol_vol10_1s, strNumber_symbol_vol10_1s)
+        //             } else {
 
-        if (currentRandom !== null && lastNumber1 !== null && lastNumber2 !== null) {
-            if (lastNumber1 == currentRandom) {
-                let show_for_two = '2x'
-                let flash_color = 'flash1'
-                let fadeout_color = 'fadeout1'
-                flashAndFadeout(currentRandom, show_for_two, flash_color, fadeout_color)
-            }
-        }
+        //             }
+        //         }else if (tag5_carousel6.textContent.trim() == '' && tag6_carousel6.textContent.trim() == '' && tag8_carousel6.textContent.trim() == '' && tag9_carousel6.textContent.trim() == '') {
+        //             checkCount_symbol_vol10_1s += 1
+        //            if ((tag5_carousel6.textContent.trim() == '' && tag6_carousel6.textContent.trim() == '' && tag8_carousel6.textContent.trim() == '' && tag9_carousel6.textContent.trim() == '') && checkCount_symbol_vol10_1s == 500){
+        //             console.log('hanged')
+        //             initializeApi(message1)
+        //            }
+        //         }
+        //     } else {
 
-        if (currentRandom !== null && lastNumber1 !== null && lastNumber2 !== null) {
-            if (lastNumber2 == lastNumber1 && lastNumber2 == currentRandom && lastNumber1 == currentRandom) {
-                let show_for_two = '3x'
-                let flash_color = 'flash2'
-                let fadeout_color = 'fadeout2'
-                flashAndFadeout(currentRandom, show_for_two, flash_color, fadeout_color)
+        //     }
+        // }
 
-            }
-        }
+        // if (currentRandom_symbol_vol10_1s !== null && lastNumber1_symbol_vol10_1s !== null && lastNumber2_symbol_vol10_1s !== null) {
+        //     if ((tag5_carousel6 && tag6_carousel6 && tag8_carousel6 && tag9_carousel6) || first_instance_symbol_vol10_1s == true) {
+        //         if (lastNumber8_symbol_vol10_1s == currentRandom_symbol_vol10_1s && lastNumber7_symbol_vol10_1s == currentRandom_symbol_vol10_1s && lastNumber6_symbol_vol10_1s == currentRandom_symbol_vol10_1s && lastNumber5_symbol_vol10_1s == currentRandom_symbol_vol10_1s && lastNumber4_symbol_vol10_1s == currentRandom_symbol_vol10_1s && lastNumber3_symbol_vol10_1s == currentRandom_symbol_vol10_1s && lastNumber2_symbol_vol10_1s == currentRandom_symbol_vol10_1s && lastNumber1_symbol_vol10_1s == currentRandom_symbol_vol10_1s && (first_instance_symbol_vol10_1s == true || (tag5_carousel6.textContent.trim() !== '' && tag6_carousel6.textContent.trim() !== '' && tag8_carousel6.textContent.trim() !== '' && tag9_carousel6.textContent.trim() !== '')) && (bot_set_carousel6_symbol_vol10_1s == 9 || bot_set_carousel6_cookie_symbol_vol10_1s == 9)) {
+        //             if (((bot_state_carousel6_symbol_vol10_1s == 'start_bot' || bot_state_carousel6_cookie_symbol_vol10_1s == 'start_bot') && (all_bot_start_stop1_symbol_vol10_1s == 'start_bots' || all_bot_start_stop1_cookie_symbol_vol10_1s == 'start_bots')) && ((set_vol10_1s_trade_carousel6_symbol_vol10_1s == 'vol10_1s_trade') || (set_vol10_1s_trade_carousel6_cookie_symbol_vol10_1s == 'vol10_1s_trade'))) {
+        //                 startBot_symbol_vol10_1s(martingale_active_carousel6_cookie_symbol_vol10_1s, lastNumber10_symbol_vol10_1s, lastNumber9_symbol_vol10_1s, lastNumber8_symbol_vol10_1s, lastNumber7_symbol_vol10_1s, lastNumber6_symbol_vol10_1s, lastNumber5_symbol_vol10_1s, lastNumber4_symbol_vol10_1s, lastNumber3_symbol_vol10_1s, lastNumber2_symbol_vol10_1s, lastNumber1_symbol_vol10_1s, currentRandom_symbol_vol10_1s, strNumber_symbol_vol10_1s)
+        //             } else {
 
+        //             }
+        //         }else if (tag5_carousel6.textContent.trim() == '' && tag6_carousel6.textContent.trim() == '' && tag8_carousel6.textContent.trim() == '' && tag9_carousel6.textContent.trim() == '') {
+        //             checkCount_symbol_vol10_1s += 1
+        //            if ((tag5_carousel6.textContent.trim() == '' && tag6_carousel6.textContent.trim() == '' && tag8_carousel6.textContent.trim() == '' && tag9_carousel6.textContent.trim() == '') && checkCount_symbol_vol10_1s == 500){
+        //             console.log('hanged')
+        //             initializeApi(message1)
+        //            }
+        //         }
+        //     } else {
 
+        //     }
+        // }
+
+        // if (currentRandom_symbol_vol10_1s !== null && lastNumber1_symbol_vol10_1s !== null && lastNumber2_symbol_vol10_1s !== null) {
+        //     if ((tag5_carousel6 && tag6_carousel6 && tag8_carousel6 && tag9_carousel6) || first_instance_symbol_vol10_1s == true) {
+        //         if (lastNumber9_symbol_vol10_1s == currentRandom_symbol_vol10_1s && lastNumber8_symbol_vol10_1s == currentRandom_symbol_vol10_1s && lastNumber7_symbol_vol10_1s == currentRandom_symbol_vol10_1s && lastNumber6_symbol_vol10_1s == currentRandom_symbol_vol10_1s && lastNumber5_symbol_vol10_1s == currentRandom_symbol_vol10_1s && lastNumber4_symbol_vol10_1s == currentRandom_symbol_vol10_1s && lastNumber3_symbol_vol10_1s == currentRandom_symbol_vol10_1s && lastNumber2_symbol_vol10_1s == currentRandom_symbol_vol10_1s && lastNumber1_symbol_vol10_1s == currentRandom_symbol_vol10_1s && (first_instance_symbol_vol10_1s == true || (tag5_carousel6.textContent.trim() !== '' && tag6_carousel6.textContent.trim() !== '' && tag8_carousel6.textContent.trim() !== '' && tag9_carousel6.textContent.trim() !== '')) && (bot_set_carousel6_symbol_vol10_1s == 10 || bot_set_carousel6_cookie_symbol_vol10_1s == 10)) {
+        //             if (((bot_state_carousel6_symbol_vol10_1s == 'start_bot' || bot_state_carousel6_cookie_symbol_vol10_1s == 'start_bot') && (all_bot_start_stop1_symbol_vol10_1s == 'start_bots' || all_bot_start_stop1_cookie_symbol_vol10_1s == 'start_bots')) && ((set_vol10_1s_trade_carousel6_symbol_vol10_1s == 'vol10_1s_trade') || (set_vol10_1s_trade_carousel6_cookie_symbol_vol10_1s == 'vol10_1s_trade'))) {
+        //                 startBot_symbol_vol10_1s(martingale_active_carousel6_cookie_symbol_vol10_1s, lastNumber10_symbol_vol10_1s, lastNumber9_symbol_vol10_1s, lastNumber8_symbol_vol10_1s, lastNumber7_symbol_vol10_1s, lastNumber6_symbol_vol10_1s, lastNumber5_symbol_vol10_1s, lastNumber4_symbol_vol10_1s, lastNumber3_symbol_vol10_1s, lastNumber2_symbol_vol10_1s, lastNumber1_symbol_vol10_1s, currentRandom_symbol_vol10_1s, strNumber_symbol_vol10_1s)
+        //             } else {
+
+        //             }
+        //         }else if (tag5_carousel6.textContent.trim() == '' && tag6_carousel6.textContent.trim() == '' && tag8_carousel6.textContent.trim() == '' && tag9_carousel6.textContent.trim() == '') {
+        //             checkCount_symbol_vol10_1s += 1
+        //            if ((tag5_carousel6.textContent.trim() == '' && tag6_carousel6.textContent.trim() == '' && tag8_carousel6.textContent.trim() == '' && tag9_carousel6.textContent.trim() == '') && checkCount_symbol_vol10_1s == 500){
+        //             console.log('hanged')
+        //             initializeApi(message1)
+        //            }
+        //         }
+        //     } else {
+
+        //     }
+        // }
     }
-
 };
 
+const subscribeTicks_symbol_vol_general = async () => {
+    await tickStream_symbol_vol10_1s();
+    connection.addEventListener('message', tickResponse_symbol_vol10_1s);
+};
 
-
-
-
+const unsubscribeTicks_symbol_vol_general = () => {
+    connection.removeEventListener('message', tickResponse_symbol_vol10_1s, false);
+    tickStream_symbol_vol10_1s().unsubscribe();
+};
 
 async function initializeApi(message1) {
-
     try {
 
         if (message1 === "Demo Account" || message1 === null) {
@@ -1504,38 +1201,31 @@ async function initializeApi(message1) {
             connection = new WebSocket(`wss://ws.derivws.com/websockets/v3?app_id=${api_id}`);
 
         } else if (api_id == null) {
-            console.log("no app id yet")
+
         }
     } catch (error) {
-        console.log("no app id yet")
+
     }
-
-
 
     try {
         api = new DerivAPIBasic({ connection });
-        authorize_response = await api.authorize(api_token);
-        console.log(authorize_response)
-        if (!authorize_response.authorize) {
-            console.log("Authorization failed. Please check your API token.");
+        authorize_response_symbol_General = await api.authorize(api_token);
+
+        if (!authorize_response_symbol_General.authorize) {
+
             return null;
         } else {
-            console.log("authirzed at vol10_1s js")
 
-            if (authorize_response.authorize.loginid.startsWith("CR")) {
-
-                td2_account_id_carousel6.textContent = authorize_response.authorize.loginid
-
+            if (authorize_response_symbol_General.authorize.loginid.startsWith("CR")) {
+                td2_account_id_symbol_vol10.textContent = authorize_response_symbol_General.authorize.loginid
             } else {
-
             }
         }
 
-        subscribeTicks()
-        getWebsiteStatus()
+        subscribeTicks_symbol_vol_general()
         getWebsitePing()
 
-        return { api, authorize_response };
+        return { api, authorize_response_symbol_General };
 
     } catch (error) {
         console.error("Error occurred during API initialization:", error);
@@ -1543,114 +1233,76 @@ async function initializeApi(message1) {
     }
 }
 
-
-
-
-const subscribeTicks = async () => {
-    await tickStream();
-    connection.addEventListener('message', tickResponse);
-};
-
-const unsubscribeTicks = () => {
-    connection.removeEventListener('message', tickResponse, false);
-    tickStream().unsubscribe();
-};
-
-
-
-
 window.addEventListener('load', function () {
+    duration_amount_cookie_symbol_vol10_1s = getCookie('duration_amount_cookie');
+    stake_amount_cookie_symbol_vol10_1s = getCookie('stake_amount_cookie');
+    duration_unit_cookie_symbol_vol10_1s = getCookie('duration_unit_cookie');
+    symbol_vol_cookie_symbol_vol10_1s = getCookie('symbol_vol_cookie');
+    currency_cookie_symbol_vol10_1s = getCookie('ActiveCurrency')
+    contract_text_cookie_symbol_vol10_1s = getCookie('contract_text_cookie');
+    stake_or_payout_cookie_symbol_vol10_1s = getCookie('stake_or_payout_cookie')
+    last_digit_prediction_cookie_symbol_vol10_1s = getCookie('last_digit_prediction_cookie')
+    stake_amount_default_symbol_vol10_1s = getCookie('stake_amount_default')
 
-    duration_amount_cookie = getCookie('duration_amount_cookie');
-    stake_amount_cookie = getCookie('stake_amount_cookie');
-    duration_unit_cookie = getCookie('duration_unit_cookie');
-    symbol_vol_cookie = getCookie('symbol_vol_cookie');
-    currency_cookie = getCookie('ActiveCurrency')
-    contract_text_cookie = getCookie('contract_text_cookie');
-    stake_or_payout_cookie = getCookie('stake_or_payout_cookie')
-    last_digit_prediction_cookie = getCookie('last_digit_prediction_cookie')
-    stake_amount_default = getCookie('stake_amount_default')
-
-
-    if (last_digit_prediction_cookie) {
-        last_digit_prediction_or_barrier = last_digit_prediction_or_barrier
+    if (last_digit_prediction_cookie_symbol_vol10_1s) {
+        last_digit_prediction_or_barrier_symbol_vol10_1s = last_digit_prediction_cookie_symbol_vol10_1s
     } else {
-        let numericValue = last_digit_input.value
-        last_digit_prediction_or_barrier = numericValue
+        let numericValue = last_digit_input_symbol_vol10_1s.value
+        last_digit_prediction_or_barrier_symbol_vol10_1s = numericValue
     }
-
-
-    if (symbol_vol_cookie) {
-        symbol_vol = symbol_vol_cookie;
+    if (symbol_vol_cookie_symbol_vol10_1s) {
+        symbol_vol_symbol_vol10_1s = symbol_vol_cookie_symbol_vol10_1s;
     } else {
-        symbol_vol = "1HZ10V";
+        symbol_vol_symbol_vol10_1s = "1HZ10V";
     }
-
-    if (duration_unit_cookie) {
-        duration_unit = duration_unit_cookie;
+    if (duration_unit_cookie_symbol_vol10_1s) {
+        duration_unit_symbol_vol10_1s = duration_unit_cookie_symbol_vol10_1s;
     } else {
-        duration_unit = "t";
+        duration_unit_symbol_vol10_1s = "t";
     }
-
-
-    if (duration_amount_cookie) {
-        duration_amount = parseInt(duration_amount_cookie, 10);
+    if (duration_amount_cookie_symbol_vol10_1s) {
+        duration_amount_symbol_vol10_1s = parseInt(duration_amount_cookie_symbol_vol10_1s, 10);
     } else {
-        duration_amount = 1;
+        duration_amount_symbol_vol10_1s = 1;
     }
-
-
-    if (stake_amount_cookie) {
-        stake_amount = parseFloat(stake_amount_cookie);
+    if (stake_amount_cookie_symbol_vol10_1s) {
+        stake_amount_symbol_vol10_1s = parseFloat(stake_amount_cookie_symbol_vol10_1s);
     } else {
-        stake_amount = 10;
+        stake_amount_symbol_vol10_1s = 10;
     }
-
-    if (stake_amount_default) {
-        stake_amount_default = parseFloat(stake_amount_default);
+    if (stake_amount_default_symbol_vol10_1s) {
+        stake_amount_default_symbol_vol10_1s = parseFloat(stake_amount_default_symbol_vol10_1s);
     } else {
-        stake_amount_default = 10;
+        stake_amount_default_symbol_vol10_1s = 10;
     }
-
-
-    if (currency_cookie) {
-        currency = currency_cookie;
+    if (currency_cookie_symbol_vol10_1s) {
+        currency_symbol_vol10_1s = currency_cookie_symbol_vol10_1s;
     } else {
-        currency = "USD";
+        currency_symbol_vol10_1s = "USD";
     }
-
-
-    if (contract_text_cookie) {
-        contract = contract_text_cookie;
+    if (contract_text_cookie_symbol_vol10_1s) {
+        contract_symbol_vol10_1s = contract_text_cookie_symbol_vol10_1s;
     } else {
-        contract = "Matches/Differs";
+        contract_symbol_vol10_1s = "Matches/Differs";
     }
-
-    if (stake_or_payout_cookie) {
-        stake_or_payout = stake_or_payout_cookie;
+    if (stake_or_payout_cookie_symbol_vol10_1s) {
+        stake_or_payout_symbol_vol10_1s = stake_or_payout_cookie_symbol_vol10_1s;
     } else {
-        stake_or_payout = "stake";
+        stake_or_payout_symbol_vol10_1s = "stake";
     }
-
 
     initializeApi(message1)
     let getAwaitingResponses = setInterval(() => {
 
-        if (authorize_response) {
+        if (authorize_response_symbol_General) {
             clearInterval(getAwaitingResponses)
         } else {
-            console.log("no authorize response yet")
+
         }
     }, 2000);
 });
 
-
-
-
-
-
-
-async function order_propose(api, amount, last_digit_prediction_or_barrier, stake_or_payout, contract_type, currency, duration, duration_unit, symbol) {
+async function order_propose_symbol_vol10_1s(api, amount, last_digit_prediction_or_barrier, stake_or_payout, contract_type, currency, duration, duration_unit, symbol) {
     return new Promise((resolve, reject) => {
         let contract_type_set = null;
 
@@ -1674,34 +1326,13 @@ async function order_propose(api, amount, last_digit_prediction_or_barrier, stak
         const proposalResponse = async (res) => {
             const data = JSON.parse(res.data);
             if (data.error !== undefined) {
-                let tooltip = document.getElementById('tooltiptext25');
-                tooltip.textContent = data.error.message;
-                tooltip.classList.add('tooltiptext10')
-                console.log('Errorss: %s ', data.error.message);
                 connection.removeEventListener('message', proposalResponse, false);
                 await api.disconnect();
                 reject(new Error('Error in proposal'));
             } else if (data.msg_type === 'proposal') {
-                // console.log(data);
 
-                proposal_id = data.proposal.id;
-
-                let calc = displayProposalResult2(data, data.proposal.display_value, data.proposal.payout);
-
-                def_price_up = data.proposal.display_value;
-                def_payout_up = data.proposal.payout;
-                def_profit_up = calc.NetProfit;
-
-                // console.log('Details: %s', data.proposal.longcode);
-                // console.log('Ask Price: %s', data.proposal.display_value);
-                // console.log('Payout: %f', data.proposal.payout);
-                // console.log('Spot: %f', data.proposal.spot);
-                // console.log('proposal id: %s', data.proposal.id); // Use %s for string values
-
-                // Ensure proposal_id is correctly assigned
-                // console.log('Assigned proposal_id:', proposal_id); // Optional: check the value assigned
-
-                resolve(); // Resolve the promise after setting proposal_id
+                proposal_id_symbol_vol10_1s = data.proposal.id;
+                resolve();
             }
         };
 
@@ -1714,116 +1345,71 @@ async function order_propose(api, amount, last_digit_prediction_or_barrier, stak
     });
 }
 
-
-
-const unsubscribeProposal = () => {
-    connection.removeEventListener('message', proposalResponse, false);
+const unsubscribeProposal_symbol_vol10_1s = () => {
+    connection.removeEventListener('message', proposalResponse_symbol_vol10_1s, false);
 };
 
-
-
-
-
-
-
-
-
-
-function convertTimestampTo12HourTime(timestamp) {
-    // Convert the timestamp to a Date object
+function convertTimestampTo12HourTime_symbol_vol10_1s(timestamp) {
     const date = new Date(timestamp * 1000);
-
-    // Extract hours, minutes, and seconds
     let hours = date.getHours();
     const minutes = date.getMinutes();
     const seconds = date.getSeconds();
-
-    // Determine AM or PM
     const ampm = hours >= 12 ? 'PM' : 'AM';
-
-    // Convert hours from 24-hour time to 12-hour time
     hours = hours % 12;
-    hours = hours ? hours : 12; // the hour '0' should be '12'
-
-    // Format minutes and seconds to be two digits
+    hours = hours ? hours : 12;
     const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
     const formattedSeconds = seconds < 10 ? '0' + seconds : seconds;
-
-    // Combine into a formatted time string
     const formattedTime = `${hours}:${formattedMinutes}:${formattedSeconds} ${ampm}`;
-
-
     return formattedTime;
 }
 
-
-
-
-
-function formatNumberAndBoldLastDecimal(number) {
-    // Split the number into integer and decimal parts
+function formatNumberAndBoldLastDecimal_symbol_vol10_1s(number) {
     let [integerPart, decimalPart] = number.toString().split('.');
-
-    // Format the integer part with commas
     let formattedIntegerPart = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-
-    // Make the last digit of the decimal part bold with a class
     if (decimalPart) {
         let lastDecimalDigit = decimalPart.slice(-1);
         decimalPart = decimalPart.slice(0, -1) + `<span class="bold-last-decimal">` + lastDecimalDigit + `</span>`;
-    } //change to 25
-
-    // Combine the integer and decimal parts
+    }
     let formattedNumber = decimalPart ? formattedIntegerPart + '.' + decimalPart : formattedIntegerPart;
 
     return formattedNumber;
 }
 
+let contract_status_html_symbol_vol10_1s = document.getElementById('contract_status_carousel6')
+let end_tic_off_trade_symbol_vol10_1s = document.getElementById('end_tic_off_trade_carousel6')
+let price_after_trade_figure_amount_symbol_vol10_1s = document.getElementById('price_after_trade_figure_amount_carousel6')
+let profit_figure_amount_symbol_vol10_1s = document.getElementById('profit_figure_amount_carousel6')
+let buy_price_figure_amount_symbol_vol10_1s = document.getElementById('buy_price_figure_amount_carousel6')
+let result_currency_html_symbol_vol10_1s = document.querySelectorAll('.result_currency')
+let transaction_refrence_figure_symbol_vol10_1s = document.getElementById('transaction_refrence_figure_carousel6')
+let trade_start_time_symbol_vol10_1s = document.getElementById('trade_start_time_carousel6')
+let buy_price_text_symbol_vol10_1s = document.getElementById('buy_price_text_carousel6')
+let price_after_trade_text_symbol_vol10_1s = document.getElementById('price_after_trade_text_carousel6')
+let profit_text_symbol_vol10_1s = document.getElementById('profit_text_carousel6')
+let durr_amount_prop_count_symbol_vol10_1s = document.getElementById('durr_amount_prop_count_carousel6')
+let durr_amount_prop_symbol_vol10_1s = document.getElementById('durr_amount_prop_carousel6')
+let countdown_trade_symbol_vol10_1s = 0
+let countdown_trade2_symbol_vol10_1s = 0
 
-
-
-//change to 25
-let contract_status_html = document.getElementById('contract_status_carousel6') //change to 25 
-let end_tic_off_trade = document.getElementById('end_tic_off_trade_carousel6') //change to 25            
-let price_after_trade_figure_amount = document.getElementById('price_after_trade_figure_amount_carousel6') //change to 25
-let profit_figure_amount = document.getElementById('profit_figure_amount_carousel6') //change to 25
-let buy_price_figure_amount = document.getElementById('buy_price_figure_amount_carousel6') //change to 25
-let result_currency_html = document.querySelectorAll('.result_currency')
-let transaction_refrence_figure = document.getElementById('transaction_refrence_figure_carousel6') //change to 25
-let trade_start_time = document.getElementById('trade_start_time_carousel6') //change to 25
-let buy_price_text = document.getElementById('buy_price_text_carousel6') //change to 25
-let price_after_trade_text = document.getElementById('price_after_trade_text_carousel6') //change to 25
-let profit_text = document.getElementById('profit_text_carousel6') //change to 25
-
-
-
-
-
-
-
-let countdown_trade = 0
-let countdown_trade2 = 0
-
-function before_trade() {
-    countdown_trade = 0
+function before_trade_symbol_vol10_1s() {
+    countdown_trade_symbol_vol10_1s = 0
     let allDigits = document.querySelectorAll('.ldgs_carousel6')
     let buy_price_text = document.getElementById('buy_price_text_carousel6')
     let price_after_trade_text = document.getElementById('price_after_trade_text_carousel6')
     let profit_text = document.getElementById('profit_text_carousel6')
-    let durr_amount_prop_count = document.getElementById('durr_amount_prop_count_carousel6')
     let slide_trade_result = document.getElementById('slide_trade_result_carousel6')
     let buy_price_figure_amount = document.getElementById('buy_price_figure_amount_carousel6')
     let price_after_trade_figure_amount = document.getElementById('price_after_trade_figure_amount_carousel6')
     let profit_figure_amount = document.getElementById('profit_figure_amount_carousel6')
-    contract_status_html.textContent = ''
+    contract_status_html_symbol_vol10_1s.textContent = ''
     buy_price_text.textContent = 'Total cost'
     price_after_trade_text.textContent = 'Potential payout'
     profit_text.textContent = 'Potential profit'
-    durr_amount_prop_count.textContent = countdown_trade
-    durr_amount_prop.textContent = duration_amount
-    buy_price_figure_amount.textContent = def_price_up
-    price_after_trade_figure_amount.textContent = def_payout_up
-    profit_figure_amount.textContent = def_profit_up
+    durr_amount_prop_count_symbol_vol10_1s.textContent = countdown_trade_symbol_vol10_1s
+    durr_amount_prop_symbol_vol10_1s.textContent = duration_amount_symbol_vol10_1s
+    buy_price_figure_amount.textContent = def_price_up_symbol_vol10_1s
+    price_after_trade_figure_amount.textContent = def_payout_up_symbol_vol10_1s
+    profit_figure_amount.textContent = def_profit_up_symbol_vol10_1s
 
     let trade_type_secound = getCookie('contract_text_cookie')
 
@@ -1832,26 +1418,21 @@ function before_trade() {
             if (digit.classList.contains('win_loose_color')) {
                 digit.classList.remove('win_loose_color'); // Removed the dot (.)
             }
-
             if (digit.classList.contains('loose_digit-color')) {
                 digit.classList.remove('loose_digit-color') // Removed the dot (.)
             }
-
             if (slide_trade_result.classList.contains('win_color')) {
                 slide_trade_result.classList.remove('win_color')
             }
-
             if (slide_trade_result.classList.contains('lose_color')) {
                 slide_trade_result.classList.remove('lose_color')
             }
         });
     }
 
-
-
     if (trade_type_secound == 'Matches/Differs') {
         allDigits.forEach(function (digit) {
-            if (digit.textContent != last_digit_prediction_or_barrier) {
+            if (digit.textContent != (last_digit_prediction_or_barrier_symbol_vol10_1s)) {
                 digit.classList.add('win_loose_color'); // Removed the dot (.)
             } else {
                 digit.classList.remove('win_loose_color');
@@ -1861,7 +1442,7 @@ function before_trade() {
 
     if (trade_type_secound == 'Over/Under') {
         allDigits.forEach(function (digit) {
-            if (parseInt(digit.textContent) < last_digit_prediction_or_barrier) {
+            if (parseInt(digit.textContent) < last_digit_prediction_or_barrier_symbol_vol10_1s) {
                 digit.classList.add('win_loose_color'); // Removed the dot (.)
             } else {
                 digit.classList.remove('win_loose_color');
@@ -1870,8 +1451,7 @@ function before_trade() {
     }
 }
 
-
-function after_trade(status, endDigit) {
+function after_trade_symbol_vol10_1s(status, endDigit) {
     let slide_trade_result = document.getElementById('slide_trade_result_carousel6')
     let allDigits = document.querySelectorAll('.ldgs')
     let trade_type_secound = getCookie('contract_text_cookie')
@@ -1891,404 +1471,172 @@ function after_trade(status, endDigit) {
     }
 }
 
-
-
-
-
-
-function formate_date(datein) {
-    // Unix timestamp in seconds
+function formate_date_symbol_vol10_1s(datein) {
     const unixTimestamp = datein;
-
-    // Create a Date object from the timestamp (multiply by 1000 because the Date constructor expects milliseconds)
     const date = new Date(unixTimestamp * 1000);
-
-    // Get individual date components
     const year = date.getUTCFullYear();
-    const month = date.getUTCMonth() + 1; // Months are zero-indexed, so we add 1
+    const month = date.getUTCMonth() + 1;
     const day = date.getUTCDate();
     const hours = date.getUTCHours();
     const minutes = date.getUTCMinutes();
     const seconds = date.getUTCSeconds();
-
-    // Format the date string
     const formattedDate = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')} ` +
         `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')} GMT`;
 
     return formattedDate
-
 }
 
+let allProposalOpenContract_symbol_vol10_1s = []
+let longcodeProp_symbol_vol10_1s = null
+let contract_ids_buy_symbol_vol10_1s = null
+let contract_status_symbol_vol10_1s = null
+let last_tick_symbol_vol10_1s = null
+let profit_or_loss_symbol_vol10_1s = null
+let final_price_symbol_vol10_1s = null
+let payout_result_symbol_vol10_1s = null
+let buy_price_symbol_vol10_1s = null
+let contract_currency_symbol_vol10_1s = null
+let time_of_trade_symbol_vol10_1s = null
+let every_tick_symbol_vol10_1s = null
+let contract_id_symbol_vol10_1s = null
 
+let allProposalOpenContract2_symbol_vol10_1s = []
+let longcodeProp2_symbol_vol10_1s = null
+let contract_ids_buy2_symbol_vol10_1s = null
+let contract_ids_sell2_symbol_vol10_1s = null
+let contract_status2_symbol_vol10_1s = null
+let last_tick2_symbol_vol10_1s = null
+let profit_or_loss2_symbol_vol10_1s = null
+let final_price2_symbol_vol10_1s = null
+let payout_result2_symbol_vol10_1s = null
+let buy_price2_symbol_vol10_1s = null
+let contract_currency2_symbol_vol10_1s = null
+let time_of_trade2_symbol_vol10_1s = null
+let every_tick2_symbol_vol10_1s = null
 
+function open_proposal_actions2_symbol_vol10_1s(data) {
+    if (data.proposal_open_contract.contract_id == contract_id2_symbol_vol10_1s) {
+        set_middle_trade1_symbol_vol10_1s(bot_is_running_or_stopped_symbol_vol10_1s)
+        bot_buy_start_time_symbol_vol10_1s = formate_date_symbol_vol10_1s(data.proposal_open_contract.date_start)
+        bot_buy_transaction_id_symbol_vol10_1s = data.proposal_open_contract.transaction_ids.buy
+        bot_trade_type_symbol_vol10_1s = data.proposal_open_contract.contract_type
+        bot_buy_price_symbol_vol10_1s = data.proposal_open_contract.buy_price
+        bot_status_symbol_vol10_1s = data.proposal_open_contract.status == 'open' ? 'Pending' : data.proposal_open_contract.status
+        bot_contract_id_symbol_vol10_1s = data.proposal_open_contract.contract_id
+        start_trade_ref_symbol_vol10_1s(bot_buy_price_symbol_vol10_1s)
 
-
-
-
-let allProposalOpenContract = []
-let longcodeProp = null
-let contract_ids_buy = null
-let contract_status = null
-let last_tick = null
-let profit_or_loss = null
-let final_price = null
-let payout_result = null
-let buy_price = null
-let contract_currency = null
-let time_of_trade = null
-let every_tick = null
-let contract_id = null
-
-let allProposalOpenContract2 = []
-let longcodeProp2 = null
-let contract_ids_buy2 = null
-let contract_ids_sell2 = null
-let contract_status2 = null
-let last_tick2 = null
-let profit_or_loss2 = null
-let final_price2 = null
-let payout_result2 = null
-let buy_price2 = null
-let contract_currency2 = null
-let time_of_trade2 = null
-let every_tick2 = null
-// let contract_id2 = null
-
-
-
-function open_proposal_actions(data) {
-    if (data.proposal_open_contract.contract_id == contract_id) {
-
-        longcodeProp = data.proposal_open_contract.longcode
-        allProposalOpenContract.push(data.proposal_open_contract.tick_stream)
-        document.getElementById('proposal_information_carousel6').textContent = longcodeProp
-
-
-        console.log(allProposalOpenContract)
-        if (allProposalOpenContract.length > 0 && allProposalOpenContract[allProposalOpenContract.length - 1].length > 0) {
-            let lastSubArray = allProposalOpenContract[allProposalOpenContract.length - 1];
-            let lastElementOfLastSubArray = lastSubArray[lastSubArray.length - 1].tick_display_value;
-            console.log(lastElementOfLastSubArray);
-            let numberString = lastElementOfLastSubArray.toString();
-            let lastCharacter = numberString[numberString.length - 1];
-            console.log(lastCharacter)
-            handleNewNumber(lastCharacter);
-            every_tick = lastElementOfLastSubArray
-            end_tic_off_trade.innerHTML = formatNumberAndBoldLastDecimal(every_tick);
-            if (countdown_trade < duration_amount) {
-                countdown_trade += 1
-                durr_amount_prop_count.textContent = countdown_trade
-            }
-
-
-            if (data.proposal_open_contract.status !== 'open') {
-                contract_status = data.proposal_open_contract.status
-                last_tick = lastElementOfLastSubArray
-                profit_or_loss = data.proposal_open_contract.profit
-                payout_result = data.proposal_open_contract.payout
-                buy_price = data.proposal_open_contract.buy_price
-                contract_currency = data.proposal_open_contract.currency
-                contract_ids_buy = data.proposal_open_contract.transaction_ids.buy
-                time_of_trade = data.proposal_open_contract.expiry_time
-                if (profit_or_loss < 0) {
-                    final_price = '0.00'
-                } else if (profit_or_loss > 0) {
-                    final_price = payout_result
-                } else {
-                    console.log("The number is zero.");
-                }
-                contract_status_html.textContent = contract_status
-                end_tic_off_trade.innerHTML = formatNumberAndBoldLastDecimal(last_tick);
-                profit_figure_amount.textContent = profit_or_loss
-                price_after_trade_figure_amount.textContent = final_price
-                buy_price_figure_amount.textContent = buy_price
-                result_currency_html.textContent = contract_currency
-                transaction_refrence_figure.textContent = contract_ids_buy
-                trade_start_time.innerHTML = convertTimestampTo12HourTime(time_of_trade)
-                buy_price_text.textContent = 'Buy price'
-                price_after_trade_text.textContent = 'Final price'
-                profit_text.textContent = 'Profit'
-                after_trade(contract_status, lastCharacter)
-            } else {
-
-            }
-        } else {
-            console.log('no valid tick yet')
+        if (firstContractReceived_symbol_vol10_1s == false) {
+            append_result_symbol_vol10_1s(bot_id_symbol_vol10_1s, bot_buy_start_time_symbol_vol10_1s, bot_buy_transaction_id_symbol_vol10_1s, bot_trade_type_symbol_vol10_1s, bot_buy_price_symbol_vol10_1s, bot_status_symbol_vol10_1s);
+            firstContractReceived_symbol_vol10_1s = true
         }
 
-    }
-}
+        longcodeProp2_symbol_vol10_1s = data.proposal_open_contract.longcode
+        allProposalOpenContract2_symbol_vol10_1s.push(data.proposal_open_contract.tick_stream)
+        document.getElementById('proposal_information_carousel6').textContent = longcodeProp2_symbol_vol10_1s
 
-
-
-
-function open_proposal_actions2(data) {
-    if (data.proposal_open_contract.contract_id == contract_id2) {
-        set_middle_trade1(bot_is_running_or_stopped)
-        bot_buy_start_time = formate_date(data.proposal_open_contract.date_start)
-        bot_buy_transaction_id = data.proposal_open_contract.transaction_ids.buy
-        bot_trade_type = data.proposal_open_contract.contract_type
-        bot_buy_price = data.proposal_open_contract.buy_price
-        bot_status = data.proposal_open_contract.status == 'open' ? 'Pending' : data.proposal_open_contract.status
-        bot_contract_id = data.proposal_open_contract.contract_id
-
-
-
-
-
-        start_trade_ref(bot_buy_price)
-
-        if (firstContractReceived == false) {
-            append_result(bot_id, bot_buy_start_time, bot_buy_transaction_id, bot_trade_type, bot_buy_price, bot_status);
-            firstContractReceived = true
-        }
-
-        longcodeProp2 = data.proposal_open_contract.longcode
-        allProposalOpenContract2.push(data.proposal_open_contract.tick_stream)
-        document.getElementById('proposal_information_carousel6').textContent = longcodeProp2
-
-
-        console.log(allProposalOpenContract2)
-        if (allProposalOpenContract2.length > 0 && allProposalOpenContract2[allProposalOpenContract2.length - 1].length > 0) {
-            let lastSubArray2 = allProposalOpenContract2[allProposalOpenContract2.length - 1];
+        if (allProposalOpenContract2_symbol_vol10_1s.length > 0 && allProposalOpenContract2_symbol_vol10_1s[allProposalOpenContract2_symbol_vol10_1s.length - 1].length > 0) {
+            let lastSubArray2 = allProposalOpenContract2_symbol_vol10_1s[allProposalOpenContract2_symbol_vol10_1s.length - 1];
             let lastElementOfLastSubArray2 = lastSubArray2[lastSubArray2.length - 1].tick_display_value;
-            console.log(lastElementOfLastSubArray2);
             let numberString2 = lastElementOfLastSubArray2.toString();
             let lastCharacter2 = numberString2[numberString2.length - 1];
-            console.log(lastCharacter2)
-            handleNewNumber(lastCharacter2);
-            every_tick2 = lastElementOfLastSubArray2
-            end_tic_off_trade.innerHTML = formatNumberAndBoldLastDecimal(every_tick2);
-
-
-
-            if (countdown_trade2 < duration_amount) {
-                countdown_trade2 += 1
-                durr_amount_prop_count.textContent = countdown_trade
+            handleNewNumber_symbol_vol10_1s(lastCharacter2);
+            every_tick2_symbol_vol10_1s = lastElementOfLastSubArray2
+            end_tic_off_trade_symbol_vol10_1s.innerHTML = formatNumberAndBoldLastDecimal_symbol_vol10_1s(every_tick2_symbol_vol10_1s);
+            if (countdown_trade2_symbol_vol10_1s < duration_amount_symbol_vol10_1s) {
+                countdown_trade2_symbol_vol10_1s += 1
+                durr_amount_prop_count_symbol_vol10_1s.textContent = countdown_trade_symbol_vol10_1s
             }
-
-            if (data.proposal_open_contract.is_expired == 1 && end_slide == true) {
-                set_end_trade1(bot_is_running_or_stopped)
-                end_slide = false
+            if (data.proposal_open_contract.is_expired == 1 && end_slide_symbol_vol10_1s == true) {
+                set_end_trade1_symbol_vol10_1s(bot_is_running_or_stopped_symbol_vol10_1s)
+                end_slide_symbol_vol10_1s = false
             }
-
-            contract_ids_buy2 = data.proposal_open_contract.transaction_ids.buy
-            if (contract_ids_buy2) {
-                middle_trade_ref(contract_ids_buy2)
+            contract_ids_buy2_symbol_vol10_1s = data.proposal_open_contract.transaction_ids.buy
+            if (contract_ids_buy2_symbol_vol10_1s) {
+                middle_trade_ref_symbol_vol10_1s(contract_ids_buy2_symbol_vol10_1s)
             }
-
             if (data.proposal_open_contract.status !== 'open') {
+                let circle2_carousel6 = document.getElementById('circle2_carousel6')
                 circle2_carousel6.classList.remove('circle_shadow_carousel6')
-                bot_status = data.proposal_open_contract.status
-                bot_entry_spot = data.proposal_open_contract.entry_tick
-                bot_exit_spot = data.proposal_open_contract.exit_tick
-                bot_profit_loss = data.proposal_open_contract.profit
+                bot_status_symbol_vol10_1s = data.proposal_open_contract.status
+                bot_entry_spot_symbol_vol10_1s = data.proposal_open_contract.entry_tick
+                bot_exit_spot_symbol_vol10_1s = data.proposal_open_contract.exit_tick
+                bot_profit_loss_symbol_vol10_1s = data.proposal_open_contract.profit
+                contract_status2_symbol_vol10_1s = data.proposal_open_contract.status
+                last_tick2_symbol_vol10_1s = lastElementOfLastSubArray2
+                profit_or_loss2_symbol_vol10_1s = data.proposal_open_contract.profit
+                payout_result2_symbol_vol10_1s = data.proposal_open_contract.payout
+                buy_price2_symbol_vol10_1s = data.proposal_open_contract.buy_price
+                contract_currency2_symbol_vol10_1s = data.proposal_open_contract.currency
+                contract_ids_buy2_symbol_vol10_1s = data.proposal_open_contract.transaction_ids.buy
+                time_of_trade2_symbol_vol10_1s = data.proposal_open_contract.expiry_time
+                contract_ids_sell2_symbol_vol10_1s = data.proposal_open_contract.transaction_ids.sell
 
-
-                contract_status2 = data.proposal_open_contract.status
-                last_tick2 = lastElementOfLastSubArray2
-                profit_or_loss2 = data.proposal_open_contract.profit
-                payout_result2 = data.proposal_open_contract.payout
-                buy_price2 = data.proposal_open_contract.buy_price
-                contract_currency2 = data.proposal_open_contract.currency
-                contract_ids_buy2 = data.proposal_open_contract.transaction_ids.buy
-                time_of_trade2 = data.proposal_open_contract.expiry_time
-                contract_ids_sell2 = data.proposal_open_contract.transaction_ids.sell
-
-                end_trade_ref(contract_ids_sell2)
-                if (profit_or_loss2 < 0) {
-                    final_price2 = '0.00'
-                } else if (profit_or_loss2 > 0) {
-                    final_price2 = payout_result2
-                } else {
-                    console.log("The number is zero.");
+                end_trade_ref_symbol_vol10_1s(contract_ids_sell2_symbol_vol10_1s)
+                if (profit_or_loss2_symbol_vol10_1s < 0) {
+                    final_price2_symbol_vol10_1s = '0.00'
+                } else if (profit_or_loss2_symbol_vol10_1s > 0) {
+                    final_price2_symbol_vol10_1s = payout_result2_symbol_vol10_1s
+                } else if (tag5.textContent.trim() == '' && tag6.textContent.trim() == '' && tag8.textContent.trim() == '' && tag9.textContent.trim() == '') {
+                    checkCount_symbol_vol10_1s += 1
+                    if ((tag5.textContent.trim() == '' && tag6.textContent.trim() == '' && tag8.textContent.trim() == '' && tag9.textContent.trim() == '') && checkCount_symbol_vol10_1s == 500) {
+                        console.log('hanged')
+                        initializeApi(message1)
+                    }
                 }
-
-                if (contract_status2 == 'won' && !wonEncountered) {
-                    bot_total_wins = bot_total_wins + 1;
-                    bot_total_profit_loss = bot_total_profit_loss + profit_or_loss2;
-                    bot_total_stake = bot_total_stake + buy_price2
-                    bot_total_runs = bot_total_runs + 1;
-                    bot_total_payout = bot_total_payout + payout_result2;
-
-                    add_after_trade(bot_id, contract_id2, bot_contract_id, bot_entry_spot, bot_exit_spot, bot_profit_loss, bot_status, bot_total_runs, bot_total_stake, bot_total_payout, bot_total_wins, bot_total_loss, bot_total_profit_loss);
-
-                    wonEncountered = true;
-                } else if (contract_status2 == 'lost') {
-                    bot_total_loss = bot_total_loss + 1;
-                    bot_total_profit_loss = bot_total_profit_loss + profit_or_loss2;
-                    bot_total_stake = bot_total_stake + buy_price2
-                    bot_total_runs = bot_total_runs + 1;
-                    bot_total_payout = bot_total_payout - payout_result2;
-
-                    add_after_trade(bot_id, contract_id2, bot_contract_id, bot_entry_spot, bot_exit_spot, bot_profit_loss, bot_status, bot_total_runs, bot_total_stake, bot_total_payout, bot_total_wins, bot_total_loss, bot_total_profit_loss);
-                    wonEncountered = true;
+                if (contract_status2_symbol_vol10_1s == 'won' && !wonEncountered_symbol_vol10_1s) {
+                    bot_total_wins_symbol_vol10_1s = bot_total_wins_symbol_vol10_1s + 1;
+                    bot_total_profit_loss_symbol_vol10_1s = bot_total_profit_loss_symbol_vol10_1s + profit_or_loss2_symbol_vol10_1s;
+                    bot_total_stake_symbol_vol10_1s = bot_total_stake_symbol_vol10_1s + buy_price2_symbol_vol10_1s
+                    bot_total_runs_symbol_vol10_1s = bot_total_runs_symbol_vol10_1s + 1;
+                    bot_total_payout_symbol_vol10_1s = bot_total_payout_symbol_vol10_1s + payout_result2_symbol_vol10_1s;
+                    add_after_trade_symbol_vol10_1s(bot_id_symbol_vol10_1s, contract_id2_symbol_vol10_1s, bot_contract_id_symbol_vol10_1s, bot_entry_spot_symbol_vol10_1s, bot_exit_spot_symbol_vol10_1s, bot_profit_loss_symbol_vol10_1s, bot_status_symbol_vol10_1s, bot_total_runs_symbol_vol10_1s, bot_total_stake_symbol_vol10_1s, bot_total_payout_symbol_vol10_1s, bot_total_wins_symbol_vol10_1s, bot_total_loss_symbol_vol10_1s, bot_total_profit_loss_symbol_vol10_1s);
+                    wonEncountered_symbol_vol10_1s = true;
+                } else if (contract_status2_symbol_vol10_1s == 'lost') {
+                    bot_total_loss_symbol_vol10_1s = bot_total_loss_symbol_vol10_1s + 1;
+                    bot_total_profit_loss_symbol_vol10_1s = bot_total_profit_loss_symbol_vol10_1s + profit_or_loss2_symbol_vol10_1s;
+                    bot_total_stake_symbol_vol10_1s = bot_total_stake_symbol_vol10_1s + buy_price2_symbol_vol10_1s
+                    bot_total_runs_symbol_vol10_1s = bot_total_runs_symbol_vol10_1s + 1;
+                    bot_total_payout_symbol_vol10_1s = bot_total_payout_symbol_vol10_1s - payout_result2_symbol_vol10_1s;
+                    add_after_trade_symbol_vol10_1s(bot_id_symbol_vol10_1s, contract_id2_symbol_vol10_1s, bot_contract_id_symbol_vol10_1s, bot_entry_spot_symbol_vol10_1s, bot_exit_spot_symbol_vol10_1s, bot_profit_loss_symbol_vol10_1s, bot_status_symbol_vol10_1s, bot_total_runs_symbol_vol10_1s, bot_total_stake_symbol_vol10_1s, bot_total_payout_symbol_vol10_1s, bot_total_wins_symbol_vol10_1s, bot_total_loss_symbol_vol10_1s, bot_total_profit_loss_symbol_vol10_1s);
+                    wonEncountered_symbol_vol10_1s = true;
                 }
-
-                if (contract_status2 == 'won' && data.proposal_open_contract.date_expiry) {
-
-                    log_buy_timestamp_bot = data.proposal_open_contract.date_start
-                    log_sell_timestamp_bot = data.proposal_open_contract.date_expiry
-                    log_message_entry_tick = data.proposal_open_contract.entry_tick
-                    log_message_last_digit = every_tick2
-
-                    bot_log_end(log_buy_timestamp_bot, log_sell_timestamp_bot, log_message_entry_tick, log_message_last_digit)
-                } else if (contract_status2 == 'lost' && data.proposal_open_contract.date_expiry) {
-
-                    log_buy_timestamp_bot = data.proposal_open_contract.date_start
-                    log_sell_timestamp_bot = data.proposal_open_contract.date_expiry
-                    log_message_entry_tick = data.proposal_open_contract.entry_tick
-                    log_message_last_digit = every_tick2
-
-                    bot_log_end(log_buy_timestamp_bot, log_sell_timestamp_bot, log_message_entry_tick, log_message_last_digit)
+                if (contract_status2_symbol_vol10_1s == 'won' && data.proposal_open_contract.date_expiry) {
+                    log_buy_timestamp_bot_symbol_vol10_1s = data.proposal_open_contract.date_start
+                    log_sell_timestamp_bot_symbol_vol10_1s = data.proposal_open_contract.date_expiry
+                    log_message_entry_tick_symbol_vol10_1s = data.proposal_open_contract.entry_tick
+                    log_message_last_digit_symbol_vol10_1s = every_tick2_symbol_vol10_1s
+                    bot_log_end_symbol_vol10_1s(log_buy_timestamp_bot_symbol_vol10_1s, log_sell_timestamp_bot_symbol_vol10_1s, log_message_entry_tick_symbol_vol10_1s, log_message_last_digit_symbol_vol10_1s)
+                } else if (contract_status2_symbol_vol10_1s == 'lost' && data.proposal_open_contract.date_expiry) {
+                    log_buy_timestamp_bot_symbol_vol10_1s = data.proposal_open_contract.date_start
+                    log_sell_timestamp_bot_symbol_vol10_1s = data.proposal_open_contract.date_expiry
+                    log_message_entry_tick_symbol_vol10_1s = data.proposal_open_contract.entry_tick
+                    log_message_last_digit_symbol_vol10_1s = every_tick2_symbol_vol10_1s
+                    bot_log_end_symbol_vol10_1s(log_buy_timestamp_bot_symbol_vol10_1s, log_sell_timestamp_bot_symbol_vol10_1s, log_message_entry_tick_symbol_vol10_1s, log_message_last_digit_symbol_vol10_1s)
                 }
-
-                contract_status_html.textContent = contract_status2
-                end_tic_off_trade.innerHTML = formatNumberAndBoldLastDecimal(last_tick2);
-                profit_figure_amount.textContent = profit_or_loss2
-                price_after_trade_figure_amount.textContent = final_price2
-                buy_price_figure_amount.textContent = buy_price2
-                result_currency_html.textContent = contract_currency2
-                transaction_refrence_figure.textContent = contract_ids_buy2
-                trade_start_time.innerHTML = convertTimestampTo12HourTime(time_of_trade2)
-                buy_price_text.textContent = 'Buy price'
-                price_after_trade_text.textContent = 'Final price'
-                profit_text.textContent = 'Profit'
-                after_trade(contract_status2, lastCharacter2)
-
+                contract_status_html_symbol_vol10_1s.textContent = contract_status2_symbol_vol10_1s
+                end_tic_off_trade_symbol_vol10_1s.innerHTML = formatNumberAndBoldLastDecimal_symbol_vol10_1s(last_tick2_symbol_vol10_1s);
+                profit_figure_amount_symbol_vol10_1s.textContent = profit_or_loss2_symbol_vol10_1s
+                price_after_trade_figure_amount_symbol_vol10_1s.textContent = final_price2_symbol_vol10_1s
+                buy_price_figure_amount_symbol_vol10_1s.textContent = buy_price2_symbol_vol10_1s
+                result_currency_html_symbol_vol10_1s.textContent = contract_currency2_symbol_vol10_1s
+                transaction_refrence_figure_symbol_vol10_1s.textContent = contract_ids_buy2_symbol_vol10_1s
+                trade_start_time_symbol_vol10_1s.innerHTML = convertTimestampTo12HourTime_symbol_vol10_1s(time_of_trade2_symbol_vol10_1s)
+                buy_price_text_symbol_vol10_1s.textContent = 'Buy price'
+                price_after_trade_text_symbol_vol10_1s.textContent = 'Final price'
+                profit_text_symbol_vol10_1s.textContent = 'Profit'
+                after_trade_symbol_vol10_1s(contract_status2_symbol_vol10_1s, lastCharacter2)
             } else {
-
             }
         } else {
-            console.log('no valid tick yet')
-        }
 
+        }
     }
 }
 
-
-
-
-
-// let proposal_open_contract = () => api.proposalOpenContract({
-//     "proposal_open_contract": 1,
-//     "subscribe": 1
-// })
-
-// const proposalOpenContractResponse = async (res) => {
-//     const data = JSON.parse(res.data);
-//     if (data.error !== undefined) {
-//         console.log('Error: %s ', data.error.message);
-//         connection.removeEventListener('message', proposalOpenContractResponse, false);
-//         await api.disconnect();
-
-//     } else if (data.msg_type === 'proposal_open_contract') {
-//         console.log(data)
-//         open_proposal_actions(data)
-//     }
-// };
-
-// const getProposalOpenContract = async (contract_id) => {
-//     connection.addEventListener('message', proposalOpenContractResponse);
-//     proposal_open_contract()
-// };
-
-// const unsubscribeProposalOpenContract = () => {
-//     connection.removeEventListener('message', proposalOpenContractResponse, false);
-// };
-
-
-
-
-
-
-
-
-
-
-
-
-
-const elements = document.querySelectorAll('.lgt6');
-
-elements.forEach(element => {
-    element.addEventListener('click', async function () {
-        const slider = document.getElementById('slide_trade_result_carousel6').style.display = 'flex';
-
-        last_digit_prediction_or_barrier = parseInt(element.lastElementChild.textContent);
-
-        before_trade();
-        allProposalOpenContract.length = 0;
-        unsubscribeProposalOpenContract()
-
-        try {
-            // Await the completion of order_propose
-            await order_propose(api, stake_amount, last_digit_prediction_or_barrier, stake_or_payout, contract, currency, duration_amount, duration_unit, symbol10_1s);
-
-            let buy = await api.buy({
-                "buy": String(proposal_id),
-                "price": parseFloat(stake_amount)
-            });
-
-            contract_id = buy.buy.contract_id;
-            console.log(contract_id)
-
-            run_open_contract_proposal()
-
-
-        } catch (error) {
-            console.error('Error during trade:', error);
-            // Handle errors or rollback operations if needed
-        }
-    });
-});
-
-
-document.addEventListener('DOMContentLoaded', function () {
-    var button = document.getElementById('down_purchase_btn');
-
-    function addClickedClass() {
-        button.classList.add('clicked');
-    }
-
-    function removeClickedClass() {
-        setTimeout(function () {
-            button.classList.remove('clicked');
-        }, 200); // Adjust the timeout as needed
-    }
-
-    button.addEventListener('mousedown', addClickedClass);
-    button.addEventListener('mouseup', removeClickedClass);
-
-    button.addEventListener('touchstart', addClickedClass);
-    button.addEventListener('touchend', removeClickedClass);
-});
-
-
-
-document.addEventListener('DOMContentLoaded', () => {
-    const elements = document.querySelectorAll('.zero_d, .one_d, .two_d, .three_d, .four_d, .five_d, .six_d, .seven_d, .eight_d, .nine_d');
-
-    elements.forEach(element => {
-        element.addEventListener('click', () => {
-            element.classList.add('active');
-            setTimeout(() => {
-                element.classList.remove('active');
-            }, 200);  // Adjust the duration (in milliseconds) as needed
-        });
-    });
-});
-
-
-
-
-
-let currentPosition1 = 0;
-
-function moveSlider(number) {
+let currentPosition1_symbol_vol10_1s = 0;
+function moveSlider_symbol_vol10_1s(number) {
     const slider = document.getElementById('slide_trade_result_carousel6');
     const container = document.getElementById('last_digit_responds_carousel6');
-
     let stringnumber = null;
     if (number == 0) {
         stringnumber = 'zero';
@@ -2322,484 +1670,248 @@ function moveSlider(number) {
     }
 
     const target = document.querySelector(`.last_digits_carousel6.${stringnumber}`);
-
     if (target) {
         const targetPosition = target.offsetLeft;
         const currentSliderPosition = slider.offsetLeft;
-
         const direction = targetPosition > currentSliderPosition ? 'left' : 'right';
-
-        // Ensure the target position does not move the slider out of the container
         const maxTranslateX = container.offsetWidth - slider.offsetWidth;
         const newPosition = Math.min(Math.max(targetPosition, 0), maxTranslateX);
-
         if (direction === 'left') {
             slider.style.transform = `translateX(${newPosition}px)`;
         } else {
             slider.style.transform = `translateX(${newPosition}px)`;
         }
-
-        currentPosition1 = newPosition;
+        currentPosition1_symbol_vol10_1s = newPosition;
     }
 }
 
-function handleNewNumber(randomNumber) {
+function handleNewNumber_symbol_vol10_1s(randomNumber) {
     const newPosition = randomNumber;
-    moveSlider(newPosition);
+    moveSlider_symbol_vol10_1s(newPosition);
 }
 
+let log_close_and_info_cont_symbol_vol10_1s = document.getElementById('log_close_and_info_cont_carousel6');
+let bot_log_show_cont_symbol_vol10_1s = document.getElementById('bot_log_show_cont_carousel6');
+let bot_details_symbol_vol10_1s = document.getElementById('bot_details_carousel6');
+let bot_details2_symbol_vol10_1s = document.getElementById('bot_details2_carousel6');
 
-
-
-
-
-
-
-// let bot_section = document.getElementById('bot_section');
-// let bot1 = document.getElementById('bot1');
-// let overlay2 = document.getElementById('overlay2');
-// let close_summary_carousel6 = document.getElementById('close_summary_carousel6')
-
-
-
-// if (bot_section && bot1) {
-//     bot1.addEventListener('click', (event) => {
-//         event.stopPropagation(); // Prevent the event from propagating to the document
-//         if (bot_section.style.display == 'none') {
-//             bot_section.style.display = 'block'
-//             if (sidebar.style.left == '0px' && overlay2.style.display == 'block') {
-//                 sidebar.style.left = '-250px';
-//                 overlay2.style.display = 'none';
-//             }
-//         } else {
-//             bot_section.style.display = 'none'
-//         }
-
-//     });
-
-//     close_summary_carousel6.addEventListener('click', (event) => {
-//         event.stopPropagation();
-//         if (bot_section.style.display == 'block') {
-//             bot_section.style.display = 'none'
-//             if (sidebar.style.left == '0px' && overlay2.style.display == 'block') {
-//                 sidebar.style.left = '-250px';
-//                 overlay2.style.display = 'none';
-//             }
-//         } else {
-//             bot_section.style.display = 'block'
-//         }
-//     });
-
-// } else {
-//     console.error('One or more elements are not found');
-// }
-
-
-
-
-
-
-
-
-let log_close_and_info_cont = document.getElementById('log_close_and_info_cont_carousel6');
-let bot_log_show_cont = document.getElementById('bot_log_show_cont_carousel6');
-let bot_details = document.getElementById('bot_details_carousel6');
-let bot_details2 = document.getElementById('bot_details2_carousel6');
-
-if (bot_log_show_cont && bot_details) {
-    bot_details.addEventListener('click', (event) => {
+if (bot_log_show_cont_symbol_vol10_1s && bot_details_symbol_vol10_1s) {
+    bot_details_symbol_vol10_1s.addEventListener('click', (event) => {
         event.stopPropagation(); // Prevent the event from propagating to the document
-        if (bot_log_show_cont.style.display == 'none') {
-            bot_log_show_cont.style.display = 'block'
+        if (bot_log_show_cont_symbol_vol10_1s.style.display == 'none') {
+            bot_log_show_cont_symbol_vol10_1s.style.display = 'block'
         } else {
-            bot_log_show_cont.style.display = 'none'
+            bot_log_show_cont_symbol_vol10_1s.style.display = 'none'
         }
-
     });
 
-    log_close_and_info_cont.addEventListener('click', (event) => {
+    log_close_and_info_cont_symbol_vol10_1s.addEventListener('click', (event) => {
         event.stopPropagation();
-        if (bot_log_show_cont.style.display == 'block') {
-            bot_log_show_cont.style.display = 'none'
+        if (bot_log_show_cont_symbol_vol10_1s.style.display == 'block') {
+            bot_log_show_cont_symbol_vol10_1s.style.display = 'none'
         } else {
-            bot_log_show_cont.style.display = 'block'
+            bot_log_show_cont_symbol_vol10_1s.style.display = 'block'
         }
     });
-
 } else {
     console.error('One or more elements are not found');
 }
 
-
-
-if (bot_log_show_cont && bot_details) {
-    bot_details2.addEventListener('click', (event) => {
+if (bot_log_show_cont_symbol_vol10_1s && bot_details_symbol_vol10_1s) {
+    bot_details2_symbol_vol10_1s.addEventListener('click', (event) => {
         event.stopPropagation(); // Prevent the event from propagating to the document
-        if (bot_log_show_cont.style.display == 'none') {
-            bot_log_show_cont.style.display = 'block'
+        if (bot_log_show_cont_symbol_vol10_1s.style.display == 'none') {
+            bot_log_show_cont_symbol_vol10_1s.style.display = 'block'
         } else {
-            bot_log_show_cont.style.display = 'none'
+            bot_log_show_cont_symbol_vol10_1s.style.display = 'none'
         }
-
     });
 } else {
     console.error('One or more elements are not found');
 }
 
+let martingale_symbol_vol10_1s = document.getElementById('martingale_carousel6');
+let flash_info_cont_symbol_vol10_1s = document.getElementById('flash_info_cont_carousel6');
+let tick_check_amount_symbol_vol10_1s = document.getElementById('tick_check_amount_carousel6');
+let settings_cont_symbol_vol10_1s = document.getElementById('settings_cont_carousel6');
+let tick_check_symbol_vol10_1s = document.getElementById('tick_check_carousel6');
+let martingale_jump_symbol_vol10_1s = document.getElementById('martingale_jump_carousel6');
+let increase_jump_symbol_vol10_1s = document.getElementById('increase_jump_carousel6');
+let reduce_jump_symbol_vol10_1s = document.getElementById('reduce_jump_carousel6');
+let bot_settings_symbol_vol10_1s = document.getElementById('bot_settings_carousel6');
+let bot_settings2_symbol_vol10_1s = document.getElementById('bot_settings2_carousel6');
+const volumes2_symbol_vol10_1s = document.querySelectorAll(".slide_vol2_carousel6");
+let tick_check2_symbol_vol10_1s = document.getElementById('tick_check2_carousel6');
+let martingale2_symbol_vol10_1s = document.getElementById('martingale2_carousel6');
+let martingale_jump2_symbol_vol10_1s = document.getElementById('martingale_jump2_carousel6');
+let martingale_jump_set_symbol_vol10_1s = document.getElementById('martingale_jump_set_carousel6');
+const last_digit_settings_symbol_vol10_1s = document.querySelectorAll(".last_digit_settings_carousel6");
 
 
-
-
-let martingale = document.getElementById('martingale_carousel6');
-let flash_info_cont = document.getElementById('flash_info_cont_carousel6');
-let tick_check_amount = document.getElementById('tick_check_amount_carousel6');
-let bot_settings = document.getElementById('bot_settings_carousel6');
-let settings_cont = document.getElementById('settings_cont_carousel6');
-let tick_check = document.getElementById('tick_check_carousel6');
-let martingale_jump = document.getElementById('martingale_jump_carousel6');
-let increase_jump = document.getElementById('increase_jump_carousel6');
-let reduce_jump = document.getElementById('reduce_jump_carousel6');
-
-let bot_settings2 = document.getElementById('bot_settings2_carousel6');
-
-const prevButton2 = document.querySelector(".prev2_carousel6");
-const nextButton2 = document.querySelector(".next2_carousel6");
-
-const volumes2 = document.querySelectorAll(".slide_vol2_carousel6");
-let tick_check2 = document.getElementById('tick_check2_carousel6');
-let martingale2 = document.getElementById('martingale2_carousel6');
-let martingale_jump2 = document.getElementById('martingale_jump2_carousel6');
-let martingale_jump_set = document.getElementById('martingale_jump_set_carousel6');
-
-const prevButton = document.querySelector(".prev_carousel6");
-const nextButton = document.querySelector(".next_carousel6");
-const volumes = document.querySelectorAll(".slide_vol_carousel6");
-const volumes_stream = document.querySelectorAll(".slide_vol_stream_carousel6");
-const last_digit_settings = document.querySelectorAll(".last_digit_settings_carousel6");
-
-let currentIndex = parseInt(localStorage.getItem('bot_current_vol1_carousel6')) || 0;
-let currentIndex2 = parseInt(localStorage.getItem('bot_current_vol2_carousel6')) || 0;
-let currentIndex3 = parseInt(localStorage.getItem('bot_current_vol3_carousel6')) || 0;
-
-let currentIndex_cookie = parseInt(getCookie('bot_current_vol1_carousel6')) || 0;
-let currentIndex2_cookie = parseInt(getCookie('bot_current_vol2_carousel6')) || 0;
-let currentIndex3_cookie = parseInt(getCookie('bot_current_vol3_carousel6')) || 0;
-
-// Show initial volume
-if (currentIndex !== null && currentIndex >= 0) {
-    volumes[currentIndex].classList.add("active");
-    volumes2[currentIndex].classList.add("active");
-    volumes_stream[currentIndex].classList.add("active");
-} else if (currentIndex_cookie !== null && currentIndex_cookie >= 0) {
-    volumes[currentIndex_cookie].classList.add("active");
-    volumes2[currentIndex_cookie].classList.add("active");
-    volumes_stream[currentIndex_cookie].classList.add("active");
-}
-
-// Previous button functionality
-prevButton.addEventListener("click", function () {
-    if (currentIndex !== null && currentIndex >= 0) {
-        volumes[currentIndex].classList.remove("active");
-        volumes2[currentIndex].classList.remove("active");
-        volumes_stream[currentIndex2].classList.remove("active");
-        currentIndex = (currentIndex - 1 + volumes.length) % volumes.length;
-        localStorage.setItem('bot_current_vol1_carousel6', currentIndex);
-        localStorage.setItem('bot_current_vol3_carousel6', currentIndex);
-        setCookie('bot_current_vol1_carousel6', currentIndex);
-        setCookie('bot_current_vol3_carousel6', currentIndex);
-        currentIndex2 = (currentIndex2 - 1 + volumes_stream.length) % volumes_stream.length;
-        localStorage.setItem('bot_current_vol2_carousel6', currentIndex2);
-        setCookie('bot_current_vol2_carousel6', currentIndex2);
-        volumes[currentIndex].classList.add("active");
-        volumes2[currentIndex].classList.add("active");
-        volumes_stream[currentIndex2].classList.add("active");
-    } else if (currentIndex_cookie !== null && currentIndex_cookie >= 0) {
-        volumes[currentIndex_cookie].classList.remove("active");
-        volumes2[currentIndex_cookie].classList.remove("active");
-        volumes_stream[currentIndex2_cookie].classList.remove("active");
-        currentIndex_cookie = (currentIndex_cookie - 1 + volumes.length) % volumes.length;
-        localStorage.setItem('bot_current_vol1_carousel6', currentIndex_cookie);
-        localStorage.setItem('bot_current_vol3_carousel6', currentIndex_cookie);
-        setCookie('bot_current_vol1_carousel6', currentIndex_cookie);
-        setCookie('bot_current_vol3_carousel6', currentIndex_cookie);
-        currentIndex2_cookie = (currentIndex2_cookie - 1 + volumes_stream.length) % volumes_stream.length;
-        localStorage.setItem('bot_current_vol2_carousel6', currentIndex2_cookie);
-        setCookie('bot_current_vol2_carousel6', currentIndex2_cookie);
-        volumes[currentIndex_cookie].classList.add("active");
-        volumes2[currentIndex_cookie].classList.add("active");
-        volumes_stream[currentIndex2_cookie].classList.add("active");
-    }
-});
-
-// Next button functionality
-nextButton.addEventListener("click", function () {
-    if (currentIndex !== null && currentIndex >= 0) {
-        volumes[currentIndex].classList.remove("active");
-        volumes2[currentIndex].classList.remove("active");
-        volumes_stream[currentIndex2].classList.remove("active");
-        currentIndex = (currentIndex + 1) % volumes.length;
-        localStorage.setItem('bot_current_vol1_carousel6', currentIndex);
-        localStorage.setItem('bot_current_vol3_carousel6', currentIndex);
-        setCookie('bot_current_vol1_carousel6', currentIndex);
-        setCookie('bot_current_vol3_carousel6', currentIndex);
-        currentIndex2 = (currentIndex2 + 1) % volumes_stream.length;
-        localStorage.setItem('bot_current_vol2_carousel6', currentIndex2);
-        setCookie('bot_current_vol2_carousel6', currentIndex2);
-        volumes[currentIndex].classList.add("active");
-        volumes2[currentIndex].classList.add("active");
-        volumes_stream[currentIndex2].classList.add("active");
-    } else if (currentIndex_cookie !== null && currentIndex_cookie >= 0) {
-        volumes[currentIndex_cookie].classList.remove("active");
-        volumes2[currentIndex_cookie].classList.remove("active");
-        volumes_stream[currentIndex2_cookie].classList.remove("active");
-        currentIndex_cookie = (currentIndex_cookie + 1) % volumes.length;
-        localStorage.setItem('bot_current_vol1_carousel6', currentIndex_cookie);
-        localStorage.setItem('bot_current_vol3_carousel6', currentIndex_cookie);
-        setCookie('bot_current_vol1_carousel6', currentIndex_cookie);
-        setCookie('bot_current_vol3_carousel6', currentIndex_cookie);
-        currentIndex2_cookie = (currentIndex2_cookie + 1) % volumes_stream.length;
-        localStorage.setItem('bot_current_vol2_carousel6', currentIndex2_cookie);
-        setCookie('bot_current_vol2_carousel6', currentIndex2_cookie);
-        volumes[currentIndex_cookie].classList.add("active");
-        volumes2[currentIndex_cookie].classList.add("active");
-        volumes_stream[currentIndex2_cookie].classList.add("active");
-    }
-});
-
-
-
-
-
-// Add click event listener
-martingale.addEventListener('click', function () {
-    if (martingale.classList.contains('active_mat')) {
-        martingale.classList.remove('active_mat');
-        martingale2.classList.remove('active_mat');
+martingale_symbol_vol10_1s.addEventListener('click', function () {
+    if (martingale_symbol_vol10_1s.classList.contains('active_mat')) {
+        martingale_symbol_vol10_1s.classList.remove('active_mat');
+        martingale2_symbol_vol10_1s.classList.remove('active_mat');
         setCookie('martingale_carousel6', 'false')
         localStorage.setItem('martingale_carousel6', 'false')
-        flash_info_cont.textContent = 'martigale is not active'
-        tick_check_amount.style.color = '#fff'
-
+        flash_info_cont_symbol_vol10_1s.textContent = 'martigale is not active'
+        tick_check_amount_symbol_vol10_1s.style.color = '#fff'
     } else {
-        martingale.classList.add('active_mat');
-        martingale2.classList.add('active_mat');
+        martingale_symbol_vol10_1s.classList.add('active_mat');
+        martingale2_symbol_vol10_1s.classList.add('active_mat');
         setCookie('martingale_carousel6', 'true')
         localStorage.setItem('martingale_carousel6', 'true')
-        flash_info_cont.textContent = 'martigale is active'
-        tick_check_amount.style.color = '#fff'
+        flash_info_cont_symbol_vol10_1s.textContent = 'martigale is active'
+        tick_check_amount_symbol_vol10_1s.style.color = '#fff'
     }
-
-    if (flash_info_cont.classList.contains('show_flash_info_carousel6')) {
-        flash_info_cont.classList.remove('show_flash_info_carousel6')
-
+    if (flash_info_cont_symbol_vol10_1s.classList.contains('show_flash_info_carousel6')) {
+        flash_info_cont_symbol_vol10_1s.classList.remove('show_flash_info_carousel6')
         setTimeout(() => {
-            flash_info_cont.classList.remove('show_flash_info_carousel6')
+            flash_info_cont_symbol_vol10_1s.classList.remove('show_flash_info_carousel6')
         }, 5000)
-
     } else {
-        flash_info_cont.classList.add('show_flash_info_carousel6')
-
+        flash_info_cont_symbol_vol10_1s.classList.add('show_flash_info_carousel6')
         setTimeout(() => {
-            flash_info_cont.classList.remove('show_flash_info_carousel6')
+            flash_info_cont_symbol_vol10_1s.classList.remove('show_flash_info_carousel6')
         }, 5000)
     }
 });
 
-
-
-
-function bot_set_default() {
+function bot_set_default_symbol_vol10_1s() {
     let curr_bot_set = localStorage.getItem('bot_set_carousel6');
-
     if (curr_bot_set === null) {
-        setTimeout(bot_set_default, 100);
+        setTimeout(bot_set_default_symbol_vol10_1s, 100);
         return;
     }
-
-    tick_check.textContent = curr_bot_set;
-    tick_check2.textContent = curr_bot_set;
+    tick_check_symbol_vol10_1s.textContent = curr_bot_set;
+    tick_check2_symbol_vol10_1s.textContent = curr_bot_set;
 }
 
-bot_set_default();
+bot_set_default_symbol_vol10_1s();
 
-
-// Add click event listener
-bot_settings.addEventListener('click', function () {
-    if (settings_cont.style.display == 'none') {
-        settings_cont.style.display = 'block'
+bot_settings_symbol_vol10_1s.addEventListener('click', function () {
+    if (settings_cont_symbol_vol10_1s.style.display == 'none') {
+        settings_cont_symbol_vol10_1s.style.display = 'block'
     } else {
-        settings_cont.style.display = 'none'
+        settings_cont_symbol_vol10_1s.style.display = 'none'
     }
 });
-
 
 document.addEventListener('click', (event) => {
-    if (!bot_settings.contains(event.target) && !settings_cont.contains(event.target) && !martingale_jump_set.contains(event.target)) {
-        settings_cont.style.display = 'none';
+    if (!bot_settings_symbol_vol10_1s.contains(event.target) && !settings_cont_symbol_vol10_1s.contains(event.target) && !martingale_jump_set_symbol_vol10_1s.contains(event.target)) {
+        settings_cont_symbol_vol10_1s.style.display = 'none';
     }
 });
 
-
-last_digit_settings.forEach(function (bot_setting) {
+last_digit_settings_symbol_vol10_1s.forEach(function (bot_setting) {
     bot_setting.addEventListener('click', function () {
         let bot_set = this.querySelector('.bot_text_carousel6').textContent.trim().replace(/\s+/g, ' ');
         if (bot_set == 'Last one digit bot') {
-            console.log('one digit')
             localStorage.setItem('bot_set_carousel6', '1')
             setCookie('bot_set_carousel6', '1')
-
             localStorage.setItem('bot_set_store_carousel6', '1')
             setCookie('bot_set_store_carousel6', '1')
-
             this.classList.add('confirm_set_click')
-
-            bot_set_default()
-
+            bot_set_default_symbol_vol10_1s()
             setTimeout(() => {
                 this.classList.remove('confirm_set_click')
             }, 2000)
         }
         if (bot_set == 'Last two digit bot') {
-            console.log('two digit')
             localStorage.setItem('bot_set_carousel6', '2')
             setCookie('bot_set_carousel6', '2')
-
             localStorage.setItem('bot_set_store_carousel6', '2')
             setCookie('bot_set_store_carousel6', '2')
-
-
             this.classList.add('confirm_set_click')
-
-            bot_set_default()
-
+            bot_set_default_symbol_vol10_1s()
             setTimeout(() => {
                 this.classList.remove('confirm_set_click')
             }, 2000)
         }
         if (bot_set == 'Last three digit bot') {
-            console.log('three digit')
             localStorage.setItem('bot_set_carousel6', '3')
             setCookie('bot_set_carousel6', '3')
-
             localStorage.setItem('bot_set_store_carousel6', '3')
             setCookie('bot_set_store_carousel6', '3')
-
             this.classList.add('confirm_set_click')
-
-            bot_set_default()
-
+            bot_set_default_symbol_vol10_1s()
             setTimeout(() => {
                 this.classList.remove('confirm_set_click')
             }, 2000)
         }
         if (bot_set == 'Last four digit bot') {
-            console.log('four digit')
             localStorage.setItem('bot_set_carousel6', '4')
             setCookie('bot_set_carousel6', '4')
-
             localStorage.setItem('bot_set_store_carousel6', '4')
             setCookie('bot_set_store_carousel6', '4')
-
             this.classList.add('confirm_set_click')
-
-            bot_set_default()
-
+            bot_set_default_symbol_vol10_1s()
             setTimeout(() => {
                 this.classList.remove('confirm_set_click')
             }, 2000)
         }
         if (bot_set == 'Last five digit bot') {
-            console.log('five digit')
             localStorage.setItem('bot_set_carousel6', '5')
             setCookie('bot_set_carousel6', '5')
-
             localStorage.setItem('bot_set_store_carousel6', '5')
             setCookie('bot_set_store_carousel6', '5')
-
             this.classList.add('confirm_set_click')
-
-            bot_set_default()
-
+            bot_set_default_symbol_vol10_1s()
             setTimeout(() => {
                 this.classList.remove('confirm_set_click')
             }, 2000)
         }
         if (bot_set == 'Last six digit bot') {
-            console.log('six digit')
             localStorage.setItem('bot_set_carousel6', '6')
             setCookie('bot_set_carousel6', '6')
-
             localStorage.setItem('bot_set_store_carousel6', '6')
             setCookie('bot_set_store_carousel6', '6')
-
             this.classList.add('confirm_set_click')
-
-            bot_set_default()
-
+            bot_set_default_symbol_vol10_1s()
             setTimeout(() => {
                 this.classList.remove('confirm_set_click')
             }, 2000)
         }
         if (bot_set == 'Last seven digit bot') {
-            console.log('seven digit')
             localStorage.setItem('bot_set_carousel6', '7')
             setCookie('bot_set_carousel6', '7')
-
             localStorage.setItem('bot_set_store_carousel6', '7')
             setCookie('bot_set_store_carousel6', '7')
-
             this.classList.add('confirm_set_click')
-
-            bot_set_default()
-
+            bot_set_default_symbol_vol10_1s()
             setTimeout(() => {
                 this.classList.remove('confirm_set_click')
             }, 2000)
         }
         if (bot_set == 'Last eight digit bot') {
-            console.log('eight digit')
             localStorage.setItem('bot_set_carousel6', '8')
             setCookie('bot_set_carousel6', '8')
-
             localStorage.setItem('bot_set_store_carousel6', '8')
             setCookie('bot_set_store_carousel6', '8')
-
             this.classList.add('confirm_set_click')
-
-            bot_set_default()
-
+            bot_set_default_symbol_vol10_1s()
             setTimeout(() => {
                 this.classList.remove('confirm_set_click')
             }, 2000)
         }
         if (bot_set == 'Last nine digit bot') {
-            console.log('nine digit')
             localStorage.setItem('bot_set_carousel6', '9')
             setCookie('bot_set_carousel6', '9')
-
             localStorage.setItem('bot_set_store_carousel6', '9')
             setCookie('bot_set_store_carousel6', '9')
-
             this.classList.add('confirm_set_click')
-
-            bot_set_default()
-
+            bot_set_default_symbol_vol10_1s()
             setTimeout(() => {
                 this.classList.remove('confirm_set_click')
             }, 2000)
         }
         if (bot_set == 'Last ten digit bot') {
-            console.log('ten digit')
             localStorage.setItem('bot_set_carousel6', '10')
             setCookie('bot_set_carousel6', '10')
-
             localStorage.setItem('bot_set_store_carousel6', '10')
             setCookie('bot_set_store_carousel6', '10')
-
             this.classList.add('confirm_set_click')
-
-            bot_set_default()
-
+            bot_set_default_symbol_vol10_1s()
             setTimeout(() => {
                 this.classList.remove('confirm_set_click')
             }, 2000)
@@ -2808,183 +1920,83 @@ last_digit_settings.forEach(function (bot_setting) {
 });
 
 
+let jump_count_symbol_vol10_1s = 0
 
-let jump_count = 0
-
-function jump_count_set() {
-    localStorage.setItem('bot_jump_carousel6', jump_count)
-    setCookie('bot_jump_carousel6', jump_count)
+function jump_count_set_symbol_vol10_1s() {
+    localStorage.setItem('bot_jump_carousel6', jump_count_symbol_vol10_1s)
+    setCookie('bot_jump_carousel6', jump_count_symbol_vol10_1s)
 }
 
-function jump_count_set2() {
+function jump_count_set2_symbol_vol10_1s() {
     let stored_jump_count = localStorage.getItem('bot_jump_carousel6') ? localStorage.getItem('bot_jump_carousel6') : getCookie('bot_jump_carousel6');
+    jump_count_symbol_vol10_1s = stored_jump_count !== null ? parseInt(stored_jump_count, 10) : 0;
 
-    // Parse the value and handle the case where it is null or NaN
-    jump_count = stored_jump_count !== null ? parseInt(stored_jump_count, 10) : 0;
-
-    if (isNaN(jump_count)) {
-        jump_count = 0;
+    if (isNaN(jump_count_symbol_vol10_1s)) {
+        jump_count_symbol_vol10_1s = 0;
     }
-
-
-    if (jump_count > 0) {
-        martingale_jump.textContent = 'j' + jump_count
-        martingale_jump2.textContent = 'j' + jump_count
+    if (jump_count_symbol_vol10_1s > 0) {
+        martingale_jump_symbol_vol10_1s.textContent = 'j' + jump_count_symbol_vol10_1s
+        martingale_jump2_symbol_vol10_1s.textContent = 'j' + jump_count_symbol_vol10_1s
     } else {
-        martingale_jump.textContent = ''
-        martingale_jump2.textContent = ''
+        martingale_jump_symbol_vol10_1s.textContent = ''
+        martingale_jump2_symbol_vol10_1s.textContent = ''
     }
 }
 
+jump_count_set2_symbol_vol10_1s()
 
-jump_count_set2()
-
-
-
-increase_jump.addEventListener('click', (event) => {
+increase_jump_symbol_vol10_1s.addEventListener('click', (event) => {
     event.preventDefault()
-    jump_count = jump_count + 1
-    jump_count_set()
-    jump_count_set2()
+    jump_count_symbol_vol10_1s = jump_count_symbol_vol10_1s + 1
+    jump_count_set_symbol_vol10_1s()
+    jump_count_set2_symbol_vol10_1s()
 })
 
-reduce_jump.addEventListener('click', (event) => {
+reduce_jump_symbol_vol10_1s.addEventListener('click', (event) => {
     event.preventDefault()
-    if (jump_count > 0) {
-        jump_count = jump_count - 1
-        jump_count_set()
-        jump_count_set2()
+    if (jump_count_symbol_vol10_1s > 0) {
+        jump_count_symbol_vol10_1s = jump_count_symbol_vol10_1s - 1
+        jump_count_set_symbol_vol10_1s()
+        jump_count_set2_symbol_vol10_1s()
     }
 })
 
-
-
-
-
-
-
-bot_settings2.addEventListener('click', function () {
-    if (settings_cont.style.display == 'none') {
-        settings_cont.style.display = 'block'
+bot_settings2_symbol_vol10_1s.addEventListener('click', function () {
+    if (settings_cont_symbol_vol10_1s.style.display == 'none') {
+        settings_cont_symbol_vol10_1s.style.display = 'block'
     } else {
-        settings_cont.style.display = 'none'
+        settings_cont_symbol_vol10_1s.style.display = 'none'
     }
 });
 
-
-
-
-
-
-
-// Previous button functionality
-prevButton2.addEventListener("click", function () {
-    if (currentIndex !== null && currentIndex >= 0) {
-        volumes[currentIndex].classList.remove("active");
-        volumes2[currentIndex].classList.remove("active");
-        volumes_stream[currentIndex].classList.remove("active");
-        currentIndex = (currentIndex - 1 + volumes.length) % volumes.length;
-        localStorage.setItem('bot_current_vol1_carousel6', currentIndex)
-        localStorage.setItem('bot_current_vol3_carousel6', currentIndex)
-        setCookie('bot_current_vol1_carousel6', currentIndex)
-        setCookie('bot_current_vol3_carousel6', currentIndex)
-        currentIndex2 = (currentIndex2 - 1 + volumes_stream.length) % volumes_stream.length;
-        localStorage.setItem('bot_current_vol2_carousel6', currentIndex)
-        setCookie('bot_current_vol2_carousel6', currentIndex)
-        volumes[currentIndex].classList.add("active");
-        volumes2[currentIndex].classList.add("active");
-        volumes_stream[currentIndex2].classList.add("active");
-    } else if (currentIndex_cookie !== null && currentIndex_cookie >= 0) {
-        volumes[currentIndex_cookie].classList.remove("active");
-        volumes2[currentIndex_cookie].classList.remove("active");
-        volumes_stream[currentIndex_cookie].classList.remove("active");
-        currentIndex_cookie = (currentIndex_cookie - 1 + volumes.length) % volumes.length;
-        localStorage.setItem('bot_current_vol1_carousel6', currentIndex_cookie)
-        localStorage.setItem('bot_current_vol3_carousel6', currentIndex_cookie)
-        setCookie('bot_current_vol1_carousel6', currentIndex_cookie)
-        setCookie('bot_current_vol3_carousel6', currentIndex_cookie)
-        currentIndex2_cookie = (currentIndex2_cookie - 1 + volumes_stream.length) % volumes_stream.length;
-        localStorage.setItem('bot_current_vol2_carousel6', currentIndex_cookie)
-        setCookie('bot_current_vol2_carousel6', currentIndex_cookie)
-        volumes[currentIndex_cookie].classList.add("active");
-        volumes2[currentIndex_cookie].classList.add("active");
-        volumes_stream[currentIndex2_cookie].classList.add("active");
-    }
-});
-
-// Next button functionality
-nextButton2.addEventListener("click", function () {
-    if (currentIndex !== null && currentIndex >= 0) {
-        volumes[currentIndex].classList.remove("active");
-        volumes2[currentIndex].classList.remove("active");
-        volumes_stream[currentIndex2].classList.remove("active");
-        currentIndex = (currentIndex + 1) % volumes.length;
-        localStorage.setItem('bot_current_vol1_carousel6', currentIndex)
-        localStorage.setItem('bot_current_vol3_carousel6', currentIndex)
-        setCookie('bot_current_vol1_carousel6', currentIndex)
-        setCookie('bot_current_vol3_carousel6', currentIndex)
-        currentIndex2 = (currentIndex2 + 1) % volumes_stream.length;
-        localStorage.setItem('bot_current_vol2_carousel6', currentIndex)
-        setCookie('bot_current_vol2_carousel6', currentIndex)
-        volumes[currentIndex].classList.add("active");
-        volumes2[currentIndex].classList.add("active");
-        volumes_stream[currentIndex2].classList.add("active");
-    } else if (currentIndex_cookie !== null && currentIndex_cookie >= 0) {
-        volumes[currentIndex].classList.remove("active");
-        volumes2[currentIndex].classList.remove("active");
-        volumes_stream[currentIndex2].classList.remove("active");
-        currentIndex = (currentIndex + 1) % volumes.length;
-        localStorage.setItem('bot_current_vol1_carousel6', currentIndex)
-        localStorage.setItem('bot_current_vol3_carousel6', currentIndex)
-        setCookie('bot_current_vol1_carousel6', currentIndex)
-        setCookie('bot_current_vol3_carousel6', currentIndex)
-        currentIndex2 = (currentIndex2 + 1) % volumes_stream.length;
-        localStorage.setItem('bot_current_vol2_carousel6', currentIndex)
-        setCookie('bot_current_vol2_carousel6', currentIndex)
-        volumes[currentIndex].classList.add("active");
-        volumes2[currentIndex].classList.add("active");
-        volumes_stream[currentIndex2].classList.add("active");
-    }
-});
-
-
-
-// Add click event listener
-martingale2.addEventListener('click', function () {
-    if (martingale2.classList.contains('active_mat')) {
-        martingale2.classList.remove('active_mat');
-        martingale.classList.remove('active_mat');
+martingale2_symbol_vol10_1s.addEventListener('click', function () {
+    if (martingale2_symbol_vol10_1s.classList.contains('active_mat')) {
+        martingale2_symbol_vol10_1s.classList.remove('active_mat');
+        martingale_symbol_vol10_1s.classList.remove('active_mat');
         setCookie('martingale_carousel6', 'false')
         localStorage.setItem('martingale_carousel6', 'false')
-        flash_info_cont.textContent = 'martigale is not active'
-        tick_check_amount.style.color = '#fff'
-
+        flash_info_cont_symbol_vol10_1s.textContent = 'martigale is not active'
+        tick_check_amount_symbol_vol10_1s.style.color = '#fff'
     } else {
-        martingale2.classList.add('active_mat');
-        martingale.classList.add('active_mat');
+        martingale2_symbol_vol10_1s.classList.add('active_mat');
+        martingale_symbol_vol10_1s.classList.add('active_mat');
         setCookie('martingale_carousel6', 'true')
         localStorage.setItem('martingale_carousel6', 'true')
-        flash_info_cont.textContent = 'martigale is active'
-        tick_check_amount.style.color = '#fff'
+        flash_info_cont_symbol_vol10_1s.textContent = 'martigale is active'
+        tick_check_amount_symbol_vol10_1s.style.color = '#fff'
     }
-
     if (flash_info_cont.classList.contains('show_flash_info')) {
         flash_info_cont.classList.remove('show_flash_info')
-
         setTimeout(() => {
             flash_info_cont.classList.remove('show_flash_info')
         }, 5000)
-
     } else {
         flash_info_cont.classList.add('show_flash_info')
-
         setTimeout(() => {
             flash_info_cont.classList.remove('show_flash_info')
         }, 5000)
     }
 });
-
-
 
 if (close_contract_result_container) {
     close_contract_result_container.addEventListener('click', (event) => {
@@ -3001,3 +2013,6 @@ if (close_contract_result_container) {
         }
     })
 }
+
+
+
